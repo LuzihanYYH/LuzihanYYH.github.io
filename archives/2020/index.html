@@ -819,13 +819,11 @@
         </div>
       
     
-    <i class="fas fa-chart-area"></i>
-    <span class="post-count">字数统计：87</span>
     <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
     <script>
         var now = new Date(); 
         function createtime() { 
-            var grt= new Date("08/10/2018 17:38:00");//在此处修改你的建站时间，格式：月/日/年 时:分:秒
+            var grt= new Date("06/12/2020 09:38:00");//在此处修改你的建站时间，格式：月/日/年 时:分:秒
             now.setTime(now.getTime()+250); 
             days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
             hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
@@ -838,6 +836,8 @@
         } 
     setInterval("createtime()",250);
     </script>
+    <i class="fas fa-chart-area"></i>
+    <span class="post-count">字数统计：87</span>
   </footer>
 
 <script>setLoadingBarProgress(80);</script>
