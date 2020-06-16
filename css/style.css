@@ -3340,8 +3340,8 @@ footer .copyright p {
 }
 .l_body .s-top canvas {
   position: fixed;
-  right: 0px;
-  bottom: 0px;
+  left: 0px;
+  top: 0px;
   min-width: 100%;
   min-height: 100%;
   height: auto;
