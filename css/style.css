@@ -3338,16 +3338,6 @@ footer .copyright p {
   transform-origin: bottom;
   color: #555;
 }
-.l_body .s-top canvas {
-  position: fixed;
-  left: 0px;
-  top: 0px;
-  min-width: 100%;
-  min-height: 100%;
-  height: auto;
-  width: auto;
-  z-index: -1;
-}
 @media screen and (max-width: 768px) {
   .l_body .s-top {
     right: 16px;
@@ -3795,6 +3785,16 @@ div.hoverbox:hover >div.target {
 }
 .reveal {
   visibility: hidden;
+}
+canvas {
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  min-width: 100%;
+  min-height: 100%;
+  height: auto;
+  width: auto;
+  z-index: -1;
 }
 #loading-bar-wrapper {
   position: fixed;
