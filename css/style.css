@@ -3368,6 +3368,16 @@ footer .copyright p {
   padding-right: 16px;
   float: left;
 }
+.l_main canvas {
+  position: fixed;
+  right: 0px;
+  bottom: 0px;
+  min-width: 100%;
+  min-height: 100%;
+  height: auto;
+  width: auto;
+  z-index: -1;
+}
 @media screen and (max-width: 768px) {
   .l_main {
     width: 100%;
