@@ -19,7 +19,7 @@
     <title>C#复杂类型的深拷贝,并解决CodeRunner的输出窗口乱码 - AustinYAN&#39;s Blog</title>
   
   
-    <meta name="description" content="C#复杂类型的深拷贝,并解决CodeRunner的输出窗口乱码C#中的等号和C++的等号,并不相同">
+    <meta name="description" content="C#中的等号和C++的等号,并不相同因为=在引用类型中的使用，仅仅是创建了一个新的引用变量，并没有复制真正的内容，所以我们需要深拷贝">
   
 
   <!-- feed -->
@@ -482,7 +482,7 @@
       <section class="article typo">
         <div class="article-entry" itemprop="articleBody">
           
-          <p>C#复杂类型的深拷贝,并解决CodeRunner的输出窗口乱码<br>C#中的等号和C++的等号,并不相同</p>
+          <p>C#中的等号和C++的等号,并不相同<br>因为=在引用类型中的使用，仅仅是创建了一个新的引用变量，并没有复制真正的内容，所以我们需要深拷贝</p>
 <a id="more"></a>
 
 <h2 id="引用类型使用“-”"><a href="#引用类型使用“-”" class="headerlink" title="引用类型使用“=”"></a>引用类型使用“=”</h2><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="keyword">string</span>[] args</span>)</span></span><br><span class="line"><span class="function"></span>      &#123;</span><br><span class="line">          Person p1 = <span class="keyword">new</span> Person();</span><br><span class="line">          p1.Name = <span class="string">"Luzihan"</span>;</span><br><span class="line">          p1.Job = <span class="string">"在家玩游戏"</span>;</span><br><span class="line"></span><br><span class="line">          Person p2 = <span class="keyword">new</span> Person();</span><br><span class="line">          p2 = p1;</span><br><span class="line">          p1.Name = <span class="string">"Lubaobao"</span>;</span><br><span class="line">          p1.Job = <span class="string">"还是在家打游戏"</span>;</span><br><span class="line"></span><br><span class="line">          Console.WriteLine(p1.Name);</span><br><span class="line">          Console.WriteLine(p1.Job);</span><br><span class="line">          Console.WriteLine(p2.Name);</span><br><span class="line">          Console.WriteLine(p2.Job);</span><br><span class="line">      &#125;</span><br></pre></td></tr></table></figure>
@@ -588,7 +588,7 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-06-22T18:46:56+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-06-22T18:48:53+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
     <p>更新于：Jun 22, 2020</p>
@@ -615,7 +615,7 @@
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer"
           
-          href="http://connect.qq.com/widget/shareqq/index.html?url=http://lubaobao.xyz/2020/06/22/C#%E5%A4%8D%E6%9D%82%E7%B1%BB%E5%9E%8B%E7%9A%84%E6%B7%B1%E6%8B%B7%E8%B4%9D/&title=C#复杂类型的深拷贝,并解决CodeRunner的输出窗口乱码 - AustinYAN's Blog&pics=true&summary=C#复杂类型的深拷贝,并解决CodeRunner的输出窗口乱码C#中的等号和C++的等号,并不相同"
+          href="http://connect.qq.com/widget/shareqq/index.html?url=http://lubaobao.xyz/2020/06/22/C#%E5%A4%8D%E6%9D%82%E7%B1%BB%E5%9E%8B%E7%9A%84%E6%B7%B1%E6%8B%B7%E8%B4%9D/&title=C#复杂类型的深拷贝,并解决CodeRunner的输出窗口乱码 - AustinYAN's Blog&pics=true&summary=C#中的等号和C++的等号,并不相同因为=在引用类型中的使用，仅仅是创建了一个新的引用变量，并没有复制真正的内容，所以我们需要深拷贝"
           
           >
           
@@ -627,7 +627,7 @@
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer"
           
-          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://lubaobao.xyz/2020/06/22/C#%E5%A4%8D%E6%9D%82%E7%B1%BB%E5%9E%8B%E7%9A%84%E6%B7%B1%E6%8B%B7%E8%B4%9D/&title=C#复杂类型的深拷贝,并解决CodeRunner的输出窗口乱码 - AustinYAN's Blog&pics=true&summary=C#复杂类型的深拷贝,并解决CodeRunner的输出窗口乱码C#中的等号和C++的等号,并不相同"
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://lubaobao.xyz/2020/06/22/C#%E5%A4%8D%E6%9D%82%E7%B1%BB%E5%9E%8B%E7%9A%84%E6%B7%B1%E6%8B%B7%E8%B4%9D/&title=C#复杂类型的深拷贝,并解决CodeRunner的输出窗口乱码 - AustinYAN's Blog&pics=true&summary=C#中的等号和C++的等号,并不相同因为=在引用类型中的使用，仅仅是创建了一个新的引用变量，并没有复制真正的内容，所以我们需要深拷贝"
           
           >
           
@@ -639,7 +639,7 @@
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer"
           
-          href="http://service.weibo.com/share/share.php?url=http://lubaobao.xyz/2020/06/22/C#%E5%A4%8D%E6%9D%82%E7%B1%BB%E5%9E%8B%E7%9A%84%E6%B7%B1%E6%8B%B7%E8%B4%9D/&title=C#复杂类型的深拷贝,并解决CodeRunner的输出窗口乱码 - AustinYAN's Blog&pics=true&summary=C#复杂类型的深拷贝,并解决CodeRunner的输出窗口乱码C#中的等号和C++的等号,并不相同"
+          href="http://service.weibo.com/share/share.php?url=http://lubaobao.xyz/2020/06/22/C#%E5%A4%8D%E6%9D%82%E7%B1%BB%E5%9E%8B%E7%9A%84%E6%B7%B1%E6%8B%B7%E8%B4%9D/&title=C#复杂类型的深拷贝,并解决CodeRunner的输出窗口乱码 - AustinYAN's Blog&pics=true&summary=C#中的等号和C++的等号,并不相同因为=在引用类型中的使用，仅仅是创建了一个新的引用变量，并没有复制真正的内容，所以我们需要深拷贝"
           
           >
           
@@ -844,7 +844,7 @@
     setInterval("createtime()",250);
     </script>
     <i class="fas fa-chart-area"></i>
-    <span class="post-count">字数统计：832</span>
+    <span class="post-count">字数统计：857</span>
   </footer>
 
 <script>setLoadingBarProgress(80);</script>
