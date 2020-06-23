@@ -498,37 +498,16 @@
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="安装插件："><a href="#安装插件：" class="headerlink" title="安装插件："></a>安装插件：</h2><p>微软的宇宙第一IDE让人使用之后欲罢不能，那么Linux编程有没有好用的IDE呢？</p>
-<p>最近VS Code出了一个插件，对我这种vim使用很不舒服的人来说简直是爱极了！~</p>
-<p>注意：</p>
-<ul>
-<li>要想完全不使用xshell，vs code必须安装编译器</li>
-<li>否则写完代码无法编译，毕竟vs code只是编辑器</li>
-<li>要想让vs code的C/C++自动补全更加智能，需要安装llvm</li>
-</ul>
-<p>但是，萝卜青菜，各有所爱，vs code对我而言只是一款编辑代码的工具，我不想为了编译代码再花更多时间，我只是不喜欢vim而已，xshell上使用gcc和g++那么方便为什么不呢？</p>
-<p>首先，搜索Remote SSH，安装<br><img src="https://img-blog.csdnimg.cn/20190831190034285.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1c3Rpbl9ZYW4=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>然后左下角多了一个按钮<br><img src="https://img-blog.csdnimg.cn/20190831190148892.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1c3Rpbl9ZYW4=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<h2 id="生成公钥："><a href="#生成公钥：" class="headerlink" title="生成公钥："></a>生成公钥：</h2><p>配置好之后，就可以连接服务器了，但是问题来了，每次都要输入两次密码很烦</p>
-<p>所以我们使用ssh生成一份公钥，openssh组件是windows 1809之后的版本推出的</p>
-<p>如果不想升级系统，也不想安装openssh，那么请往下看~</p>
-<p>使用过github的小伙伴看到下面这个东西是不是很亲切？</p>
-<p><img src="https://img-blog.csdnimg.cn/20190831190543733.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1c3Rpbl9ZYW4=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>git 安装完后，bash 、 ssh 、 ssh-keygen 等一些常用的 linux 命令工具都已经安装</p>
-<ul>
-<li>打开Git Bash Here进入命令行</li>
-<li>切换到目录 cd C:/Users/你电脑的用户名/.ssh/</li>
-<li>生成密钥 ssh-keygen -t rsa -b 4096，回车表示存到当前文件夹</li>
-<li>pub文件就是生成的公钥</li>
-</ul>
-<p><img src="https://img-blog.csdnimg.cn/20190831190847170.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1c3Rpbl9ZYW4=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>到这个时候，就快要和vim说拜拜了~</p>
-<h2 id="服务器操作："><a href="#服务器操作：" class="headerlink" title="服务器操作："></a>服务器操作：</h2><p>rz或者直接拖动，将公钥上传到服务器，然后cat显示在屏幕上，复制</p>
-<p>然后在服务器键入如下命令：(来源于：<a href="https://blog.csdn.net/zhangpeterx/article/details/97375233）" target="_blank" rel="noopener">https://blog.csdn.net/zhangpeterx/article/details/97375233）</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p ~&#x2F;.ssh </span><br><span class="line"></span><br><span class="line">chmod 700 ~&#x2F;.ssh </span><br><span class="line"></span><br><span class="line">nano ~&#x2F;.ssh&#x2F;authorized_keys </span><br><span class="line"></span><br><span class="line">在nano界面 ctrl+v，然后ctrl+x退出，回车表示不更改文件名</span><br><span class="line"></span><br><span class="line">chmod 600 ~&#x2F;.ssh&#x2F;authorized_keys</span><br></pre></td></tr></table></figure>
-<p>可以把xshell关闭了，打开vs code，就会连接服务器，不需要手动输密码</p>
-<h2 id="效果截图："><a href="#效果截图：" class="headerlink" title="效果截图："></a>效果截图：</h2><p><img src="https://img-blog.csdnimg.cn/20190831191516459.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1c3Rpbl9ZYW4=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-
+        <p>比起VIM的纯键盘操作,我更喜欢鼠标加键盘的操作方式…<br>所以能想办法替代VIM就想办法替代..虽然我也不是服务器开发..</p>
       
     </div>
     
+      
+        <div class="button readmore">
+          <a href="/2019/08/31/VSCode-remotessh/">
+            阅读全文 <i class="fas fa-chevron-right"></i>
+          </a>
+        </div>
       
     
   </section>
