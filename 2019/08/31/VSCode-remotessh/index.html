@@ -5,8 +5,6 @@
   <!-- SEO相关 -->
   
     
-      <meta name="robots" content="noindex,follow">
-    
   
   <!-- 渲染优化 -->
   <meta name="renderer" content="webkit">
@@ -18,7 +16,7 @@
 
   <!-- 页面元数据 -->
   
-    <title>Archive: 2020/6 - AustinYAN&#39;s Blog</title>
+    <title>VSCodeRemote SSH公钥免密登录，远离xshell，摆脱vim - AustinYAN&#39;s Blog</title>
   
   
 
@@ -72,7 +70,7 @@
   
   <div class="cover-wrapper">
     
-      <cover class='cover  half'>
+      <cover class='cover post half'>
         <div class='cover-body'>
   <div class='a'>
     
@@ -405,22 +403,11 @@
       
 
 <div class='l_main'>
-	
-		
-  <section class="post-list ">
-    
-      
-        
-          
-        
-      
-    
-    
-      
-        
-          <div class='post-wrapper'>
-            <article class="post white-box shadow reveal ">
   
+
+  
+    <article id="post" class="post white-box reveal shadow article-type-post" itemscope itemprop="blogPost">
+      
 
 
   <section class='meta'>
@@ -430,11 +417,11 @@
       <div class="meta" id="header-meta">
         
           
-  <h2 class="title">
-    <a href="/2020/06/22/CSharp-deepcopy/">
-      C#复杂类型的深拷贝,并解决CodeRunner的输出窗口乱码
+  <h1 class="title">
+    <a href="/2019/08/31/VSCode-remotessh/">
+      VSCodeRemote SSH公钥免密登录，远离xshell，摆脱vim
     </a>
-  </h2>
+  </h1>
 
 
         
@@ -470,14 +457,9 @@
               <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：Jun 22, 2020</p>
+    <p>发布于：Aug 31, 2019</p>
   </a>
 </div>
-
-            
-          
-            
-              
 
             
           
@@ -495,101 +477,76 @@
   </section>
 
 
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>C#中的等号和C++的等号,并不相同<br>因为=在引用类型中的使用，仅仅是创建了一个新的引用变量，并没有复制真正的内容，所以我们需要深拷贝</p>
-      
-    </div>
-    
-      
-        <div class="button readmore">
-          <a href="/2020/06/22/CSharp-deepcopy/">
-            阅读全文 <i class="fas fa-chevron-right"></i>
-          </a>
-        </div>
-      
-    
-  </section>
-</article>
+      <section class="article typo">
+        <div class="article-entry" itemprop="articleBody">
+          
+          <h2 id="安装插件："><a href="#安装插件：" class="headerlink" title="安装插件："></a>安装插件：</h2><p>微软的宇宙第一IDE让人使用之后欲罢不能，那么Linux编程有没有好用的IDE呢？</p>
+<p>最近VS Code出了一个插件，对我这种vim使用很不舒服的人来说简直是爱极了！~</p>
+<p>注意：</p>
+<ul>
+<li>要想完全不使用xshell，vs code必须安装编译器</li>
+<li>否则写完代码无法编译，毕竟vs code只是编辑器</li>
+<li>要想让vs code的C/C++自动补全更加智能，需要安装llvm</li>
+</ul>
+<p>但是，萝卜青菜，各有所爱，vs code对我而言只是一款编辑代码的工具，我不想为了编译代码再花更多时间，我只是不喜欢vim而已，xshell上使用gcc和g++那么方便为什么不呢？</p>
+<p>首先，搜索Remote SSH，安装<br><img src="https://img-blog.csdnimg.cn/20190831190034285.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1c3Rpbl9ZYW4=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>然后左下角多了一个按钮<br><img src="https://img-blog.csdnimg.cn/20190831190148892.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1c3Rpbl9ZYW4=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h2 id="生成公钥："><a href="#生成公钥：" class="headerlink" title="生成公钥："></a>生成公钥：</h2><p>配置好之后，就可以连接服务器了，但是问题来了，每次都要输入两次密码很烦</p>
+<p>所以我们使用ssh生成一份公钥，openssh组件是windows 1809之后的版本推出的</p>
+<p>如果不想升级系统，也不想安装openssh，那么请往下看~</p>
+<p>使用过github的小伙伴看到下面这个东西是不是很亲切？</p>
+<p><img src="https://img-blog.csdnimg.cn/20190831190543733.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1c3Rpbl9ZYW4=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>git 安装完后，bash 、 ssh 、 ssh-keygen 等一些常用的 linux 命令工具都已经安装</p>
+<ul>
+<li>打开Git Bash Here进入命令行</li>
+<li>切换到目录 cd C:/Users/你电脑的用户名/.ssh/</li>
+<li>生成密钥 ssh-keygen -t rsa -b 4096，回车表示存到当前文件夹</li>
+<li>pub文件就是生成的公钥</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/20190831190847170.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1c3Rpbl9ZYW4=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>到这个时候，就快要和vim说拜拜了~</p>
+<h2 id="服务器操作："><a href="#服务器操作：" class="headerlink" title="服务器操作："></a>服务器操作：</h2><p>rz或者直接拖动，将公钥上传到服务器，然后cat显示在屏幕上，复制</p>
+<p>然后在服务器键入如下命令：(来源于：<a href="https://blog.csdn.net/zhangpeterx/article/details/97375233）" target="_blank" rel="noopener">https://blog.csdn.net/zhangpeterx/article/details/97375233）</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p ~&#x2F;.ssh </span><br><span class="line"></span><br><span class="line">chmod 700 ~&#x2F;.ssh </span><br><span class="line"></span><br><span class="line">nano ~&#x2F;.ssh&#x2F;authorized_keys </span><br><span class="line"></span><br><span class="line">在nano界面 ctrl+v，然后ctrl+x退出，回车表示不更改文件名</span><br><span class="line"></span><br><span class="line">chmod 600 ~&#x2F;.ssh&#x2F;authorized_keys</span><br></pre></td></tr></table></figure>
+<p>可以把xshell关闭了，打开vs code，就会连接服务器，不需要手动输密码</p>
+<h2 id="效果截图："><a href="#效果截图：" class="headerlink" title="效果截图："></a>效果截图：</h2><p><img src="https://img-blog.csdnimg.cn/20190831191516459.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1c3Rpbl9ZYW4=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
 
-          </div>
-        
-      
-    
-  </section>
+          
+            <div class='article_footer'>
+              
+                
   
     
-    <!-- 根据主题中的设置决定是否在archive中针对摘要部分的MathJax公式加载mathjax.js文件 -->
     
-    
+
+
 
   
 
-
-	
-</div>
-<aside class='l_side'>
-  
   
     
     
 
-<section class="widget blogger shadow desktop mobile">
+
+
+  
+
+  
+    
+    
+
+<section class="widget copyright  desktop mobile">
   <div class='content'>
     
-      
-        <a class='avatar flat-box' href='/about/'>
-          <img no-lazy src='https://cdn.jsdelivr.net/gh/AustinYANyh/Image@1.0/head1.jpg'/>
-        </a>
-      
-    
-    
-      <div class='text'>
-        
-        
-        
-          <p><span id="jinrishici-sentence">AustinYAN's Blog</span></p>
-          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
-        
-      </div>
-    
-    
-      <div class="social-wrapper">
+      <blockquote>
         
           
-            <a href="/atom.xml"
-              class="social fas fa-rss flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-            </a>
+            <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
+
           
         
           
-            <a href="mailto:austinyanlzh@gmail.com"
-              class="social fas fa-envelope flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-            </a>
+            <p>本文永久链接是：<a href=http://lubaobao.xyz/2019/08/31/VSCode-remotessh/>http://lubaobao.xyz/2019/08/31/VSCode-remotessh/</a></p>
           
         
-          
-            <a href="https://github.com/AustinYANyh"
-              class="social fab fa-github flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-            </a>
-          
-        
-          
-            <a href="https://music.163.com/#/user/home?id=286524796"
-              class="social fas fa-headphones-alt flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-            </a>
-          
-        
-      </div>
+      </blockquote>
     
   </div>
 </section>
@@ -599,37 +556,202 @@
   
     
     
+
+<section class="widget qrcode  desktop mobile">
   
 
-  <section class="widget category shadow desktop">
+  <div class='content article-entry'>
+    
+      
+        <div class='fancybox'><img src='https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/qrcode/wiki_volantis.png'
+        
+          height='64px'
+        ></div>
+      
+    
+      
+        <div class='fancybox'><img src='https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/qrcode/wiki_volantis.png'
+        
+          height='64px'
+        ></div>
+      
+    
+  </div>
+</section>
+
+  
+
+
+              
+            </div>
+          
+        </div>
+        
+          
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-06-23T10:07:02+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：Jun 23, 2020</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+
+        
+      
+        
+          
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer"
+          
+          href="http://connect.qq.com/widget/shareqq/index.html?url=http://lubaobao.xyz/2019/08/31/VSCode-remotessh/&title=VSCodeRemote SSH公钥免密登录，远离xshell，摆脱vim - AustinYAN's Blog&pics=true&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer"
+          
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://lubaobao.xyz/2019/08/31/VSCode-remotessh/&title=VSCodeRemote SSH公钥免密登录，远离xshell，摆脱vim - AustinYAN's Blog&pics=true&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer"
+          
+          href="http://service.weibo.com/share/share.php?url=http://lubaobao.xyz/2019/08/31/VSCode-remotessh/&title=VSCodeRemote SSH公钥免密登录，远离xshell，摆脱vim - AustinYAN's Blog&pics=true&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/weibo.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </section>
+
+
+        
+        
+          <div class="prev-next">
+            
+              <a class='prev' href='/2019/12/20/CSarp-interaction/'>
+                <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>C#中调用C++dll</p>
+                <p class='content'>校招是肯定没戏了..19年是20界的校招…
+
+
+C#中调用C++dll
+C++代码
+1234567891011121314151617181920212223242526272829303132...</p>
+              </a>
+            
+            
+          </div>
+        
+      </section>
+    </article>
+  
+
+  
+    <!-- 显示推荐文章和评论 -->
+
+
+
+  <article class="post white-box reveal comments shadow">
+    <section class="article typo">
+      <p ct><i class='fas fa-comments'></i> 评论</p>
+      
+      
+      
+      
+      
+      
+        <section id="comments">
+          <div id="valine_container" class="valine_thread">
+            <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
+          </div>
+        </section>
+      
+      
+    </section>
+  </article>
+
+
+  
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+
+  <script>
+    window.subData = {
+      title: 'VSCodeRemote SSH公钥免密登录，远离xshell，摆脱vim',
+      tools: true
+    }
+  </script>
+
+
+</div>
+<aside class='l_side'>
+  
+  
+
+  
+    
+    
+
+
+  <section class="widget toc-wrapper shadow desktop mobile">
     
   <header>
     
-      <a href='/categories/'><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i><span class='name'>文章分类</span></a>
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
     
   </header>
 
 
     <div class='content'>
-      <ul class="entry navigation">
-        
-          <li><a class="flat-box"
-            title="/categories/C/" href="/categories/C/"
-            id="categoriesC"
-            ><div class='name'>C#</div><div class='badge'>(5)</div></a></li>
-        
-      </ul>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#安装插件："><span class="toc-text">安装插件：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#生成公钥："><span class="toc-text">生成公钥：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#服务器操作："><span class="toc-text">服务器操作：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#效果截图："><span class="toc-text">效果截图：</span></a></li></ol>
     </div>
   </section>
 
-
-  
-
-  
-    
-    
-
-  
 
   
 
@@ -749,14 +871,6 @@
 <script>setLoadingBarProgress(80);</script>
 
 
-
-
-	<!-- 根据主题中的设置决定是否在archive中针对摘要部分的MathJax公式加载mathjax.js文件 -->
-	
-
-	
-
-
       <script>setLoadingBarProgress(60);</script>
     </div>
     <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
@@ -869,6 +983,60 @@
 
 
 
+
+  
+    
+<script src="https://cdn.jsdelivr.net/npm/valine@1.4/dist/Valine.min.js"></script>
+
+  
+  <script>
+  var GUEST_INFO = ['nick','mail','link'];
+  var meta = 'nick,mail,link'.split(',').filter(function(item){
+    return GUEST_INFO.indexOf(item) > -1
+  });
+  var REQUIRED_FIELDS = ['nick','mail','link'];
+  var requiredFields = 'nick,mail'.split(',').filter(function(item){
+    return REQUIRED_FIELDS.indexOf(item) > -1
+  });
+  var valine = new Valine();
+  function emoji(path, idx, ext) {
+      return path + "/" + path + "-" + idx + "." + ext;
+  }
+  var emojiMaps = {};
+  for (var i = 1; i <= 54; i++) {
+    emojiMaps['tieba-' + i] = emoji('tieba', i, 'png');
+  }
+  for (var i = 1; i <= 101; i++) {
+    emojiMaps['qq-' + i] = emoji('qq', i, 'gif');
+  }
+  for (var i = 1; i <= 116; i++) {
+    emojiMaps['aru-' + i] = emoji('aru', i, 'gif');
+  }
+  for (var i = 1; i <= 125; i++) {
+    emojiMaps['twemoji-' + i] = emoji('twemoji', i, 'png');
+  }
+  for (var i = 1; i <= 4; i++) {
+    emojiMaps['weibo-' + i] = emoji('weibo', i, 'png');
+  }
+  valine.init({
+    el: '#valine_container',
+    meta: meta,
+    
+    appId: "dogUA2FSKGTo029M1SEwGROT-MdYXbMMI",
+    appKey: "u0NdtQ8nvHoMdJPSYqm1LRxE",
+    placeholder: "快来评论吧~",
+    pageSize:'10',
+    avatar:'robohash',
+    lang:'zh-cn',
+    visitor: 'true',
+    highlight: 'true',
+    mathJax: 'false',
+    enableQQ: 'true',
+    requiredFields: requiredFields,
+    emojiCDN: 'https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/',
+    emojiMaps: emojiMaps
+  })
+  </script>
 
 
 
