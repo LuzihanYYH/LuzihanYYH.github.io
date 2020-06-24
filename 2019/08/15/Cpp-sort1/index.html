@@ -492,8 +492,6 @@
 <li>找到值去交换,最大的元素位置是没有发生变化的</li>
 </ul>
 <h2 id="过程图示"><a href="#过程图示" class="headerlink" title="过程图示:"></a>过程图示:</h2><p><img src="https://img-blog.csdnimg.cn/20190815131320255.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1c3Rpbl9ZYW4=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<h2 id="代码示例"><a href="#代码示例" class="headerlink" title="代码示例:"></a>代码示例:</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//普通的未经过优化的选择排序</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">selectSort</span><span class="params">(<span class="keyword">int</span>* <span class="built_in">array</span>, <span class="keyword">int</span> size)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> end = size - <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">while</span> (end != <span class="number">0</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> max = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">int</span> begin =<span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">for</span> (begin; begin &lt;= end; ++begin)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span> (<span class="built_in">array</span>[max] &lt; <span class="built_in">array</span>[begin])</span><br><span class="line">			&#123;</span><br><span class="line">				max = begin;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">continue</span>;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		swap(<span class="built_in">array</span>[max], <span class="built_in">array</span>[end]);</span><br><span class="line">		end--;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <h2 id="56-23"><a href="#56-23" class="headerlink" title="56+23"></a>56+23</h2>
           
             <div class='article_footer'>
@@ -581,7 +579,7 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-06-24T08:15:31+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-06-24T08:16:25+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
     <p>更新于：Jun 24, 2020</p>
@@ -733,7 +731,7 @@
 
 
     <div class='content'>
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#选择排序的思路"><span class="toc-text">选择排序的思路:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#过程图示"><span class="toc-text">过程图示:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码示例"><span class="toc-text">代码示例:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#56-23"><span class="toc-text">56+23</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#选择排序的思路"><span class="toc-text">选择排序的思路:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#过程图示"><span class="toc-text">过程图示:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#56-23"><span class="toc-text">56+23</span></a></li></ol>
     </div>
   </section>
 
@@ -850,7 +848,7 @@
     setInterval("createtime()",250);
     </script>
     <i class="fas fa-chart-area"></i>
-    <span class="post-count">字数统计：3.7k</span>
+    <span class="post-count">字数统计：3.6k</span>
   </footer>
 
 <script>setLoadingBarProgress(80);</script>
