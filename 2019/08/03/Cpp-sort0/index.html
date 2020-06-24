@@ -16,10 +16,10 @@
 
   <!-- 页面元数据 -->
   
-    <title>C#中调用C++dll - AustinYAN&#39;s Blog</title>
+    <title>【针对性复习】选择排序和归并排序 - AustinYAN&#39;s Blog</title>
   
   
-    <meta name="description" content="校招是肯定没戏了..19年是20界的校招…">
+    <meta name="description" content="针对选择题中排序过程的复习">
   
 
   <!-- feed -->
@@ -420,8 +420,8 @@
         
           
   <h1 class="title">
-    <a href="/2019/12/20/CSarp-interaction/">
-      C#中调用C++dll
+    <a href="/2019/08/03/Cpp-sort0/">
+      【针对性复习】选择排序和归并排序
     </a>
   </h1>
 
@@ -446,9 +446,9 @@
               
   
   <div class='new-meta-item category'>
-    <a href='/categories/C/' rel="nofollow">
+    <a href='/categories/Cpp/' rel="nofollow">
       <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
-      <p>C#</p>
+      <p>Cpp</p>
     </a>
   </div>
 
@@ -459,7 +459,7 @@
               <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：Dec 20, 2019</p>
+    <p>发布于：Aug 3, 2019</p>
   </a>
 </div>
 
@@ -482,32 +482,27 @@
       <section class="article typo">
         <div class="article-entry" itemprop="articleBody">
           
-          <p>校招是肯定没戏了..19年是20界的校招…</p>
+          <p>针对选择题中排序过程的复习</p>
 <a id="more"></a>
 
-<h2 id="C-中调用C-dll"><a href="#C-中调用C-dll" class="headerlink" title="C#中调用C++dll"></a>C#中调用C++dll</h2><ul>
-<li><p>C++代码</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> MATH_EXPORTS</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MATH_API __declspec(dllexport)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">else</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MATH_API __declspec(dllimport)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">extern</span> <span class="string">"C"</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="class"><span class="keyword">class</span> <span class="title">MATH_API</span> <span class="title">CMath</span> &#123;</span></span><br><span class="line">	<span class="keyword">public</span>:</span><br><span class="line">		CMath(<span class="keyword">void</span>);</span><br><span class="line">		<span class="function"><span class="keyword">int</span> <span class="title">Math_Add</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span></span></span><br><span class="line"><span class="function">		</span>&#123;</span><br><span class="line">			<span class="keyword">return</span> a + b;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="function"><span class="keyword">int</span> <span class="title">Math_Sub</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span></span></span><br><span class="line"><span class="function">		</span>&#123;</span><br><span class="line">			<span class="keyword">return</span> a - b;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="function"><span class="keyword">int</span> <span class="title">Math_Col</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span></span></span><br><span class="line"><span class="function">		</span>&#123;</span><br><span class="line">			<span class="keyword">return</span> a * b;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="function"><span class="keyword">int</span> <span class="title">Math_Dev</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span></span></span><br><span class="line"><span class="function">		</span>&#123;</span><br><span class="line">			<span class="keyword">return</span> a / b;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">extern</span> MATH_API <span class="keyword">int</span> nMath;</span><br><span class="line"></span><br><span class="line"><span class="function">MATH_API <span class="keyword">int</span> <span class="title">fnMath</span><span class="params">(<span class="keyword">void</span>)</span></span>;</span><br></pre></td></tr></table></figure></li>
-<li><p>C#代码</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">using</span> System.Collections.Generic;</span><br><span class="line"><span class="keyword">using</span> System.Linq;</span><br><span class="line"><span class="keyword">using</span> System.Text;</span><br><span class="line"><span class="keyword">using</span> System.Runtime.InteropServices;</span><br><span class="line"><span class="keyword">using</span> System.Threading.Tasks;</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">test</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">class</span> <span class="title">func</span></span><br><span class="line">    &#123;</span><br><span class="line">        [<span class="meta">DllImport(@<span class="meta-string">"C:\Users\Austin_Yan\Documents\Visual Studio 2013\Projects\Math\Debug\Math.dll"</span>,EntryPoint=<span class="meta-string">"?Math_Add@CMath@@QAEHHH@Z"</span>)</span>]</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">extern</span> <span class="keyword">int</span> <span class="title">Math_Add</span>(<span class="params"><span class="keyword">int</span> a,<span class="keyword">int</span> b</span>)</span>;</span><br><span class="line"></span><br><span class="line">        [<span class="meta">DllImport(@<span class="meta-string">"C:\Users\Austin_Yan\Documents\Visual Studio 2013\Projects\Math\Debug\Math.dll"</span>, EntryPoint = <span class="meta-string">"?Math_Sub@CMath@@QAEHHH@Z"</span>)</span>]</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">extern</span> <span class="keyword">int</span> <span class="title">Math_Sub</span>(<span class="params"><span class="keyword">int</span> a, <span class="keyword">int</span> b</span>)</span>;</span><br><span class="line"></span><br><span class="line">        [<span class="meta">DllImport(@<span class="meta-string">"C:\Users\Austin_Yan\Documents\Visual Studio 2013\Projects\Math\Debug\Math.dll"</span>, EntryPoint = <span class="meta-string">"?Math_Col@CMath@@QAEHHH@Z"</span>)</span>]</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">extern</span> <span class="keyword">int</span> <span class="title">Math_Col</span>(<span class="params"><span class="keyword">int</span> a, <span class="keyword">int</span> b</span>)</span>;</span><br><span class="line"></span><br><span class="line">        [<span class="meta">DllImport(@<span class="meta-string">"C:\Users\Austin_Yan\Documents\Visual Studio 2013\Projects\Math\Debug\Math.dll"</span>, EntryPoint = <span class="meta-string">"?Math_Dev@CMath@@QAEHHH@Z"</span>)</span>]</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">extern</span> <span class="keyword">int</span> <span class="title">Math_Dev</span>(<span class="params"><span class="keyword">int</span> a, <span class="keyword">int</span> b</span>)</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">class</span> <span class="title">Program</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="keyword">string</span>[] args</span>)</span></span><br><span class="line"><span class="function"></span>        &#123;</span><br><span class="line">            <span class="keyword">int</span> a = func.Math_Add(<span class="number">5</span>, <span class="number">6</span>);</span><br><span class="line">            Console.WriteLine(a);</span><br><span class="line">            a = func.Math_Sub(<span class="number">6</span>, <span class="number">5</span>);</span><br><span class="line">            Console.WriteLine(a);</span><br><span class="line">            a = func.Math_Col(<span class="number">6</span>, <span class="number">5</span>);</span><br><span class="line">            Console.WriteLine(a);</span><br><span class="line">            a = func.Math_Dev(<span class="number">12</span>, <span class="number">3</span>);</span><br><span class="line">            Console.WriteLine(a);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h2></li>
-<li><p>dll引用添加不成功,报错如下：无法加载DLL”**.dll”:找不到指定的模块</p>
-<blockquote>
-<p>建议使用vs 2013创建win32程序—&gt;下一步—&gt;dll,然后编辑,不要创建windows控制台程序然后修改配置类型为动态库,如果不成功,调到第三个问题</p>
-</blockquote>
-</li>
-<li><p>找不到程序入口点</p>
-<blockquote>
-<p>使用dumpbin工具查看C++中函数编译之后的名称,C#中EntryPoint中填入<br><img src="https://img-blog.csdnimg.cn/20191220002026781.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1c3Rpbl9ZYW4=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-</blockquote>
-</li>
-<li><p>引用添加不成功</p>
-<blockquote>
-<p>有效解决办法就是使用DllImport,不要添加引用了<br><img src="https://img-blog.csdnimg.cn/20191220002355686.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1c3Rpbl9ZYW4=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>[DllImport(@”C:\Users\Austin_Yan\Documents\Visual Studio 2013\Projects\Math\Debug\Math.dll”,EntryPoint=”?Math_Add@CMath@@QAEHHH@Z”)]<br>正常应该放在bin目录下,这里是错误的编码习惯,懒</p>
-</blockquote>
-</li>
-</ul>
-<p>很久没写了,偶尔来两篇吧,都懒得改颜色了,想想以前,唉</p>
+<h2 id="快排递归框架："><a href="#快排递归框架：" class="headerlink" title="快排递归框架："></a>快排递归框架：</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">QuickDSort</span><span class="params">(<span class="keyword">int</span>* <span class="built_in">array</span>, <span class="keyword">int</span> left, <span class="keyword">int</span> right)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (right - left &gt; <span class="number">1</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> div = partion(<span class="built_in">array</span>, left, right);</span><br><span class="line">		QuickDSort(<span class="built_in">array</span>, left, div);</span><br><span class="line">		QuickDSort(<span class="built_in">array</span>, div + <span class="number">1</span>, right);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="划分区间"><a href="#划分区间" class="headerlink" title="划分区间:"></a>划分区间:</h2><p><strong>先想办法拿到一个基准值,进而才可以划分,但是直接把right-1的位置的元素作为基准值有可能极端情况下性能爆炸差,所以引入特殊的取值方法</strong></p>
+<h3 id="三值取中法"><a href="#三值取中法" class="headerlink" title="三值取中法:"></a>三值取中法:</h3><p><strong>顾名思义,就是取三个值,选出一个中间值作为基准值,<font color=0099ff>能极大程度避免取的基准值太极端</font></strong></p>
+<p><strong>a  b,如果c比a还小,那a就是中间值</strong></p>
+<p><strong>a  b,如果c比b还大,那b就是中间值</strong></p>
+<p><strong>如果都不是,说明c就是中间值</strong></p>
+<p><strong>b a,情况同上处理</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">GetMidIndex</span><span class="params">(<span class="keyword">int</span>* <span class="built_in">array</span>, <span class="keyword">int</span> left, <span class="keyword">int</span> right)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> mid = left + ((right - left) &gt;&gt; <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">	<span class="comment">//a b</span></span><br><span class="line">	<span class="keyword">if</span> (<span class="built_in">array</span>[left] &lt; <span class="built_in">array</span>[right - <span class="number">1</span>])</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="comment">//c&lt;a ,a就是mid</span></span><br><span class="line">		<span class="keyword">if</span> (<span class="built_in">array</span>[mid] &lt; <span class="built_in">array</span>[left])</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">return</span> left;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">//c&gt;b,b就是mid</span></span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">array</span>[mid]&gt;<span class="built_in">array</span>[right - <span class="number">1</span>])</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">return</span> right - <span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">return</span> mid;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="comment">//b a,c&lt;b,b就是mid</span></span><br><span class="line">		<span class="keyword">if</span> (<span class="built_in">array</span>[mid] &lt; <span class="built_in">array</span>[right - <span class="number">1</span>])</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">return</span> right - <span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">//b a,c&gt;a,a就是mid</span></span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">array</span>[mid]&gt;<span class="built_in">array</span>[left])</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">return</span> left;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">return</span> mid;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>取好基准值之后,就可以进行元素的比较了,把左侧元素调整为都比基准值小,右侧都比基准值大</p>
+<h3 id="比较方法"><a href="#比较方法" class="headerlink" title="比较方法:"></a>比较方法:</h3><p><strong>定义两个指针,一个在前,一个在后,因为对数组操作,所以可以用数组下标代替</strong></p>
+<p><font color=red><strong>begin从前找比基准值</font><font size=5>大</font>的元素</font>,没有就begin++,直到找到</strong></p>
+<p><font color=red><strong>end同理,从后找比基准值</font><font size=5>小</font>的元素</font>,没有就end–,直到找到</strong></p>
+<p><strong>找到的话,<font color=0099ff>begin和end的位置如果不一样,就交换元素</font></strong></p>
+<p><strong>最终将基准值放好(因为一开始把基准值和right-1位置的元素互换了)</strong></p>
+<p><font color=red><strong>要和right-1位置换,因为end是变化的</strong></font></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">partion</span><span class="params">(<span class="keyword">int</span>* <span class="built_in">array</span>, <span class="keyword">int</span> left, <span class="keyword">int</span> right)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> mid = GetMidIndex(<span class="built_in">array</span>, left, right);</span><br><span class="line"></span><br><span class="line">	swap(<span class="built_in">array</span>[mid], <span class="built_in">array</span>[right - <span class="number">1</span>]);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">int</span> begin = left;</span><br><span class="line">	<span class="keyword">int</span> end = right - <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">int</span> key = <span class="built_in">array</span>[right - <span class="number">1</span>];</span><br><span class="line"></span><br><span class="line">	<span class="keyword">while</span> (begin&lt;end)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="comment">//从左往右找比基准值大的元素</span></span><br><span class="line">		<span class="keyword">while</span> (begin &lt; end&amp;&amp;<span class="built_in">array</span>[begin] &lt;= key)</span><br><span class="line">		&#123;</span><br><span class="line">			begin++;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="comment">//从右往左找比基准值小的元素</span></span><br><span class="line">		<span class="keyword">while</span> (begin &lt; end&amp;&amp;<span class="built_in">array</span>[end] &gt;= key)</span><br><span class="line">		&#123;</span><br><span class="line">			end--;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="comment">//找到之后</span></span><br><span class="line">		<span class="keyword">if</span> (begin != end)</span><br><span class="line">		&#123;</span><br><span class="line">			swap(<span class="built_in">array</span>[begin], <span class="built_in">array</span>[end]);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//放置基准值</span></span><br><span class="line">	<span class="keyword">if</span> (begin != right - <span class="number">1</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		swap(<span class="built_in">array</span>[begin], <span class="built_in">array</span>[right - <span class="number">1</span>]);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> begin;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="流程示意图"><a href="#流程示意图" class="headerlink" title="流程示意图:"></a>流程示意图:</h2><p><img src="https://img-blog.csdnimg.cn/20190803004841485.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1c3Rpbl9ZYW4=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
 
           
             <div class='article_footer'>
@@ -544,7 +539,7 @@
           
         
           
-            <p>本文永久链接是：<a href=http://lubaobao.xyz/2019/12/20/CSarp-interaction/>http://lubaobao.xyz/2019/12/20/CSarp-interaction/</a></p>
+            <p>本文永久链接是：<a href=http://lubaobao.xyz/2019/08/03/Cpp-sort0/>http://lubaobao.xyz/2019/08/03/Cpp-sort0/</a></p>
           
         
       </blockquote>
@@ -595,10 +590,10 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-06-23T18:27:24+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-06-24T17:33:13+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Jun 23, 2020</p>
+    <p>更新于：Jun 24, 2020</p>
   </a>
 </div>
 
@@ -622,7 +617,7 @@
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer"
           
-          href="http://connect.qq.com/widget/shareqq/index.html?url=http://lubaobao.xyz/2019/12/20/CSarp-interaction/&title=C#中调用C++dll - AustinYAN's Blog&pics=true&summary=校招是肯定没戏了..19年是20界的校招…"
+          href="http://connect.qq.com/widget/shareqq/index.html?url=http://lubaobao.xyz/2019/08/03/Cpp-sort0/&title=【针对性复习】选择排序和归并排序 - AustinYAN's Blog&pics=true&summary=针对选择题中排序过程的复习"
           
           >
           
@@ -634,7 +629,7 @@
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer"
           
-          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://lubaobao.xyz/2019/12/20/CSarp-interaction/&title=C#中调用C++dll - AustinYAN's Blog&pics=true&summary=校招是肯定没戏了..19年是20界的校招…"
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://lubaobao.xyz/2019/08/03/Cpp-sort0/&title=【针对性复习】选择排序和归并排序 - AustinYAN's Blog&pics=true&summary=针对选择题中排序过程的复习"
           
           >
           
@@ -646,7 +641,7 @@
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer"
           
-          href="http://service.weibo.com/share/share.php?url=http://lubaobao.xyz/2019/12/20/CSarp-interaction/&title=C#中调用C++dll - AustinYAN's Blog&pics=true&summary=校招是肯定没戏了..19年是20界的校招…"
+          href="http://service.weibo.com/share/share.php?url=http://lubaobao.xyz/2019/08/03/Cpp-sort0/&title=【针对性复习】选择排序和归并排序 - AustinYAN's Blog&pics=true&summary=针对选择题中排序过程的复习"
           
           >
           
@@ -670,22 +665,14 @@
         
           <div class="prev-next">
             
-              <a class='prev' href='/2020/02/23/CSarp-chatmessagebox/'>
-                <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>C#聊天气泡框</p>
-                <p class='content'>气泡虽然是用的别人写好的方法,自己做的东西很少,大多是学习但是完成了学习编程以来一直的梦想,做一个好看点的聊天界面…
+              <a class='prev' href='/2019/08/15/Cpp-sort1/'>
+                <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>【针对性复习】选择排序和归并排序</p>
+                <p class='content'>之前相关内容的博客,只有简略的思路和代码,起不到复习的作用…现在把思路整理清楚,过程图示也画出来,再把代码重新写一遍,争取把排序遗留的问题彻底解决…
 
 
-思路：借鉴自C# winform socket 初学者示例大佬的示例下载...</p>
+选择排序的思路:从头到尾遍历,找最大的元...</p>
               </a>
             
-            
-              <a class='next' href='/2019/08/31/VSCode-remotessh/'>
-                <p class='title'>VSCodeRemote SSH公钥免密登录，远离xshell，摆脱vim<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
-                <p class='content'>比起VIM的纯键盘操作,我更喜欢鼠标加键盘的操作方式…所以能想办法替代VIM就想办法替代..虽然我也不是服务器开发..
-
-
-安装插件：微软的宇宙第一IDE让人使用之后欲罢不能，那么Linux编程...</p>
-              </a>
             
           </div>
         
@@ -729,7 +716,7 @@
 
   <script>
     window.subData = {
-      title: 'C#中调用C++dll',
+      title: '【针对性复习】选择排序和归并排序',
       tools: true
     }
   </script>
@@ -755,7 +742,7 @@
 
 
     <div class='content'>
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#C-中调用C-dll"><span class="toc-text">C#中调用C++dll</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#遇到的问题"><span class="toc-text">遇到的问题</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#快排递归框架："><span class="toc-text">快排递归框架：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#划分区间"><span class="toc-text">划分区间:</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#三值取中法"><span class="toc-text">三值取中法:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#比较方法"><span class="toc-text">比较方法:</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#流程示意图"><span class="toc-text">流程示意图:</span></a></li></ol>
     </div>
   </section>
 

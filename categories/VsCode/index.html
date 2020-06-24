@@ -5,6 +5,8 @@
   <!-- SEO相关 -->
   
     
+      <meta name="robots" content="noindex,follow">
+    
   
   <!-- 渲染优化 -->
   <meta name="renderer" content="webkit">
@@ -16,10 +18,8 @@
 
   <!-- 页面元数据 -->
   
-    <title>C#中调用C++dll - AustinYAN&#39;s Blog</title>
+    <title>Category: VsCode - AustinYAN&#39;s Blog</title>
   
-  
-    <meta name="description" content="校招是肯定没戏了..19年是20界的校招…">
   
 
   <!-- feed -->
@@ -72,7 +72,7 @@
   
   <div class="cover-wrapper">
     
-      <cover class='cover post half'>
+      <cover class='cover  half'>
         <div class='cover-body'>
   <div class='a'>
     
@@ -404,12 +404,25 @@
     <div class='body-wrapper'>
       
 
+
 <div class='l_main'>
   
-
-  
-    <article id="post" class="post white-box reveal shadow article-type-post" itemscope itemprop="blogPost">
+    
       
+  <section class="post-list ">
+    
+      
+        
+          
+        
+      
+    
+    
+      
+        
+          <div class='post-wrapper'>
+            <article class="post white-box shadow reveal ">
+  
 
 
   <section class='meta'>
@@ -419,11 +432,11 @@
       <div class="meta" id="header-meta">
         
           
-  <h1 class="title">
-    <a href="/2019/12/20/CSarp-interaction/">
-      C#中调用C++dll
+  <h2 class="title">
+    <a href="/2019/08/31/VSCode-remotessh/">
+      VSCodeRemote SSH公钥免密登录，远离xshell，摆脱vim
     </a>
-  </h1>
+  </h2>
 
 
         
@@ -446,9 +459,9 @@
               
   
   <div class='new-meta-item category'>
-    <a href='/categories/C/' rel="nofollow">
+    <a href='/categories/VsCode/' rel="nofollow">
       <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
-      <p>C#</p>
+      <p>VsCode</p>
     </a>
   </div>
 
@@ -459,9 +472,14 @@
               <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：Dec 20, 2019</p>
+    <p>发布于：Aug 31, 2019</p>
   </a>
 </div>
+
+            
+          
+            
+              
 
             
           
@@ -479,286 +497,153 @@
   </section>
 
 
-      <section class="article typo">
-        <div class="article-entry" itemprop="articleBody">
-          
-          <p>校招是肯定没戏了..19年是20界的校招…</p>
-<a id="more"></a>
-
-<h2 id="C-中调用C-dll"><a href="#C-中调用C-dll" class="headerlink" title="C#中调用C++dll"></a>C#中调用C++dll</h2><ul>
-<li><p>C++代码</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> MATH_EXPORTS</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MATH_API __declspec(dllexport)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">else</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MATH_API __declspec(dllimport)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">extern</span> <span class="string">"C"</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="class"><span class="keyword">class</span> <span class="title">MATH_API</span> <span class="title">CMath</span> &#123;</span></span><br><span class="line">	<span class="keyword">public</span>:</span><br><span class="line">		CMath(<span class="keyword">void</span>);</span><br><span class="line">		<span class="function"><span class="keyword">int</span> <span class="title">Math_Add</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span></span></span><br><span class="line"><span class="function">		</span>&#123;</span><br><span class="line">			<span class="keyword">return</span> a + b;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="function"><span class="keyword">int</span> <span class="title">Math_Sub</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span></span></span><br><span class="line"><span class="function">		</span>&#123;</span><br><span class="line">			<span class="keyword">return</span> a - b;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="function"><span class="keyword">int</span> <span class="title">Math_Col</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span></span></span><br><span class="line"><span class="function">		</span>&#123;</span><br><span class="line">			<span class="keyword">return</span> a * b;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="function"><span class="keyword">int</span> <span class="title">Math_Dev</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span></span></span><br><span class="line"><span class="function">		</span>&#123;</span><br><span class="line">			<span class="keyword">return</span> a / b;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">extern</span> MATH_API <span class="keyword">int</span> nMath;</span><br><span class="line"></span><br><span class="line"><span class="function">MATH_API <span class="keyword">int</span> <span class="title">fnMath</span><span class="params">(<span class="keyword">void</span>)</span></span>;</span><br></pre></td></tr></table></figure></li>
-<li><p>C#代码</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">using</span> System.Collections.Generic;</span><br><span class="line"><span class="keyword">using</span> System.Linq;</span><br><span class="line"><span class="keyword">using</span> System.Text;</span><br><span class="line"><span class="keyword">using</span> System.Runtime.InteropServices;</span><br><span class="line"><span class="keyword">using</span> System.Threading.Tasks;</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">test</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">class</span> <span class="title">func</span></span><br><span class="line">    &#123;</span><br><span class="line">        [<span class="meta">DllImport(@<span class="meta-string">"C:\Users\Austin_Yan\Documents\Visual Studio 2013\Projects\Math\Debug\Math.dll"</span>,EntryPoint=<span class="meta-string">"?Math_Add@CMath@@QAEHHH@Z"</span>)</span>]</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">extern</span> <span class="keyword">int</span> <span class="title">Math_Add</span>(<span class="params"><span class="keyword">int</span> a,<span class="keyword">int</span> b</span>)</span>;</span><br><span class="line"></span><br><span class="line">        [<span class="meta">DllImport(@<span class="meta-string">"C:\Users\Austin_Yan\Documents\Visual Studio 2013\Projects\Math\Debug\Math.dll"</span>, EntryPoint = <span class="meta-string">"?Math_Sub@CMath@@QAEHHH@Z"</span>)</span>]</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">extern</span> <span class="keyword">int</span> <span class="title">Math_Sub</span>(<span class="params"><span class="keyword">int</span> a, <span class="keyword">int</span> b</span>)</span>;</span><br><span class="line"></span><br><span class="line">        [<span class="meta">DllImport(@<span class="meta-string">"C:\Users\Austin_Yan\Documents\Visual Studio 2013\Projects\Math\Debug\Math.dll"</span>, EntryPoint = <span class="meta-string">"?Math_Col@CMath@@QAEHHH@Z"</span>)</span>]</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">extern</span> <span class="keyword">int</span> <span class="title">Math_Col</span>(<span class="params"><span class="keyword">int</span> a, <span class="keyword">int</span> b</span>)</span>;</span><br><span class="line"></span><br><span class="line">        [<span class="meta">DllImport(@<span class="meta-string">"C:\Users\Austin_Yan\Documents\Visual Studio 2013\Projects\Math\Debug\Math.dll"</span>, EntryPoint = <span class="meta-string">"?Math_Dev@CMath@@QAEHHH@Z"</span>)</span>]</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">extern</span> <span class="keyword">int</span> <span class="title">Math_Dev</span>(<span class="params"><span class="keyword">int</span> a, <span class="keyword">int</span> b</span>)</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">class</span> <span class="title">Program</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="keyword">string</span>[] args</span>)</span></span><br><span class="line"><span class="function"></span>        &#123;</span><br><span class="line">            <span class="keyword">int</span> a = func.Math_Add(<span class="number">5</span>, <span class="number">6</span>);</span><br><span class="line">            Console.WriteLine(a);</span><br><span class="line">            a = func.Math_Sub(<span class="number">6</span>, <span class="number">5</span>);</span><br><span class="line">            Console.WriteLine(a);</span><br><span class="line">            a = func.Math_Col(<span class="number">6</span>, <span class="number">5</span>);</span><br><span class="line">            Console.WriteLine(a);</span><br><span class="line">            a = func.Math_Dev(<span class="number">12</span>, <span class="number">3</span>);</span><br><span class="line">            Console.WriteLine(a);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h2></li>
-<li><p>dll引用添加不成功,报错如下：无法加载DLL”**.dll”:找不到指定的模块</p>
-<blockquote>
-<p>建议使用vs 2013创建win32程序—&gt;下一步—&gt;dll,然后编辑,不要创建windows控制台程序然后修改配置类型为动态库,如果不成功,调到第三个问题</p>
-</blockquote>
-</li>
-<li><p>找不到程序入口点</p>
-<blockquote>
-<p>使用dumpbin工具查看C++中函数编译之后的名称,C#中EntryPoint中填入<br><img src="https://img-blog.csdnimg.cn/20191220002026781.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1c3Rpbl9ZYW4=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-</blockquote>
-</li>
-<li><p>引用添加不成功</p>
-<blockquote>
-<p>有效解决办法就是使用DllImport,不要添加引用了<br><img src="https://img-blog.csdnimg.cn/20191220002355686.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1c3Rpbl9ZYW4=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>[DllImport(@”C:\Users\Austin_Yan\Documents\Visual Studio 2013\Projects\Math\Debug\Math.dll”,EntryPoint=”?Math_Add@CMath@@QAEHHH@Z”)]<br>正常应该放在bin目录下,这里是错误的编码习惯,懒</p>
-</blockquote>
-</li>
-</ul>
-<p>很久没写了,偶尔来两篇吧,都懒得改颜色了,想想以前,唉</p>
-
-          
-            <div class='article_footer'>
-              
-                
-  
-    
-    
-
-
-
-  
-
-  
-    
-    
-
-
-
-  
-
-  
-    
-    
-
-<section class="widget copyright  desktop mobile">
-  <div class='content'>
-    
-      <blockquote>
-        
-          
-            <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
-
-          
-        
-          
-            <p>本文永久链接是：<a href=http://lubaobao.xyz/2019/12/20/CSarp-interaction/>http://lubaobao.xyz/2019/12/20/CSarp-interaction/</a></p>
-          
-        
-      </blockquote>
-    
-  </div>
-</section>
-
-  
-
-  
-    
-    
-
-<section class="widget qrcode  desktop mobile">
-  
-
-  <div class='content article-entry'>
-    
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
       
-        <div class='fancybox'><img src='https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/qrcode/wiki_volantis.png'
-        
-          height='64px'
-        ></div>
-      
-    
-      
-        <div class='fancybox'><img src='https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/qrcode/wiki_volantis.png'
-        
-          height='64px'
-        ></div>
-      
-    
-  </div>
-</section>
-
-  
-
-
-              
-            </div>
-          
-        </div>
-        
-          
-
-
-  <section class='meta' id="footer-meta">
-    <div class='new-meta-box'>
-      
-        
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-06-23T18:27:24+08:00">
-  <a class='notlink'>
-    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Jun 23, 2020</p>
-  </a>
-</div>
-
-        
-      
-        
-          
-
-        
-      
-        
-          
-
-        
-      
-        
-          
-  <div class="new-meta-item share -mob-share-list">
-  <div class="-mob-share-list share-body">
-    
-      
-        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer"
-          
-          href="http://connect.qq.com/widget/shareqq/index.html?url=http://lubaobao.xyz/2019/12/20/CSarp-interaction/&title=C#中调用C++dll - AustinYAN's Blog&pics=true&summary=校招是肯定没戏了..19年是20界的校招…"
-          
-          >
-          
-            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qq.png">
-          
-        </a>
-      
-    
-      
-        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer"
-          
-          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://lubaobao.xyz/2019/12/20/CSarp-interaction/&title=C#中调用C++dll - AustinYAN's Blog&pics=true&summary=校招是肯定没戏了..19年是20界的校招…"
-          
-          >
-          
-            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qzone.png">
-          
-        </a>
-      
-    
-      
-        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer"
-          
-          href="http://service.weibo.com/share/share.php?url=http://lubaobao.xyz/2019/12/20/CSarp-interaction/&title=C#中调用C++dll - AustinYAN's Blog&pics=true&summary=校招是肯定没戏了..19年是20界的校招…"
-          
-          >
-          
-            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/weibo.png">
-          
-        </a>
-      
-    
-  </div>
-</div>
-
-
-
-        
+        <p>比起VIM的纯键盘操作,我更喜欢鼠标加键盘的操作方式…<br>所以能想办法替代VIM就想办法替代..虽然我也不是服务器开发..</p>
       
     </div>
+    
+      
+        <div class="button readmore">
+          <a href="/2019/08/31/VSCode-remotessh/">
+            阅读全文 <i class="fas fa-chevron-right"></i>
+          </a>
+        </div>
+      
+    
   </section>
+</article>
 
-
-        
-        
-          <div class="prev-next">
-            
-              <a class='prev' href='/2020/02/23/CSarp-chatmessagebox/'>
-                <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>C#聊天气泡框</p>
-                <p class='content'>气泡虽然是用的别人写好的方法,自己做的东西很少,大多是学习但是完成了学习编程以来一直的梦想,做一个好看点的聊天界面…
-
-
-思路：借鉴自C# winform socket 初学者示例大佬的示例下载...</p>
-              </a>
-            
-            
-              <a class='next' href='/2019/08/31/VSCode-remotessh/'>
-                <p class='title'>VSCodeRemote SSH公钥免密登录，远离xshell，摆脱vim<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
-                <p class='content'>比起VIM的纯键盘操作,我更喜欢鼠标加键盘的操作方式…所以能想办法替代VIM就想办法替代..虽然我也不是服务器开发..
-
-
-安装插件：微软的宇宙第一IDE让人使用之后欲罢不能，那么Linux编程...</p>
-              </a>
-            
           </div>
         
-      </section>
-    </article>
+      
+    
+  </section>
   
-
-  
-    <!-- 显示推荐文章和评论 -->
-
-
-
-  <article class="post white-box reveal comments shadow">
-    <section class="article typo">
-      <p ct><i class='fas fa-comments'></i> 评论</p>
-      
-      
-      
-      
-      
-      
-        <section id="comments">
-          <div id="valine_container" class="valine_thread">
-            <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
-          </div>
-        </section>
-      
-      
-    </section>
-  </article>
-
+    
+    <!-- 根据主题中的设置决定是否在archive中针对摘要部分的MathJax公式加载mathjax.js文件 -->
+    
+    
 
   
 
 
-
-
-<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
-
-
-
-  <script>
-    window.subData = {
-      title: 'C#中调用C++dll',
-      tools: true
-    }
-  </script>
-
+    
+  
 
 </div>
 <aside class='l_side'>
   
   
+    
+    
+
+<section class="widget blogger shadow desktop mobile">
+  <div class='content'>
+    
+      
+        <a class='avatar flat-box' href='/about/'>
+          <img no-lazy src='https://cdn.jsdelivr.net/gh/AustinYANyh/Image@1.0/head1.jpg'/>
+        </a>
+      
+    
+    
+      <div class='text'>
+        
+        
+        
+          <p><span id="jinrishici-sentence">AustinYAN's Blog</span></p>
+          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+        
+      </div>
+    
+    
+      <div class="social-wrapper">
+        
+          
+            <a href="/atom.xml"
+              class="social fas fa-rss flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="mailto:austinyanlzh@gmail.com"
+              class="social fas fa-envelope flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="https://github.com/AustinYANyh"
+              class="social fab fa-github flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="https://music.163.com/#/user/home?id=286524796"
+              class="social fas fa-headphones-alt flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+      </div>
+    
+  </div>
+</section>
+
+  
 
   
     
     
+  
 
-
-  <section class="widget toc-wrapper shadow desktop mobile">
+  <section class="widget category shadow desktop">
     
   <header>
     
-      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+      <a href='/categories/'><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i><span class='name'>文章分类</span></a>
     
   </header>
 
 
     <div class='content'>
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#C-中调用C-dll"><span class="toc-text">C#中调用C++dll</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#遇到的问题"><span class="toc-text">遇到的问题</span></a></li></ol>
+      <ul class="entry navigation">
+        
+          <li><a class="flat-box"
+            title="/categories/C/" href="/categories/C/"
+            id="categoriesC"
+            ><div class='name'>C#</div><div class='badge'>(4)</div></a></li>
+        
+          <li><a class="flat-box"
+            title="/categories/Cpp/" href="/categories/Cpp/"
+            id="categoriesCpp"
+            ><div class='name'>Cpp</div><div class='badge'>(2)</div></a></li>
+        
+          <li><a class="flat-box"
+            title="/categories/VsCode/" href="/categories/VsCode/"
+            id="categoriesVsCode"
+            ><div class='name'>VsCode</div><div class='badge'>(1)</div></a></li>
+        
+      </ul>
     </div>
   </section>
 
+
+  
+
+  
+    
+    
+
+  
 
   
 
@@ -990,60 +875,6 @@
 
 
 
-
-  
-    
-<script src="https://cdn.jsdelivr.net/npm/valine@1.4/dist/Valine.min.js"></script>
-
-  
-  <script>
-  var GUEST_INFO = ['nick','mail','link'];
-  var meta = 'nick,mail,link'.split(',').filter(function(item){
-    return GUEST_INFO.indexOf(item) > -1
-  });
-  var REQUIRED_FIELDS = ['nick','mail','link'];
-  var requiredFields = 'nick,mail'.split(',').filter(function(item){
-    return REQUIRED_FIELDS.indexOf(item) > -1
-  });
-  var valine = new Valine();
-  function emoji(path, idx, ext) {
-      return path + "/" + path + "-" + idx + "." + ext;
-  }
-  var emojiMaps = {};
-  for (var i = 1; i <= 54; i++) {
-    emojiMaps['tieba-' + i] = emoji('tieba', i, 'png');
-  }
-  for (var i = 1; i <= 101; i++) {
-    emojiMaps['qq-' + i] = emoji('qq', i, 'gif');
-  }
-  for (var i = 1; i <= 116; i++) {
-    emojiMaps['aru-' + i] = emoji('aru', i, 'gif');
-  }
-  for (var i = 1; i <= 125; i++) {
-    emojiMaps['twemoji-' + i] = emoji('twemoji', i, 'png');
-  }
-  for (var i = 1; i <= 4; i++) {
-    emojiMaps['weibo-' + i] = emoji('weibo', i, 'png');
-  }
-  valine.init({
-    el: '#valine_container',
-    meta: meta,
-    
-    appId: "dogUA2FSKGTo029M1SEwGROT-MdYXbMMI",
-    appKey: "u0NdtQ8nvHoMdJPSYqm1LRxE",
-    placeholder: "快来评论吧~",
-    pageSize:'10',
-    avatar:'robohash',
-    lang:'zh-cn',
-    visitor: 'true',
-    highlight: 'true',
-    mathJax: 'false',
-    enableQQ: 'true',
-    requiredFields: requiredFields,
-    emojiCDN: 'https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/',
-    emojiMaps: emojiMaps
-  })
-  </script>
 
 
 
