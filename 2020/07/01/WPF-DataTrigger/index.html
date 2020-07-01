@@ -16,10 +16,10 @@
 
   <!-- 页面元数据 -->
   
-    <title>【针对性复习】选择排序和归并排序 - AustinYAN&#39;s Blog</title>
+    <title>WPF的DATaTrigger遇到的问题 - AustinYAN&#39;s Blog</title>
   
   
-    <meta name="description" content="针对选择题中排序过程的复习">
+    <meta name="description" content="DataTrigger这种在xaml里的东西,因为打不了断点,所以很难找出错误到底在哪里,问题点很难定位,所以只能采取避免的方法暂时规避掉,等以后弄明白了再修改…">
   
 
   <!-- feed -->
@@ -420,8 +420,8 @@
         
           
   <h1 class="title">
-    <a href="/2019/08/03/Cpp-sort0/">
-      【针对性复习】选择排序和归并排序
+    <a href="/2020/07/01/WPF-DataTrigger/">
+      WPF的DATaTrigger遇到的问题
     </a>
   </h1>
 
@@ -446,9 +446,9 @@
               
   
   <div class='new-meta-item category'>
-    <a href='/categories/Cpp/' rel="nofollow">
+    <a href='/categories/C/' rel="nofollow">
       <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
-      <p>Cpp</p>
+      <p>C#</p>
     </a>
   </div>
 
@@ -459,7 +459,7 @@
               <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：Aug 3, 2019</p>
+    <p>发布于：Jul 1, 2020</p>
   </a>
 </div>
 
@@ -482,27 +482,14 @@
       <section class="article typo">
         <div class="article-entry" itemprop="articleBody">
           
-          <p>针对选择题中排序过程的复习</p>
+          <p>DataTrigger这种在xaml里的东西,因为打不了断点,所以很难找出错误到底在哪里,问题点很难定位,所以只能采取避免的方法暂时规避掉,等以后弄明白了再修改…</p>
 <a id="more"></a>
 
-<h2 id="快排递归框架："><a href="#快排递归框架：" class="headerlink" title="快排递归框架："></a>快排递归框架：</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">QuickDSort</span><span class="params">(<span class="keyword">int</span>* <span class="built_in">array</span>, <span class="keyword">int</span> left, <span class="keyword">int</span> right)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (right - left &gt; <span class="number">1</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> div = partion(<span class="built_in">array</span>, left, right);</span><br><span class="line">		QuickDSort(<span class="built_in">array</span>, left, div);</span><br><span class="line">		QuickDSort(<span class="built_in">array</span>, div + <span class="number">1</span>, right);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="划分区间"><a href="#划分区间" class="headerlink" title="划分区间:"></a>划分区间:</h2><p><strong>先想办法拿到一个基准值,进而才可以划分,但是直接把right-1的位置的元素作为基准值有可能极端情况下性能爆炸差,所以引入特殊的取值方法</strong></p>
-<h3 id="三值取中法"><a href="#三值取中法" class="headerlink" title="三值取中法:"></a>三值取中法:</h3><p><strong>顾名思义,就是取三个值,选出一个中间值作为基准值,<font color=0099ff>能极大程度避免取的基准值太极端</font></strong></p>
-<p><strong>a  b,如果c比a还小,那a就是中间值</strong></p>
-<p><strong>a  b,如果c比b还大,那b就是中间值</strong></p>
-<p><strong>如果都不是,说明c就是中间值</strong></p>
-<p><strong>b a,情况同上处理</strong></p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">GetMidIndex</span><span class="params">(<span class="keyword">int</span>* <span class="built_in">array</span>, <span class="keyword">int</span> left, <span class="keyword">int</span> right)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> mid = left + ((right - left) &gt;&gt; <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">	<span class="comment">//a b</span></span><br><span class="line">	<span class="keyword">if</span> (<span class="built_in">array</span>[left] &lt; <span class="built_in">array</span>[right - <span class="number">1</span>])</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="comment">//c&lt;a ,a就是mid</span></span><br><span class="line">		<span class="keyword">if</span> (<span class="built_in">array</span>[mid] &lt; <span class="built_in">array</span>[left])</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">return</span> left;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">//c&gt;b,b就是mid</span></span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">array</span>[mid]&gt;<span class="built_in">array</span>[right - <span class="number">1</span>])</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">return</span> right - <span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">return</span> mid;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="comment">//b a,c&lt;b,b就是mid</span></span><br><span class="line">		<span class="keyword">if</span> (<span class="built_in">array</span>[mid] &lt; <span class="built_in">array</span>[right - <span class="number">1</span>])</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">return</span> right - <span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">//b a,c&gt;a,a就是mid</span></span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">array</span>[mid]&gt;<span class="built_in">array</span>[left])</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">return</span> left;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">return</span> mid;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>取好基准值之后,就可以进行元素的比较了,把左侧元素调整为都比基准值小,右侧都比基准值大</p>
-<h3 id="比较方法"><a href="#比较方法" class="headerlink" title="比较方法:"></a>比较方法:</h3><p><strong>定义两个指针,一个在前,一个在后,因为对数组操作,所以可以用数组下标代替</strong></p>
-<p><font color=red><strong>begin从前找比基准值</font><font size=5>大</font>的元素</font>,没有就begin++,直到找到</strong></p>
-<p><font color=red><strong>end同理,从后找比基准值</font><font size=5>小</font>的元素</font>,没有就end–,直到找到</strong></p>
-<p><strong>找到的话,<font color=0099ff>begin和end的位置如果不一样,就交换元素</font></strong></p>
-<p><strong>最终将基准值放好(因为一开始把基准值和right-1位置的元素互换了)</strong></p>
-<p><font color=red><strong>要和right-1位置换,因为end是变化的</strong></font></p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">partion</span><span class="params">(<span class="keyword">int</span>* <span class="built_in">array</span>, <span class="keyword">int</span> left, <span class="keyword">int</span> right)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> mid = GetMidIndex(<span class="built_in">array</span>, left, right);</span><br><span class="line"></span><br><span class="line">	swap(<span class="built_in">array</span>[mid], <span class="built_in">array</span>[right - <span class="number">1</span>]);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">int</span> begin = left;</span><br><span class="line">	<span class="keyword">int</span> end = right - <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">int</span> key = <span class="built_in">array</span>[right - <span class="number">1</span>];</span><br><span class="line"></span><br><span class="line">	<span class="keyword">while</span> (begin&lt;end)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="comment">//从左往右找比基准值大的元素</span></span><br><span class="line">		<span class="keyword">while</span> (begin &lt; end&amp;&amp;<span class="built_in">array</span>[begin] &lt;= key)</span><br><span class="line">		&#123;</span><br><span class="line">			begin++;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="comment">//从右往左找比基准值小的元素</span></span><br><span class="line">		<span class="keyword">while</span> (begin &lt; end&amp;&amp;<span class="built_in">array</span>[end] &gt;= key)</span><br><span class="line">		&#123;</span><br><span class="line">			end--;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="comment">//找到之后</span></span><br><span class="line">		<span class="keyword">if</span> (begin != end)</span><br><span class="line">		&#123;</span><br><span class="line">			swap(<span class="built_in">array</span>[begin], <span class="built_in">array</span>[end]);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//放置基准值</span></span><br><span class="line">	<span class="keyword">if</span> (begin != right - <span class="number">1</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		swap(<span class="built_in">array</span>[begin], <span class="built_in">array</span>[right - <span class="number">1</span>]);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> begin;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="流程示意图"><a href="#流程示意图" class="headerlink" title="流程示意图:"></a>流程示意图:</h2><p><img src="https://img-blog.csdnimg.cn/20190803004841485.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1c3Rpbl9ZYW4=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h2 id="DataTrigger不触发"><a href="#DataTrigger不触发" class="headerlink" title="DataTrigger不触发"></a>DataTrigger不触发</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;TabItem x:Name&#x3D;&quot;Cutfilm_param_item&quot;  Style&#x3D;&quot;&#123;DynamicResource VerticalTabItemStyle&#125;&quot; Visibility&#x3D;&quot;Collapsed&quot;&gt;</span><br><span class="line">    &lt;i:Interaction.Triggers&gt;</span><br><span class="line">        &lt;ei:DataTrigger Binding&#x3D;&quot;&#123;Binding ElementName&#x3D;EnableCutFilm,Path&#x3D;IsChecked&#125;&quot; Value&#x3D;&quot;true&quot;&gt;</span><br><span class="line">            &lt;ei:ChangePropertyAction TargetName&#x3D;&quot;Cutfilm_param_item&quot; PropertyName&#x3D;&quot;Visibility&quot; Value&#x3D;&quot;Visible&quot;&gt;&lt;&#x2F;ei:ChangePropertyAction&gt;</span><br><span class="line">        &lt;&#x2F;ei:DataTrigger&gt;</span><br><span class="line">        &lt;ei:DataTrigger Binding&#x3D;&quot;&#123;Binding ElementName&#x3D;EnableCutFilm,Path&#x3D;IsChecked&#125;&quot; Value&#x3D;&quot;false&quot;&gt;</span><br><span class="line">            &lt;ei:ChangePropertyAction TargetName&#x3D;&quot;Cutfilm_param_item&quot; PropertyName&#x3D;&quot;Visibility&quot; Value&#x3D;&quot;Collapsed&quot;&gt;&lt;&#x2F;ei:ChangePropertyAction&gt;</span><br><span class="line">        &lt;&#x2F;ei:DataTrigger&gt;</span><br><span class="line">    &lt;&#x2F;i:Interaction.Triggers&gt;</span><br><span class="line">&lt;&#x2F;TabItem&gt;</span><br></pre></td></tr></table></figure>
+<p>上面这部分xaml的目的是,通过一个名为EnableCutFilm的CheckBox的IsChecked属性控制一个名为Cutfilm_param_item的TabItem的显示与隐藏,但是很尴尬,界面初始化结束后,DataTrigger没有触发,再此后切换Tab页,然后DataTrigger才可以正常被触发</p>
+<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><p>这个问题以前并不存在,但是在我弄了一个数据缓冲区使得点击确定之后(没有保存),下次界面上显示的是上次确定的数据(底层的数据被没有被修改)之后,这个DataTrigger就有问题了,解决办法是写一个转换器直接绑定<br><code>&lt;TabItem x:Name=&quot;Cutfilm_param_item&quot; Header=&quot;切膜参数&quot; Style=&quot;{DynamicResource VerticalTabItemStyle}&quot; Visibility=&quot;{Binding ElementName=EnableCutFilm,Path=IsChecked,Converter={StaticResource FilmCuttingConverter}}&quot;&gt;</code></p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">FilmCuttingConverter</span> : <span class="title">IValueConverter</span></span><br><span class="line">   &#123;</span><br><span class="line">       <span class="function"><span class="keyword">public</span> <span class="keyword">object</span> <span class="title">Convert</span>(<span class="params"><span class="keyword">object</span> <span class="keyword">value</span>, Type targetType, <span class="keyword">object</span> parameter, CultureInfo culture</span>)</span></span><br><span class="line"><span class="function"></span>       &#123;</span><br><span class="line">           <span class="keyword">if</span> ((<span class="keyword">bool</span>)<span class="keyword">value</span> == <span class="literal">true</span>)</span><br><span class="line">               <span class="keyword">return</span> Visibility.Visible;</span><br><span class="line">           <span class="keyword">else</span></span><br><span class="line">               <span class="keyword">return</span> Visibility.Collapsed;</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       <span class="function"><span class="keyword">public</span> <span class="keyword">object</span> <span class="title">ConvertBack</span>(<span class="params"><span class="keyword">object</span> <span class="keyword">value</span>, Type targetType, <span class="keyword">object</span> parameter, CultureInfo culture</span>)</span></span><br><span class="line"><span class="function"></span>       &#123;</span><br><span class="line">           <span class="keyword">if</span> (Visibility.Visible == (Visibility)<span class="keyword">value</span>)</span><br><span class="line">               <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">           <span class="keyword">else</span></span><br><span class="line">               <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<p>这样界面初始化结束,就会根据从下面读到的状态直接控制TabItem的显示隐藏,不会出现不触发的情况</p>
 
           
             <div class='article_footer'>
@@ -539,7 +526,7 @@
           
         
           
-            <p>本文永久链接是：<a href=http://lubaobao.xyz/2019/08/03/Cpp-sort0/>http://lubaobao.xyz/2019/08/03/Cpp-sort0/</a></p>
+            <p>本文永久链接是：<a href=http://lubaobao.xyz/2020/07/01/WPF-DataTrigger/>http://lubaobao.xyz/2020/07/01/WPF-DataTrigger/</a></p>
           
         
       </blockquote>
@@ -590,10 +577,10 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-06-24T17:33:13+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-07-01T14:53:52+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Jun 24, 2020</p>
+    <p>更新于：Jul 1, 2020</p>
   </a>
 </div>
 
@@ -617,7 +604,7 @@
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer"
           
-          href="http://connect.qq.com/widget/shareqq/index.html?url=http://lubaobao.xyz/2019/08/03/Cpp-sort0/&title=【针对性复习】选择排序和归并排序 - AustinYAN's Blog&pics=true&summary=针对选择题中排序过程的复习"
+          href="http://connect.qq.com/widget/shareqq/index.html?url=http://lubaobao.xyz/2020/07/01/WPF-DataTrigger/&title=WPF的DATaTrigger遇到的问题 - AustinYAN's Blog&pics=true&summary=DataTrigger这种在xaml里的东西,因为打不了断点,所以很难找出错误到底在哪里,问题点很难定位,所以只能采取避免的方法暂时规避掉,等以后弄明白了再修改…"
           
           >
           
@@ -629,7 +616,7 @@
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer"
           
-          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://lubaobao.xyz/2019/08/03/Cpp-sort0/&title=【针对性复习】选择排序和归并排序 - AustinYAN's Blog&pics=true&summary=针对选择题中排序过程的复习"
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://lubaobao.xyz/2020/07/01/WPF-DataTrigger/&title=WPF的DATaTrigger遇到的问题 - AustinYAN's Blog&pics=true&summary=DataTrigger这种在xaml里的东西,因为打不了断点,所以很难找出错误到底在哪里,问题点很难定位,所以只能采取避免的方法暂时规避掉,等以后弄明白了再修改…"
           
           >
           
@@ -641,7 +628,7 @@
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer"
           
-          href="http://service.weibo.com/share/share.php?url=http://lubaobao.xyz/2019/08/03/Cpp-sort0/&title=【针对性复习】选择排序和归并排序 - AustinYAN's Blog&pics=true&summary=针对选择题中排序过程的复习"
+          href="http://service.weibo.com/share/share.php?url=http://lubaobao.xyz/2020/07/01/WPF-DataTrigger/&title=WPF的DATaTrigger遇到的问题 - AustinYAN's Blog&pics=true&summary=DataTrigger这种在xaml里的东西,因为打不了断点,所以很难找出错误到底在哪里,问题点很难定位,所以只能采取避免的方法暂时规避掉,等以后弄明白了再修改…"
           
           >
           
@@ -665,14 +652,11 @@
         
           <div class="prev-next">
             
-              <a class='prev' href='/2019/08/15/Cpp-sort1/'>
-                <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>【针对性复习】选择排序和归并排序</p>
-                <p class='content'>之前相关内容的博客,只有简略的思路和代码,起不到复习的作用…现在把思路整理清楚,过程图示也画出来,再把代码重新写一遍,争取把排序遗留的问题彻底解决…
-
-
-选择排序的思路:从头到尾遍历,找最大的元...</p>
-              </a>
             
+              <a class='next' href='/2020/06/30/WPF-CoordinateSystem/'>
+                <p class='title'>WPF绘制坐标系,实现折线编辑<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+                <p class='content'>三个月之前做的一个控件,功能是实现曲线编辑(折线,光滑未实现),因为开发经验不足并且那个控件的位置大小几乎都是确定的,所以当时没考虑到移到别的地方,很多地方都是写死的,后期修改工作量太大…所以现...</p>
+              </a>
             
           </div>
         
@@ -716,7 +700,7 @@
 
   <script>
     window.subData = {
-      title: '【针对性复习】选择排序和归并排序',
+      title: 'WPF的DATaTrigger遇到的问题',
       tools: true
     }
   </script>
@@ -742,7 +726,7 @@
 
 
     <div class='content'>
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#快排递归框架："><span class="toc-text">快排递归框架：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#划分区间"><span class="toc-text">划分区间:</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#三值取中法"><span class="toc-text">三值取中法:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#比较方法"><span class="toc-text">比较方法:</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#流程示意图"><span class="toc-text">流程示意图:</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#DataTrigger不触发"><span class="toc-text">DataTrigger不触发</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解决方法"><span class="toc-text">解决方法</span></a></li></ol>
     </div>
   </section>
 
