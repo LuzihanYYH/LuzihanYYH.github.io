@@ -5,8 +5,6 @@
   <!-- SEO相关 -->
   
     
-      <meta name="robots" content="noindex,follow">
-    
   
   <!-- 渲染优化 -->
   <meta name="renderer" content="webkit">
@@ -18,8 +16,10 @@
 
   <!-- 页面元数据 -->
   
-    <title>Archive: 2019 - AustinYAN&#39;s Blog</title>
+    <title>Blend与Ps的交互 - AustinYAN&#39;s Blog</title>
   
+  
+    <meta name="description" content="每天都学习一点WPF相关的知识，虽然我不太想从事CS前端类的工作，但是其实我也不知道自己想干什么…">
   
 
   <!-- feed -->
@@ -72,7 +72,7 @@
   
   <div class="cover-wrapper">
     
-      <cover class='cover  half'>
+      <cover class='cover post half'>
         <div class='cover-body'>
   <div class='a'>
     
@@ -405,28 +405,11 @@
       
 
 <div class='l_main'>
-	
-		
-  <section class="post-list ">
-    
-      
-        
-          
-        
-          
-        
-          
-        
-          
-        
-      
-    
-    
-      
-        
-          <div class='post-wrapper'>
-            <article class="post white-box shadow reveal ">
   
+
+  
+    <article id="post" class="post white-box reveal shadow article-type-post" itemscope itemprop="blogPost">
+      
 
 
   <section class='meta'>
@@ -436,11 +419,11 @@
       <div class="meta" id="header-meta">
         
           
-  <h2 class="title">
-    <a href="/2019/12/20/CSarp-interaction/">
-      C#中调用C++dll
+  <h1 class="title">
+    <a href="/2020/07/04/WPF-Blend&Ps/">
+      Blend与Ps的交互
     </a>
-  </h2>
+  </h1>
 
 
         
@@ -476,14 +459,9 @@
               <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：Dec 20, 2019</p>
+    <p>发布于：Jul 4, 2020</p>
   </a>
 </div>
-
-            
-          
-            
-              
 
             
           
@@ -501,398 +479,59 @@
   </section>
 
 
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>校招是肯定没戏了..19年是20界的校招…</p>
-      
-    </div>
-    
-      
-        <div class="button readmore">
-          <a href="/2019/12/20/CSarp-interaction/">
-            阅读全文 <i class="fas fa-chevron-right"></i>
-          </a>
-        </div>
-      
-    
-  </section>
-</article>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post white-box shadow reveal ">
-  
-
-
-  <section class='meta'>
-    
-      
-      
-      <div class="meta" id="header-meta">
-        
+      <section class="article typo">
+        <div class="article-entry" itemprop="articleBody">
           
-  <h2 class="title">
-    <a href="/2019/08/31/VSCode-remotessh/">
-      VSCodeRemote SSH公钥免密登录，远离xshell，摆脱vim
-    </a>
-  </h2>
+          <p>每天都学习一点WPF相关的知识，虽然我不太想从事CS前端类的工作，但是其实我也不知道自己想干什么…</p>
+<a id="more"></a>
 
+<h2 id="获取PS文件的Path"><a href="#获取PS文件的Path" class="headerlink" title="获取PS文件的Path"></a>获取PS文件的Path</h2><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;Path Stroke=<span class="string">"Black"</span> StrokeThickness=<span class="string">"2"</span> Margin=<span class="string">"450,20,0,0"</span> Data=<span class="string">"M 0,0 C 250,0 50,200 300,200 M 50,50 A 20,20 0 1 0 70,70"</span>&gt;</span><br></pre></td></tr></table></figure>
+<p>Path好用,但是Data难求,只要有Data就可以很容易画出复杂图形,虽然自从2015之后的Blend取消了导入Psd文件,但是可以从图层中复制svg,然后粘贴到文本编辑器中,就可以获取Path数据</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">svg</span> </span></span><br><span class="line"><span class="tag"> <span class="attr">xmlns</span>=<span class="string">"http://www.w3.org/2000/svg"</span></span></span><br><span class="line"><span class="tag"> <span class="attr">xmlns:xlink</span>=<span class="string">"http://www.w3.org/1999/xlink"</span></span></span><br><span class="line"><span class="tag"> <span class="attr">width</span>=<span class="string">"3.44cm"</span> <span class="attr">height</span>=<span class="string">"0.406cm"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">path</span> <span class="attr">fill-rule</span>=<span class="string">"evenodd"</span>  <span class="attr">stroke</span>=<span class="string">"rgb(0, 0, 0)"</span> <span class="attr">stroke-width</span>=<span class="string">"1px"</span> <span class="attr">stroke-linecap</span>=<span class="string">"butt"</span> <span class="attr">stroke-linejoin</span>=<span class="string">"miter"</span> <span class="attr">fill</span>=<span class="string">"none"</span></span></span><br><span class="line"><span class="tag"> <span class="attr">d</span>=<span class="string">"M6.500,0.500 L91.500,0.500 C98.873,0.500 97.421,10.500 91.500,10.500 L6.500,10.500 C0.079,10.943 -2.443,1.118 6.500,0.500 Z"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">svg</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>前提是PS中图形是使用矩形工具这类路径操作画出来的，不然是没有path的</p>
+<h2 id="WPF中使用Data"><a href="#WPF中使用Data" class="headerlink" title="WPF中使用Data"></a>WPF中使用Data</h2><p>将刚才svg中的标签首字母大写,d改为Data,就是取我们想要的信息然后复制,在WPF下直接放入Grid等容器中即可<br><img src="https://img-blog.csdnimg.cn/20200704105647781.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1c3Rpbl9ZYW4=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;Path x:Name=<span class="string">"PART_Track"</span>  Stroke=<span class="string">"Black"</span> StrokeThickness=<span class="string">"1"</span> Data=<span class="string">"M18,0 L18,0 137,0 M137,0 A2.5,2.5 0 0 1 130,30 L13,30 A1,1 0 0 1 18,0z"</span>&gt;</span><br></pre></td></tr></table></figure>
+<p>这是用代码画的，两条直线，两个圆弧，结果…不明白为什么L画出的直线和A画出的圆弧粗细不一样<br><img src="https://img-blog.csdnimg.cn/20200704105905494.jpg" alt="在这里插入图片描述"><br>PS中画好复制Path在WPF中使用的结果<br><img src="https://img-blog.csdnimg.cn/20200704110313712.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1c3Rpbl9ZYW4=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>好吧，这类工作还是应该交给专业的设计师来做，没有美工基础画出来的都是垃圾…自己画画简单的不复杂的还行…</p>
 
-        
-        <div class='new-meta-box'>
           
-            
-          
-            
+            <div class='article_footer'>
               
-<div class='new-meta-item author'>
-  <a href="https://blog.csdn.net/Austin_Yan" target="_blank" rel="nofollow noopener">
-    <img src="https://cdn.jsdelivr.net/gh/AustinYANyh/Image@1.0/head1.jpg">
-    <p>染墨若流云</p>
-  </a>
-</div>
-
-            
-          
-            
-              
-  
-  <div class='new-meta-item category'>
-    <a href='/categories/VsCode/' rel="nofollow">
-      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
-      <p>VsCode</p>
-    </a>
-  </div>
-
-
-            
-          
-            
-              <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：Aug 31, 2019</p>
-  </a>
-</div>
-
-            
-          
-            
-              
-
-            
-          
-            
-              
-
-            
-          
-        </div>
-        
-          <hr>
-        
-      </div>
-    
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>比起VIM的纯键盘操作,我更喜欢鼠标加键盘的操作方式…<br>所以能想办法替代VIM就想办法替代..虽然我也不是服务器开发..</p>
-      
-    </div>
-    
-      
-        <div class="button readmore">
-          <a href="/2019/08/31/VSCode-remotessh/">
-            阅读全文 <i class="fas fa-chevron-right"></i>
-          </a>
-        </div>
-      
-    
-  </section>
-</article>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post white-box shadow reveal ">
-  
-
-
-  <section class='meta'>
-    
-      
-      
-      <div class="meta" id="header-meta">
-        
-          
-  <h2 class="title">
-    <a href="/2019/08/15/Cpp-sort1/">
-      【针对性复习】选择排序和归并排序
-    </a>
-  </h2>
-
-
-        
-        <div class='new-meta-box'>
-          
-            
-          
-            
-              
-<div class='new-meta-item author'>
-  <a href="https://blog.csdn.net/Austin_Yan" target="_blank" rel="nofollow noopener">
-    <img src="https://cdn.jsdelivr.net/gh/AustinYANyh/Image@1.0/head1.jpg">
-    <p>染墨若流云</p>
-  </a>
-</div>
-
-            
-          
-            
-              
-  
-  <div class='new-meta-item category'>
-    <a href='/categories/Cpp/' rel="nofollow">
-      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
-      <p>Cpp</p>
-    </a>
-  </div>
-
-
-            
-          
-            
-              <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：Aug 15, 2019</p>
-  </a>
-</div>
-
-            
-          
-            
-              
-
-            
-          
-            
-              
-
-            
-          
-        </div>
-        
-          <hr>
-        
-      </div>
-    
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>之前相关内容的博客,只有简略的思路和代码,起不到复习的作用…<br>现在把思路整理清楚,过程图示也画出来,再把代码重新写一遍,争取把排序遗留的问题彻底解决…</p>
-      
-    </div>
-    
-      
-        <div class="button readmore">
-          <a href="/2019/08/15/Cpp-sort1/">
-            阅读全文 <i class="fas fa-chevron-right"></i>
-          </a>
-        </div>
-      
-    
-  </section>
-</article>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post white-box shadow reveal ">
-  
-
-
-  <section class='meta'>
-    
-      
-      
-      <div class="meta" id="header-meta">
-        
-          
-  <h2 class="title">
-    <a href="/2019/08/03/Cpp-sort0/">
-      【针对性复习】选择排序和归并排序
-    </a>
-  </h2>
-
-
-        
-        <div class='new-meta-box'>
-          
-            
-          
-            
-              
-<div class='new-meta-item author'>
-  <a href="https://blog.csdn.net/Austin_Yan" target="_blank" rel="nofollow noopener">
-    <img src="https://cdn.jsdelivr.net/gh/AustinYANyh/Image@1.0/head1.jpg">
-    <p>染墨若流云</p>
-  </a>
-</div>
-
-            
-          
-            
-              
-  
-  <div class='new-meta-item category'>
-    <a href='/categories/Cpp/' rel="nofollow">
-      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
-      <p>Cpp</p>
-    </a>
-  </div>
-
-
-            
-          
-            
-              <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：Aug 3, 2019</p>
-  </a>
-</div>
-
-            
-          
-            
-              
-
-            
-          
-            
-              
-
-            
-          
-        </div>
-        
-          <hr>
-        
-      </div>
-    
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>针对选择题中排序过程的复习</p>
-      
-    </div>
-    
-      
-        <div class="button readmore">
-          <a href="/2019/08/03/Cpp-sort0/">
-            阅读全文 <i class="fas fa-chevron-right"></i>
-          </a>
-        </div>
-      
-    
-  </section>
-</article>
-
-          </div>
-        
-      
-    
-  </section>
-  
-    
-    <!-- 根据主题中的设置决定是否在archive中针对摘要部分的MathJax公式加载mathjax.js文件 -->
-    
-    
-
-  
-
-
-	
-</div>
-<aside class='l_side'>
-  
+                
   
     
     
 
-<section class="widget blogger shadow desktop mobile">
+
+
+  
+
+  
+    
+    
+
+
+
+  
+
+  
+    
+    
+
+<section class="widget copyright  desktop mobile">
   <div class='content'>
     
-      
-        <a class='avatar flat-box' href='/about/'>
-          <img no-lazy src='https://cdn.jsdelivr.net/gh/AustinYANyh/Image@1.0/head1.jpg'/>
-        </a>
-      
-    
-    
-      <div class='text'>
-        
-        
-        
-          <p><span id="jinrishici-sentence">AustinYAN's Blog</span></p>
-          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
-        
-      </div>
-    
-    
-      <div class="social-wrapper">
+      <blockquote>
         
           
-            <a href="/atom.xml"
-              class="social fas fa-rss flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-            </a>
+            <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
+
           
         
           
-            <a href="mailto:austinyanlzh@gmail.com"
-              class="social fas fa-envelope flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-            </a>
+            <p>本文永久链接是：<a href=http://lubaobao.xyz/2020/07/04/WPF-Blend&Ps/>http://lubaobao.xyz/2020/07/04/WPF-Blend&Ps/</a></p>
           
         
-          
-            <a href="https://github.com/AustinYANyh"
-              class="social fab fa-github flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-            </a>
-          
-        
-          
-            <a href="https://music.163.com/#/user/home?id=286524796"
-              class="social fas fa-headphones-alt flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-            </a>
-          
-        
-      </div>
+      </blockquote>
     
   </div>
 </section>
@@ -902,47 +541,200 @@
   
     
     
+
+<section class="widget qrcode  desktop mobile">
   
 
-  <section class="widget category shadow desktop">
+  <div class='content article-entry'>
+    
+      
+        <div class='fancybox'><img src='https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/qrcode/wiki_volantis.png'
+        
+          height='64px'
+        ></div>
+      
+    
+      
+        <div class='fancybox'><img src='https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/qrcode/wiki_volantis.png'
+        
+          height='64px'
+        ></div>
+      
+    
+  </div>
+</section>
+
+  
+
+
+              
+            </div>
+          
+        </div>
+        
+          
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-07-04T11:07:46+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：Jul 4, 2020</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+
+        
+      
+        
+          
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer"
+          
+          href="http://connect.qq.com/widget/shareqq/index.html?url=http://lubaobao.xyz/2020/07/04/WPF-Blend&Ps/&title=Blend与Ps的交互 - AustinYAN's Blog&pics=true&summary=每天都学习一点WPF相关的知识，虽然我不太想从事CS前端类的工作，但是其实我也不知道自己想干什么…"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer"
+          
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://lubaobao.xyz/2020/07/04/WPF-Blend&Ps/&title=Blend与Ps的交互 - AustinYAN's Blog&pics=true&summary=每天都学习一点WPF相关的知识，虽然我不太想从事CS前端类的工作，但是其实我也不知道自己想干什么…"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer"
+          
+          href="http://service.weibo.com/share/share.php?url=http://lubaobao.xyz/2020/07/04/WPF-Blend&Ps/&title=Blend与Ps的交互 - AustinYAN's Blog&pics=true&summary=每天都学习一点WPF相关的知识，虽然我不太想从事CS前端类的工作，但是其实我也不知道自己想干什么…"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/weibo.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </section>
+
+
+        
+        
+          <div class="prev-next">
+            
+            
+              <a class='next' href='/2020/07/01/WPF-DataTrigger/'>
+                <p class='title'>WPF的DataTrigger遇到的问题<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+                <p class='content'>DataTrigger这种在xaml里的东西,因为打不了断点,所以很难找出错误到底在哪里,问题点很难定位,所以只能采取避免的方法暂时规避掉,等以后弄明白了再修改…
+
+
+DataTrigger不触...</p>
+              </a>
+            
+          </div>
+        
+      </section>
+    </article>
+  
+
+  
+    <!-- 显示推荐文章和评论 -->
+
+
+
+  <article class="post white-box reveal comments shadow">
+    <section class="article typo">
+      <p ct><i class='fas fa-comments'></i> 评论</p>
+      
+      
+      
+        <section id="comments">
+          <div id="lv-container" data-id="city" data-uid="MTAyMC81MDgyNy8yNzMwOQ">
+            <noscript><div><i class='fas fa-exclamation-triangle'>&nbsp;Unable to load Livere, please make sure your network can access.</div></noscript>
+          </div>
+        </section>
+      
+      
+      
+      
+      
+    </section>
+  </article>
+
+
+    
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+
+  <script>
+    window.subData = {
+      title: 'Blend与Ps的交互',
+      tools: true
+    }
+  </script>
+
+
+</div>
+<aside class='l_side'>
+  
+  
+
+  
+    
+    
+
+
+  <section class="widget toc-wrapper shadow desktop mobile">
     
   <header>
     
-      <a href='/categories/'><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i><span class='name'>文章分类</span></a>
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
     
   </header>
 
 
     <div class='content'>
-      <ul class="entry navigation">
-        
-          <li><a class="flat-box"
-            title="/categories/C/" href="/categories/C/"
-            id="categoriesC"
-            ><div class='name'>C#</div><div class='badge'>(7)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/Cpp/" href="/categories/Cpp/"
-            id="categoriesCpp"
-            ><div class='name'>Cpp</div><div class='badge'>(2)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/VsCode/" href="/categories/VsCode/"
-            id="categoriesVsCode"
-            ><div class='name'>VsCode</div><div class='badge'>(1)</div></a></li>
-        
-      </ul>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#获取PS文件的Path"><span class="toc-text">获取PS文件的Path</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#WPF中使用Data"><span class="toc-text">WPF中使用Data</span></a></li></ol>
     </div>
   </section>
 
-
-  
-
-  
-    
-    
-
-  
 
   
 
@@ -1094,14 +886,6 @@
 <script>setLoadingBarProgress(80);</script>
 
 
-
-
-	<!-- 根据主题中的设置决定是否在archive中针对摘要部分的MathJax公式加载mathjax.js文件 -->
-	
-
-	
-
-
       <script>setLoadingBarProgress(60);</script>
     </div>
     <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
@@ -1210,6 +994,17 @@
 
 
 
+
+  <script type="text/javascript">
+    (function(d, s) {
+      var j, e = d.getElementsByTagName(s)[0];
+      if (typeof LivereTower === 'function') { return; }
+      j = d.createElement(s);
+      j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+      j.async = true;
+      e.parentNode.insertBefore(j, e);
+    })(document, 'script');
+  </script>
 
 
 
