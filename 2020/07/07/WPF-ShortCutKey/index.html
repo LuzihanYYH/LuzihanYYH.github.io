@@ -5,8 +5,6 @@
   <!-- SEO相关 -->
   
     
-      <meta name="robots" content="noindex,follow">
-    
   
   <!-- 渲染优化 -->
   <meta name="renderer" content="webkit">
@@ -18,8 +16,10 @@
 
   <!-- 页面元数据 -->
   
-    <title>Archive: 2019 - AustinYAN&#39;s Blog</title>
+    <title>WPF的Command传入多参和快捷键设置 - AustinYAN&#39;s Blog</title>
   
+  
+    <meta name="description" content="多活动活动脖子，多运动运动，拒绝颈椎病，从我做起！">
   
 
   <!-- feed -->
@@ -72,7 +72,7 @@
   
   <div class="cover-wrapper">
     
-      <cover class='cover  half'>
+      <cover class='cover post half'>
         <div class='cover-body'>
   <div class='a'>
     
@@ -405,28 +405,11 @@
       
 
 <div class='l_main'>
-	
-		
-  <section class="post-list ">
-    
-      
-        
-          
-        
-          
-        
-          
-        
-          
-        
-      
-    
-    
-      
-        
-          <div class='post-wrapper'>
-            <article class="post white-box shadow reveal ">
   
+
+  
+    <article id="post" class="post white-box reveal shadow article-type-post" itemscope itemprop="blogPost">
+      
 
 
   <section class='meta'>
@@ -436,11 +419,11 @@
       <div class="meta" id="header-meta">
         
           
-  <h2 class="title">
-    <a href="/2019/12/20/CSarp-interaction/">
-      C#中调用C++dll
+  <h1 class="title">
+    <a href="/2020/07/07/WPF-ShortCutKey/">
+      WPF的Command传入多参和快捷键设置
     </a>
-  </h2>
+  </h1>
 
 
         
@@ -476,14 +459,9 @@
               <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：Dec 20, 2019</p>
+    <p>发布于：Jul 7, 2020</p>
   </a>
 </div>
-
-            
-          
-            
-              
 
             
           
@@ -501,398 +479,65 @@
   </section>
 
 
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>校招是肯定没戏了..19年是20界的校招…</p>
-      
-    </div>
-    
-      
-        <div class="button readmore">
-          <a href="/2019/12/20/CSarp-interaction/">
-            阅读全文 <i class="fas fa-chevron-right"></i>
-          </a>
-        </div>
-      
-    
-  </section>
-</article>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post white-box shadow reveal ">
-  
-
-
-  <section class='meta'>
-    
-      
-      
-      <div class="meta" id="header-meta">
-        
+      <section class="article typo">
+        <div class="article-entry" itemprop="articleBody">
           
-  <h2 class="title">
-    <a href="/2019/08/31/VSCode-remotessh/">
-      VSCodeRemote SSH公钥免密登录，远离xshell，摆脱vim
-    </a>
-  </h2>
+          <p>多活动活动脖子，多运动运动，拒绝颈椎病，从我做起！</p>
+<a id="more"></a>
 
+<h2 id="多路绑定-转换器"><a href="#多路绑定-转换器" class="headerlink" title="多路绑定+转换器"></a>多路绑定+转换器</h2><p>使用MVVM模式的时候,多半将view中产生的操作通过command绑定到viewModel下处理,可以使用commandparameter将需要的参数传递过去,但是如果需要的参数超过一个的情况下,该怎么处理呢?</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&lt;Button x:Name=<span class="string">"btyAutoUp"</span> Content=<span class="string">"Y+"</span> Height=<span class="string">"50"</span> Canvas.Left=<span class="string">"101"</span> Width=<span class="string">"50"</span> VerticalContentAlignment=<span class="string">"Center"</span> Canvas.Top=<span class="string">"195"</span> Margin=<span class="string">"0,10,210,0"</span> VerticalAlignment=<span class="string">"Top"</span> HorizontalAlignment=<span class="string">"Right"</span>&gt;</span><br><span class="line">                   &lt;i:Interaction.Triggers&gt;</span><br><span class="line">                       &lt;i:EventTrigger EventName=<span class="string">"PreviewMouseDown"</span>&gt;</span><br><span class="line">                           &lt;i:InvokeCommandAction Command=<span class="string">"&#123;Binding JogCommand&#125;"</span>&gt;</span><br><span class="line">                               &lt;i:InvokeCommandAction.CommandParameter&gt;</span><br><span class="line">                                   &lt;MultiBinding Converter=<span class="string">"&#123;StaticResource YourConveter&#125;"</span>&gt;</span><br><span class="line">                                       &lt;Binding ElementName=<span class="string">"btyAutoUp"</span> Path=<span class="string">"Content"</span>&gt;&lt;/Binding&gt;</span><br><span class="line">                                       &lt;Binding ElementName=<span class="string">"stepbtn"</span> Path=<span class="string">"State"</span>&gt;&lt;/Binding&gt;</span><br><span class="line">                                       &lt;Binding ElementName=<span class="string">"StepDistance"</span> Path=<span class="string">"Text"</span>&gt;&lt;/Binding&gt;</span><br><span class="line">                                       &lt;Binding ElementName=<span class="string">"IncrSpeed"</span> Path=<span class="string">"Text"</span>&gt;&lt;/Binding&gt;</span><br><span class="line">                                   &lt;/MultiBinding&gt;</span><br><span class="line">                               &lt;/i:InvokeCommandAction.CommandParameter&gt;</span><br><span class="line">                           &lt;/i:InvokeCommandAction&gt;</span><br><span class="line">                       &lt;/i:EventTrigger&gt;</span><br><span class="line">                       &lt;i:EventTrigger EventName=<span class="string">"PreviewMouseUp"</span>&gt;</span><br><span class="line">                           &lt;i:InvokeCommandAction Command=<span class="string">"&#123;Binding JogStopCommand&#125;"</span>&gt;</span><br><span class="line">                               &lt;i:InvokeCommandAction.CommandParameter&gt;</span><br><span class="line">                                   &lt;MultiBinding Converter=<span class="string">"&#123;StaticResource YourConveter&#125;"</span>&gt;</span><br><span class="line">                                       &lt;Binding  ElementName=<span class="string">"btyAutoUp"</span> Path=<span class="string">"Content"</span>&gt;&lt;/Binding&gt;</span><br><span class="line">                                       &lt;Binding  ElementName=<span class="string">"stepbtn"</span> Path=<span class="string">"State"</span>&gt;&lt;/Binding&gt;</span><br><span class="line">                                   &lt;/MultiBinding&gt;</span><br><span class="line">                               &lt;/i:InvokeCommandAction.CommandParameter&gt;</span><br><span class="line">                           &lt;/i:InvokeCommandAction&gt;</span><br><span class="line">                       &lt;/i:EventTrigger&gt;</span><br><span class="line">                   &lt;/i:Interaction.Triggers&gt;</span><br><span class="line">               &lt;/Button&gt;</span><br></pre></td></tr></table></figure>
+<p>MultiBinding中可以写很多个Binding,但是<MultiBinding>标签中必须要有一个转换器,转换器其实也很好写,就是把传入的参数备份一遍,不然传入下一个参数的时候上一个就消失了</p>
+<p>与转换器不同的是,多路绑定转换继承的是iMultiValueConverter<br>普通绑定转换继承的iValueConverter</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">MultiBindingConverter</span>:<span class="title">iMultiValueConverter</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">object</span> <span class="title">Convert</span>(<span class="params"><span class="keyword">object</span>[] values,Type targetType,<span class="keyword">object</span> parameter,CultureInfo culture</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="keyword">return</span> values.Clone();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">object</span>[] <span class="title">ConverterBack</span>(<span class="params"><span class="keyword">object</span>[] values,Type targetType,<span class="keyword">object</span> parameter,CultureInfo culture</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> NotlmplementedException();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-        
-        <div class='new-meta-box'>
+<p><img src="https://img-blog.csdnimg.cn/20200707170309701.png" alt="在这里插入图片描述"></p>
+<h2 id="快捷键设置"><a href="#快捷键设置" class="headerlink" title="快捷键设置"></a>快捷键设置</h2><p>快捷键可以使用keydown事件也可以使用InputBinding,一个是写在xaml.cs里一个是写在viewModel里,我觉得没啥影响,看个人喜好<br>博客里写Binding的方式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;Window.InputBindings&gt;</span><br><span class="line">    &lt;KeyBinding Getsture&#x3D;&quot;Control+Shift+B&quot; Command&#x3D;&quot;&#123;Binding DebugCommand&#125;&quot;&gt;</span><br><span class="line">&lt;&#x2F;Window.InputBindings&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> DelegateCommand DebugCommand &#123;<span class="keyword">get</span>;<span class="keyword">set</span>;&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">MainWindowViewModel</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    DebugCommand = <span class="keyword">new</span> DelegateCommand(()=&gt;</span><br><span class="line">    &#123;</span><br><span class="line">       <span class="keyword">if</span>(Keyboard.IsKeyDown(Key.LeftCtrl) &amp;&amp; Keyboard.IsKeyDown(Key.LeftShift) &amp;&amp; Keyboard.IsKeyDown(Key.B)) </span><br><span class="line">       &#123;</span><br><span class="line">           <span class="keyword">var</span> window = Application.Current.MainWindow;</span><br><span class="line">           MainWindow mainWindow = <span class="keyword">new</span> MainWindow(window);</span><br><span class="line">           MainWindow.IsOpen = <span class="literal">true</span>;</span><br><span class="line">           mainWindow.Show();</span><br><span class="line">       &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>但是有个问题暂时解决不了,微软的输入法Ctrl+Shift+B是表情,中文状态下会优先触发微软的输入法快捷键,英文就没问题</p>
+
           
-            
-          
-            
+            <div class='article_footer'>
               
-<div class='new-meta-item author'>
-  <a href="https://blog.csdn.net/Austin_Yan" target="_blank" rel="nofollow noopener">
-    <img src="https://cdn.jsdelivr.net/gh/AustinYANyh/Image@1.0/head1.jpg">
-    <p>染墨若流云</p>
-  </a>
-</div>
-
-            
-          
-            
-              
-  
-  <div class='new-meta-item category'>
-    <a href='/categories/VsCode/' rel="nofollow">
-      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
-      <p>VsCode</p>
-    </a>
-  </div>
-
-
-            
-          
-            
-              <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：Aug 31, 2019</p>
-  </a>
-</div>
-
-            
-          
-            
-              
-
-            
-          
-            
-              
-
-            
-          
-        </div>
-        
-          <hr>
-        
-      </div>
-    
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>比起VIM的纯键盘操作,我更喜欢鼠标加键盘的操作方式…<br>所以能想办法替代VIM就想办法替代..虽然我也不是服务器开发..</p>
-      
-    </div>
-    
-      
-        <div class="button readmore">
-          <a href="/2019/08/31/VSCode-remotessh/">
-            阅读全文 <i class="fas fa-chevron-right"></i>
-          </a>
-        </div>
-      
-    
-  </section>
-</article>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post white-box shadow reveal ">
-  
-
-
-  <section class='meta'>
-    
-      
-      
-      <div class="meta" id="header-meta">
-        
-          
-  <h2 class="title">
-    <a href="/2019/08/15/Cpp-sort1/">
-      【针对性复习】选择排序和归并排序
-    </a>
-  </h2>
-
-
-        
-        <div class='new-meta-box'>
-          
-            
-          
-            
-              
-<div class='new-meta-item author'>
-  <a href="https://blog.csdn.net/Austin_Yan" target="_blank" rel="nofollow noopener">
-    <img src="https://cdn.jsdelivr.net/gh/AustinYANyh/Image@1.0/head1.jpg">
-    <p>染墨若流云</p>
-  </a>
-</div>
-
-            
-          
-            
-              
-  
-  <div class='new-meta-item category'>
-    <a href='/categories/Cpp/' rel="nofollow">
-      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
-      <p>Cpp</p>
-    </a>
-  </div>
-
-
-            
-          
-            
-              <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：Aug 15, 2019</p>
-  </a>
-</div>
-
-            
-          
-            
-              
-
-            
-          
-            
-              
-
-            
-          
-        </div>
-        
-          <hr>
-        
-      </div>
-    
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>之前相关内容的博客,只有简略的思路和代码,起不到复习的作用…<br>现在把思路整理清楚,过程图示也画出来,再把代码重新写一遍,争取把排序遗留的问题彻底解决…</p>
-      
-    </div>
-    
-      
-        <div class="button readmore">
-          <a href="/2019/08/15/Cpp-sort1/">
-            阅读全文 <i class="fas fa-chevron-right"></i>
-          </a>
-        </div>
-      
-    
-  </section>
-</article>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post white-box shadow reveal ">
-  
-
-
-  <section class='meta'>
-    
-      
-      
-      <div class="meta" id="header-meta">
-        
-          
-  <h2 class="title">
-    <a href="/2019/08/03/Cpp-sort0/">
-      【针对性复习】选择排序和归并排序
-    </a>
-  </h2>
-
-
-        
-        <div class='new-meta-box'>
-          
-            
-          
-            
-              
-<div class='new-meta-item author'>
-  <a href="https://blog.csdn.net/Austin_Yan" target="_blank" rel="nofollow noopener">
-    <img src="https://cdn.jsdelivr.net/gh/AustinYANyh/Image@1.0/head1.jpg">
-    <p>染墨若流云</p>
-  </a>
-</div>
-
-            
-          
-            
-              
-  
-  <div class='new-meta-item category'>
-    <a href='/categories/Cpp/' rel="nofollow">
-      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
-      <p>Cpp</p>
-    </a>
-  </div>
-
-
-            
-          
-            
-              <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：Aug 3, 2019</p>
-  </a>
-</div>
-
-            
-          
-            
-              
-
-            
-          
-            
-              
-
-            
-          
-        </div>
-        
-          <hr>
-        
-      </div>
-    
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>针对选择题中排序过程的复习</p>
-      
-    </div>
-    
-      
-        <div class="button readmore">
-          <a href="/2019/08/03/Cpp-sort0/">
-            阅读全文 <i class="fas fa-chevron-right"></i>
-          </a>
-        </div>
-      
-    
-  </section>
-</article>
-
-          </div>
-        
-      
-    
-  </section>
-  
-    
-    <!-- 根据主题中的设置决定是否在archive中针对摘要部分的MathJax公式加载mathjax.js文件 -->
-    
-    
-
-  
-
-
-	
-</div>
-<aside class='l_side'>
-  
+                
   
     
     
 
-<section class="widget blogger shadow desktop mobile">
+
+
+  
+
+  
+    
+    
+
+
+
+  
+
+  
+    
+    
+
+<section class="widget copyright  desktop mobile">
   <div class='content'>
     
-      
-        <a class='avatar flat-box' href='/about/'>
-          <img no-lazy src='https://cdn.jsdelivr.net/gh/AustinYANyh/Image@1.0/head1.jpg'/>
-        </a>
-      
-    
-    
-      <div class='text'>
-        
-        
-        
-          <p><span id="jinrishici-sentence">AustinYAN's Blog</span></p>
-          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
-        
-      </div>
-    
-    
-      <div class="social-wrapper">
+      <blockquote>
         
           
-            <a href="/atom.xml"
-              class="social fas fa-rss flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-            </a>
+            <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
+
           
         
           
-            <a href="mailto:austinyanlzh@gmail.com"
-              class="social fas fa-envelope flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-            </a>
+            <p>本文永久链接是：<a href=http://lubaobao.xyz/2020/07/07/WPF-ShortCutKey/>http://lubaobao.xyz/2020/07/07/WPF-ShortCutKey/</a></p>
           
         
-          
-            <a href="https://github.com/AustinYANyh"
-              class="social fab fa-github flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-            </a>
-          
-        
-          
-            <a href="https://music.163.com/#/user/home?id=286524796"
-              class="social fas fa-headphones-alt flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-            </a>
-          
-        
-      </div>
+      </blockquote>
     
   </div>
 </section>
@@ -902,47 +547,200 @@
   
     
     
+
+<section class="widget qrcode  desktop mobile">
   
 
-  <section class="widget category shadow desktop">
+  <div class='content article-entry'>
+    
+      
+        <div class='fancybox'><img src='https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/qrcode/wiki_volantis.png'
+        
+          height='64px'
+        ></div>
+      
+    
+      
+        <div class='fancybox'><img src='https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/qrcode/wiki_volantis.png'
+        
+          height='64px'
+        ></div>
+      
+    
+  </div>
+</section>
+
+  
+
+
+              
+            </div>
+          
+        </div>
+        
+          
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-07-07T17:11:20+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：Jul 7, 2020</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+
+        
+      
+        
+          
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer"
+          
+          href="http://connect.qq.com/widget/shareqq/index.html?url=http://lubaobao.xyz/2020/07/07/WPF-ShortCutKey/&title=WPF的Command传入多参和快捷键设置 - AustinYAN's Blog&pics=true&summary=多活动活动脖子，多运动运动，拒绝颈椎病，从我做起！"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer"
+          
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://lubaobao.xyz/2020/07/07/WPF-ShortCutKey/&title=WPF的Command传入多参和快捷键设置 - AustinYAN's Blog&pics=true&summary=多活动活动脖子，多运动运动，拒绝颈椎病，从我做起！"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer"
+          
+          href="http://service.weibo.com/share/share.php?url=http://lubaobao.xyz/2020/07/07/WPF-ShortCutKey/&title=WPF的Command传入多参和快捷键设置 - AustinYAN's Blog&pics=true&summary=多活动活动脖子，多运动运动，拒绝颈椎病，从我做起！"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/weibo.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </section>
+
+
+        
+        
+          <div class="prev-next">
+            
+            
+              <a class='next' href='/2020/07/04/WPF-Blend&Ps/'>
+                <p class='title'>Blend与Ps的交互<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+                <p class='content'>每天都学习一点WPF相关的知识，虽然我不太想从事CS前端类的工作，但是其实我也不知道自己想干什么…
+
+
+获取PS文件的Path1&lt;Path Stroke="Black" StrokeThi...</p>
+              </a>
+            
+          </div>
+        
+      </section>
+    </article>
+  
+
+  
+    <!-- 显示推荐文章和评论 -->
+
+
+
+  <article class="post white-box reveal comments shadow">
+    <section class="article typo">
+      <p ct><i class='fas fa-comments'></i> 评论</p>
+      
+      
+      
+        <section id="comments">
+          <div id="lv-container" data-id="city" data-uid="MTAyMC81MDgyNy8yNzMwOQ">
+            <noscript><div><i class='fas fa-exclamation-triangle'>&nbsp;Unable to load Livere, please make sure your network can access.</div></noscript>
+          </div>
+        </section>
+      
+      
+      
+      
+      
+    </section>
+  </article>
+
+
+    
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+
+  <script>
+    window.subData = {
+      title: 'WPF的Command传入多参和快捷键设置',
+      tools: true
+    }
+  </script>
+
+
+</div>
+<aside class='l_side'>
+  
+  
+
+  
+    
+    
+
+
+  <section class="widget toc-wrapper shadow desktop mobile">
     
   <header>
     
-      <a href='/categories/'><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i><span class='name'>文章分类</span></a>
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
     
   </header>
 
 
     <div class='content'>
-      <ul class="entry navigation">
-        
-          <li><a class="flat-box"
-            title="/categories/C/" href="/categories/C/"
-            id="categoriesC"
-            ><div class='name'>C#</div><div class='badge'>(8)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/Cpp/" href="/categories/Cpp/"
-            id="categoriesCpp"
-            ><div class='name'>Cpp</div><div class='badge'>(2)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/VsCode/" href="/categories/VsCode/"
-            id="categoriesVsCode"
-            ><div class='name'>VsCode</div><div class='badge'>(1)</div></a></li>
-        
-      </ul>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#多路绑定-转换器"><span class="toc-text">多路绑定+转换器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#快捷键设置"><span class="toc-text">快捷键设置</span></a></li></ol>
     </div>
   </section>
 
-
-  
-
-  
-    
-    
-
-  
 
   
 
@@ -1094,14 +892,6 @@
 <script>setLoadingBarProgress(80);</script>
 
 
-
-
-	<!-- 根据主题中的设置决定是否在archive中针对摘要部分的MathJax公式加载mathjax.js文件 -->
-	
-
-	
-
-
       <script>setLoadingBarProgress(60);</script>
     </div>
     <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
@@ -1210,6 +1000,17 @@
 
 
 
+
+  <script type="text/javascript">
+    (function(d, s) {
+      var j, e = d.getElementsByTagName(s)[0];
+      if (typeof LivereTower === 'function') { return; }
+      j = d.createElement(s);
+      j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+      j.async = true;
+      e.parentNode.insertBefore(j, e);
+    })(document, 'script');
+  </script>
 
 
 
