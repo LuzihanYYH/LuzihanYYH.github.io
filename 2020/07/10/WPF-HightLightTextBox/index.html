@@ -16,10 +16,10 @@
 
   <!-- 页面元数据 -->
   
-    <title>培养Vim使用习惯，Chrome安装Vimium插件 - AustinYAN&#39;s Blog</title>
+    <title>WPF的高亮显示文本框 - AustinYAN&#39;s Blog</title>
   
   
-    <meta name="description" content="为了让自己更快的熟练各种快捷键，但是仅仅在日常写代码的情况下，很明显是不够的，于是我在chrome上装了这个插件，使自己无论何时都在使用vim的过程中，达到迅速上手改变自己操作习惯的目的(尽量不使用鼠标)..">
+    <meta name="description" content="之前做Winform的防QQ的通讯程序的时候，用到了文本框高亮显示，现在试试在WPF里试着实现">
   
 
   <!-- feed -->
@@ -420,8 +420,8 @@
         
           
   <h1 class="title">
-    <a href="/2020/07/08/Chrome-Vimium/">
-      培养Vim使用习惯，Chrome安装Vimium插件
+    <a href="/2020/07/10/WPF-HightLightTextBox/">
+      WPF的高亮显示文本框
     </a>
   </h1>
 
@@ -444,6 +444,14 @@
           
             
               
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/C/' rel="nofollow">
+      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+      <p>C#</p>
+    </a>
+  </div>
+
 
             
           
@@ -451,7 +459,7 @@
               <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：Jul 8, 2020</p>
+    <p>发布于：Jul 10, 2020</p>
   </a>
 </div>
 
@@ -474,40 +482,29 @@
       <section class="article typo">
         <div class="article-entry" itemprop="articleBody">
           
-          <p>为了让自己更快的熟练各种快捷键，但是仅仅在日常写代码的情况下，很明显是不够的，于是我在chrome上装了这个插件，使自己无论何时都在使用vim的过程中，达到迅速上手改变自己操作习惯的目的(尽量不使用鼠标)..</p>
+          <p>之前做Winform的防QQ的通讯程序的时候，用到了文本框高亮显示，现在试试在WPF里试着实现</p>
 <a id="more"></a>
 
-<h2 id="Chrome-WebStore"><a href="#Chrome-WebStore" class="headerlink" title="Chrome WebStore"></a>Chrome WebStore</h2><p>首先在谷歌的插件商店中搜索Vimium,然后找到下载量最多的那个就是,直接下载安装即可,至于怎么翻墙,以后再写一篇</p>
-<p><img src="https://img-blog.csdnimg.cn/20200708093132925.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1c3Rpbl9ZYW4=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<h2 id="Vimium常用命令"><a href="#Vimium常用命令" class="headerlink" title="Vimium常用命令"></a>Vimium常用命令</h2><ul>
-<li>滚动<ul>
-<li>j:与Vim一致,向下滚动</li>
-<li>k:与Vim一致,向上滚动</li>
-<li>d:向下滚动一个屏幕的距离</li>
-<li>u:向上滚动一个屏幕的距离</li>
-<li>gg:与Vim一致,到达页面顶部</li>
-<li>G:与Vim一致,到达页面底部</li>
+<h2 id="RichTextBox实现"><a href="#RichTextBox实现" class="headerlink" title="RichTextBox实现"></a>RichTextBox实现</h2><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><ul>
+<li>利用TextPointer<br>使用GetPositionAtOffst(double offset)方法获取需要高亮的文字开始位置的索引和结尾位置的索引</li>
+<li>获取偏移量<br>RichTextBox行结尾处的偏移量为<font color=0099ff>开头的偏移量</font>+<font color=0099ff>文本长度</font>+<font color=0099ff>4</font>,这里的4是”\r\n”的长度</li>
+<li>利用TextRange内的ApplyPropertyValue方法<br>新建一个TextRange,参数就是刚才的两个索引(TextPointer),然后修改TextElement的附加属性</li>
 </ul>
-</li>
-<li>标签页<ul>
-<li>J:切换到上一个标签页(为什么J变成向上切换??)</li>
-<li>K:切换到下一个标签页</li>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">TextRange textrange = <span class="keyword">new</span> TextRange(OrderShow.Document.ContentStart, OrderShow.Document.ContentEnd);</span><br><span class="line"><span class="keyword">string</span>[] str = textrange.Text.Split(<span class="keyword">new</span> <span class="keyword">string</span>[] &#123; <span class="string">"\r\n"</span> &#125;, StringSplitOptions.RemoveEmptyEntries);</span><br><span class="line"><span class="keyword">int</span> index = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; str.Count(); ++i)</span><br><span class="line">&#123;</span><br><span class="line">    Dispatcher.BeginInvoke(<span class="keyword">new</span> Action(() =&gt;</span><br><span class="line">    &#123;</span><br><span class="line">        textrange = <span class="keyword">new</span> TextRange(OrderShow.Document.ContentStart, OrderShow.Document.ContentEnd);</span><br><span class="line">        textrange.ApplyPropertyValue(TextElement.ForegroundProperty, System.Windows.Media.Brushes.Black);</span><br><span class="line">        textrange.ApplyPropertyValue(TextElement.FontWeightProperty, FontWeights.Regular);</span><br><span class="line">    &#125;));</span><br><span class="line">    TextPointer p1 = OrderShow.Selection.Start;</span><br><span class="line">    p1 = p1.GetPositionAtOffset(index);</span><br><span class="line">    index += str[i].Length;</span><br><span class="line">    TextPointer p2 = OrderShow.Selection.Start;</span><br><span class="line">    p2 = p2.GetPositionAtOffset(index);</span><br><span class="line">    Dispatcher.BeginInvoke(<span class="keyword">new</span> Action(() =&gt;</span><br><span class="line">    &#123;</span><br><span class="line">        textrange = <span class="keyword">new</span> TextRange(p1, p2);</span><br><span class="line">        textrange.ApplyPropertyValue(TextElement.ForegroundProperty, System.Windows.Media.Brushes.Blue);</span><br><span class="line">        textrange.ApplyPropertyValue(TextElement.FontWeightProperty, FontWeights.Bold);</span><br><span class="line">    &#125;));</span><br><span class="line">    index += <span class="number">4</span>;</span><br><span class="line">    Thread.Sleep(<span class="number">1000</span>);</span><br><span class="line">&#125;</span><br><span class="line">Dispatcher.BeginInvoke(<span class="keyword">new</span> Action(() =&gt;</span><br><span class="line">&#123;</span><br><span class="line">    textrange = <span class="keyword">new</span> TextRange(OrderShow.Document.ContentStart, OrderShow.Document.ContentEnd);</span><br><span class="line">    textrange.ApplyPropertyValue(TextElement.ForegroundProperty, System.Windows.Media.Brushes.Black);</span><br><span class="line">    textrange.ApplyPropertyValue(TextElement.FontWeightProperty, FontWeights.Regular);</span><br><span class="line">&#125;));</span><br></pre></td></tr></table></figure>
+<p>然而有个最严重的问题,RichTextBox的ScollViewer的方法除了ScrollToEnd和ScrollToHome外只有设置水平和垂直的偏移量,根据高亮内容的变化,不太方便控制滚动条到合适的位置..(我不会而已,不代表不可以实现)</p>
+<h2 id="TextBox实现"><a href="#TextBox实现" class="headerlink" title="TextBox实现"></a>TextBox实现</h2><h3 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h3><p>为了解决上面的问题,所以又想用最开始的这个控件,优点是TextBox有ScrollToLine(int LineIndex)方法,滚动条的位置不需要管,只需要给行号即可,行号可以把TextBox的文本内容按”\r\n”分割获得,缺点是,高亮显示没有RichTextBox那么方便</p>
+<ul>
+<li>Select(int start,int length)方法<br>使用Select方法,可以选中start位置开始长度为length的字符<font color=0099ff>要有显示效果需要TextBox获得焦点</font></li>
+<li>SelectionBrush(System.Windows.Media.Brush)<br>使用这个方法可以改变文本被选中的颜色,效果肯定不如既可以修改Foreground又可以修改Background的,其他方式我没查出来..(暂且先这样做)</li>
+<li>获取偏移量<br>方法和上面的一样,区别是TextBox计算时末尾加的是2,只有”\n”</li>
 </ul>
-</li>
-<li>页面操作<ul>
-<li>x:关闭当前页面</li>
-<li>X:恢复刚刚关闭的页面</li>
-<li>r:重新加载页面</li>
-<li>L:与Vim一致,前进</li>
-<li>H:与Vim一致,后退</li>
-<li>t:打开新标签页，直接可以输入网址</li>
-</ul>
-</li>
-</ul>
-<p>常用的命令好像暂时就这么多,但是如何想要打开某一个连接进去查看怎么办呢?</p>
-<p>上面的快捷键只是一些很简单的常用的快捷键,还有很多没有列举,比如Vim是不用鼠标的,那么怎么点击链接就成了问题,我们也不可能不点击链接,所以<font color="red">快捷键f</font>就是专门处理链接的问题的</p>
-<p><img src="https://img-blog.csdnimg.cn/2020070809315530.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1c3Rpbl9ZYW4=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>虽然看上去很傻,而且效率肯定不如鼠标点击快,但是我的目的不是为了操作快,而且为了改变我的使用习惯,等到Vim随心所欲的时候,浏览器Vim插件的作用也就不存在了</p>
-<p>突然想到为了发博客的图片能够显示居然还需要先发到CSDN上,CSDN居然变成了图床一样的用法,还是应该把自己以前做的图片服务器搭起来,也当作是复习了</p>
+<h3 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h3><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">string</span> txt = <span class="keyword">string</span>.Empty;</span><br><span class="line">txt = OrderShow.Text;</span><br><span class="line">OrderShow.Focus();</span><br><span class="line"></span><br><span class="line"><span class="keyword">string</span>[] str = txt.Split(<span class="keyword">new</span> <span class="keyword">string</span>[] &#123; <span class="string">"\r\n"</span> &#125;, StringSplitOptions.None);</span><br><span class="line"><span class="keyword">int</span> index = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; str.Count(); ++i)</span><br><span class="line">&#123;</span><br><span class="line">    OrderShow.Focus();</span><br><span class="line">    OrderShow.CaretIndex = <span class="number">0</span>;</span><br><span class="line">    OrderShow.Select(index, str[i].Length);</span><br><span class="line">    OrderShow.ScrollToLine(i);</span><br><span class="line">    Thread t = <span class="keyword">new</span> Thread(o =&gt; Thread.Sleep(<span class="number">200</span>));</span><br><span class="line">    t.Start(<span class="keyword">this</span>);</span><br><span class="line">    <span class="keyword">while</span> (t.IsAlive)</span><br><span class="line">        System.Windows.Forms.Application.DoEvents();</span><br><span class="line">    index += str[i].Length + <span class="number">2</span>;</span><br><span class="line">&#125;</span><br><span class="line">Importbtn.Focus();</span><br></pre></td></tr></table></figure>
+<h3 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h3><p>之前都是新建了一个线程去做高亮的事情,因为Thread.Sleep()在主线程调用会让界面UI假死,然后遇到了各种什么可能是CLR错误之类的东西,而且换到TextBox之后居然只有调试进断点才能看到效果,直接运行界面没任何变化</p>
+<p>避免界面假死在Winform的时候用过DoEvents,所以想了一下直接不使用线程了,就在主线程延时操作</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Thread t = <span class="keyword">new</span> Thread(o =&gt; Thread.Sleep(<span class="number">200</span>));</span><br><span class="line">t.Start(<span class="keyword">this</span>);</span><br><span class="line"><span class="keyword">while</span> (t.IsAlive)</span><br><span class="line">    System.Windows.Forms.Application.DoEvents();</span><br></pre></td></tr></table></figure>
+<p>线程只需要延时即可</p>
+<p>文本内容如果有空行,那么在分割的时候StringSplitOptiions选择None,不然索引位置会计算错误造成高亮的不是想要的内容</p>
+<h2 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h2><p><img src="https://img-blog.csdnimg.cn/20200710140653895.gif" alt="在这里插入图片描述"></p>
 
           
             <div class='article_footer'>
@@ -544,7 +541,7 @@
           
         
           
-            <p>本文永久链接是：<a href=http://lubaobao.xyz/2020/07/08/Chrome-Vimium/>http://lubaobao.xyz/2020/07/08/Chrome-Vimium/</a></p>
+            <p>本文永久链接是：<a href=http://lubaobao.xyz/2020/07/10/WPF-HightLightTextBox/>http://lubaobao.xyz/2020/07/10/WPF-HightLightTextBox/</a></p>
           
         
       </blockquote>
@@ -595,10 +592,10 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-07-08T09:52:06+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-07-10T14:10:50+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Jul 8, 2020</p>
+    <p>更新于：Jul 10, 2020</p>
   </a>
 </div>
 
@@ -622,7 +619,7 @@
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer"
           
-          href="http://connect.qq.com/widget/shareqq/index.html?url=http://lubaobao.xyz/2020/07/08/Chrome-Vimium/&title=培养Vim使用习惯，Chrome安装Vimium插件 - AustinYAN's Blog&pics=true&summary=为了让自己更快的熟练各种快捷键，但是仅仅在日常写代码的情况下，很明显是不够的，于是我在chrome上装了这个插件，使自己无论何时都在使用vim的过程中，达到迅速上手改变自己操作习惯的目的(尽量不使用鼠标).."
+          href="http://connect.qq.com/widget/shareqq/index.html?url=http://lubaobao.xyz/2020/07/10/WPF-HightLightTextBox/&title=WPF的高亮显示文本框 - AustinYAN's Blog&pics=true&summary=之前做Winform的防QQ的通讯程序的时候，用到了文本框高亮显示，现在试试在WPF里试着实现"
           
           >
           
@@ -634,7 +631,7 @@
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer"
           
-          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://lubaobao.xyz/2020/07/08/Chrome-Vimium/&title=培养Vim使用习惯，Chrome安装Vimium插件 - AustinYAN's Blog&pics=true&summary=为了让自己更快的熟练各种快捷键，但是仅仅在日常写代码的情况下，很明显是不够的，于是我在chrome上装了这个插件，使自己无论何时都在使用vim的过程中，达到迅速上手改变自己操作习惯的目的(尽量不使用鼠标).."
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://lubaobao.xyz/2020/07/10/WPF-HightLightTextBox/&title=WPF的高亮显示文本框 - AustinYAN's Blog&pics=true&summary=之前做Winform的防QQ的通讯程序的时候，用到了文本框高亮显示，现在试试在WPF里试着实现"
           
           >
           
@@ -646,7 +643,7 @@
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer"
           
-          href="http://service.weibo.com/share/share.php?url=http://lubaobao.xyz/2020/07/08/Chrome-Vimium/&title=培养Vim使用习惯，Chrome安装Vimium插件 - AustinYAN's Blog&pics=true&summary=为了让自己更快的熟练各种快捷键，但是仅仅在日常写代码的情况下，很明显是不够的，于是我在chrome上装了这个插件，使自己无论何时都在使用vim的过程中，达到迅速上手改变自己操作习惯的目的(尽量不使用鼠标).."
+          href="http://service.weibo.com/share/share.php?url=http://lubaobao.xyz/2020/07/10/WPF-HightLightTextBox/&title=WPF的高亮显示文本框 - AustinYAN's Blog&pics=true&summary=之前做Winform的防QQ的通讯程序的时候，用到了文本框高亮显示，现在试试在WPF里试着实现"
           
           >
           
@@ -670,22 +667,10 @@
         
           <div class="prev-next">
             
-              <a class='prev' href='/2020/07/10/WPF-HightLightTextBox/'>
-                <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>WPF的高亮显示文本框</p>
-                <p class='content'>之前做Winform的防QQ的通讯程序的时候，用到了文本框高亮显示，现在试试在WPF里试着实现
-
-
-RichTextBox实现思路
-利用TextPointer使用GetPositionAtOff...</p>
-              </a>
             
-            
-              <a class='next' href='/2020/07/07/WPF-ShortCutKey/'>
-                <p class='title'>WPF的Command传入多参和快捷键设置<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
-                <p class='content'>多活动活动脖子，多运动运动，拒绝颈椎病，从我做起！
-
-
-多路绑定+转换器使用MVVM模式的时候,多半将view中产生的操作通过command绑定到viewModel下处理,可以使用command...</p>
+              <a class='next' href='/2020/07/08/Chrome-Vimium/'>
+                <p class='title'>培养Vim使用习惯，Chrome安装Vimium插件<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+                <p class='content'>为了让自己更快的熟练各种快捷键，但是仅仅在日常写代码的情况下，很明显是不够的，于是我在chrome上装了这个插件，使自己无论何时都在使用vim的过程中，达到迅速上手改变自己操作习惯的目的(尽量不...</p>
               </a>
             
           </div>
@@ -730,7 +715,7 @@ RichTextBox实现思路
 
   <script>
     window.subData = {
-      title: '培养Vim使用习惯，Chrome安装Vimium插件',
+      title: 'WPF的高亮显示文本框',
       tools: true
     }
   </script>
@@ -756,7 +741,7 @@ RichTextBox实现思路
 
 
     <div class='content'>
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Chrome-WebStore"><span class="toc-text">Chrome WebStore</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Vimium常用命令"><span class="toc-text">Vimium常用命令</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#RichTextBox实现"><span class="toc-text">RichTextBox实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#思路"><span class="toc-text">思路</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#代码"><span class="toc-text">代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TextBox实现"><span class="toc-text">TextBox实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#思路-1"><span class="toc-text">思路</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#代码-1"><span class="toc-text">代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#遇到的问题"><span class="toc-text">遇到的问题</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#效果"><span class="toc-text">效果</span></a></li></ol>
     </div>
   </section>
 
