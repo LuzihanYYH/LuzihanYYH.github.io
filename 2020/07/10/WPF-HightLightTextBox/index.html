@@ -16,7 +16,7 @@
 
   <!-- 页面元数据 -->
   
-    <title>WPF的高亮显示文本框 - AustinYAN&#39;s Blog</title>
+    <title>WPF的按行高亮显示文本框 - AustinYAN&#39;s Blog</title>
   
   
     <meta name="description" content="之前做Winform的防QQ的通讯程序的时候，用到了文本框高亮显示，现在试试在WPF里试着实现">
@@ -421,7 +421,7 @@
           
   <h1 class="title">
     <a href="/2020/07/10/WPF-HightLightTextBox/">
-      WPF的高亮显示文本框
+      WPF的按行高亮显示文本框
     </a>
   </h1>
 
@@ -492,6 +492,7 @@
 </ul>
 <h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">TextRange textrange = <span class="keyword">new</span> TextRange(OrderShow.Document.ContentStart, OrderShow.Document.ContentEnd);</span><br><span class="line"><span class="keyword">string</span>[] str = textrange.Text.Split(<span class="keyword">new</span> <span class="keyword">string</span>[] &#123; <span class="string">"\r\n"</span> &#125;, StringSplitOptions.RemoveEmptyEntries);</span><br><span class="line"><span class="keyword">int</span> index = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; str.Count(); ++i)</span><br><span class="line">&#123;</span><br><span class="line">    Dispatcher.BeginInvoke(<span class="keyword">new</span> Action(() =&gt;</span><br><span class="line">    &#123;</span><br><span class="line">        textrange = <span class="keyword">new</span> TextRange(OrderShow.Document.ContentStart, OrderShow.Document.ContentEnd);</span><br><span class="line">        textrange.ApplyPropertyValue(TextElement.ForegroundProperty, System.Windows.Media.Brushes.Black);</span><br><span class="line">        textrange.ApplyPropertyValue(TextElement.FontWeightProperty, FontWeights.Regular);</span><br><span class="line">    &#125;));</span><br><span class="line">    TextPointer p1 = OrderShow.Selection.Start;</span><br><span class="line">    p1 = p1.GetPositionAtOffset(index);</span><br><span class="line">    index += str[i].Length;</span><br><span class="line">    TextPointer p2 = OrderShow.Selection.Start;</span><br><span class="line">    p2 = p2.GetPositionAtOffset(index);</span><br><span class="line">    Dispatcher.BeginInvoke(<span class="keyword">new</span> Action(() =&gt;</span><br><span class="line">    &#123;</span><br><span class="line">        textrange = <span class="keyword">new</span> TextRange(p1, p2);</span><br><span class="line">        textrange.ApplyPropertyValue(TextElement.ForegroundProperty, System.Windows.Media.Brushes.Blue);</span><br><span class="line">        textrange.ApplyPropertyValue(TextElement.FontWeightProperty, FontWeights.Bold);</span><br><span class="line">    &#125;));</span><br><span class="line">    index += <span class="number">4</span>;</span><br><span class="line">    Thread.Sleep(<span class="number">1000</span>);</span><br><span class="line">&#125;</span><br><span class="line">Dispatcher.BeginInvoke(<span class="keyword">new</span> Action(() =&gt;</span><br><span class="line">&#123;</span><br><span class="line">    textrange = <span class="keyword">new</span> TextRange(OrderShow.Document.ContentStart, OrderShow.Document.ContentEnd);</span><br><span class="line">    textrange.ApplyPropertyValue(TextElement.ForegroundProperty, System.Windows.Media.Brushes.Black);</span><br><span class="line">    textrange.ApplyPropertyValue(TextElement.FontWeightProperty, FontWeights.Regular);</span><br><span class="line">&#125;));</span><br></pre></td></tr></table></figure>
 <p>然而有个最严重的问题,RichTextBox的ScollViewer的方法除了ScrollToEnd和ScrollToHome外只有设置水平和垂直的偏移量,根据高亮内容的变化,不太方便控制滚动条到合适的位置..(我不会而已,不代表不可以实现)</p>
+<h3 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h3><p>只改了前景色没修改背景色<br><font color=red>高亮显示前光标必须在ContentStart,不然之后的index计算不准</font><br><img src="https://img-blog.csdnimg.cn/20200711142031239.gif" alt="在这里插入图片描述"></p>
 <h2 id="TextBox实现"><a href="#TextBox实现" class="headerlink" title="TextBox实现"></a>TextBox实现</h2><h3 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h3><p>为了解决上面的问题,所以又想用最开始的这个控件,优点是TextBox有ScrollToLine(int LineIndex)方法,滚动条的位置不需要管,只需要给行号即可,行号可以把TextBox的文本内容按”\r\n”分割获得,缺点是,高亮显示没有RichTextBox那么方便</p>
 <ul>
 <li>Select(int start,int length)方法<br>使用Select方法,可以选中start位置开始长度为length的字符<font color=0099ff>要有显示效果需要TextBox获得焦点</font></li>
@@ -504,7 +505,21 @@
 <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Thread t = <span class="keyword">new</span> Thread(o =&gt; Thread.Sleep(<span class="number">200</span>));</span><br><span class="line">t.Start(<span class="keyword">this</span>);</span><br><span class="line"><span class="keyword">while</span> (t.IsAlive)</span><br><span class="line">    System.Windows.Forms.Application.DoEvents();</span><br></pre></td></tr></table></figure>
 <p>线程只需要延时即可</p>
 <p>文本内容如果有空行,那么在分割的时候StringSplitOptiions选择None,不然索引位置会计算错误造成高亮的不是想要的内容</p>
-<h2 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h2><p><img src="https://img-blog.csdnimg.cn/20200710140653895.gif" alt="在这里插入图片描述"></p>
+<h2 id="效果-1"><a href="#效果-1" class="headerlink" title="效果"></a>效果</h2><p><img src="https://img-blog.csdnimg.cn/20200710140653895.gif" alt="在这里插入图片描述"><br><font color=0099ff size=16>2020-07-11更新</font></p>
+<p><font color=0099ff size=5>综合两种方法的优缺点,但是又有了新的问题</font></p>
+<h2 id="ListView实现"><a href="#ListView实现" class="headerlink" title="ListView实现"></a>ListView实现</h2><h3 id="思路-2"><a href="#思路-2" class="headerlink" title="思路"></a>思路</h3><p>TextBox的滚动条可以精确到行,RichTextBox的字体高亮,把这两个结合起来</p>
+<ul>
+<li>TextBlock作为Item<br>使用TextBlock的原因是因为他有Forceground、Background、FontWeight和FontSize属性</li>
+<li>ScrollToView(Item item)<br>这个方法可以精确的将滚动条跳转到ListView中的控件,与TextBox的ScrollToLine<font color=red>不同的是这个的滚动条位置是将控件显示在最下方</font></li>
+<li>优点<br>ListView本身就有行的概念,放入的TextBlock就是按行排布的,所以不需要计算index来找到需要高亮的文本内容</li>
+</ul>
+<h3 id="代码-2"><a href="#代码-2" class="headerlink" title="代码"></a>代码</h3><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; str.Count(); ++i)</span><br><span class="line">&#123;</span><br><span class="line">    listview.ScrollIntoView(listview.Items[i]);</span><br><span class="line">    (listview.Items[i] <span class="keyword">as</span> TextBlock).Foreground = Brushes.Red;</span><br><span class="line">    (listview.Items[i] <span class="keyword">as</span> TextBlock).Background = Brushes.Yellow;</span><br><span class="line">    (listview.Items[i] <span class="keyword">as</span> TextBlock).FontWeight = FontWeights.Bold;</span><br><span class="line">    (listview.Items[i] <span class="keyword">as</span> TextBlock).FontSize = <span class="number">16</span>;</span><br><span class="line">    Thread t = <span class="keyword">new</span> Thread(o =&gt; Thread.Sleep(<span class="number">100</span>));</span><br><span class="line">    t.Start(<span class="keyword">this</span>);</span><br><span class="line">    <span class="keyword">while</span> (t.IsAlive)</span><br><span class="line">        System.Windows.Forms.Application.DoEvents();</span><br><span class="line">    (listview.Items[i] <span class="keyword">as</span> TextBlock).Foreground = Brushes.White;</span><br><span class="line">    (listview.Items[i] <span class="keyword">as</span> TextBlock).Background = Brushes.Transparent;</span><br><span class="line">    (listview.Items[i] <span class="keyword">as</span> TextBlock).FontWeight = FontWeights.Regular;</span><br><span class="line">    (listview.Items[i] <span class="keyword">as</span> TextBlock).FontSize = <span class="number">13</span>;</span><br><span class="line">    t.Abort();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="遇到的问题-1"><a href="#遇到的问题-1" class="headerlink" title="遇到的问题"></a>遇到的问题</h3><p>ListView默认的MouseOver和Selected会有巨丑的深蓝色背景Bodor,我们按行高亮只需要演示,不需要这个东西<br>重写样式将对应的Background修改为Transparent</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">&lt;Style TargetType=<span class="string">"&#123;x:Type ListViewItem&#125;"</span>&gt;</span><br><span class="line">    &lt;Setter Property=<span class="string">"Template"</span>&gt;</span><br><span class="line">        &lt;Setter.Value&gt;</span><br><span class="line">            &lt;ControlTemplate TargetType=<span class="string">"&#123;x:Type ListViewItem&#125;"</span>&gt;</span><br><span class="line">                &lt;Border Name=<span class="string">"Bd"</span></span><br><span class="line">        Background=<span class="string">"&#123;TemplateBinding Background&#125;"</span> BorderBrush=<span class="string">"&#123;TemplateBinding BorderBrush&#125;"</span></span><br><span class="line">        BorderThickness=<span class="string">"&#123;TemplateBinding BorderThickness&#125;"</span> Padding=<span class="string">"&#123;TemplateBinding Padding&#125;"</span></span><br><span class="line">        SnapsToDevicePixels=<span class="string">"true"</span>&gt;</span><br><span class="line">                    <span class="comment">//用于显示本身的Content</span></span><br><span class="line">                    &lt;ContentPresenter HorizontalHorizontalContentAlignment&#125;<span class="string">"</span></span><br><span class="line"><span class="string">                      VerticalAlignment="</span>&#123;TemplateBinding VerticalContentAlignment&#125;<span class="string">"</span></span><br><span class="line"><span class="string">                      SnapsToDevicePixels="</span>&#123;TemplateBinding SnapsToDevicePixels&#125;<span class="string">"/&gt;</span></span><br><span class="line"><span class="string">                &lt;/Border&gt;</span></span><br><span class="line"><span class="string">            &lt;/ControlTemplate&gt;</span></span><br><span class="line"><span class="string">        &lt;/Setter.Value&gt;</span></span><br><span class="line"><span class="string">    &lt;/Setter&gt;</span></span><br><span class="line"><span class="string">    &lt;Setter Property="</span>FocusVisualStyle<span class="string">" Value="</span>&#123;x:Null&#125;<span class="string">"/&gt;</span></span><br><span class="line"><span class="string">    &lt;Setter Property="</span>BorderThickness<span class="string">" Value="</span><span class="number">0</span><span class="string">"/&gt;</span></span><br><span class="line"><span class="string">    &lt;Setter Property="</span>Foreground<span class="string">" Value="</span>Black<span class="string">"/&gt;</span></span><br><span class="line"><span class="string">    &lt;Setter Property="</span>Background<span class="string">" Value="</span>Transparent<span class="string">"/&gt;</span></span><br><span class="line"><span class="string">    &lt;Setter Property="</span>VerticalAlignment<span class="string">" Value="</span>Top<span class="string">"/&gt;</span></span><br><span class="line"><span class="string">    &lt;Setter Property="</span>FontSize<span class="string">" Value="</span><span class="number">14</span><span class="string">"/&gt;</span></span><br><span class="line"><span class="string">    &lt;Style.Triggers&gt;</span></span><br><span class="line"><span class="string">        &lt;!--触发器--&gt;</span></span><br><span class="line"><span class="string">        &lt;Trigger Property="</span>IsMouseOver<span class="string">" Value="</span>True<span class="string">"&gt;</span></span><br><span class="line"><span class="string">            &lt;Setter Property="</span>Background<span class="string">" Value="</span>Transparent<span class="string">"/&gt;</span></span><br><span class="line"><span class="string">            &lt;Setter Property="</span>BorderBrush<span class="string">" Value="</span>Transparent<span class="string">"/&gt;</span></span><br><span class="line"><span class="string">        &lt;/Trigger&gt;</span></span><br><span class="line"><span class="string">        &lt;Trigger Property="</span>IsSelected<span class="string">" Value="</span><span class="literal">true</span><span class="string">"&gt;</span></span><br><span class="line"><span class="string">            &lt;Setter Property="</span>Background<span class="string">" Value="</span>Transparent<span class="string">"/&gt;</span></span><br><span class="line"><span class="string">            &lt;Setter Property="</span>Foreground<span class="string">" Value="</span>White<span class="string">"/&gt;</span></span><br><span class="line"><span class="string">        &lt;/Trigger&gt;</span></span><br><span class="line"><span class="string">    &lt;/Style.Triggers&gt;</span></span><br><span class="line"><span class="string">&lt;/Style&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>但是,如果有编辑需求的就麻烦了,TextBlock不可以编辑,而且ListView也不可以像文本框一样选择一片<br>所以,需要编辑的时间将ListView隐藏,显示一个等大的TextBox去编辑吧#doge (下下策,好的方法我也不会)</p>
+<h3 id="效果-2"><a href="#效果-2" class="headerlink" title="效果"></a>效果</h3><p><img src="https://img-blog.csdnimg.cn/20200711141556398.gif" alt="在这里插入图片描述"></p>
 
           
             <div class='article_footer'>
@@ -592,10 +607,10 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-07-10T14:10:50+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-07-11T14:27:08+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Jul 10, 2020</p>
+    <p>更新于：Jul 11, 2020</p>
   </a>
 </div>
 
@@ -619,7 +634,7 @@
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer"
           
-          href="http://connect.qq.com/widget/shareqq/index.html?url=http://lubaobao.xyz/2020/07/10/WPF-HightLightTextBox/&title=WPF的高亮显示文本框 - AustinYAN's Blog&pics=true&summary=之前做Winform的防QQ的通讯程序的时候，用到了文本框高亮显示，现在试试在WPF里试着实现"
+          href="http://connect.qq.com/widget/shareqq/index.html?url=http://lubaobao.xyz/2020/07/10/WPF-HightLightTextBox/&title=WPF的按行高亮显示文本框 - AustinYAN's Blog&pics=true&summary=之前做Winform的防QQ的通讯程序的时候，用到了文本框高亮显示，现在试试在WPF里试着实现"
           
           >
           
@@ -631,7 +646,7 @@
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer"
           
-          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://lubaobao.xyz/2020/07/10/WPF-HightLightTextBox/&title=WPF的高亮显示文本框 - AustinYAN's Blog&pics=true&summary=之前做Winform的防QQ的通讯程序的时候，用到了文本框高亮显示，现在试试在WPF里试着实现"
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://lubaobao.xyz/2020/07/10/WPF-HightLightTextBox/&title=WPF的按行高亮显示文本框 - AustinYAN's Blog&pics=true&summary=之前做Winform的防QQ的通讯程序的时候，用到了文本框高亮显示，现在试试在WPF里试着实现"
           
           >
           
@@ -643,7 +658,7 @@
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer"
           
-          href="http://service.weibo.com/share/share.php?url=http://lubaobao.xyz/2020/07/10/WPF-HightLightTextBox/&title=WPF的高亮显示文本框 - AustinYAN's Blog&pics=true&summary=之前做Winform的防QQ的通讯程序的时候，用到了文本框高亮显示，现在试试在WPF里试着实现"
+          href="http://service.weibo.com/share/share.php?url=http://lubaobao.xyz/2020/07/10/WPF-HightLightTextBox/&title=WPF的按行高亮显示文本框 - AustinYAN's Blog&pics=true&summary=之前做Winform的防QQ的通讯程序的时候，用到了文本框高亮显示，现在试试在WPF里试着实现"
           
           >
           
@@ -715,7 +730,7 @@
 
   <script>
     window.subData = {
-      title: 'WPF的高亮显示文本框',
+      title: 'WPF的按行高亮显示文本框',
       tools: true
     }
   </script>
@@ -741,7 +756,7 @@
 
 
     <div class='content'>
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#RichTextBox实现"><span class="toc-text">RichTextBox实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#思路"><span class="toc-text">思路</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#代码"><span class="toc-text">代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TextBox实现"><span class="toc-text">TextBox实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#思路-1"><span class="toc-text">思路</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#代码-1"><span class="toc-text">代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#遇到的问题"><span class="toc-text">遇到的问题</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#效果"><span class="toc-text">效果</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#RichTextBox实现"><span class="toc-text">RichTextBox实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#思路"><span class="toc-text">思路</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#代码"><span class="toc-text">代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#效果"><span class="toc-text">效果</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TextBox实现"><span class="toc-text">TextBox实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#思路-1"><span class="toc-text">思路</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#代码-1"><span class="toc-text">代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#遇到的问题"><span class="toc-text">遇到的问题</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#效果-1"><span class="toc-text">效果</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ListView实现"><span class="toc-text">ListView实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#思路-2"><span class="toc-text">思路</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#代码-2"><span class="toc-text">代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#遇到的问题-1"><span class="toc-text">遇到的问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#效果-2"><span class="toc-text">效果</span></a></li></ol></li></ol>
     </div>
   </section>
 
@@ -858,7 +873,7 @@
     setInterval("createtime()",250);
     </script>
     <i class="fas fa-chart-area"></i>
-    <span class="post-count">字数统计：10.2k</span>
+    <span class="post-count">字数统计：10.8k</span>
     <br>
     <br>
     <div class="github-badge">
