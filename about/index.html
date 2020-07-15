@@ -1,3 +1,4 @@
+
 <html>
 <head>
     <style>
@@ -13,88 +14,89 @@
             background-color: white;
         }
 
-<pre><code>    .centerAfterLeft {
-        position: fixed;
-        left: 20%;
-        top: 26%;
-        width: 29.5%;
-        height: 50%;
-        opacity: 0.95;
-        float: left;
-        background-color: white;
-    }
-
-    .centerAfterRight {
-        position: fixed;
-        right: 20%;
-        top: 26%;
-        width: 29.5%;
-        height: 50%;
-        opacity: 0.95;
-        float: left;
-        background-color: white;
-    }
-
-    .footer {
-        position: fixed;
-        left: 20%;
-        right: 20%;
-        top: 77%;
-        width: 60%;
-        height: 15%;
-        opacity: 0.95;
-        background-color: white;
-    }
-
-    .lastfooter {
-        position: fixed;
-        left: 20%;
-        right: 20%;
-        top: 93%;
-        width: 60%;
-        height: 30px;
-        vertical-align: middle;
-        text-align: center;
-        background-color: transparent;
-    }
-
-    #selfphoto {
-        margin-left: 10px;
-        margin-top: 5px;
-        float: left;
-    }
-
-    #selfphoto img {
-        border-radius: 50%;
-        vertical-align: middle;
-        -webkit-animation: rotateImg 5s linear infinite;
-    }
-
-    @keyframes rotateImg {
-        0% {
-            transform: rotate(0deg);
+        .centerAfterLeft {
+            position: fixed;
+            left: 20%;
+            top: 26%;
+            width: 29.5%;
+            height: 50%;
+            opacity: 0.95;
+            float: left;
+            background-color: white;
         }
 
-        100% {
-            transform: rotate(360deg);
+        .centerAfterRight {
+            position: fixed;
+            right: 20%;
+            top: 26%;
+            width: 29.5%;
+            height: 50%;
+            opacity: 0.95;
+            float: left;
+            background-color: white;
         }
-    }
 
-    @-webkit-keyframes rotateImg {
-        0% {
-            -webkit-transform: rotate(0deg);
+        .footer {
+            position: fixed;
+            left: 20%;
+            right: 20%;
+            top: 77%;
+            width: 60%;
+            height: 15%;
+            opacity: 0.95;
+            background-color: white;
         }
 
-        100% {
-            -webkit-transform: rotate(360deg);
+        .lastfooter {
+            position: fixed;
+            left: 20%;
+            right: 20%;
+            top: 93%;
+            width: 60%;
+            height: 30px;
+            vertical-align: middle;
+            text-align: center;
+            background-color: transparent;
         }
-    }
 
-    body {
-        background-color: rgb(81, 77, 85);
-        font-family: 楷体;
-    }
-&lt;/style&gt;</code></pre></head>
+        #selfphoto {
+            margin-left: 10px;
+            margin-top: 5px;
+            float: left;
+        }
+
+        #selfphoto img {
+            border-radius: 50%;
+            vertical-align: middle;
+            -webkit-animation: rotateImg 5s linear infinite;
+        }
+
+        @keyframes rotateImg {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        @-webkit-keyframes rotateImg {
+            0% {
+                -webkit-transform: rotate(0deg);
+            }
+
+            100% {
+                -webkit-transform: rotate(360deg);
+            }
+        }
+
+        body {
+            background-color: rgb(81, 77, 85);
+            font-family: 楷体;
+        }
+    </style>
+</head>
 
 <script>
     /*样式二*/
@@ -285,67 +287,68 @@
         <div style="width: 300px;height: 250px; text-align: left;left: 50%;position: absolute;float: left;">
             <canvas id="SkillCanvas" style="height: 200px;float: left;">
 
-<pre><code>        &lt;/canvas&gt;
-        &lt;div style=&quot;float: left;z-index: 999;position: absolute;&quot;&gt;
-            &lt;!--此处有问题,正确的写法不会这样做--&gt;
-            &lt;p style=&quot;margin-left: 130px;&quot;&gt;80%&lt;/p&gt;
-            &lt;p style=&quot;margin-left: 170px;&quot;&gt;90%&lt;/p&gt;
-            &lt;p style=&quot;margin-left: 20px;&quot;&gt;15%&lt;/p&gt;
-            &lt;p style=&quot;margin-left: 40px;&quot;&gt;20%&lt;/p&gt;
-            &lt;p style=&quot;margin-left: 10px;&quot;&gt;10%&lt;/p&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;centerAfterRight&quot;&gt;
-    &lt;div style=&quot;text-align: center;font-size: 18;&quot;&gt;
-        &lt;p style=&quot;margin-bottom: 10px;display: inline-block;font-weight: bold;&quot;&gt;Introduction&lt;/p&gt;
-        &lt;p style=&quot;margin-bottom: 10px;display: inline-block;font-weight: bold;&quot;&gt;|&lt;/p&gt;
-        &lt;p style=&quot;margin-bottom: 10px;display: inline-block;font-weight: bold;&quot;&gt;简介&lt;/p&gt;
-    &lt;/div&gt;
-    &lt;div style=&quot;text-align: left;left: 0%;position: absolute;&quot;&gt;
-        &lt;ul&gt;
-            &lt;li&gt;学历: 某不知名二本的本科&lt;/li&gt;&lt;br&gt;
-            &lt;li&gt;现况: 工作四个月多,C#软件工程师&lt;/li&gt;&lt;br&gt;
-            &lt;li&gt;目标: 成为一个优秀的C++工程师&lt;/li&gt;&lt;br&gt;
-            &lt;li&gt;博客: 书到用时方恨少,事非经过不知难&lt;/li&gt;&lt;br&gt;
-            &lt;li&gt;兴趣: 研究各种精美的界面,研究各种炫酷的动画&lt;/li&gt;&lt;br&gt;
-        &lt;/ul&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;footer&quot;&gt;
-    &lt;div style=&quot;text-align: center;font-size: 18;&quot;&gt;
-        &lt;p style=&quot;margin-bottom: 10px;display: inline-block;font-weight: bold;&quot;&gt;Contact&lt;/p&gt;
-        &lt;p style=&quot;margin-bottom: 10px;display: inline-block;font-weight: bold;&quot;&gt;|&lt;/p&gt;
-        &lt;p style=&quot;margin-bottom: 10px;display: inline-block;font-weight: bold;&quot;&gt;联系&lt;/p&gt;
-    &lt;/div&gt;
-    &lt;a href=&quot;http://wpa.qq.com/msgrd?v=3 &amp;uin=1241528539 &amp;site=qq&amp;menu=yes&quot; target=&quot;-blank&quot; title=&quot;QQ&quot;&gt;
-        &lt;img id=&quot;qq&quot; style=&quot;margin-top: 0px; left: 15%;position: absolute;&quot;
-            src=&quot;https://cdn.jsdelivr.net/gh/AustinYANyh/Image@1.1/qq.png&quot;&gt;
-    &lt;/a&gt;
-    &lt;a href=&quot;http:weixin://&quot; target=&quot;-blank&quot; title=&quot;微信&quot;&gt;
-        &lt;img id=&quot;wechat&quot; style=&quot;margin-top: 0px; left: 30%;position: absolute;&quot;
-            src=&quot;https://cdn.jsdelivr.net/gh/AustinYANyh/Image@1.1/wechat.png&quot;&gt;
-    &lt;/a&gt;
-    &lt;a href=&quot;https://music.163.com/#/user/home?id=286524796&quot; target=&quot;-blank&quot; title=&quot;网易云音乐&quot;&gt;
-        &lt;img id=&quot;neastcloud&quot; style=&quot;margin-top: 0px;left: 45%;position: absolute;&quot;
-            src=&quot;https://cdn.jsdelivr.net/gh/AustinYANyh/Image@1.1/neastcloud.png&quot;&gt;
-    &lt;/a&gt;
-    &lt;!--我的B站里什么也没有,只是练习图片超链接--&gt;
-    &lt;a href=&quot;https://space.bilibili.com/44717522&quot; target=&quot;-blank&quot; title=&quot;BiliBili&quot;&gt;
-        &lt;img id=&quot;bilibili&quot; style=&quot;margin-top: 0px;left: 60%;position: absolute;&quot;
-            src=&quot;https://cdn.jsdelivr.net/gh/AustinYANyh/Image@1.1/bilibili.png&quot;&gt;
-    &lt;/a&gt;
-    &lt;a href=&quot;https://blog.csdn.net/Austin_Yan&quot; target=&quot;-blank&quot; title=&quot;CSDN&quot;&gt;
-        &lt;img id=&quot;blog&quot; style=&quot;margin-top: 0px;left: 75%;position: absolute;&quot;
-            src=&quot;https://cdn.jsdelivr.net/gh/AustinYANyh/Image@1.1.1/CSDN.png&quot;&gt;
-    &lt;/a&gt;
-&lt;/div&gt;
-&lt;div class=&quot;lastfooter&quot;&gt;
-    &lt;p style=&quot;display: inline-block;color: rgb(210, 210, 210);&quot;&gt;Copyright © 2018-2020&lt;/p&gt;
-    &lt;a style=&quot;display: inline-block;color: rgb(210, 210, 210);&quot; href=&quot;https://www.lubaobao.xyz&quot;
-        target=&quot;-blank&quot;&gt;AustinYANyh&apos;s
-        Blog.&lt;/a&gt;
-    &lt;p style=&quot;display: inline-block;color: rgb(210, 210, 210);&quot;&gt;All rights reserved.&lt;/p&gt;
-&lt;/div&gt;</code></pre></body>
+            </canvas>
+            <div style="float: left;z-index: 999;position: absolute;">
+                <!--此处有问题,正确的写法不会这样做-->
+                <p style="margin-left: 130px;">80%</p>
+                <p style="margin-left: 170px;">90%</p>
+                <p style="margin-left: 20px;">15%</p>
+                <p style="margin-left: 40px;">20%</p>
+                <p style="margin-left: 10px;">10%</p>
+            </div>
+        </div>
+    </div>
+    <div class="centerAfterRight">
+        <div style="text-align: center;font-size: 18;">
+            <p style="margin-bottom: 10px;display: inline-block;font-weight: bold;">Introduction</p>
+            <p style="margin-bottom: 10px;display: inline-block;font-weight: bold;">|</p>
+            <p style="margin-bottom: 10px;display: inline-block;font-weight: bold;">简介</p>
+        </div>
+        <div style="text-align: left;left: 0%;position: absolute;">
+            <ul>
+                <li>学历: 某不知名二本的本科</li><br>
+                <li>现况: 工作四个月多,C#软件工程师</li><br>
+                <li>目标: 成为一个优秀的C++工程师</li><br>
+                <li>博客: 书到用时方恨少,事非经过不知难</li><br>
+                <li>兴趣: 研究各种精美的界面,研究各种炫酷的动画</li><br>
+            </ul>
+        </div>
+    </div>
+    <div class="footer">
+        <div style="text-align: center;font-size: 18;">
+            <p style="margin-bottom: 10px;display: inline-block;font-weight: bold;">Contact</p>
+            <p style="margin-bottom: 10px;display: inline-block;font-weight: bold;">|</p>
+            <p style="margin-bottom: 10px;display: inline-block;font-weight: bold;">联系</p>
+        </div>
+        <a href="http://wpa.qq.com/msgrd?v=3 &uin=1241528539 &site=qq&menu=yes" target="-blank" title="QQ">
+            <img id="qq" style="margin-top: 0px; left: 15%;position: absolute;"
+                src="https://cdn.jsdelivr.net/gh/AustinYANyh/Image@1.1/qq.png">
+        </a>
+        <a href="http:weixin://" target="-blank" title="微信">
+            <img id="wechat" style="margin-top: 0px; left: 30%;position: absolute;"
+                src="https://cdn.jsdelivr.net/gh/AustinYANyh/Image@1.1/wechat.png">
+        </a>
+        <a href="https://music.163.com/#/user/home?id=286524796" target="-blank" title="网易云音乐">
+            <img id="neastcloud" style="margin-top: 0px;left: 45%;position: absolute;"
+                src="https://cdn.jsdelivr.net/gh/AustinYANyh/Image@1.1/neastcloud.png">
+        </a>
+        <!--我的B站里什么也没有,只是练习图片超链接-->
+        <a href="https://space.bilibili.com/44717522" target="-blank" title="BiliBili">
+            <img id="bilibili" style="margin-top: 0px;left: 60%;position: absolute;"
+                src="https://cdn.jsdelivr.net/gh/AustinYANyh/Image@1.1/bilibili.png">
+        </a>
+        <a href="https://blog.csdn.net/Austin_Yan" target="-blank" title="CSDN">
+            <img id="blog" style="margin-top: 0px;left: 75%;position: absolute;"
+                src="https://cdn.jsdelivr.net/gh/AustinYANyh/Image@1.1.1/CSDN.png">
+        </a>
+    </div>
+    <div class="lastfooter">
+        <p style="display: inline-block;color: rgb(210, 210, 210);">Copyright © 2018-2020</p>
+        <a style="display: inline-block;color: rgb(210, 210, 210);" href="https://www.lubaobao.xyz"
+            target="-blank">AustinYANyh's
+            Blog.</a>
+        <p style="display: inline-block;color: rgb(210, 210, 210);">All rights reserved.</p>
+    </div>
+</body>
 
 </html>
