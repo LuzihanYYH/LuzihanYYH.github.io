@@ -1,0 +1,353 @@
+<html>
+
+<head>
+    <style>
+        .center {
+            position: fixed;
+            left: 20%;
+            right: 20%;
+            top: 10%;
+            width: 60%;
+            height: 15%;
+            opacity: 0.95;
+            float: left;
+            background-color: white;
+        }
+
+<pre><code>    .centerAfterLeft {
+        position: fixed;
+        left: 20%;
+        top: 26%;
+        width: 29.5%;
+        height: 50%;
+        opacity: 0.95;
+        float: left;
+        background-color: white;
+    }
+
+    .centerAfterRight {
+        position: fixed;
+        right: 20%;
+        top: 26%;
+        width: 29.5%;
+        height: 50%;
+        opacity: 0.95;
+        float: left;
+        background-color: white;
+    }
+
+    .footer {
+        position: fixed;
+        left: 20%;
+        right: 20%;
+        top: 77%;
+        width: 60%;
+        height: 15%;
+        opacity: 0.95;
+        background-color: white;
+    }
+
+    .lastfooter {
+        position: fixed;
+        left: 20%;
+        right: 20%;
+        top: 93%;
+        width: 60%;
+        height: 30px;
+        vertical-align: middle;
+        text-align: center;
+        background-color: transparent;
+    }
+
+    #selfphoto {
+        margin-left: 10px;
+        margin-top: 5px;
+        float: left;
+    }
+
+    #selfphoto img {
+        border-radius: 50%;
+        vertical-align: middle;
+        -webkit-animation: rotateImg 5s linear infinite;
+    }
+
+    @keyframes rotateImg {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    @-webkit-keyframes rotateImg {
+        0% {
+            -webkit-transform: rotate(0deg);
+        }
+
+        100% {
+            -webkit-transform: rotate(360deg);
+        }
+    }
+
+    body {
+        background-color: rgb(81, 77, 85);
+        font-family: 楷体;
+    }
+&lt;/style&gt;</code></pre></head>
+
+<script>
+    /*样式二*/
+    /* 控制下雪 */
+    function snowFall(snow) {
+        /* 可配置属性 */
+        snow = snow || {};
+        this.maxFlake = snow.maxFlake || 400;   /* 最多片数 */
+        this.flakeSize = snow.flakeSize || 10;  /* 雪花形状 */
+        this.fallSpeed = snow.fallSpeed || 1;   /* 坠落速度 */
+    }
+    /* 兼容写法 */
+    requestAnimationFrame = window.requestAnimationFrame ||
+        window.mozRequestAnimationFrame ||
+        window.webkitRequestAnimationFrame ||
+        window.msRequestAnimationFrame ||
+        window.oRequestAnimationFrame ||
+        function (callback) { setTimeout(callback, 1000 / 60); };
+
+    cancelAnimationFrame = window.cancelAnimationFrame ||
+        window.mozCancelAnimationFrame ||
+        window.webkitCancelAnimationFrame ||
+        window.msCancelAnimationFrame ||
+        window.oCancelAnimationFrame;
+    /* 开始下雪 */
+    snowFall.prototype.start = function () {
+        /* 创建画布 */
+        snowCanvas.apply(this);
+        /* 创建雪花形状 */
+        createFlakes.apply(this);
+        /* 画雪 */
+        drawSnow.apply(this)
+    }
+    /* 创建画布 */
+    function snowCanvas() {
+        /* 添加Dom结点 */
+        var snowcanvas = document.createElement("canvas");
+        snowcanvas.id = "snowfall";
+        snowcanvas.width = window.innerWidth;
+        snowcanvas.height = document.body.clientHeight;
+        snowcanvas.setAttribute("style", "position:absolute; top: 0; left: 0; z-index: 1; pointer-events: none;");
+        document.getElementsByTagName("body")[0].appendChild(snowcanvas);
+        this.canvas = snowcanvas;
+        this.ctx = snowcanvas.getContext("2d");
+        /* 窗口大小改变的处理 */
+        window.onresize = function () {
+            snowcanvas.width = window.innerWidth;
+            /* snowcanvas.height = window.innerHeight */
+        }
+    }
+    /* 雪运动对象 */
+    function flakeMove(canvasWidth, canvasHeight, flakeSize, fallSpeed) {
+        this.x = Math.floor(Math.random() * canvasWidth);   /* x坐标 */
+        this.y = Math.floor(Math.random() * canvasHeight);  /* y坐标 */
+        this.size = Math.random() * flakeSize + 2;          /* 形状 */
+        this.maxSize = flakeSize;                           /* 最大形状 */
+        this.speed = Math.random() * 1 + fallSpeed;         /* 坠落速度 */
+        this.fallSpeed = fallSpeed;                         /* 坠落速度 */
+        this.velY = this.speed;                             /* Y方向速度 */
+        this.velX = 0;                                      /* X方向速度 */
+        this.stepSize = Math.random() / 30;                 /* 步长 */
+        this.step = 0                                       /* 步数 */
+    }
+    flakeMove.prototype.update = function () {
+        var x = this.x,
+            y = this.y;
+        /* 左右摆动(余弦) */
+        this.velX *= 0.98;
+        if (this.velY <= this.speed) {
+            this.velY = this.speed
+        }
+        this.velX += Math.cos(this.step += .05) * this.stepSize;
+
+        this.y += this.velY;
+        this.x += this.velX;
+        /* 飞出边界的处理 */
+        if (this.x >= canvas.width || this.x <= 0 || this.y >= canvas.height || this.y <= 0) {
+            this.reset(canvas.width, canvas.height)
+        }
+    };
+    /* 飞出边界-放置最顶端继续坠落 */
+    flakeMove.prototype.reset = function (width, height) {
+        this.x = Math.floor(Math.random() * width);
+        this.y = 0;
+        this.size = Math.random() * this.maxSize + 2;
+        this.speed = Math.random() * 1 + this.fallSpeed;
+        this.velY = this.speed;
+        this.velX = 0;
+    };
+    // 渲染雪花-随机形状（此处可修改雪花颜色！！！）
+    flakeMove.prototype.render = function (ctx) {
+        var snowFlake = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.size);
+        snowFlake.addColorStop(0, "rgba(255, 255, 255, 0.9)");  /* 此处是雪花颜色，默认是白色 */
+        snowFlake.addColorStop(.5, "rgba(255, 255, 255, 0.5)"); /* 若要改为其他颜色，请自行查 */
+        snowFlake.addColorStop(1, "rgba(255, 255, 255, 0)");    /* 找16进制的RGB 颜色代码。 */
+        ctx.save();
+        ctx.fillStyle = snowFlake;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+    };
+    /* 创建雪花-定义形状 */
+    function createFlakes() {
+        var maxFlake = this.maxFlake,
+            flakes = this.flakes = [],
+            canvas = this.canvas;
+        for (var i = 0; i < maxFlake; i++) {
+            flakes.push(new flakeMove(canvas.width, canvas.height, this.flakeSize, this.fallSpeed))
+        }
+    }
+    /* 画雪 */
+    function drawSnow() {
+        var maxFlake = this.maxFlake,
+            flakes = this.flakes;
+        ctx = this.ctx, canvas = this.canvas, that = this;
+        /* 清空雪花 */
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        for (var e = 0; e < maxFlake; e++) {
+            flakes[e].update();
+            flakes[e].render(ctx);
+        }
+        /*  一帧一帧的画 */
+        this.loop = requestAnimationFrame(function () {
+            drawSnow.apply(that);
+        });
+    }
+
+    window.onload = function StartSnow() {
+        /* 调用及控制方法 */
+        var snow = new snowFall({ maxFlake: 60 });
+        snow.start();
+
+        /*技能条*/
+        var canvas = document.getElementById("SkillCanvas");
+        if (canvas == null)
+            return;
+        var t = new Array(12, 39, 64, 89, 114);
+        var y = new Array("#4AB480", "#E1AB3E", "#DC595A", "#7390F2", "#747DC5");
+        var l = new Array(120, 150, 40, 60, 30);
+        var content = canvas.getContext("2d");
+        for (var i = 0; i < 5; ++i) {
+            content.fillStyle = y[i];
+            content.fillRect(0, t[i], l[i], 15);
+        }
+    }
+
+    window.onkeydown = window.onkeyup = window.onkeypress = function (event) {
+        // 判断是否按下F12，F12键码为123  
+        if (event.keyCode = 123) {
+            event.preventDefault(); // 阻止默认事件行为  
+            window.event.returnValue = false;
+        }
+    }  
+</script>
+
+<!--禁用左右键-->
+
+<body topmargin="0" oncontextmenu="return false" ondragstart="return false" onselectstart="return false"
+    onselect="document.selection.empty()" oncopy="document.selection.empty()" onbeforecopy="return false"
+    onmouseup="document.selection.empty()">
+    <div class="center">
+        <!--头像-->
+        <div id="selfphoto">
+            <img src="https://cdn.jsdelivr.net/gh/AustinYANyh/Image@1.0/head1.jpg" width="85" height="85"></image>
+        </div>
+        <div style="float: left;margin-left: 20px;">
+            <p style="margin-bottom: 10px;display: inline-block;font-weight: bold;">昵称:</p>
+            <p style="margin-bottom: 10px;display: inline-block;">&nbsp&nbsp染墨灬若流云</p><br>
+            <p style="margin-bottom: 15px;display: inline-block;font-weight: bold;">最爱:</p>
+            <p style="margin-bottom: 15px;display: inline-block;">&nbsp&nbsp迷人又可爱的鹿宝宝~</p>
+        </div>
+    </div>
+    <div class="centerAfterLeft">
+        <div style="text-align: center;font-size: 18;">
+            <p style="margin-bottom: 10px;display: inline-block;font-weight: bold;">Skills</p>
+            <p style="margin-bottom: 10px;display: inline-block;font-weight: bold;">|</p>
+            <p style="margin-bottom: 10px;display: inline-block;font-weight: bold;">技能</p>
+        </div>
+        <!--技能名称-->
+        <div style="text-align: left;left: 10%;position: absolute;">
+            <p>C/C++</p>
+            <p>C#/WPF</p>
+            <p>HTML/CSS/JS</p>
+            <p>PYTHON</p>
+            <p>PS</p>
+        </div>
+        <!--技能百分比-->
+        <div style="width: 300px;height: 250px; text-align: left;left: 50%;position: absolute;float: left;">
+            <canvas id="SkillCanvas" style="height: 200px;float: left;">
+
+<pre><code>        &lt;/canvas&gt;
+        &lt;div style=&quot;float: left;z-index: 999;position: absolute;&quot;&gt;
+            &lt;!--此处有问题,正确的写法不会这样做--&gt;
+            &lt;p style=&quot;margin-left: 130px;&quot;&gt;80%&lt;/p&gt;
+            &lt;p style=&quot;margin-left: 170px;&quot;&gt;90%&lt;/p&gt;
+            &lt;p style=&quot;margin-left: 20px;&quot;&gt;15%&lt;/p&gt;
+            &lt;p style=&quot;margin-left: 40px;&quot;&gt;20%&lt;/p&gt;
+            &lt;p style=&quot;margin-left: 10px;&quot;&gt;10%&lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;centerAfterRight&quot;&gt;
+    &lt;div style=&quot;text-align: center;font-size: 18;&quot;&gt;
+        &lt;p style=&quot;margin-bottom: 10px;display: inline-block;font-weight: bold;&quot;&gt;Introduction&lt;/p&gt;
+        &lt;p style=&quot;margin-bottom: 10px;display: inline-block;font-weight: bold;&quot;&gt;|&lt;/p&gt;
+        &lt;p style=&quot;margin-bottom: 10px;display: inline-block;font-weight: bold;&quot;&gt;简介&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div style=&quot;text-align: left;left: 0%;position: absolute;&quot;&gt;
+        &lt;ul&gt;
+            &lt;li&gt;学历: 某不知名二本的本科&lt;/li&gt;&lt;br&gt;
+            &lt;li&gt;现况: 工作四个月多,C#软件工程师&lt;/li&gt;&lt;br&gt;
+            &lt;li&gt;目标: 成为一个优秀的C++工程师&lt;/li&gt;&lt;br&gt;
+            &lt;li&gt;博客: 书到用时方恨少,事非经过不知难&lt;/li&gt;&lt;br&gt;
+            &lt;li&gt;兴趣: 研究各种精美的界面,研究各种炫酷的动画&lt;/li&gt;&lt;br&gt;
+        &lt;/ul&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;footer&quot;&gt;
+    &lt;div style=&quot;text-align: center;font-size: 18;&quot;&gt;
+        &lt;p style=&quot;margin-bottom: 10px;display: inline-block;font-weight: bold;&quot;&gt;Contact&lt;/p&gt;
+        &lt;p style=&quot;margin-bottom: 10px;display: inline-block;font-weight: bold;&quot;&gt;|&lt;/p&gt;
+        &lt;p style=&quot;margin-bottom: 10px;display: inline-block;font-weight: bold;&quot;&gt;联系&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;a href=&quot;http://wpa.qq.com/msgrd?v=3 &amp;uin=1241528539 &amp;site=qq&amp;menu=yes&quot; target=&quot;-blank&quot; title=&quot;QQ&quot;&gt;
+        &lt;img id=&quot;qq&quot; style=&quot;margin-top: 0px; left: 15%;position: absolute;&quot;
+            src=&quot;https://cdn.jsdelivr.net/gh/AustinYANyh/Image@1.1/qq.png&quot;&gt;
+    &lt;/a&gt;
+    &lt;a href=&quot;http:weixin://&quot; target=&quot;-blank&quot; title=&quot;微信&quot;&gt;
+        &lt;img id=&quot;wechat&quot; style=&quot;margin-top: 0px; left: 30%;position: absolute;&quot;
+            src=&quot;https://cdn.jsdelivr.net/gh/AustinYANyh/Image@1.1/wechat.png&quot;&gt;
+    &lt;/a&gt;
+    &lt;a href=&quot;https://music.163.com/#/user/home?id=286524796&quot; target=&quot;-blank&quot; title=&quot;网易云音乐&quot;&gt;
+        &lt;img id=&quot;neastcloud&quot; style=&quot;margin-top: 0px;left: 45%;position: absolute;&quot;
+            src=&quot;https://cdn.jsdelivr.net/gh/AustinYANyh/Image@1.1/neastcloud.png&quot;&gt;
+    &lt;/a&gt;
+    &lt;!--我的B站里什么也没有,只是练习图片超链接--&gt;
+    &lt;a href=&quot;https://space.bilibili.com/44717522&quot; target=&quot;-blank&quot; title=&quot;BiliBili&quot;&gt;
+        &lt;img id=&quot;bilibili&quot; style=&quot;margin-top: 0px;left: 60%;position: absolute;&quot;
+            src=&quot;https://cdn.jsdelivr.net/gh/AustinYANyh/Image@1.1/bilibili.png&quot;&gt;
+    &lt;/a&gt;
+    &lt;a href=&quot;https://blog.csdn.net/Austin_Yan&quot; target=&quot;-blank&quot; title=&quot;CSDN&quot;&gt;
+        &lt;img id=&quot;blog&quot; style=&quot;margin-top: 0px;left: 75%;position: absolute;&quot;
+            src=&quot;https://cdn.jsdelivr.net/gh/AustinYANyh/Image@1.1.1/CSDN.png&quot;&gt;
+    &lt;/a&gt;
+&lt;/div&gt;
+&lt;div class=&quot;lastfooter&quot;&gt;
+    &lt;p style=&quot;display: inline-block;color: rgb(210, 210, 210);&quot;&gt;Copyright © 2018-2020&lt;/p&gt;
+    &lt;a style=&quot;display: inline-block;color: rgb(210, 210, 210);&quot; href=&quot;https://www.lubaobao.xyz&quot;
+        target=&quot;-blank&quot;&gt;AustinYANyh&apos;s
+        Blog.&lt;/a&gt;
+    &lt;p style=&quot;display: inline-block;color: rgb(210, 210, 210);&quot;&gt;All rights reserved.&lt;/p&gt;
+&lt;/div&gt;</code></pre></body>
+
+</html>
