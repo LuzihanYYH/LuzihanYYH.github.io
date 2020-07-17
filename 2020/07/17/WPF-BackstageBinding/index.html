@@ -16,10 +16,10 @@
 
   <!-- 页面元数据 -->
   
-    <title>C#中调用C++dll - AustinYAN&#39;s Blog</title>
+    <title>WPF的后台数据绑定 - AustinYAN&#39;s Blog</title>
   
   
-    <meta name="description" content="校招是肯定没戏了..19年是20界的校招…">
+    <meta name="description" content="有很多时候,自定义控件是由多个不同的系统提供的控件组合起来的,那么在Xaml前端界面上,实例化对象之后,是没有办法访问到内部的控件的(哪怕你命了名),但是又想给他绑定数据源怎么办呢?">
   
 
   <!-- feed -->
@@ -420,8 +420,8 @@
         
           
   <h1 class="title">
-    <a href="/2019/12/20/CSarp-interaction/">
-      C#中调用C++dll
+    <a href="/2020/07/17/WPF-BackstageBinding/">
+      WPF的后台数据绑定
     </a>
   </h1>
 
@@ -459,7 +459,7 @@
               <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：Dec 20, 2019</p>
+    <p>发布于：Jul 17, 2020</p>
   </a>
 </div>
 
@@ -482,32 +482,36 @@
       <section class="article typo">
         <div class="article-entry" itemprop="articleBody">
           
-          <p>校招是肯定没戏了..19年是20界的校招…</p>
+          <p>有很多时候,自定义控件是由多个不同的系统提供的控件组合起来的,那么在Xaml前端界面上,实例化对象之后,是没有办法访问到内部的控件的(哪怕你命了名),但是又想给他绑定数据源怎么办呢?</p>
 <a id="more"></a>
 
-<h2 id="C-中调用C-dll"><a href="#C-中调用C-dll" class="headerlink" title="C#中调用C++dll"></a>C#中调用C++dll</h2><ul>
-<li><p>C++代码</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> MATH_EXPORTS</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MATH_API __declspec(dllexport)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">else</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MATH_API __declspec(dllimport)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">extern</span> <span class="string">"C"</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="class"><span class="keyword">class</span> <span class="title">MATH_API</span> <span class="title">CMath</span> &#123;</span></span><br><span class="line">	<span class="keyword">public</span>:</span><br><span class="line">		CMath(<span class="keyword">void</span>);</span><br><span class="line">		<span class="function"><span class="keyword">int</span> <span class="title">Math_Add</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span></span></span><br><span class="line"><span class="function">		</span>&#123;</span><br><span class="line">			<span class="keyword">return</span> a + b;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="function"><span class="keyword">int</span> <span class="title">Math_Sub</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span></span></span><br><span class="line"><span class="function">		</span>&#123;</span><br><span class="line">			<span class="keyword">return</span> a - b;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="function"><span class="keyword">int</span> <span class="title">Math_Col</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span></span></span><br><span class="line"><span class="function">		</span>&#123;</span><br><span class="line">			<span class="keyword">return</span> a * b;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="function"><span class="keyword">int</span> <span class="title">Math_Dev</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span></span></span><br><span class="line"><span class="function">		</span>&#123;</span><br><span class="line">			<span class="keyword">return</span> a / b;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">extern</span> MATH_API <span class="keyword">int</span> nMath;</span><br><span class="line"></span><br><span class="line"><span class="function">MATH_API <span class="keyword">int</span> <span class="title">fnMath</span><span class="params">(<span class="keyword">void</span>)</span></span>;</span><br></pre></td></tr></table></figure></li>
-<li><p>C#代码</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">using</span> System.Collections.Generic;</span><br><span class="line"><span class="keyword">using</span> System.Linq;</span><br><span class="line"><span class="keyword">using</span> System.Text;</span><br><span class="line"><span class="keyword">using</span> System.Runtime.InteropServices;</span><br><span class="line"><span class="keyword">using</span> System.Threading.Tasks;</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">test</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">class</span> <span class="title">func</span></span><br><span class="line">    &#123;</span><br><span class="line">        [<span class="meta">DllImport(@<span class="meta-string">"C:\Users\Austin_Yan\Documents\Visual Studio 2013\Projects\Math\Debug\Math.dll"</span>,EntryPoint=<span class="meta-string">"?Math_Add@CMath@@QAEHHH@Z"</span>)</span>]</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">extern</span> <span class="keyword">int</span> <span class="title">Math_Add</span>(<span class="params"><span class="keyword">int</span> a,<span class="keyword">int</span> b</span>)</span>;</span><br><span class="line"></span><br><span class="line">        [<span class="meta">DllImport(@<span class="meta-string">"C:\Users\Austin_Yan\Documents\Visual Studio 2013\Projects\Math\Debug\Math.dll"</span>, EntryPoint = <span class="meta-string">"?Math_Sub@CMath@@QAEHHH@Z"</span>)</span>]</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">extern</span> <span class="keyword">int</span> <span class="title">Math_Sub</span>(<span class="params"><span class="keyword">int</span> a, <span class="keyword">int</span> b</span>)</span>;</span><br><span class="line"></span><br><span class="line">        [<span class="meta">DllImport(@<span class="meta-string">"C:\Users\Austin_Yan\Documents\Visual Studio 2013\Projects\Math\Debug\Math.dll"</span>, EntryPoint = <span class="meta-string">"?Math_Col@CMath@@QAEHHH@Z"</span>)</span>]</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">extern</span> <span class="keyword">int</span> <span class="title">Math_Col</span>(<span class="params"><span class="keyword">int</span> a, <span class="keyword">int</span> b</span>)</span>;</span><br><span class="line"></span><br><span class="line">        [<span class="meta">DllImport(@<span class="meta-string">"C:\Users\Austin_Yan\Documents\Visual Studio 2013\Projects\Math\Debug\Math.dll"</span>, EntryPoint = <span class="meta-string">"?Math_Dev@CMath@@QAEHHH@Z"</span>)</span>]</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">extern</span> <span class="keyword">int</span> <span class="title">Math_Dev</span>(<span class="params"><span class="keyword">int</span> a, <span class="keyword">int</span> b</span>)</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">class</span> <span class="title">Program</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="keyword">string</span>[] args</span>)</span></span><br><span class="line"><span class="function"></span>        &#123;</span><br><span class="line">            <span class="keyword">int</span> a = func.Math_Add(<span class="number">5</span>, <span class="number">6</span>);</span><br><span class="line">            Console.WriteLine(a);</span><br><span class="line">            a = func.Math_Sub(<span class="number">6</span>, <span class="number">5</span>);</span><br><span class="line">            Console.WriteLine(a);</span><br><span class="line">            a = func.Math_Col(<span class="number">6</span>, <span class="number">5</span>);</span><br><span class="line">            Console.WriteLine(a);</span><br><span class="line">            a = func.Math_Dev(<span class="number">12</span>, <span class="number">3</span>);</span><br><span class="line">            Console.WriteLine(a);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h2></li>
-<li><p>dll引用添加不成功,报错如下：无法加载DLL”**.dll”:找不到指定的模块</p>
-<blockquote>
-<p>建议使用vs 2013创建win32程序—&gt;下一步—&gt;dll,然后编辑,不要创建windows控制台程序然后修改配置类型为动态库,如果不成功,调到第三个问题</p>
-</blockquote>
+<h2 id="情景"><a href="#情景" class="headerlink" title="情景"></a>情景</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ProgressBar</span> <span class="attr">Grid.Row</span>=<span class="string">"0"</span> <span class="attr">x:Name</span>=<span class="string">"progressBar"</span> <span class="attr">x:FieldModifier</span>=<span class="string">"public"</span> <span class="attr">Style</span>=<span class="string">"&#123;StaticResource ProgressBarStyle2&#125;"</span> </span></span><br><span class="line"><span class="tag">                     <span class="attr">local:EllipseClipper.IsClipping</span>=<span class="string">"True"</span> <span class="attr">HorizontalAlignment</span>=<span class="string">"Center"</span> <span class="attr">Height</span>=<span class="string">"100"</span> <span class="attr">VerticalAlignment</span>=<span class="string">"Top"</span> </span></span><br><span class="line"><span class="tag">                     <span class="attr">Width</span>=<span class="string">"100"</span> <span class="attr">Value</span>=<span class="string">"50"</span> <span class="attr">RenderTransformOrigin</span>=<span class="string">"0.5,0.5"</span> <span class="attr">Foreground</span>=<span class="string">"&#123;DynamicResource BodorBkColor&#125;"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">ProgressBar.Effect</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">DropShadowEffect</span> <span class="attr">BlurRadius</span>=<span class="string">"7"</span> <span class="attr">Direction</span>=<span class="string">"-500"</span> <span class="attr">Color</span>=<span class="string">"#FF3E3E3E"</span> <span class="attr">RenderingBias</span>=<span class="string">"Quality"</span> <span class="attr">FrameworkElement.FlowDirection</span>=<span class="string">"LeftToRight"</span> <span class="attr">ShadowDepth</span>=<span class="string">"1"</span> /&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">ProgressBar.Effect</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">ProgressBar.Background</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">RadialGradientBrush</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">GradientStop</span> <span class="attr">Color</span>=<span class="string">"#363636"</span> <span class="attr">Offset</span>=<span class="string">"1"</span> /&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">GradientStop</span> <span class="attr">Color</span>=<span class="string">"#656666"</span> /&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">RadialGradientBrush</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">ProgressBar.Background</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">ProgressBar.RenderTransform</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">TransformGroup</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">ScaleTransform</span>/&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">SkewTransform</span>/&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">RotateTransform</span> <span class="attr">Angle</span>=<span class="string">"-90"</span>/&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">TranslateTransform</span>/&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">TransformGroup</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">ProgressBar.RenderTransform</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">ProgressBar</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">Label</span> <span class="attr">Grid.Row</span>=<span class="string">"1"</span> <span class="attr">x:Name</span>=<span class="string">"labelModelName"</span> <span class="attr">x:FieldModifier</span>=<span class="string">"public"</span> <span class="attr">Content</span>=<span class="string">"功率(KW)"</span> <span class="attr">HorizontalAlignment</span>=<span class="string">"Center"</span> <span class="attr">VerticalAlignment</span>=<span class="string">"Center"</span> <span class="attr">Foreground</span>=<span class="string">"&#123;StaticResource NormalForeground&#125;"</span> <span class="attr">FontSize</span>=<span class="string">"15"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">Label</span> <span class="attr">Grid.Row</span>=<span class="string">"0"</span> <span class="attr">x:Name</span>=<span class="string">"labelValue"</span> <span class="attr">x:FieldModifier</span>=<span class="string">"public"</span> <span class="attr">Content</span>=<span class="string">"&#123;Binding Value, ElementName=progressBar,Converter=&#123;StaticResource ValueConverter&#125;&#125;"</span> <span class="attr">HorizontalAlignment</span>=<span class="string">"Center"</span> <span class="attr">VerticalAlignment</span>=<span class="string">"Center"</span> <span class="attr">Foreground</span>=<span class="string">"&#123;StaticResource NormalForeground&#125;"</span> <span class="attr">FontSize</span>=<span class="string">"15"</span> <span class="attr">SizeChanged</span>=<span class="string">"labelValue_SizeChanged"</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+<p>这段xaml的代码不保证有效,只是举个例子随便截取的一段,这个自定义控件由一个ProgreeBar和两个Label组成,其中Label1的Content绑定的是ProgressBar的Value,那么在外部调用这个自定义控件时</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">local:LocalUserControl</span> <span class="attr">x:Name</span>=<span class="string">"localUserControl"</span> <span class="attr">Grid.Column</span>=<span class="string">"0"</span> <span class="attr">Width</span>=<span class="string">"120"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+<p>这个时候已经访问不到内部的ProgressBar了,怎么绑定数据就是一个问题了</p>
+<p>也不可能在控件里就绑定,那所有的控件绑定的都是一个数据源了</p>
+<h2 id="后台绑定"><a href="#后台绑定" class="headerlink" title="后台绑定"></a>后台绑定</h2><p>之前说xaml里哪怕内部的控件命了名也访问不了,那么命名干什么呢?是为了让后台代码可以访问到</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//绑定当前速度</span></span><br><span class="line">CurrentSpeedBall.progressBar.Maximum = <span class="number">100</span>;</span><br><span class="line">SetBindings(CurrentSpeedBall.progressBar, viewModel.motionStatus, <span class="string">"Data"</span>, BindingMode.OneWay, ProgressBar.ValueProperty);</span><br><span class="line"></span><br><span class="line"><span class="comment">//绑定和初始化进给倍率</span></span><br><span class="line">viewModel.motionStatus.feedRate = BusinessLayerService.CommonControlStatus.FeedRate = <span class="number">100</span>;</span><br><span class="line">SetBindings(FeedRateSlider.slider, viewModel.motionStatus, <span class="string">"feedRate"</span>, BindingMode.TwoWay, Slider.ValueProperty);</span><br></pre></td></tr></table></figure>
+<p>后台是可以通过命名+.+命名的方式访问到内部的控件的</p>
+<h2 id="SetBinding-amp-BindingOperations"><a href="#SetBinding-amp-BindingOperations" class="headerlink" title="SetBinding &amp; BindingOperations"></a>SetBinding &amp; BindingOperations</h2><p>这两者没什么大的区别,只是使用方法略微不同<br><font color=0099ff>如果需要封装成函数,控件的类型写UserControl会无法转换,所以应该写FrameWorkElement</font></p>
+<ul>
+<li><p>SetBinding使用:<br>UserControl.SetBinding(DependcyProperty dp,BindingBase binding)</p>
 </li>
-<li><p>找不到程序入口点</p>
-<blockquote>
-<p>使用dumpbin工具查看C++中函数编译之后的名称,C#中EntryPoint中填入<br><img src="https://img-blog.csdnimg.cn/20191220002026781.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1c3Rpbl9ZYW4=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-</blockquote>
+<li><p>BindingOperations使用:<br>BindingOperations.SetBinding(Obj, DepProperty, binding);</p>
 </li>
-<li><p>引用添加不成功</p>
-<blockquote>
-<p>有效解决办法就是使用DllImport,不要添加引用了<br><img src="https://img-blog.csdnimg.cn/20191220002355686.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1c3Rpbl9ZYW4=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>[DllImport(@”C:\Users\Austin_Yan\Documents\Visual Studio 2013\Projects\Math\Debug\Math.dll”,EntryPoint=”?Math_Add@CMath@@QAEHHH@Z”)]<br>正常应该放在bin目录下,这里是错误的编码习惯,懒</p>
-</blockquote>
+<li><p>Binding.Source<br>数据源,一般都是一个类</p>
+</li>
+<li><p>Binding.Path<br>双向绑定的时候或者数据源是类的时候会需要,<font color=0099ff>如果数据源是类,path就是成员变量的名称</font></p>
+</li>
+<li><p>Binding.Mode<br>绑定的方式,和xaml里一致,one way/two way/…之类的,UpdateTrigger也是一样的设置方法</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">SetBindings</span>(<span class="params">FrameworkElement Obj, Object Source, <span class="keyword">string</span> PropertyPath, BindingMode Mode, DependencyProperty DepProperty</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    Binding binding = <span class="keyword">new</span> Binding();</span><br><span class="line">    binding.Source = Source;</span><br><span class="line">    binding.Path = <span class="keyword">new</span> PropertyPath(PropertyPath);</span><br><span class="line">    binding.Mode = Mode;</span><br><span class="line">    <span class="keyword">if</span> (Mode == BindingMode.TwoWay)</span><br><span class="line">        binding.UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged;</span><br><span class="line">    BindingOperations.SetBinding(Obj, DepProperty, binding);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 </li>
 </ul>
-<p>很久没写了,偶尔来两篇吧,都懒得改颜色了,想想以前,唉</p>
+<h2 id="可能遇到的问题"><a href="#可能遇到的问题" class="headerlink" title="可能遇到的问题"></a>可能遇到的问题</h2><p>如果绑定之后,界面UI没有变化,有可能是因为数据源没有通知UI发生了变化<br><font color=0099ff>数据源的类应该继承INotifyPropertyChanged,并且实现接口</font></p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">DataSource</span> : <span class="title">INotifyPropertyChanged</span></span><br><span class="line">   &#123;</span><br><span class="line">       <span class="keyword">private</span> <span class="keyword">double</span> _Data;</span><br><span class="line">       <span class="keyword">public</span> <span class="keyword">double</span> Data</span><br><span class="line">       &#123;</span><br><span class="line">           <span class="keyword">get</span> &#123; <span class="keyword">return</span> _Data; &#125;</span><br><span class="line">           <span class="keyword">set</span></span><br><span class="line">           &#123;</span><br><span class="line">               _Data = <span class="keyword">value</span>;</span><br><span class="line">               <span class="keyword">if</span> (PropertyChanged != <span class="literal">null</span>)</span><br><span class="line">                   PropertyChanged.Invoke(<span class="keyword">this</span>, <span class="keyword">new</span> PropertyChangedEventArgs(<span class="string">"Data"</span>));</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">public</span> <span class="keyword">event</span> PropertyChangedEventHandler PropertyChanged;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h2><p><img src="https://img-blog.csdnimg.cn/20200717105323104.gif" alt="在这里插入图片描述"></p>
 
           
             <div class='article_footer'>
@@ -544,7 +548,7 @@
           
         
           
-            <p>本文永久链接是：<a href=http://lubaobao.xyz/2019/12/20/CSarp-interaction/>http://lubaobao.xyz/2019/12/20/CSarp-interaction/</a></p>
+            <p>本文永久链接是：<a href=http://lubaobao.xyz/2020/07/17/WPF-BackstageBinding/>http://lubaobao.xyz/2020/07/17/WPF-BackstageBinding/</a></p>
           
         
       </blockquote>
@@ -595,10 +599,10 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-06-23T18:27:24+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-07-17T10:58:51+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Jun 23, 2020</p>
+    <p>更新于：Jul 17, 2020</p>
   </a>
 </div>
 
@@ -622,7 +626,7 @@
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer"
           
-          href="http://connect.qq.com/widget/shareqq/index.html?url=http://lubaobao.xyz/2019/12/20/CSarp-interaction/&title=C#中调用C++dll - AustinYAN's Blog&pics=true&summary=校招是肯定没戏了..19年是20界的校招…"
+          href="http://connect.qq.com/widget/shareqq/index.html?url=http://lubaobao.xyz/2020/07/17/WPF-BackstageBinding/&title=WPF的后台数据绑定 - AustinYAN's Blog&pics=true&summary=有很多时候,自定义控件是由多个不同的系统提供的控件组合起来的,那么在Xaml前端界面上,实例化对象之后,是没有办法访问到内部的控件的(哪怕你命了名),但是又想给他绑定数据源怎么办呢?"
           
           >
           
@@ -634,7 +638,7 @@
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer"
           
-          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://lubaobao.xyz/2019/12/20/CSarp-interaction/&title=C#中调用C++dll - AustinYAN's Blog&pics=true&summary=校招是肯定没戏了..19年是20界的校招…"
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://lubaobao.xyz/2020/07/17/WPF-BackstageBinding/&title=WPF的后台数据绑定 - AustinYAN's Blog&pics=true&summary=有很多时候,自定义控件是由多个不同的系统提供的控件组合起来的,那么在Xaml前端界面上,实例化对象之后,是没有办法访问到内部的控件的(哪怕你命了名),但是又想给他绑定数据源怎么办呢?"
           
           >
           
@@ -646,7 +650,7 @@
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer"
           
-          href="http://service.weibo.com/share/share.php?url=http://lubaobao.xyz/2019/12/20/CSarp-interaction/&title=C#中调用C++dll - AustinYAN's Blog&pics=true&summary=校招是肯定没戏了..19年是20界的校招…"
+          href="http://service.weibo.com/share/share.php?url=http://lubaobao.xyz/2020/07/17/WPF-BackstageBinding/&title=WPF的后台数据绑定 - AustinYAN's Blog&pics=true&summary=有很多时候,自定义控件是由多个不同的系统提供的控件组合起来的,那么在Xaml前端界面上,实例化对象之后,是没有办法访问到内部的控件的(哪怕你命了名),但是又想给他绑定数据源怎么办呢?"
           
           >
           
@@ -670,21 +674,13 @@
         
           <div class="prev-next">
             
-              <a class='prev' href='/2020/02/23/CSarp-chatmessagebox/'>
-                <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>C#聊天气泡框</p>
-                <p class='content'>气泡虽然是用的别人写好的方法,自己做的东西很少,大多是学习但是完成了学习编程以来一直的梦想,做一个好看点的聊天界面…
-
-
-思路：借鉴自C# winform socket 初学者示例大佬的示例下载...</p>
-              </a>
             
-            
-              <a class='next' href='/2019/08/31/VSCode-remotessh/'>
-                <p class='title'>VSCodeRemote SSH公钥免密登录，远离xshell，摆脱vim<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
-                <p class='content'>比起VIM的纯键盘操作,我更喜欢鼠标加键盘的操作方式…所以能想办法替代VIM就想办法替代..虽然我也不是服务器开发..
+              <a class='next' href='/2020/07/15/HTML-About/'>
+                <p class='title'>HTML制作个人简介页面<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+                <p class='content'>我的博客是看的大神教程一步步做的,然后所以我的about界面,也准备仿着大佬的做，之前根本没学过web的前端，只接触过xaml这种带标签的设计语言…
 
 
-安装插件：微软的宇宙第一IDE让人使用之后欲罢不能，那么Linux编程...</p>
+布局设计这个东西还是比较难得,我就直接没...</p>
               </a>
             
           </div>
@@ -729,7 +725,7 @@
 
   <script>
     window.subData = {
-      title: 'C#中调用C++dll',
+      title: 'WPF的后台数据绑定',
       tools: true
     }
   </script>
@@ -755,7 +751,7 @@
 
 
     <div class='content'>
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#C-中调用C-dll"><span class="toc-text">C#中调用C++dll</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#遇到的问题"><span class="toc-text">遇到的问题</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#情景"><span class="toc-text">情景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#后台绑定"><span class="toc-text">后台绑定</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SetBinding-amp-BindingOperations"><span class="toc-text">SetBinding &amp; BindingOperations</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#可能遇到的问题"><span class="toc-text">可能遇到的问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#效果"><span class="toc-text">效果</span></a></li></ol>
     </div>
   </section>
 
