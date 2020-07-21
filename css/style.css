@@ -1264,7 +1264,7 @@ p.p.logo {
 }
 span.p.code,
 p.p.code {
-  font-family: Menlo, UbuntuMono, Monaco, monospace, courier, sans-serif;
+  font-family: Menlo, consolas, Monaco, monospace, courier, sans-serif;
 }
 span.p.left,
 p.p.left {
@@ -1575,7 +1575,7 @@ pre {
   display: block;
   background: #f6f6f6;
   font-size: 0.8125rem;
-  font-family: Menlo, UbuntuMono, Monaco, monospace, courier, sans-serif;
+  font-family: Menlo, consolas, Monaco, monospace, courier, sans-serif;
   border-radius: 4px;
   border: 1px solid #e7e7e7;
   line-height: 1.5;
@@ -1928,7 +1928,7 @@ pre {
   -webkit-user-select: none;
   user-select: none;
   -webkit-appearance: none;
-  font-family: Menlo, Menlo, UbuntuMono, Monaco, monospace, courier, sans-serif;
+  font-family: Menlo, Menlo, consolas, Monaco, monospace, courier, sans-serif;
   font-size: calc(0.8125rem - 1px);
   font-weight: bold;
   padding: 4px 8px;
@@ -2081,7 +2081,7 @@ div.gallery.stretch>p img {
   color: rgba(85,85,85,0.65);
 }
 .article mjx-container {
-  font-family: Menlo, UbuntuMono, Monaco, monospace, courier, sans-serif;
+  font-family: Menlo, consolas, Monaco, monospace, courier, sans-serif;
   background: rgba(255,255,255,0);
   padding: 16px 8px;
   border-radius: 4px;
@@ -2280,7 +2280,7 @@ div.gallery.stretch>p img {
 }
 .l_main #comments #valine_container .vcards .vcontent code {
   color: #555;
-  font-family: Menlo, UbuntuMono, Monaco, monospace, courier, sans-serif;
+  font-family: Menlo, consolas, Monaco, monospace, courier, sans-serif;
 }
 .l_main #comments #valine_container .vcards .vcontent pre {
   background: #f6f6f6;
@@ -2715,7 +2715,7 @@ div.gallery.stretch>p img {
   overflow: auto;
   background: #f6f6f6;
   font-size: 0.8125rem;
-  font-family: Menlo, UbuntuMono, Monaco, monospace, courier, sans-serif;
+  font-family: Menlo, consolas, Monaco, monospace, courier, sans-serif;
   border: 1px solid #e7e7e7;
   padding: 16px;
   border-radius: 4px;
@@ -2733,7 +2733,7 @@ div.gallery.stretch>p img {
   color: rgba(85,85,85,0.9);
 }
 .article code {
-  font-family: Menlo, UbuntuMono, Monaco, monospace, courier, sans-serif;
+  font-family: Menlo, consolas, Monaco, monospace, courier, sans-serif;
 }
 .article code:not([class]) {
   padding: 3px 4px 1px 4px;
