@@ -476,13 +476,13 @@
   <div class="new-meta-item wordcount">
     <a class='notlink'>
       <i class="fas fa-keyboard fa-fw" aria-hidden="true"></i>
-      <p>876 words</p>
+      <p>833 words</p>
     </a>
   </div>
   <div class="new-meta-item readtime">
     <a class='notlink'>
       <i class="fas fa-hourglass-half fa-fw" aria-hidden="true"></i>
-      <p>4 min</p>
+      <p>3 min</p>
     </a>
   </div>
 
@@ -508,24 +508,7 @@
       
         <a id="more"></a>
 
-<h3 id="文章目录"><a href="#文章目录" class="headerlink" title="文章目录"></a>文章目录</h3><ul>
-<li><p><a href="#MySQL_5">连接MySQL数据库：</a></p>
-<ul>
-<li><a href="#_155">代码运行测试图:</a></li>
-</ul>
-</li>
-<li><p><a href="#_160">绘制登录界面：</a></p>
-<ul>
-<li><a href="#_168">消息响应：</a></li>
-<li><a href="#_202">代码运行测试图:</a></li>
-</ul>
-</li>
-<li><p><a href="#_209">更换图标:</a></p>
-</li>
-<li><p><a href="#window_219">修改window属性:</a></p>
-</li>
-</ul>
-<hr>
+
 <h2 id="连接MySQL数据库："><a href="#连接MySQL数据库：" class="headerlink" title="连接MySQL数据库："></a>连接MySQL数据库：</h2><p><strong>将常用的操作封装起来,方便调用 环境:VS 2013 数据库版本8.0.7,使用C++接口</strong></p>
 <p><strong>MySQL.h</strong></p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> once</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;WinSock2.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;mysql.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MySQL</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	MySQL();</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">bool</span> <span class="title">ConnectMysql</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span>* host, <span class="keyword">const</span> <span class="keyword">char</span>* user, <span class="keyword">const</span> <span class="keyword">char</span>* password, <span class="keyword">const</span> <span class="keyword">char</span>* dbname)</span></span>;</span><br><span class="line"></span><br><span class="line">	~MySQL();</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; <span class="title">Select</span><span class="params">(<span class="keyword">const</span> <span class="built_in">string</span>&amp; strSQL)</span></span>;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">bool</span> <span class="title">Insert</span><span class="params">(<span class="keyword">const</span> <span class="built_in">string</span>&amp; strSQL)</span></span>;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">bool</span> <span class="title">Delete</span><span class="params">(<span class="keyword">const</span> <span class="built_in">string</span>&amp; strSQL)</span></span>;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">bool</span> <span class="title">UpDate</span><span class="params">(<span class="keyword">const</span> <span class="built_in">string</span>&amp; strSQL)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">	MYSQL* _mySql;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
@@ -539,10 +522,8 @@
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"MySQL.h"</span></span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	MySQL mysql;</span><br><span class="line"></span><br><span class="line">	mysql.ConnectMysql(<span class="string">"localhost"</span>, <span class="string">"root"</span>, <span class="string">"123123"</span>, <span class="string">"supmarket"</span>);</span><br><span class="line"></span><br><span class="line">	mysql.Select(<span class="string">"select * from employee;"</span>);</span><br><span class="line"></span><br><span class="line">	system(<span class="string">"pause"</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h3 id="代码运行测试图"><a href="#代码运行测试图" class="headerlink" title="代码运行测试图:"></a>代码运行测试图:</h3><p><img src="https://img-blog.csdnimg.cn/20190807141330883.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1c3Rpbl9ZYW4=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<hr>
 <h2 id="绘制登录界面："><a href="#绘制登录界面：" class="headerlink" title="绘制登录界面："></a>绘制登录界面：</h2><p><img src="https://img-blog.csdnimg.cn/20190807141707366.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1c3Rpbl9ZYW4=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><strong>注意水平布局和垂直布局的层次关系，不然会出现编辑框无法鼠标选中等问题</strong></p>
 <p><strong>而且，使用中文的最小化和关闭好low的感觉，等找到素材之后把它换掉</strong></p>
-<hr>
 <h3 id="消息响应："><a href="#消息响应：" class="headerlink" title="消息响应："></a>消息响应：</h3><p><strong>登录窗口只有三个按钮，分别是最小化，关闭以及登录</strong></p>
 <p><strong>最小化调用win32的函数::SendMessage完成，要加作用域限定符</strong></p>
 <p><strong>关闭直接调用Close函数完成</strong></p>
@@ -550,14 +531,12 @@
 <p><strong>法，以及登录成功后隐藏登录界面创建主界面</strong></p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">LoginWind::Notify</span><span class="params">(TNotifyUI&amp; msg)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (msg.sType == _T(<span class="string">"click"</span>))</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span> (msg.pSender-&gt;GetName() == _T(<span class="string">"btnClose"</span>))</span><br><span class="line">		&#123;</span><br><span class="line">			Close();</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (msg.pSender-&gt;GetName() == _T(<span class="string">"btnMin"</span>))</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="comment">//MessageBox(NULL, _T("最小化"), _T("提示信息"), IDOK);</span></span><br><span class="line">			::SendMessage(m_hWnd,WM_SYSCOMMAND,SC_MINIMIZE,<span class="number">0</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (msg.pSender-&gt;GetName() == _T(<span class="string">"btnLogin"</span>))</span><br><span class="line">		&#123;</span><br><span class="line">			LoginWind::Login();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<hr>
+
 <h3 id="代码运行测试图-1"><a href="#代码运行测试图-1" class="headerlink" title="代码运行测试图:"></a>代码运行测试图:</h3><p><strong>虽说丑到极致,弱到爆炸…但是毕竟也是人生中第一个界面程序,总算脱离控制台了…</strong></p>
 <p><img src="https://img-blog.csdnimg.cn/20190807142754324.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1c3Rpbl9ZYW4=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<hr>
 <h2 id="更换图标"><a href="#更换图标" class="headerlink" title="更换图标:"></a>更换图标:</h2><p><strong>用户名和密码来自QQ登陆界面,最小化和关闭来自QQ聊天窗口,选中后图标颜色变化也来自聊天窗口</strong></p>
 <p><strong>目前标题栏还是无法拖动…有待解决…</strong><br><img src="https://img-blog.csdnimg.cn/2019080715562745.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1c3Rpbl9ZYW4=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
 <p><img src="https://img-blog.csdnimg.cn/201908071558100.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1c3Rpbl9ZYW4=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<hr>
 <h2 id="修改window属性"><a href="#修改window属性" class="headerlink" title="修改window属性:"></a>修改window属性:</h2><p><strong>通过修改caption和sizebox两项属性可以解决标题栏无法拖动的问题,也可以使得窗口大小可以调整</strong></p>
 <p><strong>千万不要手动往xml文件里写入,否则你的图片会全部失效</strong><br><img src="https://img-blog.csdnimg.cn/20190807194741140.png" alt="在这里插入图片描述"></p>
 <p><strong>未完待续~</strong></p>
@@ -636,7 +615,7 @@
   <div class="new-meta-item wordcount">
     <a class='notlink'>
       <i class="fas fa-keyboard fa-fw" aria-hidden="true"></i>
-      <p>560 words</p>
+      <p>536 words</p>
     </a>
   </div>
   <div class="new-meta-item readtime">
@@ -669,38 +648,24 @@
         <a id="more"></a>
 
 
-<h3 id="文章目录"><a href="#文章目录" class="headerlink" title="文章目录"></a>文章目录</h3><ul>
-<li><a href="#MySQL_4">下载MySQL：</a></li>
-<li><a href="#MySQL_10">安装MySQL：</a></li>
-<li><a href="#_20">使用方法：</a></li>
-<li><a href="#DuiLib_35">编译DuiLib：</a></li>
-<li><a href="#_53">环境配置：</a></li>
-<li><a href="#DuiLib_60">测试DuiLib：</a></li>
-</ul>
-<hr>
 <h2 id="下载MySQL："><a href="#下载MySQL：" class="headerlink" title="下载MySQL："></a>下载MySQL：</h2><p><a href="https://dev.mysql.com/downloads" target="_blank" rel="noopener">下载传送门：MySQL8.07版本</a></p>
 <p><strong>也可以去百度搜索5.7版本，反正结果都是一样的</strong></p>
-<hr>
 <h2 id="安装MySQL："><a href="#安装MySQL：" class="headerlink" title="安装MySQL："></a>安装MySQL：</h2><p><img src="https://img-blog.csdnimg.cn/20190806130309886.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1c3Rpbl9ZYW4=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><strong>推荐使用用户自定义安装，开发者选项仅适合网络速度良好的小伙伴，下载实在太慢了…</strong></p>
 <p><strong>之后的选择产品界面，选择MySQL SERVER8.0.7，添加到右边</strong></p>
 <p><strong>剩下的就是一路下一步，保持默认，直到安装结束</strong></p>
-<hr>
 <h2 id="使用方法："><a href="#使用方法：" class="headerlink" title="使用方法："></a>使用方法：</h2><p><strong>8.07版本的MySQL自带客户端工具</strong></p>
 <p><img src="https://img-blog.csdnimg.cn/20190806130749732.png" alt="在这里插入图片描述"></p>
 <p><strong>如果其他版本，或者因为意外什么的导致没有这个东西，也可以使用cmd命令行操作</strong></p>
 <p><strong>先使用命令进入MySQL安装的文件夹下的bin目录，才可以使用mysql的命令进入数据库</strong></p>
 <p><img src="https://img-blog.csdnimg.cn/20190806131133846.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1c3Rpbl9ZYW4=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><strong>在这里输入mysql的命令就可以识别了，登录成功如下图：</strong><br><img src="https://img-blog.csdnimg.cn/20190806131245101.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1c3Rpbl9ZYW4=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<hr>
 <h2 id="编译DuiLib："><a href="#编译DuiLib：" class="headerlink" title="编译DuiLib："></a>编译DuiLib：</h2><p><strong>找到文件夹中的DuiLib文件，类型为sln，双击打开，如果是2013的编译器直接点迁移项目即可</strong></p>
 <p><strong>中途遇到已存在需要覆盖的直接点确定</strong><br><img src="https://img-blog.csdnimg.cn/20190806131448317.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1c3Rpbl9ZYW4=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
 <p><strong>项目加载完毕之后，不需要其他操作，直接点击：项目—&gt;批生成—&gt;全选—&gt;生成</strong></p>
 <p><strong>全部重新生成成功之后，原来的文件夹会多出一个lib文件夹，用于存放静态库文件</strong></p>
 <p><img src="https://img-blog.csdnimg.cn/20190806131902473.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1c3Rpbl9ZYW4=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><strong>同时，bin文件夹下也会生成dll动态库文件</strong></p>
 <p><img src="https://img-blog.csdnimg.cn/20190806132022931.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1c3Rpbl9ZYW4=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><strong>至此，所有需要的东西应该是一个都不少了</strong></p>
-<hr>
 <h2 id="环境配置："><a href="#环境配置：" class="headerlink" title="环境配置："></a>环境配置：</h2><p><strong>这个就不用多说了，无论是官方github还是百度上都太多了，直接贴图，照着操作就可以了</strong></p>
 <p><img src="https://img-blog.csdnimg.cn/20190806132809724.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1c3Rpbl9ZYW4=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20190806132818680.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1c3Rpbl9ZYW4=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<hr>
 <h2 id="测试DuiLib："><a href="#测试DuiLib：" class="headerlink" title="测试DuiLib："></a>测试DuiLib：</h2><p><strong>从网上找一段代码，测试是否可以生成界面，本质还是win32的，DuiLib只是进行封装操作</strong></p>
 <p><strong>代码来源：</strong> <a href="https://www.cnblogs.com/Alberl/p/3343579.html" target="_blank" rel="noopener">https://www.cnblogs.com/Alberl/p/3343579.html</a></p>
 <p><strong>如果遇到dll文件找不到的，把bin生成的dll文件拷贝到工程的Debug目录下</strong></p>

@@ -477,7 +477,7 @@
   <div class="new-meta-item wordcount">
     <a class='notlink'>
       <i class="fas fa-keyboard fa-fw" aria-hidden="true"></i>
-      <p>560 words</p>
+      <p>536 words</p>
     </a>
   </div>
   <div class="new-meta-item readtime">
@@ -510,38 +510,24 @@
           <a id="more"></a>
 
 
-<h3 id="文章目录"><a href="#文章目录" class="headerlink" title="文章目录"></a>文章目录</h3><ul>
-<li><a href="#MySQL_4">下载MySQL：</a></li>
-<li><a href="#MySQL_10">安装MySQL：</a></li>
-<li><a href="#_20">使用方法：</a></li>
-<li><a href="#DuiLib_35">编译DuiLib：</a></li>
-<li><a href="#_53">环境配置：</a></li>
-<li><a href="#DuiLib_60">测试DuiLib：</a></li>
-</ul>
-<hr>
 <h2 id="下载MySQL："><a href="#下载MySQL：" class="headerlink" title="下载MySQL："></a>下载MySQL：</h2><p><a href="https://dev.mysql.com/downloads" target="_blank" rel="noopener">下载传送门：MySQL8.07版本</a></p>
 <p><strong>也可以去百度搜索5.7版本，反正结果都是一样的</strong></p>
-<hr>
 <h2 id="安装MySQL："><a href="#安装MySQL：" class="headerlink" title="安装MySQL："></a>安装MySQL：</h2><p><img src="https://img-blog.csdnimg.cn/20190806130309886.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1c3Rpbl9ZYW4=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><strong>推荐使用用户自定义安装，开发者选项仅适合网络速度良好的小伙伴，下载实在太慢了…</strong></p>
 <p><strong>之后的选择产品界面，选择MySQL SERVER8.0.7，添加到右边</strong></p>
 <p><strong>剩下的就是一路下一步，保持默认，直到安装结束</strong></p>
-<hr>
 <h2 id="使用方法："><a href="#使用方法：" class="headerlink" title="使用方法："></a>使用方法：</h2><p><strong>8.07版本的MySQL自带客户端工具</strong></p>
 <p><img src="https://img-blog.csdnimg.cn/20190806130749732.png" alt="在这里插入图片描述"></p>
 <p><strong>如果其他版本，或者因为意外什么的导致没有这个东西，也可以使用cmd命令行操作</strong></p>
 <p><strong>先使用命令进入MySQL安装的文件夹下的bin目录，才可以使用mysql的命令进入数据库</strong></p>
 <p><img src="https://img-blog.csdnimg.cn/20190806131133846.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1c3Rpbl9ZYW4=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><strong>在这里输入mysql的命令就可以识别了，登录成功如下图：</strong><br><img src="https://img-blog.csdnimg.cn/20190806131245101.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1c3Rpbl9ZYW4=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<hr>
 <h2 id="编译DuiLib："><a href="#编译DuiLib：" class="headerlink" title="编译DuiLib："></a>编译DuiLib：</h2><p><strong>找到文件夹中的DuiLib文件，类型为sln，双击打开，如果是2013的编译器直接点迁移项目即可</strong></p>
 <p><strong>中途遇到已存在需要覆盖的直接点确定</strong><br><img src="https://img-blog.csdnimg.cn/20190806131448317.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1c3Rpbl9ZYW4=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
 <p><strong>项目加载完毕之后，不需要其他操作，直接点击：项目—&gt;批生成—&gt;全选—&gt;生成</strong></p>
 <p><strong>全部重新生成成功之后，原来的文件夹会多出一个lib文件夹，用于存放静态库文件</strong></p>
 <p><img src="https://img-blog.csdnimg.cn/20190806131902473.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1c3Rpbl9ZYW4=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><strong>同时，bin文件夹下也会生成dll动态库文件</strong></p>
 <p><img src="https://img-blog.csdnimg.cn/20190806132022931.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1c3Rpbl9ZYW4=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><strong>至此，所有需要的东西应该是一个都不少了</strong></p>
-<hr>
 <h2 id="环境配置："><a href="#环境配置：" class="headerlink" title="环境配置："></a>环境配置：</h2><p><strong>这个就不用多说了，无论是官方github还是百度上都太多了，直接贴图，照着操作就可以了</strong></p>
 <p><img src="https://img-blog.csdnimg.cn/20190806132809724.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1c3Rpbl9ZYW4=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20190806132818680.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1c3Rpbl9ZYW4=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<hr>
 <h2 id="测试DuiLib："><a href="#测试DuiLib：" class="headerlink" title="测试DuiLib："></a>测试DuiLib：</h2><p><strong>从网上找一段代码，测试是否可以生成界面，本质还是win32的，DuiLib只是进行封装操作</strong></p>
 <p><strong>代码来源：</strong> <a href="https://www.cnblogs.com/Alberl/p/3343579.html" target="_blank" rel="noopener">https://www.cnblogs.com/Alberl/p/3343579.html</a></p>
 <p><strong>如果遇到dll文件找不到的，把bin生成的dll文件拷贝到工程的Debug目录下</strong></p>
@@ -605,7 +591,7 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-07-22T10:22:17+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-07-22T10:40:14+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
     <p>更新于：Jul 22, 2020</p>
@@ -684,25 +670,10 @@
                 <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>【C++小项目---2】C++连接MySQL数据库、DuLib绘制登录界面</p>
                 <p class='content'>
 
-文章目录
-连接MySQL数据库：
 
-代码运行测试图:
-
-
-绘制登录界面：
-
-消息响应：
-代码运行测试图:
-
-
-更换图标:
-
-修改window属性:
-
-
-
-连接MySQL数据库：将常用的操作封...</p>
+连接MySQL数据库：将常用的操作封装起来,方便调用 环境:VS 2013 数据库版本8.0.7,使用C++接口
+MySQL.h
+12345678910111213141516171819...</p>
               </a>
             
             
@@ -782,7 +753,7 @@
 
 
     <div class='content'>
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#文章目录"><span class="toc-text">文章目录</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#下载MySQL："><span class="toc-text">下载MySQL：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装MySQL："><span class="toc-text">安装MySQL：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用方法："><span class="toc-text">使用方法：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#编译DuiLib："><span class="toc-text">编译DuiLib：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#环境配置："><span class="toc-text">环境配置：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#测试DuiLib："><span class="toc-text">测试DuiLib：</span></a>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#下载MySQL："><span class="toc-text">下载MySQL：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装MySQL："><span class="toc-text">安装MySQL：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用方法："><span class="toc-text">使用方法：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#编译DuiLib："><span class="toc-text">编译DuiLib：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#环境配置："><span class="toc-text">环境配置：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#测试DuiLib："><span class="toc-text">测试DuiLib：</span></a></li></ol>
     </div>
   </section>
 
