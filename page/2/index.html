@@ -841,7 +841,7 @@
   <div class="new-meta-item wordcount">
     <a class='notlink'>
       <i class="fas fa-keyboard fa-fw" aria-hidden="true"></i>
-      <p>388 words</p>
+      <p>404 words</p>
     </a>
   </div>
   <div class="new-meta-item readtime">
@@ -871,30 +871,16 @@
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
       
-        <a id="more"></a>
-
-
-
-<p>按照正常套路出题的要求，应该是第一行输入一个正整数N，表示数组有几个数</p>
-<p>第二行则是输入数组的数据</p>
-<p>比如</p>
-<p>4<br>1 2 3 4</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> N;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">while</span>(<span class="built_in">cin</span>&gt;&gt;N)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">v</span><span class="params">(N)</span></span>;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;N;++i)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">cin</span>&gt;&gt;v[i];</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>有了那个N，可以初始化数组长度，也可以设置循环的次数，输入就变得很简单</p>
-<p>但是，有些出题者不告诉那个N是多少，直接说输入两组数据，空格隔开</p>
-<p>比如，</p>
-<p>1 2 3 4<br>4 3 2 1</p>
-<p>这种不定长的数组，数组长度取决于输入的数据有多少，所以不能自己设置（设置太多浪费空间，设置太少会越界），只能使用push_back，让编译器自动扩容</p>
-<p>不告知数据有多少个带来的主要问题就是输入的循环如何结束，cin从流中提取数据会跳过空格，所以只要输入的最后一个字符不是空格，说明输入结束了</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v1;</span><br><span class="line">	<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v2;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">char</span> c;</span><br><span class="line">	<span class="keyword">int</span> value1;</span><br><span class="line">	<span class="keyword">int</span> value2;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">while</span> (<span class="built_in">cin</span> &gt;&gt; value1)</span><br><span class="line">	&#123;</span><br><span class="line">		v1.push_back(value1);</span><br><span class="line">		c = <span class="built_in">cin</span>.get();</span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span> (c != <span class="string">' '</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">while</span> (<span class="built_in">cin</span> &gt;&gt; value2)</span><br><span class="line">	&#123;</span><br><span class="line">		v2.push_back(value2);</span><br><span class="line">		c = <span class="built_in">cin</span>.get();</span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span> (c != <span class="string">' '</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>；</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这样就可以达到空格间隔，回车结束的不定长数组输入</p>
-<p>效果图：<br><img src="https://img-blog.csdnimg.cn/20191019110951319.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1c3Rpbl9ZYW4=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-
+        <p>OJ练习题遇到的不定长数组输入问题…</p>
       
     </div>
     
+      
+        <div class="button readmore">
+          <a href="/2019/10/19/OJ-Skill/">
+            阅读全文 <i class="fas fa-chevron-right"></i>
+          </a>
+        </div>
       
     
   </section>
@@ -1333,7 +1319,7 @@
   <div class="new-meta-item wordcount">
     <a class='notlink'>
       <i class="fas fa-keyboard fa-fw" aria-hidden="true"></i>
-      <p>379 words</p>
+      <p>345 words</p>
     </a>
   </div>
   <div class="new-meta-item readtime">
@@ -1363,38 +1349,16 @@
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
       
-        <a id="more"></a>
-
-
-
-<h3 id="文章目录"><a href="#文章目录" class="headerlink" title="文章目录"></a>文章目录</h3><ul>
-<li><a href="#_3">完善登陆界面逻辑:</a></li>
-<li><a href="#OK_9">完善售货员界面OK按钮的逻辑:</a></li>
-<li><a href="#__20">完善售货员界面+ -按钮的逻辑:</a></li>
-</ul>
-<ul>
-<li><a href="#_30">庄周表示,未完待续!~</a></li>
-</ul>
-<hr>
-<h2 id="完善登陆界面逻辑"><a href="#完善登陆界面逻辑" class="headerlink" title="完善登陆界面逻辑:"></a>完善登陆界面逻辑:</h2><p>我发现,在用户不输入用户名和密码的情况下,依次弹窗提醒,但是提醒结束之后,程序还是往下执行了,导致登陆界面隐藏了,这与正常情况不符,正常的应该是弹窗完登陆按钮响应完毕,等待用户继续输入<br><img src="https://img-blog.csdnimg.cn/20190822174056184.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1c3Rpbl9ZYW4=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<hr>
-<h2 id="完善售货员界面OK按钮的逻辑"><a href="#完善售货员界面OK按钮的逻辑" class="headerlink" title="完善售货员界面OK按钮的逻辑:"></a>完善售货员界面OK按钮的逻辑:</h2><p>购买商品的数量大于库存,应该提示购买失败,清空输入的商品数量编辑框,保留查询的商品名称和库存数量,同时应该把商品的库存正确数量再次显示,避免用户再次点击查询才能看到正确的库存数量</p>
-<ul>
-<li>库存为2,但是购买数量为3,虽然现实中不可能存在,但是软件中一切皆有可能<br><img src="https://img-blog.csdnimg.cn/2019082217510362.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1c3Rpbl9ZYW4=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></li>
-<li>重新显示库存数量,并且商品数量编辑框置零<br><img src="https://img-blog.csdnimg.cn/2019082217524283.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1c3Rpbl9ZYW4=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></li>
-<li>这里直接调用SelectGood方法的前提是输入的商品名称不清空<br><img src="https://img-blog.csdnimg.cn/2019082217533650.png" alt="在这里插入图片描述"></li>
-</ul>
-<hr>
-<h2 id="完善售货员界面-按钮的逻辑"><a href="#完善售货员界面-按钮的逻辑" class="headerlink" title="完善售货员界面+ -按钮的逻辑:"></a>完善售货员界面+ -按钮的逻辑:</h2><p>商品数量为0时,不可以-号操作,弹窗提示,置零商品数量编辑框</p>
-<ul>
-<li>商品数量大于等于1的时候,-号按钮才可以操作,否则报错</li>
-</ul>
-<p><img src="https://img-blog.csdnimg.cn/2019082217574859.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1c3Rpbl9ZYW4=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20190822175941184.png" alt="在这里插入图片描述"></p>
-<hr>
-<h1 id="庄周表示-未完待续"><a href="#庄周表示-未完待续" class="headerlink" title="庄周表示,未完待续!~"></a>庄周表示,未完待续!~</h1>
+        <p>对于程序的逻辑进行完善…</p>
       
     </div>
     
+      
+        <div class="button readmore">
+          <a href="/2019/08/22/C++Project-6/">
+            阅读全文 <i class="fas fa-chevron-right"></i>
+          </a>
+        </div>
       
     
   </section>
@@ -1585,7 +1549,7 @@
   <div class="new-meta-item wordcount">
     <a class='notlink'>
       <i class="fas fa-keyboard fa-fw" aria-hidden="true"></i>
-      <p>233 words</p>
+      <p>261 words</p>
     </a>
   </div>
   <div class="new-meta-item readtime">
@@ -1615,26 +1579,16 @@
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
       
-        <a id="more"></a>
-
-
-
-<h2 id="数据库中插入信息："><a href="#数据库中插入信息：" class="headerlink" title="数据库中插入信息："></a>数据库中插入信息：</h2><p><img src="https://img-blog.csdnimg.cn/20190809165849441.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1c3Rpbl9ZYW4=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<h2 id="实现检测功能："><a href="#实现检测功能：" class="headerlink" title="实现检测功能："></a>实现检测功能：</h2><p><strong>利用DuiLib库中的方法,拿到编辑框中的用户名和密码,想办法转为string类型</strong></p>
-<p><strong>CDuistring类方法中GetData()可以将Cduistring类型转为LPCTSTR</strong></p>
-<p><strong>再写一个转换函数,将为string类型,函数我不会写,我是百度查的,代码如下:</strong></p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="built_in">std</span>::<span class="built_in">string</span> <span class="title">StringFromLPCTSTR</span><span class="params">(LPCTSTR str)</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> _UNICODE</span></span><br><span class="line">	<span class="keyword">int</span> size_str = WideCharToMultiByte(CP_UTF8, <span class="number">0</span>, str, <span class="number">-1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="literal">NULL</span>, <span class="literal">NULL</span>);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">char</span>* point_new_array = <span class="keyword">new</span> <span class="keyword">char</span>[size_str];</span><br><span class="line"></span><br><span class="line">	WideCharToMultiByte(CP_UTF8, <span class="number">0</span>, str, <span class="number">-1</span>, point_new_array, size_str, <span class="literal">NULL</span>, <span class="literal">NULL</span>);</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="built_in">std</span>::<span class="built_in">string</span> <span class="title">return_string</span><span class="params">(point_new_array)</span></span>;</span><br><span class="line">	<span class="keyword">delete</span>[] point_new_array;</span><br><span class="line">	point_new_array = <span class="literal">NULL</span>;</span><br><span class="line">	<span class="keyword">return</span> return_string;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">else</span></span></span><br><span class="line">	<span class="keyword">return</span> <span class="built_in">std</span>::<span class="built_in">string</span>(str);</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>然后连接数据库,拿到用户名和密码,使用mysql_query在数据库中查询</strong></p>
-<p><code>MYSQL_RES* result = mysql_store_result(_mySql);</code></p>
-<p><strong>保存结果集,在判断是否在数据库中能查到用户名和对应的密码</strong></p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(mysql_num_rows(result))</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> <span class="literal">false</span>;</span><br></pre></td></tr></table></figure>
-
-<h2 id="代码运行测试图："><a href="#代码运行测试图：" class="headerlink" title="代码运行测试图："></a>代码运行测试图：</h2><p><strong>输入用户名123，密码123，登录失败</strong><br><img src="https://img-blog.csdnimg.cn/20190809165950334.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1c3Rpbl9ZYW4=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><strong>输入用户名1,密码123</strong><br><img src="https://img-blog.csdnimg.cn/20190809170119543.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1c3Rpbl9ZYW4=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><strong>登陆成功:</strong><br><img src="https://img-blog.csdnimg.cn/20190809170215184.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1c3Rpbl9ZYW4=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-
+        <p>C++小项目学习数据库读取密码和实现登录窗口（学习多窗口的创建）…</p>
       
     </div>
     
+      
+        <div class="button readmore">
+          <a href="/2019/08/09/C++Project-3/">
+            阅读全文 <i class="fas fa-chevron-right"></i>
+          </a>
+        </div>
       
     
   </section>
@@ -1917,7 +1871,7 @@
     setInterval("createtime()", 250);
   </script>
   <i class="fas fa-chart-area"></i>
-  <span class="post-count">字数统计：27.3k</span>
+  <span class="post-count">字数统计：27.4k</span>
   <script type="text/javascript">document.write(unescape("%3Cspan id='cnzz_stat_icon_1279069821'%3E%3C/span%3E%3Cscript src='https://s9.cnzz.com/z_stat.php%3Fid%3D1279069821%26show%3Dpic2' type='text/javascript'%3E%3C/script%3E"));
   </script>
   <script>

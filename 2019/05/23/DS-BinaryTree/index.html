@@ -19,6 +19,27 @@
     <title>【数据结构---26】树以及二叉树的基本概念 - AustinYAN&#39;s Blog</title>
   
   
+    <meta name="description" content="
+树的概念：
+与树相关的基本概念:
+树的表示方式：
+二叉树：
+二叉树的五条特性:
+二叉树的存储：
+堆序堆的实现:
+调整堆序:
+堆的删除操作:
+堆的插入操作:
+扩容:
+用堆的思想进行排序
+TOP K问题(海量数据)
+二叉树的链式存储方式
+求二叉树的节点个数:
+二叉树的创建方式:
+二叉树的销毁方式:
+二叉树的拷贝:
+...">
+  
 
   <!-- feed -->
   
@@ -515,11 +536,7 @@
       <section class="article typo">
         <div class="article-entry" itemprop="articleBody">
           
-          <a id="more"></a>
-
-
-
-<h3 id="文章目录"><a href="#文章目录" class="headerlink" title="文章目录"></a>文章目录</h3><ul>
+          <ul>
 <li><a href="#_2">树的概念：</a></li>
 <li><a href="#_5">与树相关的基本概念:</a></li>
 <li><a href="#_18">树的表示方式：</a></li>
@@ -540,6 +557,8 @@
 <li><a href="#_199">二叉树的拷贝:</a></li>
 <li><a href="#_203">查看二叉树中的叶子节点:</a></li>
 </ul>
+<a id="more"></a>
+
 <h2 id="树的概念："><a href="#树的概念：" class="headerlink" title="树的概念："></a>树的概念：</h2><p><strong>一种非线性的数据结构,它是由n个(n&gt;=0)有限节点组成的一个具有层次关系的集合</strong></p>
 <h2 id="与树相关的基本概念"><a href="#与树相关的基本概念" class="headerlink" title="与树相关的基本概念:"></a>与树相关的基本概念:</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">深度:树中节点的最大层次</span><br><span class="line"></span><br><span class="line">双亲:若一个节点含有子节点,则这个节点是这个子节点的双亲节点</span><br><span class="line"></span><br><span class="line">子节点:一个节点含有的子树的根节点被称为这个节点的子节点</span><br><span class="line"></span><br><span class="line">兄弟:具有相同双亲节点的被称为兄弟节点</span><br><span class="line"></span><br><span class="line">叶节点:度为0的节点被称为叶节点</span><br></pre></td></tr></table></figure>
 
@@ -663,7 +682,7 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-07-22T10:23:22+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-07-22T10:45:48+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
     <p>更新于：Jul 22, 2020</p>
@@ -690,7 +709,27 @@
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer"
           
-          href="http://connect.qq.com/widget/shareqq/index.html?url=https://www.lubaobao.xyz/2019/05/23/DS-BinaryTree/&title=【数据结构---26】树以及二叉树的基本概念 - AustinYAN's Blog&summary="
+          href="http://connect.qq.com/widget/shareqq/index.html?url=https://www.lubaobao.xyz/2019/05/23/DS-BinaryTree/&title=【数据结构---26】树以及二叉树的基本概念 - AustinYAN's Blog&summary=
+树的概念：
+与树相关的基本概念:
+树的表示方式：
+二叉树：
+二叉树的五条特性:
+二叉树的存储：
+堆序堆的实现:
+调整堆序:
+堆的删除操作:
+堆的插入操作:
+扩容:
+用堆的思想进行排序
+TOP K问题(海量数据)
+二叉树的链式存储方式
+求二叉树的节点个数:
+二叉树的创建方式:
+二叉树的销毁方式:
+二叉树的拷贝:
+查看二叉树中的叶子节点:
+"
           
           >
           
@@ -702,7 +741,27 @@
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer"
           
-          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://www.lubaobao.xyz/2019/05/23/DS-BinaryTree/&title=【数据结构---26】树以及二叉树的基本概念 - AustinYAN's Blog&summary="
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://www.lubaobao.xyz/2019/05/23/DS-BinaryTree/&title=【数据结构---26】树以及二叉树的基本概念 - AustinYAN's Blog&summary=
+树的概念：
+与树相关的基本概念:
+树的表示方式：
+二叉树：
+二叉树的五条特性:
+二叉树的存储：
+堆序堆的实现:
+调整堆序:
+堆的删除操作:
+堆的插入操作:
+扩容:
+用堆的思想进行排序
+TOP K问题(海量数据)
+二叉树的链式存储方式
+求二叉树的节点个数:
+二叉树的创建方式:
+二叉树的销毁方式:
+二叉树的拷贝:
+查看二叉树中的叶子节点:
+"
           
           >
           
@@ -714,7 +773,27 @@
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer"
           
-          href="http://service.weibo.com/share/share.php?url=https://www.lubaobao.xyz/2019/05/23/DS-BinaryTree/&title=【数据结构---26】树以及二叉树的基本概念 - AustinYAN's Blog&summary="
+          href="http://service.weibo.com/share/share.php?url=https://www.lubaobao.xyz/2019/05/23/DS-BinaryTree/&title=【数据结构---26】树以及二叉树的基本概念 - AustinYAN's Blog&summary=
+树的概念：
+与树相关的基本概念:
+树的表示方式：
+二叉树：
+二叉树的五条特性:
+二叉树的存储：
+堆序堆的实现:
+调整堆序:
+堆的删除操作:
+堆的插入操作:
+扩容:
+用堆的思想进行排序
+TOP K问题(海量数据)
+二叉树的链式存储方式
+求二叉树的节点个数:
+二叉树的创建方式:
+二叉树的销毁方式:
+二叉树的拷贝:
+查看二叉树中的叶子节点:
+"
           
           >
           
@@ -831,7 +910,7 @@
 
 
     <div class='content'>
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#文章目录"><span class="toc-text">文章目录</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#树的概念："><span class="toc-text">树的概念：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#与树相关的基本概念"><span class="toc-text">与树相关的基本概念:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#树的表示方式："><span class="toc-text">树的表示方式：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二叉树："><span class="toc-text">二叉树：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二叉树的五条特性"><span class="toc-text">二叉树的五条特性:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二叉树的存储："><span class="toc-text">二叉树的存储：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#堆序堆的实现"><span class="toc-text">堆序堆的实现:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#调整堆序"><span class="toc-text">调整堆序:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#堆的删除操作"><span class="toc-text">堆的删除操作:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#堆的插入操作"><span class="toc-text">堆的插入操作:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#扩容"><span class="toc-text">扩容:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#用堆的思想进行排序"><span class="toc-text">用堆的思想进行排序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TOP-K问题-海量数据"><span class="toc-text">TOP K问题(海量数据)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二叉树的链式存储方式"><span class="toc-text">二叉树的链式存储方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#求二叉树的节点个数"><span class="toc-text">求二叉树的节点个数:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二叉树的创建方式"><span class="toc-text">二叉树的创建方式:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二叉树的销毁方式"><span class="toc-text">二叉树的销毁方式:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二叉树的拷贝"><span class="toc-text">二叉树的拷贝:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#查看二叉树中的叶子节点"><span class="toc-text">查看二叉树中的叶子节点:</span></a>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#树的概念："><span class="toc-text">树的概念：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#与树相关的基本概念"><span class="toc-text">与树相关的基本概念:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#树的表示方式："><span class="toc-text">树的表示方式：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二叉树："><span class="toc-text">二叉树：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二叉树的五条特性"><span class="toc-text">二叉树的五条特性:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二叉树的存储："><span class="toc-text">二叉树的存储：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#堆序堆的实现"><span class="toc-text">堆序堆的实现:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#调整堆序"><span class="toc-text">调整堆序:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#堆的删除操作"><span class="toc-text">堆的删除操作:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#堆的插入操作"><span class="toc-text">堆的插入操作:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#扩容"><span class="toc-text">扩容:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#用堆的思想进行排序"><span class="toc-text">用堆的思想进行排序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TOP-K问题-海量数据"><span class="toc-text">TOP K问题(海量数据)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二叉树的链式存储方式"><span class="toc-text">二叉树的链式存储方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#求二叉树的节点个数"><span class="toc-text">求二叉树的节点个数:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二叉树的创建方式"><span class="toc-text">二叉树的创建方式:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二叉树的销毁方式"><span class="toc-text">二叉树的销毁方式:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二叉树的拷贝"><span class="toc-text">二叉树的拷贝:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#查看二叉树中的叶子节点"><span class="toc-text">查看二叉树中的叶子节点:</span></a></li></ol>
     </div>
   </section>
 
@@ -940,7 +1019,7 @@
     setInterval("createtime()", 250);
   </script>
   <i class="fas fa-chart-area"></i>
-  <span class="post-count">字数统计：27.3k</span>
+  <span class="post-count">字数统计：27.4k</span>
   <script type="text/javascript">document.write(unescape("%3Cspan id='cnzz_stat_icon_1279069821'%3E%3C/span%3E%3Cscript src='https://s9.cnzz.com/z_stat.php%3Fid%3D1279069821%26show%3Dpic2' type='text/javascript'%3E%3C/script%3E"));
   </script>
   <script>

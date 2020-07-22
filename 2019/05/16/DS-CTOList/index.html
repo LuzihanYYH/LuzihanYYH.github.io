@@ -19,6 +19,8 @@
     <title>【数据结构---17】C语言实现一个链表队列 - AustinYAN&#39;s Blog</title>
   
   
+    <meta name="description" content="学习C语言实现链表…">
+  
 
   <!-- feed -->
   
@@ -485,7 +487,7 @@
   <div class="new-meta-item wordcount">
     <a class='notlink'>
       <i class="fas fa-keyboard fa-fw" aria-hidden="true"></i>
-      <p>488 words</p>
+      <p>497 words</p>
     </a>
   </div>
   <div class="new-meta-item readtime">
@@ -515,8 +517,8 @@
       <section class="article typo">
         <div class="article-entry" itemprop="articleBody">
           
-          <a id="more"></a>
-
+          <p>学习C语言实现链表…</p>
+<a id="more"></a>
 
 
 <h2 id="Queue-h"><a href="#Queue-h" class="headerlink" title="Queue.h"></a>Queue.h</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> once</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">int</span> QDataType;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">QNode</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	 <span class="class"><span class="keyword">struct</span> <span class="title">QNode</span>* _<span class="title">pNext</span>;</span></span><br><span class="line">	 QDataType _data;</span><br><span class="line">&#125;QNode;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">Queue</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	 QNode* _front; <span class="comment">// 指向队头元素 </span></span><br><span class="line">	 QNode* _back; <span class="comment">// 指向队尾元素 </span></span><br><span class="line">&#125;Queue;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">QueueInit</span><span class="params">(Queue* q)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">QueuePush</span><span class="params">(Queue* q, QDataType data)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">QueuePop</span><span class="params">(Queue* q)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function">QDataType <span class="title">QueueFront</span><span class="params">(Queue* q)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function">QDataType <span class="title">QueueBack</span><span class="params">(Queue* q)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">QueueSize</span><span class="params">(Queue* q)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">QueueEmpty</span><span class="params">(Queue* q)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">QueueDestroy</span><span class="params">(Queue* q)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">QueueTest</span><span class="params">()</span></span>;</span><br></pre></td></tr></table></figure>
@@ -603,7 +605,7 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-07-22T10:24:13+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-07-22T10:46:45+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
     <p>更新于：Jul 22, 2020</p>
@@ -630,7 +632,7 @@
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer"
           
-          href="http://connect.qq.com/widget/shareqq/index.html?url=https://www.lubaobao.xyz/2019/05/16/DS-CTOList/&title=【数据结构---17】C语言实现一个链表队列 - AustinYAN's Blog&summary="
+          href="http://connect.qq.com/widget/shareqq/index.html?url=https://www.lubaobao.xyz/2019/05/16/DS-CTOList/&title=【数据结构---17】C语言实现一个链表队列 - AustinYAN's Blog&summary=学习C语言实现链表…"
           
           >
           
@@ -642,7 +644,7 @@
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer"
           
-          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://www.lubaobao.xyz/2019/05/16/DS-CTOList/&title=【数据结构---17】C语言实现一个链表队列 - AustinYAN's Blog&summary="
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://www.lubaobao.xyz/2019/05/16/DS-CTOList/&title=【数据结构---17】C语言实现一个链表队列 - AustinYAN's Blog&summary=学习C语言实现链表…"
           
           >
           
@@ -654,7 +656,7 @@
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer"
           
-          href="http://service.weibo.com/share/share.php?url=https://www.lubaobao.xyz/2019/05/16/DS-CTOList/&title=【数据结构---17】C语言实现一个链表队列 - AustinYAN's Blog&summary="
+          href="http://service.weibo.com/share/share.php?url=https://www.lubaobao.xyz/2019/05/16/DS-CTOList/&title=【数据结构---17】C语言实现一个链表队列 - AustinYAN's Blog&summary=学习C语言实现链表…"
           
           >
           
@@ -680,12 +682,12 @@
             
               <a class='prev' href='/2019/05/18/DS-StackBrackets/'>
                 <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>【数据结构---18】基于栈的括号匹配检测</p>
-                <p class='content'>
+                <p class='content'>数据结构OJ练习题…
+
 
 题目描述：给定一个只包括 ‘(’，’)’，’{’，’}’，’[’，’]’ 的字符串，判断字符串是否有效
 有效字符串需满足：
-左括号必须用相同类型的右括号闭合左括号必须以正确的顺序闭合
-注意空...</p>
+左括号必须用相同类型的右括号闭合左括号必须以...</p>
               </a>
             
             
@@ -877,7 +879,7 @@
     setInterval("createtime()", 250);
   </script>
   <i class="fas fa-chart-area"></i>
-  <span class="post-count">字数统计：27.3k</span>
+  <span class="post-count">字数统计：27.4k</span>
   <script type="text/javascript">document.write(unescape("%3Cspan id='cnzz_stat_icon_1279069821'%3E%3C/span%3E%3Cscript src='https://s9.cnzz.com/z_stat.php%3Fid%3D1279069821%26show%3Dpic2' type='text/javascript'%3E%3C/script%3E"));
   </script>
   <script>
