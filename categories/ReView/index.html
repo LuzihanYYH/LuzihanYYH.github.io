@@ -18,7 +18,7 @@
 
   <!-- 页面元数据 -->
   
-    <title>Category: 数据结构非比较排序 - AustinYAN&#39;s Blog</title>
+    <title>Category: ReView - AustinYAN&#39;s Blog</title>
   
   
 
@@ -434,8 +434,8 @@
         
           
   <h2 class="title">
-    <a href="/2019/06/01/DS-PigeonholePrinciple/">
-      【数据结构---30】鸽巢原理---计数排序
+    <a href="/2019/10/19/OJ-Skill/">
+      【反思与总结】在线OJ中的不定长数组输入问题
     </a>
   </h2>
 
@@ -460,9 +460,9 @@
               
   
   <div class='new-meta-item category'>
-    <a href='/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E9%9D%9E%E6%AF%94%E8%BE%83%E6%8E%92%E5%BA%8F/' rel="nofollow">
+    <a href='/categories/ReView/' rel="nofollow">
       <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
-      <p>数据结构非比较排序</p>
+      <p>ReView</p>
     </a>
   </div>
 
@@ -473,7 +473,7 @@
               <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：Jun 1, 2019</p>
+    <p>发布于：Oct 19, 2019</p>
   </a>
 </div>
 
@@ -491,7 +491,7 @@
   <div class="new-meta-item wordcount">
     <a class='notlink'>
       <i class="fas fa-keyboard fa-fw" aria-hidden="true"></i>
-      <p>284 words</p>
+      <p>388 words</p>
     </a>
   </div>
   <div class="new-meta-item readtime">
@@ -525,12 +525,22 @@
 
 
 
-<h2 id="思路分析"><a href="#思路分析" class="headerlink" title="思路分析:"></a>思路分析:</h2><blockquote>
-<p>&lt;1&gt;巧妙地借助数组下标<br>&lt;2&gt;如果没有给出范围的话,第一步先找出数据范围<br>&lt;3&gt;统计每个元素出现的次数<br>&lt;4&gt;按照统计的计数对元素进行回收</p>
-</blockquote>
-<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现:"></a>代码实现:</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;malloc.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">CountSort</span><span class="params">(<span class="keyword">int</span>* <span class="built_in">array</span>, <span class="keyword">int</span> size)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">		<span class="comment">//未告知范围的情况下,先找出数据范围</span></span><br><span class="line">	</span><br><span class="line">		<span class="keyword">int</span> minPos = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">int</span> maxPos = <span class="number">0</span>;</span><br><span class="line">	</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; size; ++i)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span> (<span class="built_in">array</span>[minPos]&gt;<span class="built_in">array</span>[i])</span><br><span class="line">			&#123;</span><br><span class="line">				minPos = <span class="built_in">array</span>[i];</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span> (<span class="built_in">array</span>[maxPos] &lt; <span class="built_in">array</span>[i])</span><br><span class="line">			&#123;</span><br><span class="line">				maxPos = <span class="built_in">array</span>[i];</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	</span><br><span class="line">		<span class="keyword">int</span> range = maxPos - minPos + <span class="number">1</span>;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">int</span>* a = (<span class="keyword">int</span>*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">int</span>)*range);</span><br><span class="line">			</span><br><span class="line">		<span class="built_in">memset</span>(a, <span class="number">0</span>, <span class="keyword">sizeof</span>(<span class="keyword">int</span>)*range);</span><br><span class="line">	</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; size; ++i)</span><br><span class="line">		&#123;</span><br><span class="line">			a[<span class="built_in">array</span>[i]-minPos]++;</span><br><span class="line">		&#125;</span><br><span class="line">	</span><br><span class="line">		<span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">	</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; range; ++j)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">while</span> (a[j])</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="built_in">array</span>[count++]=j+minPos;</span><br><span class="line">				a[j]--;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	</span><br><span class="line">		<span class="built_in">free</span>(a);</span><br><span class="line">		a = <span class="literal">NULL</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">PrintAll</span><span class="params">(<span class="keyword">int</span>* <span class="built_in">array</span>, <span class="keyword">int</span> size)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; size; ++i)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"%d "</span>,<span class="built_in">array</span>[i]);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">		<span class="keyword">int</span> <span class="built_in">array</span>[] = &#123; <span class="number">0</span>, <span class="number">1</span>, <span class="number">5</span>, <span class="number">3</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">2</span>, <span class="number">5</span>, <span class="number">0</span>, <span class="number">9</span> &#125;;</span><br><span class="line">		</span><br><span class="line">		CountSort(<span class="built_in">array</span>, <span class="keyword">sizeof</span>(<span class="built_in">array</span>) / <span class="keyword">sizeof</span>(<span class="built_in">array</span>[<span class="number">0</span>]));</span><br><span class="line">		PrintAll(<span class="built_in">array</span>, <span class="keyword">sizeof</span>(<span class="built_in">array</span>) / <span class="keyword">sizeof</span>(<span class="built_in">array</span>[<span class="number">0</span>]));</span><br><span class="line">		</span><br><span class="line">		system(<span class="string">"pause"</span>);</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>按照正常套路出题的要求，应该是第一行输入一个正整数N，表示数组有几个数</p>
+<p>第二行则是输入数组的数据</p>
+<p>比如</p>
+<p>4<br>1 2 3 4</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> N;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">while</span>(<span class="built_in">cin</span>&gt;&gt;N)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">v</span><span class="params">(N)</span></span>;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;N;++i)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">cin</span>&gt;&gt;v[i];</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h2 id="代码运行测试图"><a href="#代码运行测试图" class="headerlink" title="代码运行测试图:"></a>代码运行测试图:</h2><p><img src="https://img-blog.csdnimg.cn/20190601180749356.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1c3Rpbl9ZYW4=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>有了那个N，可以初始化数组长度，也可以设置循环的次数，输入就变得很简单</p>
+<p>但是，有些出题者不告诉那个N是多少，直接说输入两组数据，空格隔开</p>
+<p>比如，</p>
+<p>1 2 3 4<br>4 3 2 1</p>
+<p>这种不定长的数组，数组长度取决于输入的数据有多少，所以不能自己设置（设置太多浪费空间，设置太少会越界），只能使用push_back，让编译器自动扩容</p>
+<p>不告知数据有多少个带来的主要问题就是输入的循环如何结束，cin从流中提取数据会跳过空格，所以只要输入的最后一个字符不是空格，说明输入结束了</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v1;</span><br><span class="line">	<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v2;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">char</span> c;</span><br><span class="line">	<span class="keyword">int</span> value1;</span><br><span class="line">	<span class="keyword">int</span> value2;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">while</span> (<span class="built_in">cin</span> &gt;&gt; value1)</span><br><span class="line">	&#123;</span><br><span class="line">		v1.push_back(value1);</span><br><span class="line">		c = <span class="built_in">cin</span>.get();</span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span> (c != <span class="string">' '</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">while</span> (<span class="built_in">cin</span> &gt;&gt; value2)</span><br><span class="line">	&#123;</span><br><span class="line">		v2.push_back(value2);</span><br><span class="line">		c = <span class="built_in">cin</span>.get();</span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span> (c != <span class="string">' '</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>；</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这样就可以达到空格间隔，回车结束的不定长数组输入</p>
+<p>效果图：<br><img src="https://img-blog.csdnimg.cn/20191019110951319.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1c3Rpbl9ZYW4=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
 
       
     </div>
@@ -645,12 +655,12 @@
           <li><a class="flat-box"
             title="/categories/C/" href="/categories/C/"
             id="categoriesC"
-            ><div class='name'>C#</div><div class='badge'>(11)</div></a></li>
+            ><div class='name'>C++</div><div class='badge'>(1)</div></a></li>
         
           <li><a class="flat-box"
             title="/categories/C/" href="/categories/C/"
             id="categoriesC"
-            ><div class='name'>C++</div><div class='badge'>(1)</div></a></li>
+            ><div class='name'>C#</div><div class='badge'>(11)</div></a></li>
         
           <li><a class="flat-box"
             title="/categories/Cpp/" href="/categories/Cpp/"
@@ -658,64 +668,29 @@
             ><div class='name'>Cpp</div><div class='badge'>(2)</div></a></li>
         
           <li><a class="flat-box"
+            title="/categories/DS/" href="/categories/DS/"
+            id="categoriesDS"
+            ><div class='name'>DS</div><div class='badge'>(11)</div></a></li>
+        
+          <li><a class="flat-box"
             title="/categories/HTML/" href="/categories/HTML/"
             id="categoriesHTML"
             ><div class='name'>HTML</div><div class='badge'>(1)</div></a></li>
         
           <li><a class="flat-box"
+            title="/categories/Linux/" href="/categories/Linux/"
+            id="categoriesLinux"
+            ><div class='name'>Linux</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box"
+            title="/categories/ReView/" href="/categories/ReView/"
+            id="categoriesReView"
+            ><div class='name'>ReView</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box"
             title="/categories/VsCode/" href="/categories/VsCode/"
             id="categoriesVsCode"
             ><div class='name'>VsCode</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/%E5%8F%8D%E6%80%9D%E4%B8%8E%E6%80%BB%E7%BB%93/" href="/categories/%E5%8F%8D%E6%80%9D%E4%B8%8E%E6%80%BB%E7%BB%93/"
-            id="categoriesE58F8DE6809DE4B88EE680BBE7BB93"
-            ><div class='name'>反思与总结</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"
-            id="categoriesE6938DE4BD9CE7B3BBE7BB9F"
-            ><div class='name'>操作系统</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"
-            id="categoriesE695B0E68DAEE7BB93E69E84"
-            ><div class='name'>数据结构</div><div class='badge'>(4)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%BA%8C%E5%8F%89%E6%A0%91/" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%BA%8C%E5%8F%89%E6%A0%91/"
-            id="categoriesE695B0E68DAEE7BB93E69E84E4BA8CE58F89E6A091"
-            ><div class='name'>数据结构二叉树</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/"
-            id="categoriesE695B0E68DAEE7BB93E69E84E68E92E5BA8FE7AE97E6B395"
-            ><div class='name'>数据结构排序算法</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E6%A0%88/" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E6%A0%88/"
-            id="categoriesE695B0E68DAEE7BB93E69E84E6A088"
-            ><div class='name'>数据结构栈</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E6%A0%91%E5%92%8C%E4%BA%8C%E5%8F%89%E6%A0%91/" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E6%A0%91%E5%92%8C%E4%BA%8C%E5%8F%89%E6%A0%91/"
-            id="categoriesE695B0E68DAEE7BB93E69E84E6A091E5928CE4BA8CE58F89E6A091"
-            ><div class='name'>数据结构树和二叉树</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E9%98%9F%E5%88%97%E5%9C%A8%E7%BA%BFOJ/" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E9%98%9F%E5%88%97%E5%9C%A8%E7%BA%BFOJ/"
-            id="categoriesE695B0E68DAEE7BB93E69E84E9989FE58897E59CA8E7BABFOJ"
-            ><div class='name'>数据结构队列在线OJ</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E9%9D%9E%E6%AF%94%E8%BE%83%E6%8E%92%E5%BA%8F/" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E9%9D%9E%E6%AF%94%E8%BE%83%E6%8E%92%E5%BA%8F/"
-            id="categoriesE695B0E68DAEE7BB93E69E84E99D9EE6AF94E8BE83E68E92E5BA8F"
-            ><div class='name'>数据结构非比较排序</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/%E9%92%88%E5%AF%B9%E6%80%A7%E5%A4%8D%E4%B9%A0/" href="/categories/%E9%92%88%E5%AF%B9%E6%80%A7%E5%A4%8D%E4%B9%A0/"
-            id="categoriesE99288E5AFB9E680A7E5A48DE4B9A0"
-            ><div class='name'>针对性复习</div><div class='badge'>(1)</div></a></li>
         
       </ul>
     </div>

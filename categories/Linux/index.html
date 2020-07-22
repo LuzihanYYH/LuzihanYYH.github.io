@@ -18,7 +18,7 @@
 
   <!-- 页面元数据 -->
   
-    <title>Category: 数据结构树和二叉树 - AustinYAN&#39;s Blog</title>
+    <title>Category: Linux - AustinYAN&#39;s Blog</title>
   
   
 
@@ -434,8 +434,8 @@
         
           
   <h2 class="title">
-    <a href="/2019/05/23/DS-BinaryTree/">
-      【数据结构---26】树以及二叉树的基本概念
+    <a href="/2019/08/29/LinuxProject-1/">
+      【Linux小项目---1】jsonCpp库和数据库接口的使用
     </a>
   </h2>
 
@@ -460,9 +460,9 @@
               
   
   <div class='new-meta-item category'>
-    <a href='/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E6%A0%91%E5%92%8C%E4%BA%8C%E5%8F%89%E6%A0%91/' rel="nofollow">
+    <a href='/categories/Linux/' rel="nofollow">
       <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
-      <p>数据结构树和二叉树</p>
+      <p>Linux</p>
     </a>
   </div>
 
@@ -473,7 +473,7 @@
               <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：May 23, 2019</p>
+    <p>发布于：Aug 29, 2019</p>
   </a>
 </div>
 
@@ -491,13 +491,13 @@
   <div class="new-meta-item wordcount">
     <a class='notlink'>
       <i class="fas fa-keyboard fa-fw" aria-hidden="true"></i>
-      <p>1.9k words</p>
+      <p>6 words</p>
     </a>
   </div>
   <div class="new-meta-item readtime">
     <a class='notlink'>
       <i class="fas fa-hourglass-half fa-fw" aria-hidden="true"></i>
-      <p>7 min</p>
+      <p>1 min</p>
     </a>
   </div>
 
@@ -525,92 +525,11 @@
 
 
 
-<h3 id="文章目录"><a href="#文章目录" class="headerlink" title="文章目录"></a>文章目录</h3><ul>
-<li><a href="#_2">树的概念：</a></li>
-<li><a href="#_5">与树相关的基本概念:</a></li>
-<li><a href="#_18">树的表示方式：</a></li>
-<li><a href="#_22">二叉树：</a></li>
-<li><a href="#_32">二叉树的五条特性:</a></li>
-<li><a href="#_54">二叉树的存储：</a></li>
-<li><a href="#_66">堆序堆的实现:</a></li>
-<li><a href="#_70">调整堆序:</a></li>
-<li><a href="#_91">堆的删除操作:</a></li>
-<li><a href="#_103">堆的插入操作:</a></li>
-<li><a href="#_115">扩容:</a></li>
-<li><a href="#_119">用堆的思想进行排序</a></li>
-<li><a href="#TOP_K_123">TOP K问题(海量数据)</a></li>
-<li><a href="#_135">二叉树的链式存储方式</a></li>
-<li><a href="#_147">求二叉树的节点个数:</a></li>
-<li><a href="#_162">二叉树的创建方式:</a></li>
-<li><a href="#_191">二叉树的销毁方式:</a></li>
-<li><a href="#_199">二叉树的拷贝:</a></li>
-<li><a href="#_203">查看二叉树中的叶子节点:</a></li>
-</ul>
-<h2 id="树的概念："><a href="#树的概念：" class="headerlink" title="树的概念："></a>树的概念：</h2><p><strong>一种非线性的数据结构,它是由n个(n&gt;=0)有限节点组成的一个具有层次关系的集合</strong></p>
-<h2 id="与树相关的基本概念"><a href="#与树相关的基本概念" class="headerlink" title="与树相关的基本概念:"></a>与树相关的基本概念:</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">深度:树中节点的最大层次</span><br><span class="line"></span><br><span class="line">双亲:若一个节点含有子节点,则这个节点是这个子节点的双亲节点</span><br><span class="line"></span><br><span class="line">子节点:一个节点含有的子树的根节点被称为这个节点的子节点</span><br><span class="line"></span><br><span class="line">兄弟:具有相同双亲节点的被称为兄弟节点</span><br><span class="line"></span><br><span class="line">叶节点:度为0的节点被称为叶节点</span><br></pre></td></tr></table></figure>
+<h2 id="Insert"><a href="#Insert" class="headerlink" title="Insert:"></a>Insert:</h2><p><img src="https://img-blog.csdnimg.cn/20190828235135580.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1c3Rpbl9ZYW4=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20190828235155792.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1c3Rpbl9ZYW4=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h2 id="selectAll"><a href="#selectAll" class="headerlink" title="selectAll:"></a>selectAll:</h2><p><img src="https://img-blog.csdnimg.cn/20190828234606190.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1c3Rpbl9ZYW4=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h2 id="selectOne-1"><a href="#selectOne-1" class="headerlink" title="selectOne(1):"></a>selectOne(1):</h2><p><img src="https://img-blog.csdnimg.cn/20190828234013657.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1c3Rpbl9ZYW4=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h2 id="Delete-6"><a href="#Delete-6" class="headerlink" title="Delete(6):"></a>Delete(6):</h2><p><img src="https://img-blog.csdnimg.cn/20190829000052143.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1c3Rpbl9ZYW4=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20190829000102819.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1c3Rpbl9ZYW4=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
 
-<h2 id="树的表示方式："><a href="#树的表示方式：" class="headerlink" title="树的表示方式："></a>树的表示方式：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">孩子表示法，双亲表示法，孩子双亲表示法，孩子兄弟表示法</span><br></pre></td></tr></table></figure>
-
-<h2 id="二叉树："><a href="#二叉树：" class="headerlink" title="二叉树："></a>二叉树：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">空树，根+根的左子树+根的右子树</span><br></pre></td></tr></table></figure>
-
-<p><strong>特殊的二叉树：</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">满二叉树:每一层的节点数都达到最大值,这个二叉树就是满二叉树</span><br><span class="line"></span><br><span class="line">完全二叉树:从上之下从左至右一次填满的二叉树,不可能存在只有右孩子没有左孩子</span><br></pre></td></tr></table></figure>
-
-<h2 id="二叉树的五条特性"><a href="#二叉树的五条特性" class="headerlink" title="二叉树的五条特性:"></a>二叉树的五条特性:</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">1.若规定根节点的层次为1,则一颗非空二叉树的第i层最多有2^(i-1)个节点</span><br><span class="line"></span><br><span class="line">2.若规定只有根节点的二叉树深度为1,则深度为k的二叉树最大节点数是2^k-1</span><br><span class="line"></span><br><span class="line">3.对任意一颗二叉树,如果其叶节点个数为n0,度为2的非叶节点个数为n2,则有n0&#x3D;n2+1</span><br><span class="line"></span><br><span class="line">4.具有n个节点的完全二叉树的深度k为log2(n+1)向上取整</span><br><span class="line"></span><br><span class="line">5.对于有n个节点的完全二叉树,如果按照从上至下从左至右的顺序对所有节点从0进行编号</span><br><span class="line"></span><br><span class="line">则对于序号为i的节点有:</span><br><span class="line"></span><br><span class="line">	&lt;1&gt;.若i&gt;0,双亲序号:(i-1)&#x2F;2i&#x3D;0,i为根节点编号,无双亲节点</span><br><span class="line"></span><br><span class="line">	&lt;2&gt;.若2i+1&lt;n,左孩子序号:2i+1,否则无左孩子</span><br><span class="line"></span><br><span class="line">	&lt;3&gt;.若2i+2&lt;n,右孩子序号:2i+2,否则无右孩子</span><br></pre></td></tr></table></figure>
-
-<h2 id="二叉树的存储："><a href="#二叉树的存储：" class="headerlink" title="二叉树的存储："></a>二叉树的存储：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">顺序结构：完全二叉树（基本不会增加删除）</span><br><span class="line"></span><br><span class="line">链式结构：通过指针来表示节点与其孩子及双亲之间的关系,常用孩子表示法，孩子双亲表示法</span><br></pre></td></tr></table></figure>
-
-<p><strong>二叉树顺序存储： 堆（是一棵完全二叉树），堆中的元素存储到一维数组中，对于任意节点如果该节点中小于（大于）其左右孩子，就把这种结构称为小堆（大堆）</strong></p>
-<blockquote>
-<p>堆的特性： 堆顶元素一定是堆中所有元素最大的（最小的）</p>
-</blockquote>
-<h2 id="堆序堆的实现"><a href="#堆序堆的实现" class="headerlink" title="堆序堆的实现:"></a>堆序堆的实现:</h2><p><strong>结构类似于顺序表</strong></p>
-<h2 id="调整堆序"><a href="#调整堆序" class="headerlink" title="调整堆序:"></a>调整堆序:</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">int child&#x3D;parent*2+1；默认child标记parent的左孩子</span><br><span class="line"></span><br><span class="line">因为完全二叉树某个节点只有一个孩子，该孩子一定是其双亲的左孩子</span><br><span class="line"></span><br><span class="line">向下调整:(调整的是以parent为根的子树)</span><br><span class="line"></span><br><span class="line">找出较小的孩子---左右孩子比较（左右孩子必须都存在，child+1&lt;size）</span><br><span class="line"></span><br><span class="line">左孩子比右孩子大的话，child+&#x3D;1</span><br><span class="line"></span><br><span class="line">双亲比较小的孩子大的话，交换双亲和孩子的顺序</span><br><span class="line"></span><br><span class="line">更新parent&#x3D;child；chil&#x3D;parent*2+1；</span><br><span class="line"></span><br><span class="line">2i+1已经大于size（数组节点个数），说明孩子不存在</span><br></pre></td></tr></table></figure>
-
-<p><strong>创建堆的时间复杂度Nlog2(N)</strong></p>
-<h2 id="堆的删除操作"><a href="#堆的删除操作" class="headerlink" title="堆的删除操作:"></a>堆的删除操作:</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">堆里没有元素不删除</span><br><span class="line"></span><br><span class="line">有的话就删除堆顶元素-----</span><br><span class="line"></span><br><span class="line">堆顶元素和末尾元素交换</span><br><span class="line"></span><br><span class="line">size的值要更新-----对堆顶元素进行向下调整</span><br><span class="line"></span><br><span class="line">AdjustDown(heapdatatype*array,heapdatatype*size,0)</span><br></pre></td></tr></table></figure>
-
-<h2 id="堆的插入操作"><a href="#堆的插入操作" class="headerlink" title="堆的插入操作:"></a>堆的插入操作:</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">考虑空间是否放得下-----插入之后需要调整堆序-----向上调整,传的参数是孩子</span><br><span class="line"></span><br><span class="line">孩子小于双亲,需要交换-----child&#x3D;parent;parent&#x3D;(child-1)&#x2F;2;</span><br><span class="line"></span><br><span class="line">循环终止条件child!&#x3D;0;</span><br><span class="line"></span><br><span class="line">AdjusUp(hp-&gt;array,hp-&gt;size,hp-&gt;size-1);</span><br></pre></td></tr></table></figure>
-
-<h2 id="扩容"><a href="#扩容" class="headerlink" title="扩容:"></a>扩容:</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">申请新空间-----拷贝元素</span><br></pre></td></tr></table></figure>
-
-<h2 id="用堆的思想进行排序"><a href="#用堆的思想进行排序" class="headerlink" title="用堆的思想进行排序"></a>用堆的思想进行排序</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">降序是小堆,升序是大堆-----HeapSort(array,sizeof(array)&#x2F;sizeof(array[0]))</span><br></pre></td></tr></table></figure>
-
-<h2 id="TOP-K问题-海量数据"><a href="#TOP-K问题-海量数据" class="headerlink" title="TOP K问题(海量数据)"></a>TOP K问题(海量数据)</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">冒泡和堆排的话必须一次拿到所有的数据-----100亿数据需要40G内存空间</span><br><span class="line"></span><br><span class="line">直接遍历K次,需要多次IO,性能太差-----堆-----取前K个数据,建小堆</span><br><span class="line"></span><br><span class="line">从剩余的N-K个数据一次与堆顶的元素进行比较,然后选择是否替换</span><br><span class="line"></span><br><span class="line">比堆顶元素大的替换掉,最后堆里的K个元素都是最大的</span><br></pre></td></tr></table></figure>
-
-<p><code>堆的应用需要做到正背如流!!!!!!!!</code></p>
-<h2 id="二叉树的链式存储方式"><a href="#二叉树的链式存储方式" class="headerlink" title="二叉树的链式存储方式"></a>二叉树的链式存储方式</h2><blockquote>
-<p>二叉树的遍历: 按照某种特定的规则,对二叉树中的每一个节点进行相应的操作,并且每个节点只能操作一次</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">前序遍历:	根---&gt;根的左子树---&gt;根的右子树</span><br><span class="line"></span><br><span class="line">中序遍历:	根的左子树---&gt;根---&gt;根的右子树</span><br><span class="line"></span><br><span class="line">后序遍历:	根的左子树---&gt;根的右子树---&gt;根</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>递归遍历,先遍历根,然后继续调用,传的参数是root根节点的左子树,然后继续调用,传root的右子树</p>
-</blockquote>
-<h2 id="求二叉树的节点个数"><a href="#求二叉树的节点个数" class="headerlink" title="求二叉树的节点个数:"></a>求二叉树的节点个数:</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(根据二叉树的概念)	空树---0个	非空就递归求解</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">int Getsize(Node*Root)</span><br><span class="line">&#123;</span><br><span class="line">	if(Root&#x3D;&#x3D;NULL)</span><br><span class="line">	&#123;</span><br><span class="line">		return 0;</span><br><span class="line">	&#125;</span><br><span class="line">	return Getsize(Root-&gt;left)+Getsize(Root-&gt;right)+1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="二叉树的创建方式"><a href="#二叉树的创建方式" class="headerlink" title="二叉树的创建方式:"></a>二叉树的创建方式:</h2><p><code>索引必须给地址,因为要把索引的值带出函数外!!!!!!</code></p>
-<blockquote>
-<p>创建链式二叉树—&gt;递归跳出条件(*index&lt;size)—&gt;先创建根节点,在创建根的左子树,在创建根的右子树</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">要把创建的二叉树补全ABDCEF---&gt;ABD###CE##F##</span><br><span class="line"></span><br><span class="line">#是我们给的空的节点的标记	</span><br><span class="line"></span><br><span class="line">修改跳出条件为(*index&lt;size&amp;&amp;array[*index]!&#x3D;&#39;#&#39;)</span><br><span class="line"></span><br><span class="line">&#96;跳出条件有先后顺序,不可以写错!!!!!&#96;</span><br><span class="line"></span><br><span class="line">索引遇到#之后还需要往后面走</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;创建根节点</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;(*index++),创建根的左子树</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;(*index++),创建根的右子树</span><br><span class="line"></span><br><span class="line">递归之后其实创建的都是根节点,所有根节点创建写(*index++);</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>把创建的函数封装起来,方便用户调用,参数加一个无效参数,避免你设置为#,他输入$</p>
-</blockquote>
-<blockquote>
-<p>Q:根据两个遍历的结果,要求还原出来的二叉树<br>A:TO DO</p>
-</blockquote>
-<h2 id="二叉树的销毁方式"><a href="#二叉树的销毁方式" class="headerlink" title="二叉树的销毁方式:"></a>二叉树的销毁方式:</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">最后才可以销毁根节点,所以采用后序遍历规则</span><br><span class="line"></span><br><span class="line">销毁完所有的节点之后要把Root节点置空函数体内部修改形参的值,要传形参的地址</span><br><span class="line"></span><br><span class="line">所以销毁函数中传Root的地址!!!!!</span><br></pre></td></tr></table></figure>
-
-<h2 id="二叉树的拷贝"><a href="#二叉树的拷贝" class="headerlink" title="二叉树的拷贝:"></a>二叉树的拷贝:</h2><blockquote>
-<p>根据二叉树的概念,和创建的方法一样</p>
-</blockquote>
-<h2 id="查看二叉树中的叶子节点"><a href="#查看二叉树中的叶子节点" class="headerlink" title="查看二叉树中的叶子节点:"></a>查看二叉树中的叶子节点:</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">左右子树没有孩子的节点称为叶子节点</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">if(Root&#x3D;&#x3D;NULL)</span><br><span class="line">&#123;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br><span class="line">if(Root-&gt;left&#x3D;&#x3D;NULL&amp;&amp;Root-&gt;right&#x3D;&#x3D;NULL)</span><br><span class="line">&#123;</span><br><span class="line">	return 1;</span><br><span class="line">&#125;</span><br><span class="line">return GetLeatCount(Root-&gt;left)+GetLeatCount(Root-&gt;right);</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -724,12 +643,12 @@
           <li><a class="flat-box"
             title="/categories/C/" href="/categories/C/"
             id="categoriesC"
-            ><div class='name'>C#</div><div class='badge'>(11)</div></a></li>
+            ><div class='name'>C++</div><div class='badge'>(1)</div></a></li>
         
           <li><a class="flat-box"
             title="/categories/C/" href="/categories/C/"
             id="categoriesC"
-            ><div class='name'>C++</div><div class='badge'>(1)</div></a></li>
+            ><div class='name'>C#</div><div class='badge'>(11)</div></a></li>
         
           <li><a class="flat-box"
             title="/categories/Cpp/" href="/categories/Cpp/"
@@ -737,64 +656,29 @@
             ><div class='name'>Cpp</div><div class='badge'>(2)</div></a></li>
         
           <li><a class="flat-box"
+            title="/categories/DS/" href="/categories/DS/"
+            id="categoriesDS"
+            ><div class='name'>DS</div><div class='badge'>(11)</div></a></li>
+        
+          <li><a class="flat-box"
             title="/categories/HTML/" href="/categories/HTML/"
             id="categoriesHTML"
             ><div class='name'>HTML</div><div class='badge'>(1)</div></a></li>
         
           <li><a class="flat-box"
+            title="/categories/Linux/" href="/categories/Linux/"
+            id="categoriesLinux"
+            ><div class='name'>Linux</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box"
+            title="/categories/ReView/" href="/categories/ReView/"
+            id="categoriesReView"
+            ><div class='name'>ReView</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box"
             title="/categories/VsCode/" href="/categories/VsCode/"
             id="categoriesVsCode"
             ><div class='name'>VsCode</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/%E5%8F%8D%E6%80%9D%E4%B8%8E%E6%80%BB%E7%BB%93/" href="/categories/%E5%8F%8D%E6%80%9D%E4%B8%8E%E6%80%BB%E7%BB%93/"
-            id="categoriesE58F8DE6809DE4B88EE680BBE7BB93"
-            ><div class='name'>反思与总结</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"
-            id="categoriesE6938DE4BD9CE7B3BBE7BB9F"
-            ><div class='name'>操作系统</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"
-            id="categoriesE695B0E68DAEE7BB93E69E84"
-            ><div class='name'>数据结构</div><div class='badge'>(4)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%BA%8C%E5%8F%89%E6%A0%91/" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%BA%8C%E5%8F%89%E6%A0%91/"
-            id="categoriesE695B0E68DAEE7BB93E69E84E4BA8CE58F89E6A091"
-            ><div class='name'>数据结构二叉树</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/"
-            id="categoriesE695B0E68DAEE7BB93E69E84E68E92E5BA8FE7AE97E6B395"
-            ><div class='name'>数据结构排序算法</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E6%A0%88/" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E6%A0%88/"
-            id="categoriesE695B0E68DAEE7BB93E69E84E6A088"
-            ><div class='name'>数据结构栈</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E6%A0%91%E5%92%8C%E4%BA%8C%E5%8F%89%E6%A0%91/" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E6%A0%91%E5%92%8C%E4%BA%8C%E5%8F%89%E6%A0%91/"
-            id="categoriesE695B0E68DAEE7BB93E69E84E6A091E5928CE4BA8CE58F89E6A091"
-            ><div class='name'>数据结构树和二叉树</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E9%98%9F%E5%88%97%E5%9C%A8%E7%BA%BFOJ/" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E9%98%9F%E5%88%97%E5%9C%A8%E7%BA%BFOJ/"
-            id="categoriesE695B0E68DAEE7BB93E69E84E9989FE58897E59CA8E7BABFOJ"
-            ><div class='name'>数据结构队列在线OJ</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E9%9D%9E%E6%AF%94%E8%BE%83%E6%8E%92%E5%BA%8F/" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E9%9D%9E%E6%AF%94%E8%BE%83%E6%8E%92%E5%BA%8F/"
-            id="categoriesE695B0E68DAEE7BB93E69E84E99D9EE6AF94E8BE83E68E92E5BA8F"
-            ><div class='name'>数据结构非比较排序</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/%E9%92%88%E5%AF%B9%E6%80%A7%E5%A4%8D%E4%B9%A0/" href="/categories/%E9%92%88%E5%AF%B9%E6%80%A7%E5%A4%8D%E4%B9%A0/"
-            id="categoriesE99288E5AFB9E680A7E5A48DE4B9A0"
-            ><div class='name'>针对性复习</div><div class='badge'>(1)</div></a></li>
         
       </ul>
     </div>
