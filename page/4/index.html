@@ -1,0 +1,1385 @@
+<!DOCTYPE html>
+<html>
+<head hexo-theme='https://volantis.js.org/#2.6.6'>
+  <meta charset="utf-8">
+  <!-- SEO相关 -->
+  
+    
+      
+        <meta name="robots" content="noindex,follow">
+      
+    
+  
+  <!-- 渲染优化 -->
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- 页面元数据 -->
+  
+    <title>AustinYAN&#39;s Blog</title>
+  
+  
+
+  <!-- feed -->
+  
+
+  <!-- import meta -->
+  
+
+  <!-- link -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13/css/all.min.css">
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
+
+  
+
+  
+
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.css">
+  
+
+  
+
+  <!-- import link -->
+  
+
+  
+  
+    
+<link rel="stylesheet" href="/css/style.css">
+
+  
+
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+
+  
+  
+</head>
+
+
+<body>
+  
+  <div class="cover-wrapper">
+    
+      <cover class='cover  half'>
+        <div class='cover-body'>
+  <div class='a'>
+    
+    
+      <p class="title">我行既道,我身既法</p>
+    
+    
+      <p class="subtitle">天行健,君子以自强不息</p>
+    
+  </div>
+  <div class='b'>
+    
+      <div class="m_search">
+        <form name="searchform" class="form u-search-form">
+          <input type="text" class="input u-search-input" placeholder="" />
+          <i class="icon fas fa-search fa-fw"></i>
+        </form>
+      </div>
+    
+    <div class='menu navigation'>
+      <ul class='cover-list-h'>
+        
+          
+            <li>
+              <a class="nav home"
+                href="/"
+                
+                
+                id="home">
+                <i class='fas fa-book fa-fw'></i>主页
+              </a>
+            </li>
+          
+            <li>
+              <a class="nav home"
+                href="/archives"
+                
+                
+                id="archives">
+                <i class='fas fa-rss fa-fw'></i>博文
+              </a>
+            </li>
+          
+            <li>
+              <a class="nav home"
+                href="https://volantis.js.org/examples/"
+                
+                
+                id="https:volantisjsorgexamples">
+                <i class='fas fa-play-circle fa-fw'></i>示例
+              </a>
+            </li>
+          
+            <li>
+              <a class="nav home"
+                href="https://volantis.js.org/contributors/"
+                
+                
+                id="https:volantisjsorgcontributors">
+                <i class='fas fa-handshake fa-fw'></i>鸣谢
+              </a>
+            </li>
+          
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+      </cover>
+    
+    <div id="loading-bar-wrapper">
+  <div id="loading-bar"></div>
+</div>
+<header class="l_header shadow blur">
+  <div class='container'>
+  <div class='wrapper'>
+    <div class='nav-sub'>
+      <p class="title"></p>
+      <ul class='switcher nav-list-h'>
+        <li><a class="s-comment fas fa-comments fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+          <li><a class="s-toc fas fa-list fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+      </ul>
+    </div>
+		<div class="nav-main">
+      
+        
+        <a class="title flat-box" target="_self" href='/'>
+          
+          
+          
+          
+            VOLANTIS <b><sup style='color:#3AA757'>2.6.6</sup></b>
+          
+        </a>
+      
+
+			<div class='menu navigation'>
+				<ul class='nav-list-h'>
+          
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-rss fa-fw'></i>博客
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/categories/
+                  
+                  
+                  
+                    id="categories"
+                  >
+                  <i class='fas fa-folder-open fa-fw'></i>分类
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fas fa-tags fa-fw'></i>标签
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/friends/
+                  
+                  
+                  
+                    id="friends"
+                  >
+                  <i class='fas fa-link fa-fw'></i>友链
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  <i class='fas fa-info-circle fa-fw'></i>关于
+                </a>
+                
+              </li>
+            
+          
+          
+				</ul>
+			</div>
+
+      <div class="m_search">
+        <form name="searchform" class="form u-search-form">
+          <i class="icon fas fa-search fa-fw"></i>
+          <input type="text" class="input u-search-input" placeholder="Search..." />
+        </form>
+      </div>
+
+			<ul class='switcher nav-list-h'>
+				
+					<li><a class="s-search fas fa-search fa-fw" target="_self" href='javascript:void(0)'></a></li>
+				
+				<li>
+          <a class="s-menu fas fa-bars fa-fw" target="_self" href='javascript:void(0)'></a>
+          <ul class="menu-phone list-v navigation white-box">
+            
+              
+            
+              <li>
+                <a class="flat-box" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-rss fa-fw'></i>博客
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="flat-box" href=/categories/
+                  
+                  
+                  
+                    id="categories"
+                  >
+                  <i class='fas fa-folder-open fa-fw'></i>分类
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="flat-box" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fas fa-tags fa-fw'></i>标签
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="flat-box" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="flat-box" href=/friends/
+                  
+                  
+                  
+                    id="friends"
+                  >
+                  <i class='fas fa-link fa-fw'></i>友链
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="flat-box" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  <i class='fas fa-info-circle fa-fw'></i>关于
+                </a>
+                
+              </li>
+            
+          
+            
+          </ul>
+        </li>
+			</ul>
+		</div>
+	</div>
+  </div>
+</header>
+
+<script>setLoadingBarProgress(40);</script>
+
+  </div>
+
+
+  <div class="l_body">
+    <div class='body-wrapper'>
+      
+
+<div class='l_main'>
+  
+  <section class="post-list ">
+    
+    
+      
+        
+          <div class='post-wrapper'>
+            <article class="post white-box shadow reveal ">
+  
+
+
+  <section class='meta'>
+    
+      
+      
+      <div class="meta" id="header-meta">
+        
+          
+  <h2 class="title">
+    <a href="/2019/05/16/DS-CTOList/">
+      【数据结构---17】C语言实现一个链表队列
+    </a>
+  </h2>
+
+
+        
+        <div class='new-meta-box'>
+          
+            
+          
+            
+              
+<div class='new-meta-item author'>
+  <a href="https://blog.csdn.net/Austin_Yan" target="_blank" rel="nofollow noopener">
+    <img src="https://cdn.jsdelivr.net/gh/AustinYANyh/Image@1.0/head1.jpg">
+    <p>染墨若流云</p>
+  </a>
+</div>
+
+            
+          
+            
+              
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/' rel="nofollow">
+      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+      <p>数据结构</p>
+    </a>
+  </div>
+
+
+            
+          
+            
+              <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：May 16, 2019</p>
+  </a>
+</div>
+
+            
+          
+            
+              
+  
+
+
+            
+          
+            
+              
+  <div class="new-meta-item wordcount">
+    <a class='notlink'>
+      <i class="fas fa-keyboard fa-fw" aria-hidden="true"></i>
+      <p>488 words</p>
+    </a>
+  </div>
+  <div class="new-meta-item readtime">
+    <a class='notlink'>
+      <i class="fas fa-hourglass-half fa-fw" aria-hidden="true"></i>
+      <p>2 min</p>
+    </a>
+  </div>
+
+
+            
+          
+            
+              
+
+            
+          
+        </div>
+        
+          <hr>
+        
+      </div>
+    
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      
+        <a id="more"></a>
+
+
+
+<h2 id="Queue-h"><a href="#Queue-h" class="headerlink" title="Queue.h"></a>Queue.h</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> once</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">int</span> QDataType;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">QNode</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	 <span class="class"><span class="keyword">struct</span> <span class="title">QNode</span>* _<span class="title">pNext</span>;</span></span><br><span class="line">	 QDataType _data;</span><br><span class="line">&#125;QNode;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">Queue</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	 QNode* _front; <span class="comment">// 指向队头元素 </span></span><br><span class="line">	 QNode* _back; <span class="comment">// 指向队尾元素 </span></span><br><span class="line">&#125;Queue;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">QueueInit</span><span class="params">(Queue* q)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">QueuePush</span><span class="params">(Queue* q, QDataType data)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">QueuePop</span><span class="params">(Queue* q)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function">QDataType <span class="title">QueueFront</span><span class="params">(Queue* q)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function">QDataType <span class="title">QueueBack</span><span class="params">(Queue* q)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">QueueSize</span><span class="params">(Queue* q)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">QueueEmpty</span><span class="params">(Queue* q)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">QueueDestroy</span><span class="params">(Queue* q)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">QueueTest</span><span class="params">()</span></span>;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Queue-c"><a href="#Queue-c" class="headerlink" title="Queue.c"></a>Queue.c</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"queue.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;malloc.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;assert.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function">QNode* <span class="title">BuyNode</span><span class="params">(QDataType data)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	 QNode* newnode = (QNode*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(QNode));</span><br><span class="line">	 <span class="keyword">if</span> (newnode == <span class="literal">NULL</span>)</span><br><span class="line">	 &#123;</span><br><span class="line">		  assert(<span class="number">0</span>);</span><br><span class="line">	 &#125;</span><br><span class="line">	 newnode-&gt;_data = data;</span><br><span class="line">	 newnode-&gt;_pNext = <span class="literal">NULL</span>;</span><br><span class="line">	 <span class="keyword">return</span> newnode;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="初始化操作"><a href="#初始化操作" class="headerlink" title="初始化操作:"></a>初始化操作:</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">QueueInit</span><span class="params">(Queue* q)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	 assert(q);</span><br><span class="line">	 q-&gt;_front = q-&gt;_back = <span class="literal">NULL</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="入队"><a href="#入队" class="headerlink" title="入队:"></a>入队:</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">QueuePush</span><span class="params">(Queue* q, QDataType data)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	 assert(q);</span><br><span class="line">	 QNode* node = BuyNode(data);</span><br><span class="line">	 <span class="keyword">if</span> (q-&gt;_front == <span class="literal">NULL</span> )</span><br><span class="line">	 &#123;</span><br><span class="line">		  q-&gt;_front = q-&gt;_back = node;</span><br><span class="line">	 &#125;</span><br><span class="line">	 <span class="keyword">else</span></span><br><span class="line">	 &#123;</span><br><span class="line">		  q-&gt;_back-&gt;_pNext = node;</span><br><span class="line">		  q-&gt;_back = node;</span><br><span class="line">	 &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="出队"><a href="#出队" class="headerlink" title="出队:"></a>出队:</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">QueuePop</span><span class="params">(Queue* q)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	 assert(q);</span><br><span class="line">	 <span class="keyword">if</span> (q-&gt;_front == <span class="literal">NULL</span>)</span><br><span class="line">	 &#123;</span><br><span class="line">		  <span class="keyword">return</span>;</span><br><span class="line">	 &#125;</span><br><span class="line">	 QNode* newhead = q-&gt;_front;</span><br><span class="line">	 <span class="comment">//队列中只有一个元素</span></span><br><span class="line">	 <span class="keyword">if</span> (q-&gt;_front-&gt;_pNext == <span class="literal">NULL</span>)</span><br><span class="line">	 &#123;</span><br><span class="line">		  q-&gt;_front = q-&gt;_back = <span class="literal">NULL</span>;</span><br><span class="line">	 &#125;</span><br><span class="line">	 <span class="keyword">else</span></span><br><span class="line">	 &#123;</span><br><span class="line">		  q-&gt;_front = newhead-&gt;_pNext;</span><br><span class="line">		  <span class="built_in">free</span>(newhead);</span><br><span class="line">		  newhead = <span class="literal">NULL</span>;</span><br><span class="line">	 &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="获取队头元素"><a href="#获取队头元素" class="headerlink" title="获取队头元素:"></a>获取队头元素:</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">QDataType <span class="title">QueueFront</span><span class="params">(Queue* q)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	 <span class="keyword">if</span> (q-&gt;_front == <span class="literal">NULL</span>)</span><br><span class="line">	 &#123;</span><br><span class="line">		  <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">	 &#125;</span><br><span class="line">	 <span class="keyword">return</span> q-&gt;_front-&gt;_data;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="获取队尾元素"><a href="#获取队尾元素" class="headerlink" title="获取队尾元素:"></a>获取队尾元素:</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">QDataType <span class="title">QueueBack</span><span class="params">(Queue* q)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	 <span class="keyword">if</span> (q-&gt;_front == <span class="literal">NULL</span>)</span><br><span class="line">	 &#123;</span><br><span class="line">		  <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">	 &#125;</span><br><span class="line">	 <span class="keyword">return</span> q-&gt;_back-&gt;_data;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="查看当前元素个数"><a href="#查看当前元素个数" class="headerlink" title="查看当前元素个数:"></a>查看当前元素个数:</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">QueueSize</span><span class="params">(Queue* q)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	 QNode* pCur = q-&gt;_front;</span><br><span class="line">	 <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">	 <span class="keyword">while</span> (pCur != <span class="literal">NULL</span>)</span><br><span class="line">	 &#123;</span><br><span class="line">		  pCur = pCur-&gt;_pNext;</span><br><span class="line">		  count++;</span><br><span class="line">	 &#125;</span><br><span class="line">	 <span class="keyword">return</span> count;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="检测队列是否为空"><a href="#检测队列是否为空" class="headerlink" title="检测队列是否为空:"></a>检测队列是否为空:</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">QueueEmpty</span><span class="params">(Queue* q)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	 <span class="keyword">if</span> (q-&gt;_front == <span class="literal">NULL</span>)</span><br><span class="line">	 &#123;</span><br><span class="line">		  <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">	 &#125;</span><br><span class="line">	 <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="销毁队列"><a href="#销毁队列" class="headerlink" title="销毁队列:"></a>销毁队列:</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">QueueDestroy</span><span class="params">(Queue* q)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	 assert(q);</span><br><span class="line">	 <span class="keyword">if</span> (q-&gt;_front == <span class="literal">NULL</span>)</span><br><span class="line">	 &#123;</span><br><span class="line">		  <span class="keyword">return</span>;</span><br><span class="line">	 &#125;</span><br><span class="line">	 QNode* pCur = q-&gt;_front;</span><br><span class="line">	 <span class="keyword">while</span> (pCur != <span class="literal">NULL</span>)</span><br><span class="line">	 &#123;</span><br><span class="line">		  q-&gt;_front= pCur-&gt;_pNext;</span><br><span class="line">		  <span class="built_in">free</span>(pCur);</span><br><span class="line">		  pCur = <span class="literal">NULL</span>;</span><br><span class="line">		  pCur = q-&gt;_front;</span><br><span class="line">	 &#125;</span><br><span class="line">	 q-&gt;_front = q-&gt;_back = <span class="literal">NULL</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="测试队列的实现"><a href="#测试队列的实现" class="headerlink" title="测试队列的实现:"></a>测试队列的实现:</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">QueueTest</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	 Queue s;</span><br><span class="line">	 QueueInit(&amp;s);</span><br><span class="line">	 QueuePush(&amp;s, <span class="number">1</span>);</span><br><span class="line">	 QueuePush(&amp;s, <span class="number">2</span>);</span><br><span class="line">	 QueuePush(&amp;s, <span class="number">3</span>);</span><br><span class="line">	 QueuePush(&amp;s, <span class="number">4</span>);</span><br><span class="line">	 </span><br><span class="line">	<span class="comment">//出队列</span></span><br><span class="line">	 QueuePop(&amp;s);</span><br><span class="line">	 QueuePop(&amp;s);</span><br><span class="line">	 QueuePop(&amp;s);</span><br><span class="line">	 </span><br><span class="line">	<span class="comment">//查看当前元素个数</span></span><br><span class="line">	 <span class="built_in">printf</span>(<span class="string">"size=%d\n"</span>,QueueSize(&amp;s));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="主函数"><a href="#主函数" class="headerlink" title="主函数:"></a>主函数:</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	 QueueTest();</span><br><span class="line">	 <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="代码运行测试图"><a href="#代码运行测试图" class="headerlink" title="代码运行测试图:"></a>代码运行测试图:</h2><p><img src="https://img-blog.csdnimg.cn/20190516150629157.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1c3Rpbl9ZYW4=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20190516150942681.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1c3Rpbl9ZYW4=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20190516150742912.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1c3Rpbl9ZYW4=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+
+      
+    </div>
+    
+      
+    
+  </section>
+</article>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <article class="post white-box shadow reveal ">
+  
+
+
+  <section class='meta'>
+    
+      
+      
+      <div class="meta" id="header-meta">
+        
+          
+  <h2 class="title">
+    <a href="/2019/05/02/DS-CutList/">
+      【数据结构---7】以给定值x为基准将链表分割成两部分
+    </a>
+  </h2>
+
+
+        
+        <div class='new-meta-box'>
+          
+            
+          
+            
+              
+<div class='new-meta-item author'>
+  <a href="https://blog.csdn.net/Austin_Yan" target="_blank" rel="nofollow noopener">
+    <img src="https://cdn.jsdelivr.net/gh/AustinYANyh/Image@1.0/head1.jpg">
+    <p>染墨若流云</p>
+  </a>
+</div>
+
+            
+          
+            
+              
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/' rel="nofollow">
+      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+      <p>数据结构</p>
+    </a>
+  </div>
+
+
+            
+          
+            
+              <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：May 2, 2019</p>
+  </a>
+</div>
+
+            
+          
+            
+              
+  
+
+
+            
+          
+            
+              
+  <div class="new-meta-item wordcount">
+    <a class='notlink'>
+      <i class="fas fa-keyboard fa-fw" aria-hidden="true"></i>
+      <p>423 words</p>
+    </a>
+  </div>
+  <div class="new-meta-item readtime">
+    <a class='notlink'>
+      <i class="fas fa-hourglass-half fa-fw" aria-hidden="true"></i>
+      <p>1 min</p>
+    </a>
+  </div>
+
+
+            
+          
+            
+              
+
+            
+          
+        </div>
+        
+          <hr>
+        
+      </div>
+    
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      
+        <a id="more"></a>
+
+
+
+<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述:"></a>题目描述:</h2><p><strong>编写代码，以给定值x为基准将链表分割成两部分，所有小于x的结点排在大于或等于x的结点之前</strong><br><strong>给定一个链表的头指针 ,请返回重新排列后的链表的头指针</strong></p>
+<p><code>注意：分割以后保持原来的数据顺序不变</code></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">struct ListNode &#123;</span></span><br><span class="line"><span class="comment">    int val;</span></span><br><span class="line"><span class="comment">    struct ListNode *next;</span></span><br><span class="line"><span class="comment">    ListNode(int x) : val(x), next(NULL) &#123;&#125;</span></span><br><span class="line"><span class="comment">&#125;;*/</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="思路分析"><a href="#思路分析" class="headerlink" title="思路分析:"></a>思路分析:</h2><blockquote>
+<p><strong>1.创建两个结果链表,分为1和2,一个用来保存小于基准值的节点,另一个用来保存大于基准值的节点</strong><br><strong>2.对原先的链表进行遍历,如果比基准值小,用尾插的方法插入第一个结果链表,反之,插入第二个</strong><br><strong>3.插入完毕之后进行两个链表的合并,将第一个链表的最后一个节点的next指向第二个链表</strong><br><strong>4.注意极端情况:</strong><br><code>1.保存大于基准值的链表的最后一个节点不一定指向空,所以最后我们记得处理!!</code><br><code>2.有可能给出的基准值比其中一整条链表保存的数都大,所以这时直接返回另一条链表</code></p>
+</blockquote>
+<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现:"></a>代码实现:</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Partition</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">partition</span><span class="params">(ListNode* pHead, <span class="keyword">int</span> x)</span> </span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">    </span><br><span class="line">         ListNode* result1 = <span class="literal">NULL</span>; </span><br><span class="line">         ListNode* last1 = <span class="literal">NULL</span>;</span><br><span class="line">         ListNode* last2 = <span class="literal">NULL</span>;</span><br><span class="line">         ListNode* result2 = <span class="literal">NULL</span>;</span><br><span class="line">         ListNode* pCur = pHead;</span><br><span class="line">         </span><br><span class="line">	 <span class="keyword">while</span> (pCur != <span class="literal">NULL</span>)</span><br><span class="line">	 &#123;</span><br><span class="line">		  <span class="keyword">if</span> (pCur-&gt;val &lt; x)</span><br><span class="line">		  &#123;</span><br><span class="line">			   <span class="keyword">if</span> (result1 == <span class="literal">NULL</span>)</span><br><span class="line">			   &#123;</span><br><span class="line">				    result1 = last1 = pCur;</span><br><span class="line">			   &#125;</span><br><span class="line">			   <span class="keyword">else</span></span><br><span class="line">			   &#123;</span><br><span class="line">				    last1-&gt;next = pCur;</span><br><span class="line">				    last1 = pCur;</span><br><span class="line">			   &#125;</span><br><span class="line">		  &#125;</span><br><span class="line">		  <span class="keyword">else</span></span><br><span class="line">		  &#123;</span><br><span class="line">			   <span class="keyword">if</span> (result2 == <span class="literal">NULL</span>)</span><br><span class="line">			   &#123;</span><br><span class="line">				    result2 = last2 = pCur;</span><br><span class="line">			   &#125;</span><br><span class="line">			   <span class="keyword">else</span></span><br><span class="line">			   &#123;</span><br><span class="line">				    last2-&gt;next = pCur;</span><br><span class="line">				    last2 = pCur;</span><br><span class="line">			   &#125;</span><br><span class="line">		  &#125;</span><br><span class="line">	          pCur=pCur-&gt;next;</span><br><span class="line">	 &#125;</span><br><span class="line">	 <span class="keyword">if</span>(last1!=<span class="literal">NULL</span>)</span><br><span class="line">         &#123;</span><br><span class="line">            last1-&gt;next = result2;</span><br><span class="line">         &#125;</span><br><span class="line">         <span class="keyword">if</span> (last2 != <span class="literal">NULL</span>)</span><br><span class="line">         &#123;</span><br><span class="line">	    last2-&gt;next = <span class="literal">NULL</span>;</span><br><span class="line">         &#125;</span><br><span class="line">         <span class="keyword">if</span>(last1!=<span class="literal">NULL</span>)</span><br><span class="line">         &#123;</span><br><span class="line">            <span class="keyword">return</span> result1;</span><br><span class="line">         &#125;</span><br><span class="line">         <span class="keyword">else</span></span><br><span class="line">         &#123;</span><br><span class="line">            <span class="keyword">return</span> result2;</span><br><span class="line">         &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+      
+    
+  </section>
+</article>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <article class="post white-box shadow reveal ">
+  
+
+
+  <section class='meta'>
+    
+      
+      
+      <div class="meta" id="header-meta">
+        
+          
+  <h2 class="title">
+    <a href="/2019/05/02/DS-MergeList/">
+      【数据结构---6】将两个有序链表合并为一个新的有序链表并返回
+    </a>
+  </h2>
+
+
+        
+        <div class='new-meta-box'>
+          
+            
+          
+            
+              
+<div class='new-meta-item author'>
+  <a href="https://blog.csdn.net/Austin_Yan" target="_blank" rel="nofollow noopener">
+    <img src="https://cdn.jsdelivr.net/gh/AustinYANyh/Image@1.0/head1.jpg">
+    <p>染墨若流云</p>
+  </a>
+</div>
+
+            
+          
+            
+              
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/' rel="nofollow">
+      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+      <p>数据结构</p>
+    </a>
+  </div>
+
+
+            
+          
+            
+              <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：May 2, 2019</p>
+  </a>
+</div>
+
+            
+          
+            
+              
+  
+
+
+            
+          
+            
+              
+  <div class="new-meta-item wordcount">
+    <a class='notlink'>
+      <i class="fas fa-keyboard fa-fw" aria-hidden="true"></i>
+      <p>384 words</p>
+    </a>
+  </div>
+  <div class="new-meta-item readtime">
+    <a class='notlink'>
+      <i class="fas fa-hourglass-half fa-fw" aria-hidden="true"></i>
+      <p>1 min</p>
+    </a>
+  </div>
+
+
+            
+          
+            
+              
+
+            
+          
+        </div>
+        
+          <hr>
+        
+      </div>
+    
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      
+        <a id="more"></a>
+
+
+
+<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述:"></a>题目描述:</h2><p><strong>将两个有序链表合并为一个新的有序链表并返回,新链表是通过拼接给定的两个链表的所有节点组成的</strong></p>
+<p><strong>示例：</strong></p>
+<p><strong>输入：1-&gt;2-&gt;4, 1-&gt;3-&gt;4<br>输出：1-&gt;1-&gt;2-&gt;3-&gt;4-&gt;4</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * struct ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     struct ListNode *next;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="思路分析"><a href="#思路分析" class="headerlink" title="思路分析:"></a>思路分析:</h2><blockquote>
+<p><strong>1.创建一个结果链表,同时对两个链表进行遍历</strong><br><strong>2.如果第一个链表第一个节点的值比第二个链表的第一个节点的值小,那么就把第一个链表的第一个节点指向结果链表</strong><br><strong>3.注意极端情况:</strong><br><code>1.第一个或第二个链表有一个为空,那就直接返回另一个链表</code><br><code>2.两个链表长短不一时,一方遍历完而另一个没有,最后把结果链表的last指向还没有遍历完的链表</code><br><strong>4.最后返回结果链表</strong></p>
+</blockquote>
+<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现:"></a>代码实现:</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">struct ListNode* <span class="title">mergeTwoLists</span><span class="params">(struct ListNode* l1, struct ListNode* l2)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	 <span class="keyword">if</span> (l1 == <span class="literal">NULL</span>)</span><br><span class="line">	 &#123;</span><br><span class="line">		  <span class="keyword">return</span> l2;</span><br><span class="line">	 &#125;</span><br><span class="line">	 <span class="keyword">if</span> (l2 == <span class="literal">NULL</span>)</span><br><span class="line">	 &#123;</span><br><span class="line">		  <span class="keyword">return</span> l1;</span><br><span class="line">	 &#125;</span><br><span class="line"></span><br><span class="line">	 <span class="class"><span class="keyword">struct</span> <span class="title">ListNode</span> *<span class="title">c1</span> = <span class="title">l1</span>;</span></span><br><span class="line">	 <span class="class"><span class="keyword">struct</span> <span class="title">ListNode</span> *<span class="title">c2</span> = <span class="title">l2</span>;</span></span><br><span class="line">	 <span class="class"><span class="keyword">struct</span> <span class="title">ListNode</span> *<span class="title">result</span> = <span class="title">NULL</span>;</span></span><br><span class="line">	 <span class="class"><span class="keyword">struct</span> <span class="title">ListNode</span> *<span class="title">last</span> = <span class="title">NULL</span>;</span></span><br><span class="line"></span><br><span class="line">	 <span class="keyword">while</span> (c1 != <span class="literal">NULL</span> &amp;&amp; c2 != <span class="literal">NULL</span>)</span><br><span class="line">	 &#123;</span><br><span class="line">	        <span class="class"><span class="keyword">struct</span> <span class="title">ListNode</span>* <span class="title">next1</span>=<span class="title">c1</span>-&gt;<span class="title">next</span>;</span></span><br><span class="line">	        <span class="class"><span class="keyword">struct</span> <span class="title">ListNode</span>* <span class="title">next2</span>=<span class="title">c2</span>-&gt;<span class="title">next</span>;</span></span><br><span class="line">		<span class="keyword">if</span> (c1-&gt;val &lt;= c2-&gt;val)</span><br><span class="line">		&#123;</span><br><span class="line">			   <span class="keyword">if</span> (result == <span class="literal">NULL</span>)</span><br><span class="line">			   &#123;</span><br><span class="line">				    result = last = c1;</span><br><span class="line">			   &#125;</span><br><span class="line">			   <span class="keyword">else</span></span><br><span class="line">			   &#123;</span><br><span class="line">				    last-&gt;next = c1;</span><br><span class="line">				    last = c1;</span><br><span class="line">			   &#125;</span><br><span class="line">			   c1=next1;</span><br><span class="line">	 	 &#125;</span><br><span class="line">		 <span class="keyword">else</span></span><br><span class="line">		 &#123;</span><br><span class="line">			   <span class="keyword">if</span> (result == <span class="literal">NULL</span>)</span><br><span class="line">			   &#123;</span><br><span class="line">				    result = last =c2 ;</span><br><span class="line">			   &#125;</span><br><span class="line">			   <span class="keyword">else</span></span><br><span class="line">			   &#123;</span><br><span class="line">				    last-&gt;next = c2;</span><br><span class="line">				    last = c2;</span><br><span class="line">			   &#125;</span><br><span class="line">			   c2 = next2;</span><br><span class="line">		  &#125;</span><br><span class="line">	 &#125;</span><br><span class="line">	 <span class="keyword">if</span> (c1 != <span class="literal">NULL</span>)</span><br><span class="line">	 &#123;</span><br><span class="line">		  last-&gt;next = c1;</span><br><span class="line">	 &#125;</span><br><span class="line">	 <span class="keyword">if</span> (c2 != <span class="literal">NULL</span>)</span><br><span class="line">	 &#123;</span><br><span class="line">		  last-&gt;next = c2;</span><br><span class="line">	 &#125;</span><br><span class="line">    </span><br><span class="line">	 <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+      
+    
+  </section>
+</article>
+
+          </div>
+        
+      
+    
+  </section>
+  
+    
+      <br>
+      <div class="prev-next">
+        
+          <a class="prev" rel="prev" href="/page/3/">
+            <section class="post prev white-box shadow" >
+              <i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;Previous&nbsp;
+            </section>
+          </a>
+        
+        <p class="current">
+          4 / 4
+        </p>
+        
+      </div>
+    
+    <!-- 根据主题中的设置决定是否在archive中针对摘要部分的MathJax公式加载mathjax.js文件 -->
+    
+    
+
+  
+
+
+</div>
+<aside class='l_side'>
+  
+  
+    
+    
+
+<section class="widget blogger shadow desktop mobile">
+  <div class='content'>
+    
+      
+        <a class='avatar flat-box' href='/about/'>
+          <img no-lazy src='https://cdn.jsdelivr.net/gh/AustinYANyh/Image@1.0/head1.jpg'/>
+        </a>
+      
+    
+    
+      <div class='text'>
+        
+        
+        
+          <p><span id="jinrishici-sentence">AustinYAN's Blog</span></p>
+          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+        
+      </div>
+    
+    
+      <div class="social-wrapper">
+        
+          
+            <a href="/atom.xml"
+              class="social fas fa-rss flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="mailto:austinyanlzh@gmail.com"
+              class="social fas fa-envelope flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="https://github.com/AustinYANyh"
+              class="social fab fa-github flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="https://music.163.com/#/user/home?id=286524796"
+              class="social fas fa-headphones-alt flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+      </div>
+    
+  </div>
+</section>
+
+  
+
+  
+    
+    
+  
+
+  <section class="widget category shadow desktop">
+    
+  <header>
+    
+      <a href='/categories/'><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i><span class='name'>文章分类</span></a>
+    
+  </header>
+
+
+    <div class='content'>
+      <ul class="entry navigation">
+        
+          <li><a class="flat-box"
+            title="/categories/C/" href="/categories/C/"
+            id="categoriesC"
+            ><div class='name'>C#</div><div class='badge'>(11)</div></a></li>
+        
+          <li><a class="flat-box"
+            title="/categories/C/" href="/categories/C/"
+            id="categoriesC"
+            ><div class='name'>C++</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box"
+            title="/categories/Cpp/" href="/categories/Cpp/"
+            id="categoriesCpp"
+            ><div class='name'>Cpp</div><div class='badge'>(2)</div></a></li>
+        
+          <li><a class="flat-box"
+            title="/categories/HTML/" href="/categories/HTML/"
+            id="categoriesHTML"
+            ><div class='name'>HTML</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box"
+            title="/categories/VsCode/" href="/categories/VsCode/"
+            id="categoriesVsCode"
+            ><div class='name'>VsCode</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box"
+            title="/categories/%E5%8F%8D%E6%80%9D%E4%B8%8E%E6%80%BB%E7%BB%93/" href="/categories/%E5%8F%8D%E6%80%9D%E4%B8%8E%E6%80%BB%E7%BB%93/"
+            id="categoriesE58F8DE6809DE4B88EE680BBE7BB93"
+            ><div class='name'>反思与总结</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box"
+            title="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"
+            id="categoriesE6938DE4BD9CE7B3BBE7BB9F"
+            ><div class='name'>操作系统</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box"
+            title="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"
+            id="categoriesE695B0E68DAEE7BB93E69E84"
+            ><div class='name'>数据结构</div><div class='badge'>(4)</div></a></li>
+        
+          <li><a class="flat-box"
+            title="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%BA%8C%E5%8F%89%E6%A0%91/" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%BA%8C%E5%8F%89%E6%A0%91/"
+            id="categoriesE695B0E68DAEE7BB93E69E84E4BA8CE58F89E6A091"
+            ><div class='name'>数据结构二叉树</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box"
+            title="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/"
+            id="categoriesE695B0E68DAEE7BB93E69E84E68E92E5BA8FE7AE97E6B395"
+            ><div class='name'>数据结构排序算法</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box"
+            title="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E6%A0%88/" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E6%A0%88/"
+            id="categoriesE695B0E68DAEE7BB93E69E84E6A088"
+            ><div class='name'>数据结构栈</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box"
+            title="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E6%A0%91%E5%92%8C%E4%BA%8C%E5%8F%89%E6%A0%91/" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E6%A0%91%E5%92%8C%E4%BA%8C%E5%8F%89%E6%A0%91/"
+            id="categoriesE695B0E68DAEE7BB93E69E84E6A091E5928CE4BA8CE58F89E6A091"
+            ><div class='name'>数据结构树和二叉树</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box"
+            title="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E9%98%9F%E5%88%97%E5%9C%A8%E7%BA%BFOJ/" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E9%98%9F%E5%88%97%E5%9C%A8%E7%BA%BFOJ/"
+            id="categoriesE695B0E68DAEE7BB93E69E84E9989FE58897E59CA8E7BABFOJ"
+            ><div class='name'>数据结构队列在线OJ</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box"
+            title="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E9%9D%9E%E6%AF%94%E8%BE%83%E6%8E%92%E5%BA%8F/" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E9%9D%9E%E6%AF%94%E8%BE%83%E6%8E%92%E5%BA%8F/"
+            id="categoriesE695B0E68DAEE7BB93E69E84E99D9EE6AF94E8BE83E68E92E5BA8F"
+            ><div class='name'>数据结构非比较排序</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box"
+            title="/categories/%E9%92%88%E5%AF%B9%E6%80%A7%E5%A4%8D%E4%B9%A0/" href="/categories/%E9%92%88%E5%AF%B9%E6%80%A7%E5%A4%8D%E4%B9%A0/"
+            id="categoriesE99288E5AFB9E680A7E5A48DE4B9A0"
+            ><div class='name'>针对性复习</div><div class='badge'>(1)</div></a></li>
+        
+      </ul>
+    </div>
+  </section>
+
+
+  
+
+  
+    
+    
+
+  
+
+  
+
+
+</aside>
+
+
+
+<footer class="clearfix">
+  <br><br>
+  
+  
+  <div class="aplayer-container">
+    
+
+  
+    <meting-js
+      theme='#1BCDFC'
+      autoplay='true'
+      volume='0.7'
+      loop='all'
+      order='list'
+      fixed='false'
+      list-max-height='340px'
+      server='netease'
+      type='playlist'
+      id='395143331'
+      list-folded='true'>
+    </meting-js>
+  
+
+
+  </div>
+  
+  
+  
+  <br>
+  <div class="social-wrapper">
+    
+    
+    <a href="/atom.xml" class="social fas fa-rss flat-btn" target="_blank"
+      rel="external nofollow noopener noreferrer">
+    </a>
+    
+          
+    
+    <a href="mailto:austinyanlzh@gmail.com" class="social fas fa-envelope flat-btn" target="_blank"
+      rel="external nofollow noopener noreferrer">
+    </a>
+    
+          
+    
+    <a href="https://github.com/AustinYANyh" class="social fab fa-github flat-btn" target="_blank"
+      rel="external nofollow noopener noreferrer">
+    </a>
+    
+          
+    
+    <a href="https://music.163.com/#/user/home?id=286524796" class="social fas fa-headphones-alt flat-btn" target="_blank"
+      rel="external nofollow noopener noreferrer">
+    </a>
+    
+          
+  </div>
+  
+  
+  
+  <div><p>Blog content follows the <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener">Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0) License</a></p>
+</div>
+  
+  
+  
+  Use
+  <a href="https://volantis.js.org/" target="_blank" class="codename">Volantis</a>
+  as theme, total visits
+  <span id="busuanzi_value_site_pv"><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
+  times
+  
+  
+  
+  
+  <div class='copyright'>
+    <p><a href="https://lubaobao.xyz" target="_blank" rel="noopener">Copyright © 2017-2020 AustinYAN</a></p>
+
+  </div>
+  
+  
+  <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+  <script>
+    var now = new Date();
+    function createtime() {
+      var grt = new Date("06/12/2020 09:38:00");//在此处修改你的建站时间，格式：月/日/年 时:分:秒
+      now.setTime(now.getTime() + 250);
+      days = (now - grt) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+      hours = (now - grt) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+      if (String(hnum).length == 1) { hnum = "0" + hnum; } minutes = (now - grt) / 1000 / 60 - (24 * 60 * dnum) - (60 * hnum);
+      mnum = Math.floor(minutes); if (String(mnum).length == 1) { mnum = "0" + mnum; }
+      seconds = (now - grt) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+      snum = Math.round(seconds); if (String(snum).length == 1) { snum = "0" + snum; }
+      document.getElementById("timeDate").innerHTML = "本站已安全运行 " + dnum + " 天 ";
+      document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+    }
+    setInterval("createtime()", 250);
+  </script>
+  <i class="fas fa-chart-area"></i>
+  <span class="post-count">字数统计：27.4k</span>
+  <script type="text/javascript">document.write(unescape("%3Cspan id='cnzz_stat_icon_1279069821'%3E%3C/span%3E%3Cscript src='https://s9.cnzz.com/z_stat.php%3Fid%3D1279069821%26show%3Dpic2' type='text/javascript'%3E%3C/script%3E"));
+  </script>
+  <script>
+    var _hmt = _hmt || [];
+    (function () {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?d28bb0b02349817f8859801d0c9663a2";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+  <br>
+</footer>
+
+<script>setLoadingBarProgress(80);</script>
+
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+  </div>
+  
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4/dist/jquery.min.js"></script>
+
+
+  <script>
+    
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/" || "/";
+    if (!ROOT.endsWith('/')) ROOT += '/';
+  </script>
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2/js/instant_page.js" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.6/dist/scrollreveal.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      ScrollReveal().reveal('.l_main .reveal', {
+        distance: '8px',
+        duration: '800',
+        interval: '100',
+        scale: '1'
+      });
+    });
+  </script>
+
+
+  
+<script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+
+  <script type="text/javascript">
+    $(function() {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+  <script defer src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js"></script>
+
+
+
+  
+  
+  
+    
+<script src="https://cdn.jsdelivr.net/npm/jquery-backstretch@2.1.18/jquery.backstretch.min.js"></script>
+
+    <script type="text/javascript">
+      $(function(){
+        var imgs=["https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/41F215B9-261F-48B4-80B5-4E86E165259E.jpeg"];
+        if ('true' == 'true') {
+          function shuffle(arr){
+            /*From countercurrent-time*/
+            var n = arr.length;
+            while(n--) {
+              var index = Math.floor(Math.random() * n);
+              var temp = arr[index];
+              arr[index] = arr[n];
+              arr[n] = temp;
+            }
+          }
+          shuffle(imgs);
+        }
+        if ('.cover') {
+          $('.cover').backstretch(
+            imgs,
+          {
+            duration: "20000",
+            fade: "1500"
+          });
+        } else {
+          $.backstretch(
+            imgs,
+          {
+            duration: "20000",
+            fade: "1500"
+          });
+        }
+      });
+    </script>
+  
+
+
+
+  
+    
+<script src="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.js"></script>
+
+  
+    
+<script src="https://cdn.jsdelivr.net/npm/meting@2.0/dist/Meting.min.js"></script>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+<script src="/js/app.js"></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.6.5/js/search.js"></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2/js/comment_typing.js"></script>
+
+
+
+
+
+
+<!-- 复制 -->
+
+  <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="fas fa-copy"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('fa-copy');
+        $icon.addClass('fa-check-circle');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('fa-check-circle');
+          $icon.addClass('fa-copy');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('fa-copy');
+        $icon.addClass('fa-times-circle');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('fa-times-circle');
+          $icon.addClass('fa-copy');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+
+
+
+
+<!-- fancybox -->
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script>
+  function pjax_fancybox() {
+    $(".article-entry").find("img").not('.inline').not('a img').each(function () { //渲染 fancybox
+      var element = document.createElement("a"); // a 标签
+      $(element).attr("pjax-fancybox", "");  // 过滤 pjax
+      $(element).attr("href", $(this).attr("src"));
+      if ($(this).attr("data-original")) {
+        $(element).attr("href", $(this).attr("data-original"));
+      }
+      $(element).attr("data-fancybox", "images");
+      var caption = "";   // 描述信息
+      if ($(this).attr('alt')) {  // 标准 markdown 描述信息
+        $(element).attr('data-caption', $(this).attr('alt'));
+        caption = $(this).attr('alt');
+      }
+      var div = document.createElement("div");
+      $(div).addClass("fancybox");
+      $(this).wrap(div); // 最外层套 div ，其实主要作用还是 class 样式
+      var span = document.createElement("span");
+      $(span).addClass("image-caption");
+      $(span).text(caption); // 加描述
+      $(this).after(span);  // 再套一层描述
+      $(this).wrap(element);  // 最后套 a 标签
+    })
+    $(".article-entry").find("img").fancybox({
+      selector: '[data-fancybox="images"]',
+      hash: false,
+      loop: false,
+      closeClick: true,
+      helpers: {
+        overlay: {closeClick: true}
+      },
+      buttons: [
+        "zoom",
+        "close"
+      ]
+    });
+  };
+  $(function () {
+    pjax_fancybox();
+  });
+</script>
+
+
+
+
+  <script>setLoadingBarProgress(100);</script>
+  <!-- 数字雨 -->
+  <canvas id="canvas" width="1440" height="900"></canvas>
+  <script type="text/javascript" src="/js/DigitalRain.js"></script>
+
+  <!--鼠标烟花-->
+  <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;"></canvas>
+  <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script>
+  <script type="text/javascript" src="/js/firework.js"></script>
+
+  <!--预加载-->
+  <script src="https://cdn.jsdelivr.net/gh/TRHX/CDN-for-itrhx.com@2.0.2/js/instantclick-1.2.2.js"
+    type="module"></script>
+</body>
+
+</html>
