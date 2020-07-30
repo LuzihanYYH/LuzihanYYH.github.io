@@ -16,10 +16,15 @@
 
   <!-- 页面元数据 -->
   
-    <title>【数据结构---18】基于栈的括号匹配检测 - AustinYAN&#39;s Blog</title>
+    <title>WPF一键更换单位 - AustinYAN&#39;s Blog</title>
   
   
-    <meta name="description" content="数据结构OJ练习题…">
+    <meta name="description" content="
+页面布局
+单位转换
+数值转换
+效果演示
+">
   
 
   <!-- feed -->
@@ -421,8 +426,8 @@
         
           
   <h1 class="title">
-    <a href="/2019/05/18/DS-StackBrackets/">
-      【数据结构---18】基于栈的括号匹配检测
+    <a href="/2020/07/30/WPF-OneKeyToChangeUnit/">
+      WPF一键更换单位
     </a>
   </h1>
 
@@ -447,9 +452,9 @@
               
   
   <div class='new-meta-item category'>
-    <a href='/categories/DS/' rel="nofollow">
+    <a href='/categories/C/' rel="nofollow">
       <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
-      <p>DS</p>
+      <p>C#</p>
     </a>
   </div>
 
@@ -460,7 +465,7 @@
               <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：May 18, 2019</p>
+    <p>发布于：Jul 30, 2020</p>
   </a>
 </div>
 
@@ -487,13 +492,13 @@
   <div class="new-meta-item wordcount">
     <a class='notlink'>
       <i class="fas fa-keyboard fa-fw" aria-hidden="true"></i>
-      <p>359 words</p>
+      <p>848 words</p>
     </a>
   </div>
   <div class="new-meta-item readtime">
     <a class='notlink'>
       <i class="fas fa-hourglass-half fa-fw" aria-hidden="true"></i>
-      <p>1 min</p>
+      <p>4 min</p>
     </a>
   </div>
 
@@ -517,28 +522,48 @@
       <section class="article typo">
         <div class="article-entry" itemprop="articleBody">
           
-          <p>数据结构OJ练习题…</p>
+          <ul>
+<li><a href="#_1">页面布局</a></li>
+<li><a href="#_1">单位转换</a></li>
+<li><a href="#_1">数值转换</a></li>
+<li><a href="#_1">效果演示</a></li>
+</ul>
 <a id="more"></a>
 
-<h2 id="题目描述："><a href="#题目描述：" class="headerlink" title="题目描述："></a>题目描述：</h2><p><strong>给定一个只包括 ‘(’，’)’，’{’，’}’，’[’，’]’ 的字符串，判断字符串是否有效</strong></p>
-<p><strong>有效字符串需满足：</strong></p>
-<p><strong>左括号必须用相同类型的右括号闭合<br>左括号必须以正确的顺序闭合</strong></p>
-<p><code>注意空字符串可被认为是有效字符串</code></p>
-<p><strong>示例 1:</strong></p>
-<p><strong>输入: “()”<br>输出: true</strong></p>
-<p><strong>示例 2:</strong></p>
-<p><strong>输入: “()[]{}”<br>输出: true</strong></p>
-<p><strong>示例 3:</strong></p>
-<p><strong>输入: “(]”<br>输出: false</strong></p>
-<p><strong>示例 4:</strong></p>
-<p><strong>输入: “([)]”<br>输出: false</strong></p>
-<p><strong>示例 5:</strong></p>
-<p><strong>输入: “{[]}”<br>输出: true</strong></p>
-<p><strong>先把需要用到的栈构建好:</strong><a href="https://blog.csdn.net/Austin_Yan/article/details/90210446" target="_blank" rel="noopener">c语言实现动态栈</a></p>
-<h2 id="思路分析"><a href="#思路分析" class="headerlink" title="思路分析:"></a>思路分析:</h2><blockquote>
-<p>1.求出字符串的长度对其遍历,遍历到左括号时,往栈里压入对应的右括号<br>2.遍历到右括号时获取栈顶元素对比,一致就继续,不一致就返回false<br>3.如果遍历到空字符,continue<br>4.最终遍历完毕,判断匹配的依据是栈为空栈<br><code>注意:栈对应的Push操作中对top已经操作过了,不需要再对top操作</code></p>
-</blockquote>
-<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现:"></a>代码实现:</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">isValid</span><span class="params">(<span class="keyword">char</span> * s)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    Stack S;</span><br><span class="line">    StackInit(&amp;S);</span><br><span class="line">    <span class="keyword">int</span> n=<span class="built_in">strlen</span>(s);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;++i)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(s[i]==<span class="string">'('</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            StackPush(&amp;S,<span class="string">')'</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(s[i]==<span class="string">'['</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            StackPush(&amp;S,<span class="string">']'</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(s[i]==<span class="string">'&#123;'</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            StackPush(&amp;S,<span class="string">'&#125;'</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(s[i]==<span class="string">' '</span>)</span><br><span class="line">        &#123;</span><br><span class="line">           <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(s[i]==<span class="string">')'</span>||s[i]==<span class="string">']'</span>||s[i]==<span class="string">'&#125;'</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(StackTop(&amp;S)==s[i])</span><br><span class="line">            &#123; </span><br><span class="line">                StackPop(&amp;S);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(S.top==<span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="页面布局"><a href="#页面布局" class="headerlink" title="页面布局"></a>页面布局</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Window</span> <span class="attr">x:Class</span>=<span class="string">"testUnit.MainWindow"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">xmlns</span>=<span class="string">"http://schemas.microsoft.com/winfx/2006/xaml/presentation"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">xmlns:x</span>=<span class="string">"http://schemas.microsoft.com/winfx/2006/xaml"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">xmlns:d</span>=<span class="string">"http://schemas.microsoft.com/expression/blend/2008"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">xmlns:mc</span>=<span class="string">"http://schemas.openxmlformats.org/markup-compatibility/2006"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">xmlns:local</span>=<span class="string">"clr-namespace:testUnit"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">mc:Ignorable</span>=<span class="string">"d"</span> <span class="attr">Loaded</span>=<span class="string">"Window_Loaded"</span> <span class="attr">Unloaded</span>=<span class="string">"Window_Unloaded"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">Title</span>=<span class="string">"MainWindow"</span> <span class="attr">Height</span>=<span class="string">"450"</span> <span class="attr">Width</span>=<span class="string">"800"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">Grid</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">ComboBox</span> <span class="attr">x:Name</span>=<span class="string">"UnitCombox"</span> <span class="attr">Width</span>=<span class="string">"150"</span> <span class="attr">Height</span>=<span class="string">"35"</span> <span class="attr">Margin</span>=<span class="string">"0,-200,0,0"</span> <span class="attr">SelectedIndex</span>=<span class="string">"0"</span> <span class="attr">SelectionChanged</span>=<span class="string">"UnitCombox_SelectionChanged"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">ComboBoxItem</span> <span class="attr">Content</span>=<span class="string">"mm/s"</span>/&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">ComboBoxItem</span> <span class="attr">Content</span>=<span class="string">"mm/min"</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">ComboBox</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">StackPanel</span> <span class="attr">Orientation</span>=<span class="string">"Horizontal"</span> <span class="attr">HorizontalAlignment</span>=<span class="string">"Center"</span> <span class="attr">Height</span>=<span class="string">"100"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">TextBox</span> <span class="attr">x:Name</span>=<span class="string">"Input1"</span> <span class="attr">Text</span>=<span class="string">"100"</span> <span class="attr">Width</span>=<span class="string">"150"</span> <span class="attr">Height</span>=<span class="string">"35"</span> <span class="attr">Background</span>=<span class="string">"Black"</span> <span class="attr">Foreground</span>=<span class="string">"White"</span> <span class="attr">HorizontalContentAlignment</span>=<span class="string">"Center"</span> <span class="attr">VerticalContentAlignment</span>=<span class="string">"Center"</span> <span class="attr">Margin</span>=<span class="string">"15"</span>&gt;</span><span class="tag">&lt;/<span class="name">TextBox</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">TextBox</span> <span class="attr">x:Name</span>=<span class="string">"Input2"</span> <span class="attr">Text</span>=<span class="string">"100"</span> <span class="attr">Width</span>=<span class="string">"150"</span> <span class="attr">Height</span>=<span class="string">"35"</span> <span class="attr">Background</span>=<span class="string">"Black"</span> <span class="attr">Foreground</span>=<span class="string">"White"</span> <span class="attr">HorizontalContentAlignment</span>=<span class="string">"Center"</span> <span class="attr">VerticalContentAlignment</span>=<span class="string">"Center"</span> <span class="attr">Margin</span>=<span class="string">"15"</span>&gt;</span><span class="tag">&lt;/<span class="name">TextBox</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">TextBox</span> <span class="attr">x:Name</span>=<span class="string">"Input3"</span> <span class="attr">Text</span>=<span class="string">"100"</span> <span class="attr">Width</span>=<span class="string">"150"</span> <span class="attr">Height</span>=<span class="string">"35"</span> <span class="attr">Background</span>=<span class="string">"Black"</span> <span class="attr">Foreground</span>=<span class="string">"White"</span> <span class="attr">HorizontalContentAlignment</span>=<span class="string">"Center"</span> <span class="attr">VerticalContentAlignment</span>=<span class="string">"Center"</span> <span class="attr">Margin</span>=<span class="string">"15"</span>&gt;</span><span class="tag">&lt;/<span class="name">TextBox</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">TextBox</span> <span class="attr">x:Name</span>=<span class="string">"Input4"</span> <span class="attr">Text</span>=<span class="string">"100"</span> <span class="attr">Width</span>=<span class="string">"150"</span> <span class="attr">Height</span>=<span class="string">"35"</span> <span class="attr">Background</span>=<span class="string">"Black"</span> <span class="attr">Foreground</span>=<span class="string">"White"</span> <span class="attr">HorizontalContentAlignment</span>=<span class="string">"Center"</span> <span class="attr">VerticalContentAlignment</span>=<span class="string">"Center"</span> <span class="attr">Margin</span>=<span class="string">"15"</span>&gt;</span><span class="tag">&lt;/<span class="name">TextBox</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">StackPanel</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">StackPanel</span> <span class="attr">Orientation</span>=<span class="string">"Horizontal"</span> <span class="attr">Height</span>=<span class="string">"100"</span> <span class="attr">HorizontalAlignment</span>=<span class="string">"Center"</span> <span class="attr">Margin</span>=<span class="string">"0,150,0,0"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">Label</span> <span class="attr">x:Name</span>=<span class="string">"Unit1"</span> <span class="attr">Content</span>=<span class="string">"&#123;Binding SpeedUnit&#125;"</span> <span class="attr">Width</span>=<span class="string">"150"</span> <span class="attr">Height</span>=<span class="string">"35"</span> <span class="attr">HorizontalContentAlignment</span>=<span class="string">"Center"</span> <span class="attr">VerticalContentAlignment</span>=<span class="string">"Center"</span> <span class="attr">Margin</span>=<span class="string">"15"</span>&gt;</span><span class="tag">&lt;/<span class="name">Label</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">Label</span> <span class="attr">x:Name</span>=<span class="string">"Unit2"</span> <span class="attr">Content</span>=<span class="string">"&#123;Binding SpeedUnit&#125;"</span> <span class="attr">Width</span>=<span class="string">"150"</span> <span class="attr">Height</span>=<span class="string">"35"</span> <span class="attr">HorizontalContentAlignment</span>=<span class="string">"Center"</span> <span class="attr">VerticalContentAlignment</span>=<span class="string">"Center"</span> <span class="attr">Margin</span>=<span class="string">"15"</span>&gt;</span><span class="tag">&lt;/<span class="name">Label</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">Label</span> <span class="attr">x:Name</span>=<span class="string">"Unit3"</span> <span class="attr">Content</span>=<span class="string">"&#123;Binding SpeedUnit&#125;"</span> <span class="attr">Width</span>=<span class="string">"150"</span> <span class="attr">Height</span>=<span class="string">"35"</span> <span class="attr">HorizontalContentAlignment</span>=<span class="string">"Center"</span> <span class="attr">VerticalContentAlignment</span>=<span class="string">"Center"</span> <span class="attr">Margin</span>=<span class="string">"15"</span>&gt;</span><span class="tag">&lt;/<span class="name">Label</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">Label</span> <span class="attr">x:Name</span>=<span class="string">"Unit4"</span> <span class="attr">Content</span>=<span class="string">"&#123;Binding SpeedUnit&#125;"</span> <span class="attr">Width</span>=<span class="string">"150"</span> <span class="attr">Height</span>=<span class="string">"35"</span> <span class="attr">HorizontalContentAlignment</span>=<span class="string">"Center"</span> <span class="attr">VerticalContentAlignment</span>=<span class="string">"Center"</span> <span class="attr">Margin</span>=<span class="string">"15"</span>&gt;</span><span class="tag">&lt;/<span class="name">Label</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">StackPanel</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">Grid</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">Window</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="单位转换"><a href="#单位转换" class="headerlink" title="单位转换"></a>单位转换</h2><ul>
+<li>思路一<ul>
+<li>利用一个循环刷新的线程,根据UnitCombox的索引,动态赋值给UnitLable</li>
+<li>缺点明显,需要知道控件名,利用FindName查找,线程中操作UI控件需要Dispatcher</li>
+<li>关闭窗体后循环中可能还在查找控件,FindName会抛出异常</li>
+</ul>
+</li>
+<li>思路二<ul>
+<li>创建一个具有通知UI属性的变量,根据UnitCombox的索引,将选中的单位赋值给变量,将变量绑定到UnitLable的Content属性</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">MainWindowViewModel</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    Task task = <span class="keyword">new</span> Task(() =&gt;RefrushData());</span><br><span class="line">    task.Start();</span><br><span class="line">&#125;</span><br><span class="line">List&lt;<span class="keyword">string</span>&gt; UnitList = <span class="keyword">new</span> List&lt;<span class="keyword">string</span>&gt;() &#123; <span class="string">"mm/s"</span>, <span class="string">"mm/min"</span> &#125;;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">string</span> _SpeedUnit;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">string</span> SpeedUnit</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">get</span> &#123; <span class="keyword">return</span> _SpeedUnit; &#125;</span><br><span class="line">    <span class="keyword">set</span></span><br><span class="line">    &#123;</span><br><span class="line">        _SpeedUnit = <span class="keyword">value</span>;</span><br><span class="line">        RaisePropertyChanged(<span class="string">"SpeedUnit"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">RefrushData</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">while</span> (<span class="literal">true</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        SpeedUnit = UnitList[MainWindow.SpeedUnitSelectMode];</span><br><span class="line">        Thread.Sleep(<span class="number">100</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="数值转换"><a href="#数值转换" class="headerlink" title="数值转换"></a>数值转换</h2><p>单位已经更新了,那么数值也必须要更新,全部以速度的基本单位举例</p>
+<ul>
+<li>思路一<ul>
+<li>只有在UnitCombox的索引变了的情况下才需要更新</li>
+<li>保存上一次的索引,将上一次的数值统计转换为mm/s</li>
+<li>将以mm/s为单位的数值,转换为UnitCombox选中的单位数值 </li>
+</ul>
+</li>
+<li>思路二<ul>
+<li>创建一个具有通知UI属性的变量,根据从下位读取上来的速度单位，转为界面选择的单位，绑定 </li>
+</ul>
+</li>
+</ul>
+<p><font color=0099ff>基于MVVM的原则,能不直接操作控件,就不要直接操作控件,尽量以数据驱动程序</font></p>
+<p><font color=red>但是,这个Demo是纯界面的单位转换,界面上的单位转换要多一次,需要记录之前是什么单位,线程中处理数据会有问题</font><br><font color=red>如果是上位和下位之间的数据交互单位转换,就不存在这个问题</font></p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">UnitCombox_SelectionChanged</span>(<span class="params"><span class="keyword">object</span> sender, SelectionChangedEventArgs e</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//单位换算</span></span><br><span class="line">    SpeedUnitSelectMode = UnitCombox.SelectedIndex;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">4</span>; ++i)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">string</span> name = <span class="string">"Input"</span> + (i + <span class="number">1</span>).ToString();</span><br><span class="line">        TextBox box = Application.Current.MainWindow.FindName(name) <span class="keyword">as</span> TextBox;</span><br><span class="line">        <span class="keyword">if</span> (box != <span class="literal">null</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">string</span> speed = HMIUnitConvert(box.Text.Trim());</span><br><span class="line">            box.Text = ConvertSpeedUnit(Convert.ToDouble(speed)).ToString();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    preindex = UnitCombox.SelectedIndex;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="效果演示"><a href="#效果演示" class="headerlink" title="效果演示"></a>效果演示</h2><p><img src="https://img-blog.csdnimg.cn/20200730130740309.gif" alt="在这里插入图片描述"></p>
+
           
             <div class='article_footer'>
               
@@ -574,7 +599,7 @@
           
         
           
-            <p>本文永久链接是：<a href=https://www.lubaobao.xyz/2019/05/18/DS-StackBrackets/>https://www.lubaobao.xyz/2019/05/18/DS-StackBrackets/</a></p>
+            <p>本文永久链接是：<a href=https://www.lubaobao.xyz/2020/07/30/WPF-OneKeyToChangeUnit/>https://www.lubaobao.xyz/2020/07/30/WPF-OneKeyToChangeUnit/</a></p>
           
         
       </blockquote>
@@ -597,10 +622,10 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-07-22T10:48:51+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-07-30T13:12:39+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Jul 22, 2020</p>
+    <p>更新于：Jul 30, 2020</p>
   </a>
 </div>
 
@@ -624,7 +649,12 @@
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer"
           
-          href="http://connect.qq.com/widget/shareqq/index.html?url=https://www.lubaobao.xyz/2019/05/18/DS-StackBrackets/&title=【数据结构---18】基于栈的括号匹配检测 - AustinYAN's Blog&summary=数据结构OJ练习题…"
+          href="http://connect.qq.com/widget/shareqq/index.html?url=https://www.lubaobao.xyz/2020/07/30/WPF-OneKeyToChangeUnit/&title=WPF一键更换单位 - AustinYAN's Blog&pics=true&summary=
+页面布局
+单位转换
+数值转换
+效果演示
+"
           
           >
           
@@ -636,7 +666,12 @@
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer"
           
-          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://www.lubaobao.xyz/2019/05/18/DS-StackBrackets/&title=【数据结构---18】基于栈的括号匹配检测 - AustinYAN's Blog&summary=数据结构OJ练习题…"
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://www.lubaobao.xyz/2020/07/30/WPF-OneKeyToChangeUnit/&title=WPF一键更换单位 - AustinYAN's Blog&pics=true&summary=
+页面布局
+单位转换
+数值转换
+效果演示
+"
           
           >
           
@@ -648,7 +683,12 @@
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer"
           
-          href="http://service.weibo.com/share/share.php?url=https://www.lubaobao.xyz/2019/05/18/DS-StackBrackets/&title=【数据结构---18】基于栈的括号匹配检测 - AustinYAN's Blog&summary=数据结构OJ练习题…"
+          href="http://service.weibo.com/share/share.php?url=https://www.lubaobao.xyz/2020/07/30/WPF-OneKeyToChangeUnit/&title=WPF一键更换单位 - AustinYAN's Blog&pics=true&summary=
+页面布局
+单位转换
+数值转换
+效果演示
+"
           
           >
           
@@ -672,24 +712,19 @@
         
           <div class="prev-next">
             
-              <a class='prev' href='/2019/05/22/DS-CircleList/'>
-                <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>【数据结构---22】循环队列的实现</p>
-                <p class='content'>学习循环队列的实现…
-
-
-题目描述:设计你的循环队列实现
-循环队列是一种线性数据结构，其操作表现基于 FIFO（先进先出）原则并且队尾被连接在队首之后以形成一个循环.它也被称为“环形缓冲器”
-循...</p>
-              </a>
             
-            
-              <a class='next' href='/2019/05/16/DS-CTOList/'>
-                <p class='title'>【数据结构---17】C语言实现一个链表队列<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
-                <p class='content'>学习C语言实现链表…
+              <a class='next' href='/2020/07/27/VSCode-DebugQT/'>
+                <p class='title'>VSCode调试QT项目<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+                <p class='content'>
+搭建QT环境
+构建QT项目
+launch.json和task.json
+结果
+关于QT的小问题
 
 
 
-Queue.h123456789101112131415161718192021222324252627282930313233#pragma oncetypedef...</p>
+搭建QT环境安装好CPP环境,control+shift+p,打开命令窗口,输入C/C++...</p>
               </a>
             
           </div>
@@ -734,7 +769,7 @@ Queue.h123456789101112131415161718192021222324252627282930313233#pragma oncetype
 
   <script>
     window.subData = {
-      title: '【数据结构---18】基于栈的括号匹配检测',
+      title: 'WPF一键更换单位',
       tools: true
     }
   </script>
@@ -760,7 +795,7 @@ Queue.h123456789101112131415161718192021222324252627282930313233#pragma oncetype
 
 
     <div class='content'>
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目描述："><span class="toc-text">题目描述：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#思路分析"><span class="toc-text">思路分析:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码实现"><span class="toc-text">代码实现:</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#页面布局"><span class="toc-text">页面布局</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#单位转换"><span class="toc-text">单位转换</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数值转换"><span class="toc-text">数值转换</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#效果演示"><span class="toc-text">效果演示</span></a></li></ol>
     </div>
   </section>
 
