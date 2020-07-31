@@ -492,7 +492,7 @@
   <div class="new-meta-item wordcount">
     <a class='notlink'>
       <i class="fas fa-keyboard fa-fw" aria-hidden="true"></i>
-      <p>848 words</p>
+      <p>883 words</p>
     </a>
   </div>
   <div class="new-meta-item readtime">
@@ -563,6 +563,8 @@
 <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">UnitCombox_SelectionChanged</span>(<span class="params"><span class="keyword">object</span> sender, SelectionChangedEventArgs e</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//单位换算</span></span><br><span class="line">    SpeedUnitSelectMode = UnitCombox.SelectedIndex;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">4</span>; ++i)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">string</span> name = <span class="string">"Input"</span> + (i + <span class="number">1</span>).ToString();</span><br><span class="line">        TextBox box = Application.Current.MainWindow.FindName(name) <span class="keyword">as</span> TextBox;</span><br><span class="line">        <span class="keyword">if</span> (box != <span class="literal">null</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">string</span> speed = HMIUnitConvert(box.Text.Trim());</span><br><span class="line">            box.Text = ConvertSpeedUnit(Convert.ToDouble(speed)).ToString();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    preindex = UnitCombox.SelectedIndex;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h2 id="效果演示"><a href="#效果演示" class="headerlink" title="效果演示"></a>效果演示</h2><p><img src="https://img-blog.csdnimg.cn/20200730130740309.gif" alt="在这里插入图片描述"></p>
+<p><font size=5 color=0099ff>2020-7-31更新</font></p>
+<p>添加了常用的四种速度单位,并且mm/s转inch/min之后转回去的也不会有误差<br><img src="https://img-blog.csdnimg.cn/20200731131228675.gif" alt="在这里插入图片描述"></p>
 
           
             <div class='article_footer'>
@@ -622,10 +624,10 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-07-30T13:12:39+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-07-31T13:24:02+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Jul 30, 2020</p>
+    <p>更新于：Jul 31, 2020</p>
   </a>
 </div>
 
