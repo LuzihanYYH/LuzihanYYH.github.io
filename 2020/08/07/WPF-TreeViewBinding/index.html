@@ -16,10 +16,16 @@
 
   <!-- 页面元数据 -->
   
-    <title>WPF的DataTrigger遇到的问题 - AustinYAN&#39;s Blog</title>
+    <title>Treeview的数据绑定 - AustinYAN&#39;s Blog</title>
   
   
-    <meta name="description" content="DataTrigger这种在xaml里的东西,因为打不了断点,所以很难找出错误到底在哪里,问题点很难定位,所以只能采取避免的方法暂时规避掉,等以后弄明白了再修改…">
+    <meta name="description" content="
+使用情景
+树形类
+数据准备
+数据绑定
+效果演示
+">
   
 
   <!-- feed -->
@@ -421,8 +427,8 @@
         
           
   <h1 class="title">
-    <a href="/2020/07/01/WPF-DataTrigger/">
-      WPF的DataTrigger遇到的问题
+    <a href="/2020/08/07/WPF-TreeViewBinding/">
+      Treeview的数据绑定
     </a>
   </h1>
 
@@ -460,7 +466,7 @@
               <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：Jul 1, 2020</p>
+    <p>发布于：Aug 7, 2020</p>
   </a>
 </div>
 
@@ -487,13 +493,13 @@
   <div class="new-meta-item wordcount">
     <a class='notlink'>
       <i class="fas fa-keyboard fa-fw" aria-hidden="true"></i>
-      <p>483 words</p>
+      <p>754 words</p>
     </a>
   </div>
   <div class="new-meta-item readtime">
     <a class='notlink'>
       <i class="fas fa-hourglass-half fa-fw" aria-hidden="true"></i>
-      <p>2 min</p>
+      <p>3 min</p>
     </a>
   </div>
 
@@ -517,14 +523,33 @@
       <section class="article typo">
         <div class="article-entry" itemprop="articleBody">
           
-          <p>DataTrigger这种在xaml里的东西,因为打不了断点,所以很难找出错误到底在哪里,问题点很难定位,所以只能采取避免的方法暂时规避掉,等以后弄明白了再修改…</p>
+          <ul>
+<li><a href="#_1">使用情景</a></li>
+<li><a href="#_1">树形类</a></li>
+<li><a href="#_1">数据准备</a></li>
+<li><a href="#_1">数据绑定</a></li>
+<li><a href="#_1">效果演示</a></li>
+</ul>
 <a id="more"></a>
 
-<h2 id="DataTrigger不触发"><a href="#DataTrigger不触发" class="headerlink" title="DataTrigger不触发"></a>DataTrigger不触发</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;TabItem x:Name&#x3D;&quot;Cutfilm_param_item&quot;  Style&#x3D;&quot;&#123;DynamicResource VerticalTabItemStyle&#125;&quot; Visibility&#x3D;&quot;Collapsed&quot;&gt;</span><br><span class="line">    &lt;i:Interaction.Triggers&gt;</span><br><span class="line">        &lt;ei:DataTrigger Binding&#x3D;&quot;&#123;Binding ElementName&#x3D;EnableCutFilm,Path&#x3D;IsChecked&#125;&quot; Value&#x3D;&quot;true&quot;&gt;</span><br><span class="line">            &lt;ei:ChangePropertyAction TargetName&#x3D;&quot;Cutfilm_param_item&quot; PropertyName&#x3D;&quot;Visibility&quot; Value&#x3D;&quot;Visible&quot;&gt;&lt;&#x2F;ei:ChangePropertyAction&gt;</span><br><span class="line">        &lt;&#x2F;ei:DataTrigger&gt;</span><br><span class="line">        &lt;ei:DataTrigger Binding&#x3D;&quot;&#123;Binding ElementName&#x3D;EnableCutFilm,Path&#x3D;IsChecked&#125;&quot; Value&#x3D;&quot;false&quot;&gt;</span><br><span class="line">            &lt;ei:ChangePropertyAction TargetName&#x3D;&quot;Cutfilm_param_item&quot; PropertyName&#x3D;&quot;Visibility&quot; Value&#x3D;&quot;Collapsed&quot;&gt;&lt;&#x2F;ei:ChangePropertyAction&gt;</span><br><span class="line">        &lt;&#x2F;ei:DataTrigger&gt;</span><br><span class="line">    &lt;&#x2F;i:Interaction.Triggers&gt;</span><br><span class="line">&lt;&#x2F;TabItem&gt;</span><br></pre></td></tr></table></figure>
-<p>上面这部分xaml的目的是,通过一个名为EnableCutFilm的CheckBox的IsChecked属性控制一个名为Cutfilm_param_item的TabItem的显示与隐藏,但是很尴尬,界面初始化结束后,DataTrigger没有触发,再此后切换Tab页,然后DataTrigger才可以正常被触发</p>
-<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><p>这个问题以前并不存在,但是在我弄了一个数据缓冲区使得点击确定之后(没有保存),下次界面上显示的是上次确定的数据(底层的数据被没有被修改)之后,这个DataTrigger就有问题了,解决办法是写一个转换器直接绑定<br><code>&lt;TabItem x:Name=&quot;Cutfilm_param_item&quot; Style=&quot;{DynamicResource VerticalTabItemStyle}&quot; Visibility=&quot;{Binding ElementName=EnableCutFilm,Path=IsChecked,Converter={StaticResource FilmCuttingConverter}}&quot;&gt;</code></p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">FilmCuttingConverter</span> : <span class="title">IValueConverter</span></span><br><span class="line">   &#123;</span><br><span class="line">       <span class="function"><span class="keyword">public</span> <span class="keyword">object</span> <span class="title">Convert</span>(<span class="params"><span class="keyword">object</span> <span class="keyword">value</span>, Type targetType, <span class="keyword">object</span> parameter, CultureInfo culture</span>)</span></span><br><span class="line"><span class="function"></span>       &#123;</span><br><span class="line">           <span class="keyword">if</span> ((<span class="keyword">bool</span>)<span class="keyword">value</span> == <span class="literal">true</span>)</span><br><span class="line">               <span class="keyword">return</span> Visibility.Visible;</span><br><span class="line">           <span class="keyword">else</span></span><br><span class="line">               <span class="keyword">return</span> Visibility.Collapsed;</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       <span class="function"><span class="keyword">public</span> <span class="keyword">object</span> <span class="title">ConvertBack</span>(<span class="params"><span class="keyword">object</span> <span class="keyword">value</span>, Type targetType, <span class="keyword">object</span> parameter, CultureInfo culture</span>)</span></span><br><span class="line"><span class="function"></span>       &#123;</span><br><span class="line">           <span class="keyword">if</span> (Visibility.Visible == (Visibility)<span class="keyword">value</span>)</span><br><span class="line">               <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">           <span class="keyword">else</span></span><br><span class="line">               <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-<p>这样界面初始化结束,就会根据从下面读到的状态直接控制TabItem的显示隐藏,不会出现不触发的情况</p>
+<h2 id="使用情景"><a href="#使用情景" class="headerlink" title="使用情景"></a>使用情景</h2><p><img src="https://img-blog.csdnimg.cn/20200807155759449.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1c3Rpbl9ZYW4=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>如果我们需要这种多层级的控件，比如Menu或者TreeView，后台代码添加需要大量操作空间，且每次Loaded的时候都需要这样，重复大量效率很差的操作，数据量要是不小，就会造成界面明显的卡顿，同时也不符合MVVM的数据驱动程序的思想，换成数据就不一样了，界面启动时加载一次，以后再也不需要重复加载，控件初始化通过Binding生成，效率肯定比我们自己写好很多</p>
+<h2 id="树形类"><a href="#树形类" class="headerlink" title="树形类"></a>树形类</h2><p>既然是多层级，那么单单使用List存放就不太现实，所以我们需要一种类似链表的结构，可以找到节点的双亲和孩子<br>TreeView绑定时必须要有两个东西，NodeID和ParentID，名字和类型可以随便，但类似的东西要有，反正大家都是这么做的，我也不知道是不是微软的规定</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">TreeNode</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> NodeID &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> ParentID &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">string</span> NodeName &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">    <span class="keyword">public</span> List&lt;TreeNode&gt; ChildNodes &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">TreeNode</span>(<span class="params"></span>)</span> =&gt; ChildNodes = <span class="keyword">new</span> List&lt;TreeNode&gt;();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="数据准备"><a href="#数据准备" class="headerlink" title="数据准备"></a>数据准备</h2><p>先随便创建点数据，NodeID的计算需要知道第一级的总个数，第二级的第一个就是第一级个数+1,第三级第一个就是第一级个数+第二级个数+1<br>ParentID的计算,第一级为0,第二级等于第一级的个数+当前循环i+1,第三级同理</p>
+<p><img src="https://img-blog.csdnimg.cn/20200807155814794.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1c3Rpbl9ZYW4=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>将节点全部创建完之后存放在一个List中,插入完数据之后的nodes<br><img src="https://img-blog.csdnimg.cn/20200807155824957.png" alt="在这里插入图片描述"></p>
+<p>此时,nodes还只是一个List,并不是层级结构,因为ChildNode还没有初始化,GetNodes递归查询子节点,当前节点的子节点的ParentID等于当前节点的NodeID</p>
+<p>微软提供的where查询语句比for快,比foreach更快</p>
+<p><font color=0099ff>以下代码来源于:<a href="https://www.cnblogs.com/larissa-0464/p/10227483.html" target="_blank" rel="noopener">https://www.cnblogs.com/larissa-0464/p/10227483.html</a></font></p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> List&lt;TreeNode&gt; <span class="title">getNodes</span>(<span class="params"><span class="keyword">int</span> parentID, List&lt;TreeNode&gt; nodes</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    List&lt;TreeNode&gt; mainNodes = nodes.Where(x =&gt; x.ParentID == parentID).ToList();</span><br><span class="line">    List&lt;TreeNode&gt; otherNodes = nodes.Where(x =&gt; x.ParentID != parentID).ToList();</span><br><span class="line">    <span class="keyword">foreach</span> (TreeNode node <span class="keyword">in</span> mainNodes)</span><br><span class="line">        node.ChildNodes = getNodes(node.NodeID, otherNodes);</span><br><span class="line">    <span class="keyword">return</span> mainNodes;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>GetNodes之后得到的层级结构,就是TreeView需要绑定的Itemsource</p>
+<h2 id="数据绑定"><a href="#数据绑定" class="headerlink" title="数据绑定"></a>数据绑定</h2><p>Resources里放的Brush是为了改变Item丢失焦点后Backgroud变成白色,那样巨丑</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">TreeView</span> <span class="attr">x:Name</span>=<span class="string">"tree"</span> <span class="attr">Background</span>=<span class="string">"&#123;StaticResource PageDeepBackground&#125;"</span> <span class="attr">BorderThickness</span>=<span class="string">"0,0,1,0"</span> <span class="attr">SelectedItemChanged</span>=<span class="string">"tree_SelectedItemChanged"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">TreeView.ItemTemplate</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">HierarchicalDataTemplate</span> <span class="attr">ItemsSource</span>=<span class="string">"&#123;Binding Path=ChildNodes&#125;"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">StackPanel</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">Label</span> <span class="attr">Content</span>=<span class="string">"&#123;Binding Path=NodeName&#125;"</span> <span class="attr">Foreground</span>=<span class="string">"White"</span>/&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">StackPanel</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">HierarchicalDataTemplate</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">TreeView.ItemTemplate</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">TreeView.ItemContainerStyle</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">Style</span> <span class="attr">TargetType</span>=<span class="string">"&#123;x:Type TreeViewItem&#125;"</span>&gt;</span></span><br><span class="line"><span class="css">            &lt;<span class="selector-tag">Style</span><span class="selector-class">.Resources</span>&gt;</span></span><br><span class="line"><span class="xml">                <span class="tag">&lt;<span class="name">SolidColorBrush</span> <span class="attr">x:Key</span>=<span class="string">"&#123;x:Static SystemColors.HighlightBrushKey&#125;"</span> <span class="attr">Color</span>=<span class="string">"DodgerBlue"</span>/&gt;</span></span></span><br><span class="line"><span class="xml">                <span class="tag">&lt;<span class="name">SolidColorBrush</span> <span class="attr">x:Key</span>=<span class="string">"&#123;x:Static SystemColors.HighlightTextBrushKey&#125;"</span> <span class="attr">Color</span>=<span class="string">"White"</span>/&gt;</span></span></span><br><span class="line"><span class="xml">                <span class="tag">&lt;<span class="name">SolidColorBrush</span> <span class="attr">x:Key</span>=<span class="string">"&#123;x:Static SystemColors.InactiveSelectionHighlightBrushKey&#125;"</span> <span class="attr">Color</span>=<span class="string">"DodgerBlue"</span>/&gt;</span></span></span><br><span class="line"><span class="xml">                <span class="tag">&lt;<span class="name">SolidColorBrush</span> <span class="attr">x:Key</span>=<span class="string">"&#123;x:Static SystemColors.InactiveSelectionHighlightTextBrushKey&#125;"</span> <span class="attr">Color</span>=<span class="string">"White"</span>/&gt;</span></span></span><br><span class="line"><span class="xml">            <span class="tag">&lt;/<span class="name">Style.Resources</span>&gt;</span></span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">Style</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">TreeView.ItemContainerStyle</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">TreeView</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="效果演示"><a href="#效果演示" class="headerlink" title="效果演示"></a>效果演示</h2><p><img src="https://img-blog.csdnimg.cn/20200807155843614.gif" alt="在这里插入图片描述"></p>
 
           
             <div class='article_footer'>
@@ -561,7 +586,7 @@
           
         
           
-            <p>本文永久链接是：<a href=https://www.lubaobao.xyz/2020/07/01/WPF-DataTrigger/>https://www.lubaobao.xyz/2020/07/01/WPF-DataTrigger/</a></p>
+            <p>本文永久链接是：<a href=https://www.lubaobao.xyz/2020/08/07/WPF-TreeViewBinding/>https://www.lubaobao.xyz/2020/08/07/WPF-TreeViewBinding/</a></p>
           
         
       </blockquote>
@@ -584,10 +609,10 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-07-01T15:39:18+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-08-07T16:07:55+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Jul 1, 2020</p>
+    <p>更新于：Aug 7, 2020</p>
   </a>
 </div>
 
@@ -611,7 +636,13 @@
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer"
           
-          href="http://connect.qq.com/widget/shareqq/index.html?url=https://www.lubaobao.xyz/2020/07/01/WPF-DataTrigger/&title=WPF的DataTrigger遇到的问题 - AustinYAN's Blog&pics=true&summary=DataTrigger这种在xaml里的东西,因为打不了断点,所以很难找出错误到底在哪里,问题点很难定位,所以只能采取避免的方法暂时规避掉,等以后弄明白了再修改…"
+          href="http://connect.qq.com/widget/shareqq/index.html?url=https://www.lubaobao.xyz/2020/08/07/WPF-TreeViewBinding/&title=Treeview的数据绑定 - AustinYAN's Blog&pics=true&summary=
+使用情景
+树形类
+数据准备
+数据绑定
+效果演示
+"
           
           >
           
@@ -623,7 +654,13 @@
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer"
           
-          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://www.lubaobao.xyz/2020/07/01/WPF-DataTrigger/&title=WPF的DataTrigger遇到的问题 - AustinYAN's Blog&pics=true&summary=DataTrigger这种在xaml里的东西,因为打不了断点,所以很难找出错误到底在哪里,问题点很难定位,所以只能采取避免的方法暂时规避掉,等以后弄明白了再修改…"
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://www.lubaobao.xyz/2020/08/07/WPF-TreeViewBinding/&title=Treeview的数据绑定 - AustinYAN's Blog&pics=true&summary=
+使用情景
+树形类
+数据准备
+数据绑定
+效果演示
+"
           
           >
           
@@ -635,7 +672,13 @@
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer"
           
-          href="http://service.weibo.com/share/share.php?url=https://www.lubaobao.xyz/2020/07/01/WPF-DataTrigger/&title=WPF的DataTrigger遇到的问题 - AustinYAN's Blog&pics=true&summary=DataTrigger这种在xaml里的东西,因为打不了断点,所以很难找出错误到底在哪里,问题点很难定位,所以只能采取避免的方法暂时规避掉,等以后弄明白了再修改…"
+          href="http://service.weibo.com/share/share.php?url=https://www.lubaobao.xyz/2020/08/07/WPF-TreeViewBinding/&title=Treeview的数据绑定 - AustinYAN's Blog&pics=true&summary=
+使用情景
+树形类
+数据准备
+数据绑定
+效果演示
+"
           
           >
           
@@ -659,18 +702,19 @@
         
           <div class="prev-next">
             
-              <a class='prev' href='/2020/07/04/WPF-Blend&Ps/'>
-                <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>Blend与Ps的交互</p>
-                <p class='content'>每天都学习一点WPF相关的知识，虽然我不太想从事CS前端类的工作，但是其实我也不知道自己想干什么…
+            
+              <a class='next' href='/2020/07/30/WPF-OneKeyToChangeUnit/'>
+                <p class='title'>WPF一键更换单位<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+                <p class='content'>
+页面布局
+单位转换
+数值转换
+效果演示
+[2020-7-31更新]
 
 
-获取PS文件的Path1&lt;Path Stroke="Black" StrokeThi...</p>
-              </a>
-            
-            
-              <a class='next' href='/2020/06/30/WPF-CoordinateSystem/'>
-                <p class='title'>WPF绘制坐标系,实现折线编辑<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
-                <p class='content'>三个月之前做的一个控件,功能是实现曲线编辑(折线,光滑未实现),因为开发经验不足并且那个控件的位置大小几乎都是确定的,所以当时没考虑到移到别的地方,很多地方都是写死的,后期修改工作量太大…所以现...</p>
+
+页面布局123456789101112131415161718192021222324252627&lt;Window...</p>
               </a>
             
           </div>
@@ -715,7 +759,7 @@
 
   <script>
     window.subData = {
-      title: 'WPF的DataTrigger遇到的问题',
+      title: 'Treeview的数据绑定',
       tools: true
     }
   </script>
@@ -741,7 +785,7 @@
 
 
     <div class='content'>
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#DataTrigger不触发"><span class="toc-text">DataTrigger不触发</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解决方法"><span class="toc-text">解决方法</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#使用情景"><span class="toc-text">使用情景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#树形类"><span class="toc-text">树形类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据准备"><span class="toc-text">数据准备</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据绑定"><span class="toc-text">数据绑定</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#效果演示"><span class="toc-text">效果演示</span></a></li></ol>
     </div>
   </section>
 
