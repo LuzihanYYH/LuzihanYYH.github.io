@@ -570,7 +570,9 @@
 
 <p>每次启动前生成最新的xml,动态加载</p>
 <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">Window_Loaded</span>(<span class="params"><span class="keyword">object</span> sender, RoutedEventArgs e</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    XmlDataProvider dd = <span class="keyword">this</span>.FindResource(<span class="string">"menudata"</span>) <span class="keyword">as</span> XmlDataProvider;</span><br><span class="line">    dd.Source = <span class="keyword">new</span> Uri(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, <span class="string">"Alll.xml"</span>));</span><br><span class="line">    <span class="keyword">this</span>.item.DataContext = dd;</span><br><span class="line">    <span class="keyword">this</span>.item.SetBinding(ItemsControl.ItemsSourceProperty, <span class="keyword">new</span> Binding() &#123; Source = dd &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="xml绑定效果演示"><a href="#xml绑定效果演示" class="headerlink" title="xml绑定效果演示"></a>xml绑定效果演示</h2>
+
+<h2 id="xml绑定效果演示"><a href="#xml绑定效果演示" class="headerlink" title="xml绑定效果演示"></a>xml绑定效果演示</h2><p><img src="https://img-blog.csdnimg.cn/20200808133241617.gif" alt="在这里插入图片描述"></p>
+
           
             <div class='article_footer'>
               
@@ -629,7 +631,7 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-08-08T14:23:36+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-08-08T14:29:58+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
     <p>更新于：Aug 8, 2020</p>
