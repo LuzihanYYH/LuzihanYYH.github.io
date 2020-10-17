@@ -1,0 +1,1185 @@
+<!DOCTYPE html>
+<html>
+<head hexo-theme='https://volantis.js.org/#2.6.6'>
+  <meta charset="utf-8">
+  <!-- SEO相关 -->
+  
+    
+  
+  <!-- 渲染优化 -->
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- 页面元数据 -->
+  
+    <title>使用Blend For VS制作WPF动画 - AustinYAN&#39;s Blog</title>
+  
+  
+    <meta name="description" content="WPF的强势之处在于不但可以很方便的画出漂亮的静态界面，也可以很方便的做出动画效果">
+  
+
+  <!-- feed -->
+  
+
+  <!-- import meta -->
+  
+
+  <!-- link -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13/css/all.min.css">
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
+
+  
+
+  
+
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.css">
+  
+
+  
+
+  <!-- import link -->
+  
+
+  
+  
+    
+<link rel="stylesheet" href="/css/style.css">
+
+  
+
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+
+  
+  
+</head>
+
+
+<body>
+  
+  <div class="cover-wrapper">
+    
+      <cover class='cover post half'>
+        <div class='cover-body'>
+  <div class='a'>
+    
+    
+      <p class="title">我行既道,我身既法</p>
+    
+    
+      <p class="subtitle">天行健,君子以自强不息</p>
+    
+  </div>
+  <div class='b'>
+    
+      <div class="m_search">
+        <form name="searchform" class="form u-search-form">
+          <input type="text" class="input u-search-input" placeholder="" />
+          <i class="icon fas fa-search fa-fw"></i>
+        </form>
+      </div>
+    
+    <div class='menu navigation'>
+      <ul class='cover-list-h'>
+        
+          
+            <li>
+              <a class="nav home"
+                href="/"
+                
+                
+                id="home">
+                <i class='fas fa-book fa-fw'></i>主页
+              </a>
+            </li>
+          
+            <li>
+              <a class="nav home"
+                href="/archives"
+                
+                
+                id="archives">
+                <i class='fas fa-rss fa-fw'></i>博文
+              </a>
+            </li>
+          
+            <li>
+              <a class="nav home"
+                href="https://volantis.js.org/examples/"
+                
+                
+                id="https:volantisjsorgexamples">
+                <i class='fas fa-play-circle fa-fw'></i>示例
+              </a>
+            </li>
+          
+            <li>
+              <a class="nav home"
+                href="https://volantis.js.org/contributors/"
+                
+                
+                id="https:volantisjsorgcontributors">
+                <i class='fas fa-handshake fa-fw'></i>鸣谢
+              </a>
+            </li>
+          
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+      </cover>
+    
+    <div id="loading-bar-wrapper">
+  <div id="loading-bar"></div>
+</div>
+<header class="l_header shadow blur">
+  <div class='container'>
+  <div class='wrapper'>
+    <div class='nav-sub'>
+      <p class="title"></p>
+      <ul class='switcher nav-list-h'>
+        <li><a class="s-comment fas fa-comments fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+          <li><a class="s-toc fas fa-list fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+      </ul>
+    </div>
+		<div class="nav-main">
+      
+        
+        <a class="title flat-box" target="_self" href='/'>
+          
+          
+          
+          
+            VOLANTIS <b><sup style='color:#3AA757'>2.6.6</sup></b>
+          
+        </a>
+      
+
+			<div class='menu navigation'>
+				<ul class='nav-list-h'>
+          
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-rss fa-fw'></i>博客
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/categories/
+                  
+                  
+                  
+                    id="categories"
+                  >
+                  <i class='fas fa-folder-open fa-fw'></i>分类
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fas fa-tags fa-fw'></i>标签
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/friends/
+                  
+                  
+                  
+                    id="friends"
+                  >
+                  <i class='fas fa-link fa-fw'></i>友链
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  <i class='fas fa-info-circle fa-fw'></i>关于
+                </a>
+                
+              </li>
+            
+          
+          
+				</ul>
+			</div>
+
+      <div class="m_search">
+        <form name="searchform" class="form u-search-form">
+          <i class="icon fas fa-search fa-fw"></i>
+          <input type="text" class="input u-search-input" placeholder="Search..." />
+        </form>
+      </div>
+
+			<ul class='switcher nav-list-h'>
+				
+					<li><a class="s-search fas fa-search fa-fw" target="_self" href='javascript:void(0)'></a></li>
+				
+				<li>
+          <a class="s-menu fas fa-bars fa-fw" target="_self" href='javascript:void(0)'></a>
+          <ul class="menu-phone list-v navigation white-box">
+            
+              
+            
+              <li>
+                <a class="flat-box" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-rss fa-fw'></i>博客
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="flat-box" href=/categories/
+                  
+                  
+                  
+                    id="categories"
+                  >
+                  <i class='fas fa-folder-open fa-fw'></i>分类
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="flat-box" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fas fa-tags fa-fw'></i>标签
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="flat-box" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="flat-box" href=/friends/
+                  
+                  
+                  
+                    id="friends"
+                  >
+                  <i class='fas fa-link fa-fw'></i>友链
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="flat-box" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  <i class='fas fa-info-circle fa-fw'></i>关于
+                </a>
+                
+              </li>
+            
+          
+            
+          </ul>
+        </li>
+			</ul>
+		</div>
+	</div>
+  </div>
+</header>
+
+<script>setLoadingBarProgress(40);</script>
+
+  </div>
+
+
+  <div class="l_body">
+    <div class='body-wrapper'>
+      
+
+<div class='l_main'>
+  
+
+  
+    <article id="post" class="post white-box reveal shadow article-type-post" itemscope itemprop="blogPost">
+      
+
+
+  <section class='meta'>
+    
+      
+      
+      <div class="meta" id="header-meta">
+        
+          
+  <h1 class="title">
+    <a href="/2020/10/16/WPF-Blend&Animation/">
+      使用Blend For VS制作WPF动画
+    </a>
+  </h1>
+
+
+        
+        <div class='new-meta-box'>
+          
+            
+          
+            
+              
+<div class='new-meta-item author'>
+  <a href="https://blog.csdn.net/Austin_Yan" target="_blank" rel="nofollow noopener">
+    <img src="https://cdn.jsdelivr.net/gh/AustinYANyh/Image@1.0/head1.jpg">
+    <p>染墨若流云</p>
+  </a>
+</div>
+
+            
+          
+            
+              
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/C/' rel="nofollow">
+      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+      <p>C#</p>
+    </a>
+  </div>
+
+
+            
+          
+            
+              <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：Oct 16, 2020</p>
+  </a>
+</div>
+
+            
+          
+            
+              
+  
+    <div class="new-meta-item browse busuanzi">
+      <a class='notlink'>
+        <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+        <p>
+          <span id="busuanzi_value_page_pv"></span>
+        </p>
+      </a>
+    </div>
+  
+
+
+            
+          
+            
+              
+  <div class="new-meta-item wordcount">
+    <a class='notlink'>
+      <i class="fas fa-keyboard fa-fw" aria-hidden="true"></i>
+      <p>1.7k words</p>
+    </a>
+  </div>
+  <div class="new-meta-item readtime">
+    <a class='notlink'>
+      <i class="fas fa-hourglass-half fa-fw" aria-hidden="true"></i>
+      <p>7 min</p>
+    </a>
+  </div>
+
+
+            
+          
+            
+              
+
+            
+          
+        </div>
+        
+          <hr>
+        
+      </div>
+    
+  </section>
+
+
+      <section class="article typo">
+        <div class="article-entry" itemprop="articleBody">
+          
+          <p>WPF的强势之处在于不但可以很方便的画出漂亮的静态界面，也可以很方便的做出动画效果</p>
+<a id="more"></a>
+
+<h2 id="连续动画"><a href="#连续动画" class="headerlink" title="连续动画"></a>连续动画</h2><p>基础的Storyboard、时间线什么的概念就不在这里写了，因为这个博客也就是我自己记录自己学习的历程，我还没到可以教别人的程度<br>用C#代码或者Xaml画一条线是很容易，但是要让线慢慢的一点点变长呢？用Timer计时器每隔一段时间修改line的宽度吗？不说Timer的时间精度问题，这样做出来想必也没有那么流畅的效果</p>
+<h3 id="目标效果"><a href="#目标效果" class="headerlink" title="目标效果"></a>目标效果</h3><p><img src="https://img-blog.csdnimg.cn/20201016174024550.gif#pic_center" alt="在这里插入图片描述"></p>
+<h3 id="Blend实现"><a href="#Blend实现" class="headerlink" title="Blend实现"></a>Blend实现</h3><p>先创建一个Line的对象，放入Canvas容器内</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Line</span> <span class="attr">x:Name</span>=<span class="string">"line"</span> <span class="attr">X1</span>=<span class="string">"50"</span> <span class="attr">Y1</span>=<span class="string">"150"</span> <span class="attr">X2</span>=<span class="string">"500"</span> <span class="attr">Y2</span>=<span class="string">"150"</span> <span class="attr">Stroke</span>=<span class="string">"Green"</span> <span class="attr">StrokeThickness</span>=<span class="string">"1"</span> <span class="attr">Width</span>=<span class="string">"500"</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+<p>然后在对象和时间线窗口中，点击图中的按钮，创建一个新的Stroyboard<br><img src="https://img-blog.csdnimg.cn/20201016174032879.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1c3Rpbl9ZYW4=,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
+<p>在时间点0秒处，创建关键帧，最右侧的line对象属性窗口中设置width属性为0<br><img src="https://img-blog.csdnimg.cn/20201016174041852.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1c3Rpbl9ZYW4=,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
+<p><img src="https://img-blog.csdnimg.cn/20201016174050754.png#pic_center" alt="在这里插入图片描述"></p>
+<p>同理,时间点5秒处,创建关键帧,width属性设置为line的最终宽度,点播放按钮预览效果</p>
+<h3 id="动画的调用"><a href="#动画的调用" class="headerlink" title="动画的调用"></a>动画的调用</h3><p>两种方法调用动画,一种在后台找到对应的storyboard资源使用start方法调用,另一种使用Blend直接在xaml中调用触发器</p>
+<ul>
+<li><p>后台代码</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> storyboard = (Storyboard)<span class="keyword">this</span>.FindResources(<span class="string">"Storyboard1"</span>);</span><br><span class="line">storyboard.Start();</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>xaml触发器<br><img src="https://img-blog.csdnimg.cn/20201016174059896.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1c3Rpbl9ZYW4=,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
+</li>
+</ul>
+<p>如下代码是Blend帮忙生成的</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Window.Triggers</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">EventTrigger</span> <span class="attr">RoutedEvent</span>=<span class="string">"FrameworkElement.Loaded"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">BeginStoryboard</span> <span class="attr">Storyboard</span>=<span class="string">"&#123;StaticResource openStoryboard&#125;"</span>/&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">BeginStoryboard</span> <span class="attr">Storyboard</span>=<span class="string">"&#123;StaticResource Storyboard1&#125;"</span>/&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">BeginStoryboard</span> <span class="attr">Storyboard</span>=<span class="string">"&#123;StaticResource pathStoryboard&#125;"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">EventTrigger</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">Window.Trigger</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="等待效果"><a href="#等待效果" class="headerlink" title="等待效果"></a>等待效果</h3><p>使用上次一模一样的操作,从阿里矢量图标库选取一个进度条的图片,然后时间点0设置角度为0,时间点3设置角度360,也可以设置相同的时间间隔转动不同的角度达到变速效果<br><img src="https://img-blog.csdnimg.cn/20201017091058191.gif#pic_center" alt="在这里插入图片描述"></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Storyboard</span> <span class="attr">x:Key</span>=<span class="string">"proStoryboard"</span> <span class="attr">RepeatBehavior</span>=<span class="string">"Forever"</span> <span class="attr">AutoReverse</span>=<span class="string">"False"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">DoubleAnimationUsingKeyFrames</span> <span class="attr">Storyboard.TargetProperty</span>=<span class="string">"(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)"</span> <span class="attr">Storyboard.TargetName</span>=<span class="string">"proimage"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">EasingDoubleKeyFrame</span> <span class="attr">KeyTime</span>=<span class="string">"0"</span> <span class="attr">Value</span>=<span class="string">"0"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">EasingDoubleKeyFrame</span> <span class="attr">KeyTime</span>=<span class="string">"0:0:0.2"</span> <span class="attr">Value</span>=<span class="string">"60"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">EasingDoubleKeyFrame</span> <span class="attr">KeyTime</span>=<span class="string">"0:0:0.4"</span> <span class="attr">Value</span>=<span class="string">"180"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">EasingDoubleKeyFrame</span> <span class="attr">KeyTime</span>=<span class="string">"0:0:0.6"</span> <span class="attr">Value</span>=<span class="string">"240"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">EasingDoubleKeyFrame</span> <span class="attr">KeyTime</span>=<span class="string">"0:0:0.8"</span> <span class="attr">Value</span>=<span class="string">"300"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">EasingDoubleKeyFrame</span> <span class="attr">KeyTime</span>=<span class="string">"0:0:1.0"</span> <span class="attr">Value</span>=<span class="string">"360"</span>/&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--&lt;EasingDoubleKeyFrame KeyTime="0:0:1.2" Value="360"/&gt;--&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">DoubleAnimationUsingKeyFrames</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">ObjectAnimationUsingKeyFrames</span> <span class="attr">Storyboard.TargetProperty</span>=<span class="string">"(UIElement.Visibility)"</span> <span class="attr">Storyboard.TargetName</span>=<span class="string">"proimage"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">DiscreteObjectKeyFrame</span> <span class="attr">KeyTime</span>=<span class="string">"0"</span> <span class="attr">Value</span>=<span class="string">"&#123;x:Static Visibility.Visible&#125;"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">DiscreteObjectKeyFrame</span> <span class="attr">KeyTime</span>=<span class="string">"0:0:1.0"</span> <span class="attr">Value</span>=<span class="string">"&#123;x:Static Visibility.Hidden&#125;"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">ObjectAnimationUsingKeyFrames</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">Storyboard</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="路径动画"><a href="#路径动画" class="headerlink" title="路径动画"></a>路径动画</h2><p>要想自己创建的对象按照某种路线移动，有两种方法，一种是上面提到的关键帧，某一时间点设置起始位置，然后设置不同的时间点拖动到不同的位置，造成可以移动的动画，但是这种方法弊端在于不能随心所欲的控制移动的位置，比如要想绕个圈那得设置多少个关键帧，而且弧度还不平滑，因为它只是针对TranslateTransform.X/Y属性，第二种方法就是使用路径动画，这种可以自己画好path，可以精确控制</p>
+<h3 id="Blend实现-1"><a href="#Blend实现-1" class="headerlink" title="Blend实现"></a>Blend实现</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">PathGeometry</span> <span class="attr">x:Key</span>=<span class="string">"PathGeometry1"</span> <span class="attr">Figures</span>=<span class="string">"M711.5,124 C711.5,124 628.5,257 766.5,221 904.5,185 1255.5025,96.499919 936.00088,146.00007 616.49922,195.50021 883.50077,102.49994 883.50077,102.49994 883.50077,102.49994 734.99988,-76.000585 771.00009,82.999882 807.00031,242.00035 942.00112,230.00031 942.00112,230.00031"</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+<p>上面的代码是使用Blend的钢笔工具画出的一段路径,如下图<br><img src="https://img-blog.csdnimg.cn/20201016174109366.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1c3Rpbl9ZYW4=,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
+<ul>
+<li>DoubleAnimationUsingPath 路径动画的标签</li>
+<li>Duration 动画的时间间隔</li>
+<li>TargetName 动画操作的对象名</li>
+<li>TargetProperty 动画操作的属性,如放入Canvas容器内,可以为Canvs.Left/Top,不是的话属性设置为TranslateTransform.X/Y</li>
+<li>Source 绑定的Path的X或者Y</li>
+<li>PathGeometry 路径动画的路径</li>
+</ul>
+<p>记不得标签的话,随便输入一个x或者y后Blend生成的代码中修改即可<br><img src="https://img-blog.csdnimg.cn/20201016174118890.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1c3Rpbl9ZYW4=,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Storyboard</span> <span class="attr">x:Name</span>=<span class="string">"storyboard"</span> <span class="attr">x:Key</span>=<span class="string">"pathStoryboard"</span> <span class="attr">AutoReverse</span>=<span class="string">"True"</span> <span class="attr">RepeatBehavior</span>=<span class="string">"Forever"</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--两种方法实现路径动画--&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!--&lt;DoubleAnimationUsingPath Storyboard.TargetProperty="(Canvas.Left)" Duration="0:0:3" PathGeometry="&#123;StaticResource PathGeometry1&#125;" Storyboard.TargetName="movebtn" Source="X"/&gt;--&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--&lt;DoubleAnimationUsingPath Storyboard.TargetProperty="(Canvas.Top)" Duration="0:0:3" PathGeometry="&#123;StaticResource PathGeometry1&#125;" Storyboard.TargetName="movebtn" Source="Y"/&gt;--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">DoubleAnimationUsingPath</span> <span class="attr">Storyboard.TargetProperty</span>=<span class="string">"(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)"</span> <span class="attr">Duration</span>=<span class="string">"0:0:3"</span> <span class="attr">PathGeometry</span>=<span class="string">"&#123;StaticResource PathGeometry1&#125;"</span> <span class="attr">Storyboard.TargetName</span>=<span class="string">"movebtn"</span> <span class="attr">Source</span>=<span class="string">"X"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">DoubleAnimationUsingPath</span> <span class="attr">Storyboard.TargetProperty</span>=<span class="string">"(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)"</span> <span class="attr">Duration</span>=<span class="string">"0:0:3"</span> <span class="attr">PathGeometry</span>=<span class="string">"&#123;StaticResource PathGeometry1&#125;"</span> <span class="attr">Storyboard.TargetName</span>=<span class="string">"movebtn"</span> <span class="attr">Source</span>=<span class="string">"Y"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">Storyboard</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="效果演示"><a href="#效果演示" class="headerlink" title="效果演示"></a>效果演示</h3><p>大方块使用第一种方法,小方块使用第二种方法<br><img src="https://img-blog.csdnimg.cn/20201016174132752.gif#pic_center" alt="在这里插入图片描述"></p>
+<hr>
+<h2 id="启动、关闭动画"><a href="#启动、关闭动画" class="headerlink" title="启动、关闭动画"></a>启动、关闭动画</h2><h3 id="Blend实现-2"><a href="#Blend实现-2" class="headerlink" title="Blend实现"></a>Blend实现</h3><p>也是使用连续动画的方式,操作的对象变成了window,操作的属性是width,控制窗体达到一个慢慢向右铺开的效果,但是如果设置窗体居中,铺开后窗体不会再正中,这个暂时没有解决</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--控制window的旋转和缩放--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">Window.RenderTransform</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">TransformGroup</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">ScaleTransform</span> <span class="attr">x:Name</span>=<span class="string">"scale"</span> <span class="attr">ScaleX</span>=<span class="string">"1"</span> <span class="attr">ScaleY</span>=<span class="string">"1"</span>&gt;</span><span class="tag">&lt;/<span class="name">ScaleTransform</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">RotateTransform</span> <span class="attr">x:Name</span>=<span class="string">"rotate"</span> <span class="attr">Angle</span>=<span class="string">"0"</span>&gt;</span><span class="tag">&lt;/<span class="name">RotateTransform</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">TransformGroup</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">Window.RenderTransform</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>对于Window来说,右侧的属性窗口没有转换选项,但其实可以转换操作,不过要用代码实现,操作属性width可以实现铺开效果,而且右侧属性窗口是有width属性的,控制ScaleX和Scale Y属性从0-1控制缩放</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Storyboard</span> <span class="attr">x:Key</span>=<span class="string">"openStoryboard"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">DoubleAnimation</span> <span class="attr">Storyboard.TargetProperty</span>=<span class="string">"(FrameworkElement.Width)"</span> <span class="attr">From</span>=<span class="string">"0"</span> <span class="attr">To</span>=<span class="string">"1200"</span> <span class="attr">Duration</span>=<span class="string">"0:0:1"</span> <span class="attr">Storyboard.TargetName</span>=<span class="string">"window"</span>/&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--&lt;DoubleAnimation Storyboard.TargetProperty="ScaleX" From="0.1" To="1" Duration="0:0:1" Storyboard.TargetName="scale"/&gt;--&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--&lt;DoubleAnimation Storyboard.TargetProperty="ScaleY" From="0.1" To="1" Duration="0:0:1" Storyboard.TargetName="scale"/&gt;--&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">Storyboard</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>关闭也是操作width,不过是从展开后的宽度变为0,然后加上旋转,1秒转动720度(2圈),操作Opacity属性控制渐隐渐显效果,从1-0为渐隐</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Storyboard</span> <span class="attr">x:Key</span>=<span class="string">"closeStoryboard"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">DoubleAnimation</span> <span class="attr">Storyboard.TargetProperty</span>=<span class="string">"(FrameworkElement.Width)"</span> <span class="attr">From</span>=<span class="string">"1200"</span> <span class="attr">To</span>=<span class="string">"0"</span> <span class="attr">Duration</span>=<span class="string">"0:0:1"</span> <span class="attr">Storyboard.TargetName</span>=<span class="string">"window"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">DoubleAnimation</span> <span class="attr">Storyboard.TargetProperty</span>=<span class="string">"Angle"</span> <span class="attr">From</span>=<span class="string">"0"</span> <span class="attr">To</span>=<span class="string">"720"</span> <span class="attr">Duration</span>=<span class="string">"0:0:1"</span> <span class="attr">Storyboard.TargetName</span>=<span class="string">"rotate"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">DoubleAnimation</span> <span class="attr">Storyboard.TargetProperty</span>=<span class="string">"Opacity"</span> <span class="attr">From</span>=<span class="string">"1"</span> <span class="attr">To</span>=<span class="string">"0"</span> <span class="attr">Duration</span>=<span class="string">"0:0:1"</span> <span class="attr">Storyboard.TargetName</span>=<span class="string">"grid"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">Storyboard</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>启动动画Loaded事件加载,关闭动画需要在Closing事件中加载关闭动画然后阻止窗体关闭,在关闭动画执行结束后关闭窗体</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">MainWindow</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    InitializeComponent();</span><br><span class="line">    closeStoryboard = (Storyboard)<span class="keyword">this</span>.FindResource(<span class="string">"closeStoryboard"</span>);</span><br><span class="line">    closeStoryboard.Completed += (c, d) =&gt; Application.Current.Shutdown(); ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">window_Closing</span>(<span class="params"><span class="keyword">object</span> sender, System.ComponentModel.CancelEventArgs e</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    closeStoryboard.Begin();</span><br><span class="line">    e.Cancel = <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><font color=red>如果启动动画、关闭动画出现黑色背景，多半是因为window的style没有设置为None，而且AllowsTransparency设置为true</font>，标题栏需要自己画</p>
+<h3 id="效果演示-1"><a href="#效果演示-1" class="headerlink" title="效果演示"></a>效果演示</h3><p><img src="https://img-blog.csdnimg.cn/20201017091319768.gif#pic_center" alt="在这里插入图片描述"></p>
+
+          
+            <div class='article_footer'>
+              
+                
+  
+    
+    
+
+
+
+  
+
+  
+    
+    
+
+
+
+  
+
+  
+    
+    
+
+<section class="widget copyright  desktop mobile">
+  <div class='content'>
+    
+      <blockquote>
+        
+          
+            <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
+
+          
+        
+          
+            <p>本文永久链接是：<a href=https://www.lubaobao.xyz/2020/10/16/WPF-Blend&Animation/>https://www.lubaobao.xyz/2020/10/16/WPF-Blend&Animation/</a></p>
+          
+        
+      </blockquote>
+    
+  </div>
+</section>
+
+  
+
+
+              
+            </div>
+          
+        </div>
+        
+          
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-10-17T09:22:35+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：Oct 17, 2020</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+
+        
+      
+        
+          
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer"
+          
+          href="http://connect.qq.com/widget/shareqq/index.html?url=https://www.lubaobao.xyz/2020/10/16/WPF-Blend&Animation/&title=使用Blend For VS制作WPF动画 - AustinYAN's Blog&pics=true&summary=WPF的强势之处在于不但可以很方便的画出漂亮的静态界面，也可以很方便的做出动画效果"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer"
+          
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://www.lubaobao.xyz/2020/10/16/WPF-Blend&Animation/&title=使用Blend For VS制作WPF动画 - AustinYAN's Blog&pics=true&summary=WPF的强势之处在于不但可以很方便的画出漂亮的静态界面，也可以很方便的做出动画效果"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer"
+          
+          href="http://service.weibo.com/share/share.php?url=https://www.lubaobao.xyz/2020/10/16/WPF-Blend&Animation/&title=使用Blend For VS制作WPF动画 - AustinYAN's Blog&pics=true&summary=WPF的强势之处在于不但可以很方便的画出漂亮的静态界面，也可以很方便的做出动画效果"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/weibo.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </section>
+
+
+        
+        
+          <div class="prev-next">
+            
+            
+              <a class='next' href='/2020/08/26/WPF-ListViewBigDataBinding/'>
+                <p class='title'>WPF中ListView加载大量数据<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+                <p class='content'>
+使用情景
+使用ListView加数据绑定
+使用ListView的GridView作为View显示元素
+效果演示
+
+
+
+使用情景在此之前,做了一个显示日志信息的模块,当时使用的是RichText...</p>
+              </a>
+            
+          </div>
+        
+      </section>
+    </article>
+  
+
+  
+    <!-- 显示推荐文章和评论 -->
+
+
+
+  <article class="post white-box reveal comments shadow">
+    <section class="article typo">
+      <p ct><i class='fas fa-comments'></i> 评论</p>
+      
+      
+      
+        <section id="comments">
+          <div id="lv-container" data-id="city" data-uid="MTAyMC81MDgyNy8yNzMwOQ">
+            <noscript><div><i class='fas fa-exclamation-triangle'>&nbsp;Unable to load Livere, please make sure your network can access.</div></noscript>
+          </div>
+        </section>
+      
+      
+      
+      
+      
+    </section>
+  </article>
+
+
+    
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+
+  <script>
+    window.subData = {
+      title: '使用Blend For VS制作WPF动画',
+      tools: true
+    }
+  </script>
+
+
+</div>
+<aside class='l_side'>
+  
+  
+
+  
+    
+    
+
+
+  <section class="widget toc-wrapper shadow desktop mobile">
+    
+  <header>
+    
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#连续动画"><span class="toc-text">连续动画</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#目标效果"><span class="toc-text">目标效果</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Blend实现"><span class="toc-text">Blend实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#动画的调用"><span class="toc-text">动画的调用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#等待效果"><span class="toc-text">等待效果</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#路径动画"><span class="toc-text">路径动画</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Blend实现-1"><span class="toc-text">Blend实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#效果演示"><span class="toc-text">效果演示</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#启动、关闭动画"><span class="toc-text">启动、关闭动画</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Blend实现-2"><span class="toc-text">Blend实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#效果演示-1"><span class="toc-text">效果演示</span></a></li></ol></li></ol>
+    </div>
+  </section>
+
+
+  
+
+
+</aside>
+
+
+
+<footer class="clearfix">
+  <br><br>
+  
+  
+  <div class="aplayer-container">
+    
+
+  
+    <meting-js
+      theme='#1BCDFC'
+      autoplay='true'
+      volume='0.7'
+      loop='all'
+      order='list'
+      fixed='false'
+      list-max-height='340px'
+      server='netease'
+      type='playlist'
+      id='395143331'
+      list-folded='true'>
+    </meting-js>
+  
+
+
+  </div>
+  
+  
+  
+  <br>
+  <div class="social-wrapper">
+    
+    
+    <a href="/atom.xml" class="social fas fa-rss flat-btn" target="_blank"
+      rel="external nofollow noopener noreferrer">
+    </a>
+    
+          
+    
+    <a href="mailto:austinyanlzh@gmail.com" class="social fas fa-envelope flat-btn" target="_blank"
+      rel="external nofollow noopener noreferrer">
+    </a>
+    
+          
+    
+    <a href="https://github.com/AustinYANyh" class="social fab fa-github flat-btn" target="_blank"
+      rel="external nofollow noopener noreferrer">
+    </a>
+    
+          
+    
+    <a href="https://music.163.com/#/user/home?id=286524796" class="social fas fa-headphones-alt flat-btn" target="_blank"
+      rel="external nofollow noopener noreferrer">
+    </a>
+    
+          
+  </div>
+  
+  
+  
+  <div><p>Blog content follows the <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener">Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0) License</a></p>
+</div>
+  
+  
+  
+  Use
+  <a href="https://volantis.js.org/" target="_blank" class="codename">Volantis</a>
+  as theme, total visits
+  <span id="busuanzi_value_site_pv"><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
+  times
+  
+  
+  
+  
+  <div class='copyright'>
+    <p><a href="https://lubaobao.xyz" target="_blank" rel="noopener">Copyright © 2017-2020 AustinYAN</a></p>
+
+  </div>
+  
+  
+  <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+  <script>
+    var now = new Date();
+    function createtime() {
+      var grt = new Date("06/12/2020 09:38:00");//在此处修改你的建站时间，格式：月/日/年 时:分:秒
+      now.setTime(now.getTime() + 250);
+      days = (now - grt) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+      hours = (now - grt) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+      if (String(hnum).length == 1) { hnum = "0" + hnum; } minutes = (now - grt) / 1000 / 60 - (24 * 60 * dnum) - (60 * hnum);
+      mnum = Math.floor(minutes); if (String(mnum).length == 1) { mnum = "0" + mnum; }
+      seconds = (now - grt) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+      snum = Math.round(seconds); if (String(snum).length == 1) { snum = "0" + snum; }
+      document.getElementById("timeDate").innerHTML = "本站已安全运行 " + dnum + " 天 ";
+      document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+    }
+    setInterval("createtime()", 250);
+  </script>
+  <i class="fas fa-chart-area"></i>
+  <span class="post-count">字数统计：33.6k</span>
+  <script type="text/javascript">document.write(unescape("%3Cspan id='cnzz_stat_icon_1279069821'%3E%3C/span%3E%3Cscript src='https://s9.cnzz.com/z_stat.php%3Fid%3D1279069821%26show%3Dpic2' type='text/javascript'%3E%3C/script%3E"));
+  </script>
+  <script>
+    var _hmt = _hmt || [];
+    (function () {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?d28bb0b02349817f8859801d0c9663a2";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+  <br>
+</footer>
+
+<script>setLoadingBarProgress(80);</script>
+
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+  </div>
+  
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4/dist/jquery.min.js"></script>
+
+
+  <script>
+    
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/" || "/";
+    if (!ROOT.endsWith('/')) ROOT += '/';
+  </script>
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2/js/instant_page.js" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.6/dist/scrollreveal.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      ScrollReveal().reveal('.l_main .reveal', {
+        distance: '8px',
+        duration: '800',
+        interval: '100',
+        scale: '1'
+      });
+    });
+  </script>
+
+
+  
+<script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+
+  <script type="text/javascript">
+    $(function() {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+  <script defer src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js"></script>
+
+
+
+  
+  
+  
+    
+<script src="https://cdn.jsdelivr.net/npm/jquery-backstretch@2.1.18/jquery.backstretch.min.js"></script>
+
+    <script type="text/javascript">
+      $(function(){
+        var imgs=["https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/41F215B9-261F-48B4-80B5-4E86E165259E.jpeg"];
+        if ('true' == 'true') {
+          function shuffle(arr){
+            /*From countercurrent-time*/
+            var n = arr.length;
+            while(n--) {
+              var index = Math.floor(Math.random() * n);
+              var temp = arr[index];
+              arr[index] = arr[n];
+              arr[n] = temp;
+            }
+          }
+          shuffle(imgs);
+        }
+        if ('.cover') {
+          $('.cover').backstretch(
+            imgs,
+          {
+            duration: "20000",
+            fade: "1500"
+          });
+        } else {
+          $.backstretch(
+            imgs,
+          {
+            duration: "20000",
+            fade: "1500"
+          });
+        }
+      });
+    </script>
+  
+
+
+
+  
+    
+<script src="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.js"></script>
+
+  
+    
+<script src="https://cdn.jsdelivr.net/npm/meting@2.0/dist/Meting.min.js"></script>
+
+  
+
+
+
+
+
+  <script type="text/javascript">
+    (function(d, s) {
+      var j, e = d.getElementsByTagName(s)[0];
+      if (typeof LivereTower === 'function') { return; }
+      j = d.createElement(s);
+      j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+      j.async = true;
+      e.parentNode.insertBefore(j, e);
+    })(document, 'script');
+  </script>
+
+
+
+
+
+
+
+
+
+  
+<script src="/js/app.js"></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.6.5/js/search.js"></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2/js/comment_typing.js"></script>
+
+
+
+
+
+
+<!-- 复制 -->
+
+  <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="fas fa-copy"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('fa-copy');
+        $icon.addClass('fa-check-circle');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('fa-check-circle');
+          $icon.addClass('fa-copy');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('fa-copy');
+        $icon.addClass('fa-times-circle');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('fa-times-circle');
+          $icon.addClass('fa-copy');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+
+
+
+
+<!-- fancybox -->
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script>
+  function pjax_fancybox() {
+    $(".article-entry").find("img").not('.inline').not('a img').each(function () { //渲染 fancybox
+      var element = document.createElement("a"); // a 标签
+      $(element).attr("pjax-fancybox", "");  // 过滤 pjax
+      $(element).attr("href", $(this).attr("src"));
+      if ($(this).attr("data-original")) {
+        $(element).attr("href", $(this).attr("data-original"));
+      }
+      $(element).attr("data-fancybox", "images");
+      var caption = "";   // 描述信息
+      if ($(this).attr('alt')) {  // 标准 markdown 描述信息
+        $(element).attr('data-caption', $(this).attr('alt'));
+        caption = $(this).attr('alt');
+      }
+      var div = document.createElement("div");
+      $(div).addClass("fancybox");
+      $(this).wrap(div); // 最外层套 div ，其实主要作用还是 class 样式
+      var span = document.createElement("span");
+      $(span).addClass("image-caption");
+      $(span).text(caption); // 加描述
+      $(this).after(span);  // 再套一层描述
+      $(this).wrap(element);  // 最后套 a 标签
+    })
+    $(".article-entry").find("img").fancybox({
+      selector: '[data-fancybox="images"]',
+      hash: false,
+      loop: false,
+      closeClick: true,
+      helpers: {
+        overlay: {closeClick: true}
+      },
+      buttons: [
+        "zoom",
+        "close"
+      ]
+    });
+  };
+  $(function () {
+    pjax_fancybox();
+  });
+</script>
+
+
+
+
+  <script>setLoadingBarProgress(100);</script>
+  <!-- 数字雨 -->
+  <canvas id="canvas" width="1440" height="900"></canvas>
+  <script type="text/javascript" src="/js/DigitalRain.js"></script>
+
+  <!--鼠标烟花-->
+  <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;"></canvas>
+  <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script>
+  <script type="text/javascript" src="/js/firework.js"></script>
+
+  <!--预加载-->
+  <script src="https://cdn.jsdelivr.net/gh/TRHX/CDN-for-itrhx.com@2.0.2/js/instantclick-1.2.2.js"
+    type="module"></script>
+</body>
+
+</html>
