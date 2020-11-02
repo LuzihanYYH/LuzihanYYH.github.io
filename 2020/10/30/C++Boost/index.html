@@ -5,8 +5,6 @@
   <!-- SEO相关 -->
   
     
-      <meta name="robots" content="noindex,follow">
-    
   
   <!-- 渲染优化 -->
   <meta name="renderer" content="webkit">
@@ -18,7 +16,7 @@
 
   <!-- 页面元数据 -->
   
-    <title>Category: Cpp - AustinYAN&#39;s Blog</title>
+    <title>【CPP】C++的boost学习-字符串的处理 - AustinYAN&#39;s Blog</title>
   
   
 
@@ -73,7 +71,7 @@
   
   <div class="cover-wrapper">
     
-      <cover class='cover  half'>
+      <cover class='cover post half'>
         <div class='cover-body'>
   <div class='a'>
     
@@ -405,37 +403,12 @@
     <div class='body-wrapper'>
       
 
-
 <div class='l_main'>
   
-    
-      
-  <section class="post-list ">
-    
-      
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-      
-    
-    
-      
-        
-          <div class='post-wrapper'>
-            <article class="post white-box shadow reveal ">
+
   
+    <article id="post" class="post white-box reveal shadow article-type-post" itemscope itemprop="blogPost">
+      
 
 
   <section class='meta'>
@@ -445,11 +418,11 @@
       <div class="meta" id="header-meta">
         
           
-  <h2 class="title">
+  <h1 class="title">
     <a href="/2020/10/30/C++Boost/">
       【CPP】C++的boost学习-字符串的处理
     </a>
-  </h2>
+  </h1>
 
 
         
@@ -494,6 +467,15 @@
             
               
   
+    <div class="new-meta-item browse busuanzi">
+      <a class='notlink'>
+        <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+        <p>
+          <span id="busuanzi_value_page_pv"></span>
+        </p>
+      </a>
+    </div>
+  
 
 
             
@@ -530,10 +512,10 @@
   </section>
 
 
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      
-        <a id="more"></a>
+      <section class="article typo">
+        <div class="article-entry" itemprop="articleBody">
+          
+          <a id="more"></a>
 
 <h2 id="boost库的学习"><a href="#boost库的学习" class="headerlink" title="boost库的学习"></a>boost库的学习</h2><h3 id="学习字符串处理"><a href="#学习字符串处理" class="headerlink" title="学习字符串处理"></a>学习字符串处理</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> _CRT_SECURE_NO_WARNINGS</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> _SILENCE_CXX17_OLD_ALLOCATOR_MEMBERS_DEPRECATION_WARNING</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//学习字符串处理</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">if</span> 0 </span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;boost/algorithm/string.hpp&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"Hello World!\n"</span>;</span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">string</span> s = <span class="string">"Hello World!"</span>;</span><br><span class="line">	<span class="comment">//使用boost库,将字符串转为大写</span></span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; boost::algorithm::to_upper_copy(s) &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//使用STL标准算法库,将字符串转为大写</span></span><br><span class="line">	transform(s.begin(), s.end(), s.begin(), towupper);</span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; s &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//删除出现的第一个"O"</span></span><br><span class="line">	<span class="comment">//std::cout &lt;&lt; boost::algorithm::erase_first_copy(s, "O") &lt;&lt; std::endl;</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">//删除第二个出现的"O",索引是1</span></span><br><span class="line">	<span class="comment">//std::cout &lt;&lt; boost::algorithm::erase_nth_copy(s, "O", 1) &lt;&lt; std::endl;</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">//删除所有的"O"</span></span><br><span class="line">	<span class="comment">//std::cout &lt;&lt; boost::algorithm::erase_all_copy(s, "O") &lt;&lt; std::endl;</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">//auto r = boost::algorithm::find_first(s, "WO");</span></span><br><span class="line">	<span class="comment">//std::cout &lt;&lt; r &lt;&lt; std::endl;</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">//将第一个出现的"O"替换成"o"</span></span><br><span class="line">	<span class="comment">//std::cout &lt;&lt; boost::algorithm::replace_first_copy(s, "O", "o") &lt;&lt; std::endl;</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">//boost库将vector中的字符串拼接</span></span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="built_in">std</span>::<span class="built_in">string</span>&gt; v;</span><br><span class="line">	v.push_back(<span class="string">"He"</span>);</span><br><span class="line">	v.push_back(<span class="string">"LLO"</span>);</span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; boost::algorithm::join(v, <span class="string">" "</span>) &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//拼接char*</span></span><br><span class="line">	<span class="keyword">char</span> S[<span class="number">50</span>] = <span class="string">"lubaobao"</span>;</span><br><span class="line">	<span class="keyword">char</span> aa[<span class="number">8</span>] = <span class="string">" xihuan"</span>;</span><br><span class="line">	<span class="keyword">char</span> bb[<span class="number">10</span>] = <span class="string">" fujunjun"</span>;</span><br><span class="line">	<span class="comment">//sprintf(S, "%s%s%s", S, aa, bb);</span></span><br><span class="line">	<span class="comment">//std::cout &lt;&lt; S &lt;&lt; std::endl;</span></span><br><span class="line"></span><br><span class="line">	<span class="built_in">strcat</span>(S, aa);</span><br><span class="line">	<span class="built_in">strcat</span>(S, bb);</span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; S &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//string的拼接</span></span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">string</span> aaa = <span class="string">"lubaobao"</span>;</span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">string</span> bbb = <span class="string">" xihuan"</span>;</span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">string</span> ccc = <span class="string">" fujunjun"</span>;</span><br><span class="line">	aaa.append(bbb);</span><br><span class="line">	aaa.append(ccc);</span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; aaa &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//判断字符串中是否含有子串</span></span><br><span class="line">	<span class="keyword">bool</span> res = boost::algorithm::contains(s, <span class="string">"HE"</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br></pre></td></tr></table></figure>
 
@@ -561,877 +543,220 @@
 
 
 <h2 id="Linux下的编译"><a href="#Linux下的编译" class="headerlink" title="Linux下的编译"></a>Linux下的编译</h2><figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">all:string_boost filesystem_boost asio_boost socket_boost sharedmemory_boost container_boost datastructure_boost</span></span><br><span class="line">LIB=-I /home/luzihan/boost_1_74_0/<span class="keyword">include</span> -L /home/luzihan/boost_1_74_0/lib </span><br><span class="line"></span><br><span class="line"><span class="section">string_boost:string_boost.cpp</span></span><br><span class="line">	g++ -std=c++11 <span class="variable">$^</span> -o <span class="variable">$@</span></span><br><span class="line"><span class="section">filesystem_boost:filesystem_boost.cpp</span></span><br><span class="line">	g++ -std=c++11 <span class="variable">$^</span> -o <span class="variable">$@</span> <span class="variable">$(LIB)</span> -lboost_system -lboost_filesystem</span><br><span class="line"><span class="section">asio_boost:asio_boost.cpp</span></span><br><span class="line">	g++ -std=c++11 <span class="variable">$^</span> -o <span class="variable">$@</span> <span class="variable">$(LIB)</span> -lboost_system-mt -lboost_thread-mt -lpthread</span><br><span class="line"><span class="section">socket_boost:socket_boost.cpp</span></span><br><span class="line">	g++ -std=c++11 <span class="variable">$^</span> -o <span class="variable">$@</span> <span class="variable">$(LIB)</span> -lpthread</span><br><span class="line"><span class="section">sharedmemory_boost:sharedmemory_boost.cpp</span></span><br><span class="line">	g++ <span class="variable">$^</span> -o <span class="variable">$@</span> <span class="variable">$(LIB)</span>  -pthread -lrt</span><br><span class="line"><span class="section">container_boost:container_boost.cpp</span></span><br><span class="line">	g++ -std=c++11 <span class="variable">$^</span> -o <span class="variable">$@</span> <span class="variable">$(LIB)</span></span><br><span class="line"><span class="section">datastructure_boost:datastructure_boost.cpp</span></span><br><span class="line">	g++ -std=c++11 <span class="variable">$^</span> -o <span class="variable">$@</span> <span class="variable">$(LIB)</span></span><br><span class="line"></span><br><span class="line"><span class="section">clean:</span></span><br><span class="line">	rm string_boost filesystem_boost asio_boost socket_boost sharedmemory_boost container_boost datastructure_boost</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    
-      
-    
-  </section>
-</article>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post white-box shadow reveal ">
-  
-
-
-  <section class='meta'>
-    
-      
-      
-      <div class="meta" id="header-meta">
-        
           
-  <h2 class="title">
-    <a href="/2019/08/22/C++Project-6/">
-      【C++小项目---6】庄周:啦啦啦啦啦~
-    </a>
-  </h2>
-
-
-        
-        <div class='new-meta-box'>
-          
-            
-          
-            
+            <div class='article_footer'>
               
-<div class='new-meta-item author'>
-  <a href="https://blog.csdn.net/Austin_Yan" target="_blank" rel="nofollow noopener">
-    <img src="https://cdn.jsdelivr.net/gh/AustinYANyh/Image@1.0/head1.jpg">
-    <p>染墨若流云</p>
-  </a>
-</div>
-
-            
-          
-            
-              
-  
-  <div class='new-meta-item category'>
-    <a href='/categories/Cpp/' rel="nofollow">
-      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
-      <p>Cpp</p>
-    </a>
-  </div>
-
-
-            
-          
-            
-              <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：Aug 22, 2019</p>
-  </a>
-</div>
-
-            
-          
-            
-              
-  
-
-
-            
-          
-            
-              
-  <div class="new-meta-item wordcount">
-    <a class='notlink'>
-      <i class="fas fa-keyboard fa-fw" aria-hidden="true"></i>
-      <p>345 words</p>
-    </a>
-  </div>
-  <div class="new-meta-item readtime">
-    <a class='notlink'>
-      <i class="fas fa-hourglass-half fa-fw" aria-hidden="true"></i>
-      <p>1 min</p>
-    </a>
-  </div>
-
-
-            
-          
-            
-              
-
-            
-          
-        </div>
-        
-          <hr>
-        
-      </div>
-    
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>对于程序的逻辑进行完善…</p>
-      
-    </div>
-    
-      
-        <div class="button readmore">
-          <a href="/2019/08/22/C++Project-6/">
-            阅读全文 <i class="fas fa-chevron-right"></i>
-          </a>
-        </div>
-      
-    
-  </section>
-</article>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post white-box shadow reveal ">
-  
-
-
-  <section class='meta'>
-    
-      
-      
-      <div class="meta" id="header-meta">
-        
-          
-  <h2 class="title">
-    <a href="/2019/08/15/Cpp-sort1/">
-      【针对性复习】选择排序和归并排序
-    </a>
-  </h2>
-
-
-        
-        <div class='new-meta-box'>
-          
-            
-          
-            
-              
-<div class='new-meta-item author'>
-  <a href="https://blog.csdn.net/Austin_Yan" target="_blank" rel="nofollow noopener">
-    <img src="https://cdn.jsdelivr.net/gh/AustinYANyh/Image@1.0/head1.jpg">
-    <p>染墨若流云</p>
-  </a>
-</div>
-
-            
-          
-            
-              
-  
-  <div class='new-meta-item category'>
-    <a href='/categories/Cpp/' rel="nofollow">
-      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
-      <p>Cpp</p>
-    </a>
-  </div>
-
-
-            
-          
-            
-              <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：Aug 15, 2019</p>
-  </a>
-</div>
-
-            
-          
-            
-              
-  
-
-
-            
-          
-            
-              
-  <div class="new-meta-item wordcount">
-    <a class='notlink'>
-      <i class="fas fa-keyboard fa-fw" aria-hidden="true"></i>
-      <p>1.4k words</p>
-    </a>
-  </div>
-  <div class="new-meta-item readtime">
-    <a class='notlink'>
-      <i class="fas fa-hourglass-half fa-fw" aria-hidden="true"></i>
-      <p>5 min</p>
-    </a>
-  </div>
-
-
-            
-          
-            
-              
-
-            
-          
-        </div>
-        
-          <hr>
-        
-      </div>
-    
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>之前相关内容的博客,只有简略的思路和代码,起不到复习的作用…<br>现在把思路整理清楚,过程图示也画出来,再把代码重新写一遍,争取把排序遗留的问题彻底解决…</p>
-      
-    </div>
-    
-      
-        <div class="button readmore">
-          <a href="/2019/08/15/Cpp-sort1/">
-            阅读全文 <i class="fas fa-chevron-right"></i>
-          </a>
-        </div>
-      
-    
-  </section>
-</article>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post white-box shadow reveal ">
-  
-
-
-  <section class='meta'>
-    
-      
-      
-      <div class="meta" id="header-meta">
-        
-          
-  <h2 class="title">
-    <a href="/2019/08/09/C++Project-3/">
-      【C++小项目---3】连接数据库检测用户名密码、实现登录
-    </a>
-  </h2>
-
-
-        
-        <div class='new-meta-box'>
-          
-            
-          
-            
-              
-<div class='new-meta-item author'>
-  <a href="https://blog.csdn.net/Austin_Yan" target="_blank" rel="nofollow noopener">
-    <img src="https://cdn.jsdelivr.net/gh/AustinYANyh/Image@1.0/head1.jpg">
-    <p>染墨若流云</p>
-  </a>
-</div>
-
-            
-          
-            
-              
-  
-  <div class='new-meta-item category'>
-    <a href='/categories/Cpp/' rel="nofollow">
-      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
-      <p>Cpp</p>
-    </a>
-  </div>
-
-
-            
-          
-            
-              <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：Aug 9, 2019</p>
-  </a>
-</div>
-
-            
-          
-            
-              
-  
-
-
-            
-          
-            
-              
-  <div class="new-meta-item wordcount">
-    <a class='notlink'>
-      <i class="fas fa-keyboard fa-fw" aria-hidden="true"></i>
-      <p>261 words</p>
-    </a>
-  </div>
-  <div class="new-meta-item readtime">
-    <a class='notlink'>
-      <i class="fas fa-hourglass-half fa-fw" aria-hidden="true"></i>
-      <p>1 min</p>
-    </a>
-  </div>
-
-
-            
-          
-            
-              
-
-            
-          
-        </div>
-        
-          <hr>
-        
-      </div>
-    
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>C++小项目学习数据库读取密码和实现登录窗口（学习多窗口的创建）…</p>
-      
-    </div>
-    
-      
-        <div class="button readmore">
-          <a href="/2019/08/09/C++Project-3/">
-            阅读全文 <i class="fas fa-chevron-right"></i>
-          </a>
-        </div>
-      
-    
-  </section>
-</article>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post white-box shadow reveal ">
-  
-
-
-  <section class='meta'>
-    
-      
-      
-      <div class="meta" id="header-meta">
-        
-          
-  <h2 class="title">
-    <a href="/2019/08/07/C++Project-2/">
-      【C++小项目---2】C++连接MySQL数据库、DuLib绘制登录界面
-    </a>
-  </h2>
-
-
-        
-        <div class='new-meta-box'>
-          
-            
-          
-            
-              
-<div class='new-meta-item author'>
-  <a href="https://blog.csdn.net/Austin_Yan" target="_blank" rel="nofollow noopener">
-    <img src="https://cdn.jsdelivr.net/gh/AustinYANyh/Image@1.0/head1.jpg">
-    <p>染墨若流云</p>
-  </a>
-</div>
-
-            
-          
-            
-              
-  
-  <div class='new-meta-item category'>
-    <a href='/categories/Cpp/' rel="nofollow">
-      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
-      <p>Cpp</p>
-    </a>
-  </div>
-
-
-            
-          
-            
-              <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：Aug 7, 2019</p>
-  </a>
-</div>
-
-            
-          
-            
-              
-  
-
-
-            
-          
-            
-              
-  <div class="new-meta-item wordcount">
-    <a class='notlink'>
-      <i class="fas fa-keyboard fa-fw" aria-hidden="true"></i>
-      <p>855 words</p>
-    </a>
-  </div>
-  <div class="new-meta-item readtime">
-    <a class='notlink'>
-      <i class="fas fa-hourglass-half fa-fw" aria-hidden="true"></i>
-      <p>4 min</p>
-    </a>
-  </div>
-
-
-            
-          
-            
-              
-
-            
-          
-        </div>
-        
-          <hr>
-        
-      </div>
-    
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>C++小项目的数据库的连接（本地）学习，学习界面的绘制…</p>
-      
-    </div>
-    
-      
-        <div class="button readmore">
-          <a href="/2019/08/07/C++Project-2/">
-            阅读全文 <i class="fas fa-chevron-right"></i>
-          </a>
-        </div>
-      
-    
-  </section>
-</article>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post white-box shadow reveal ">
-  
-
-
-  <section class='meta'>
-    
-      
-      
-      <div class="meta" id="header-meta">
-        
-          
-  <h2 class="title">
-    <a href="/2019/08/06/C++Project-1/">
-      【C++小项目---1】windows版本MySQL安装、DuiLib界面库编译及配置
-    </a>
-  </h2>
-
-
-        
-        <div class='new-meta-box'>
-          
-            
-          
-            
-              
-<div class='new-meta-item author'>
-  <a href="https://blog.csdn.net/Austin_Yan" target="_blank" rel="nofollow noopener">
-    <img src="https://cdn.jsdelivr.net/gh/AustinYANyh/Image@1.0/head1.jpg">
-    <p>染墨若流云</p>
-  </a>
-</div>
-
-            
-          
-            
-              
-  
-  <div class='new-meta-item category'>
-    <a href='/categories/Cpp/' rel="nofollow">
-      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
-      <p>Cpp</p>
-    </a>
-  </div>
-
-
-            
-          
-            
-              <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：Aug 6, 2019</p>
-  </a>
-</div>
-
-            
-          
-            
-              
-  
-
-
-            
-          
-            
-              
-  <div class="new-meta-item wordcount">
-    <a class='notlink'>
-      <i class="fas fa-keyboard fa-fw" aria-hidden="true"></i>
-      <p>553 words</p>
-    </a>
-  </div>
-  <div class="new-meta-item readtime">
-    <a class='notlink'>
-      <i class="fas fa-hourglass-half fa-fw" aria-hidden="true"></i>
-      <p>1 min</p>
-    </a>
-  </div>
-
-
-            
-          
-            
-              
-
-            
-          
-        </div>
-        
-          <hr>
-        
-      </div>
-    
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>C++的小项目的前期环境搭建和准备工作…</p>
-      
-    </div>
-    
-      
-        <div class="button readmore">
-          <a href="/2019/08/06/C++Project-1/">
-            阅读全文 <i class="fas fa-chevron-right"></i>
-          </a>
-        </div>
-      
-    
-  </section>
-</article>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post white-box shadow reveal ">
-  
-
-
-  <section class='meta'>
-    
-      
-      
-      <div class="meta" id="header-meta">
-        
-          
-  <h2 class="title">
-    <a href="/2019/08/03/Cpp-sort0/">
-      【针对性复习】选择排序和归并排序
-    </a>
-  </h2>
-
-
-        
-        <div class='new-meta-box'>
-          
-            
-          
-            
-              
-<div class='new-meta-item author'>
-  <a href="https://blog.csdn.net/Austin_Yan" target="_blank" rel="nofollow noopener">
-    <img src="https://cdn.jsdelivr.net/gh/AustinYANyh/Image@1.0/head1.jpg">
-    <p>染墨若流云</p>
-  </a>
-</div>
-
-            
-          
-            
-              
-  
-  <div class='new-meta-item category'>
-    <a href='/categories/Cpp/' rel="nofollow">
-      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
-      <p>Cpp</p>
-    </a>
-  </div>
-
-
-            
-          
-            
-              <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：Aug 3, 2019</p>
-  </a>
-</div>
-
-            
-          
-            
-              
-  
-
-
-            
-          
-            
-              
-  <div class="new-meta-item wordcount">
-    <a class='notlink'>
-      <i class="fas fa-keyboard fa-fw" aria-hidden="true"></i>
-      <p>633 words</p>
-    </a>
-  </div>
-  <div class="new-meta-item readtime">
-    <a class='notlink'>
-      <i class="fas fa-hourglass-half fa-fw" aria-hidden="true"></i>
-      <p>2 min</p>
-    </a>
-  </div>
-
-
-            
-          
-            
-              
-
-            
-          
-        </div>
-        
-          <hr>
-        
-      </div>
-    
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>针对选择题中排序过程的复习</p>
-      
-    </div>
-    
-      
-        <div class="button readmore">
-          <a href="/2019/08/03/Cpp-sort0/">
-            阅读全文 <i class="fas fa-chevron-right"></i>
-          </a>
-        </div>
-      
-    
-  </section>
-</article>
-
-          </div>
-        
-      
-    
-  </section>
-  
-    
-    <!-- 根据主题中的设置决定是否在archive中针对摘要部分的MathJax公式加载mathjax.js文件 -->
-    
-    
-
-  
-
-
-    
-  
-
-</div>
-<aside class='l_side'>
-  
+                
   
     
     
 
-<section class="widget blogger shadow desktop mobile">
+
+
+  
+
+  
+    
+    
+
+
+
+  
+
+  
+    
+    
+
+<section class="widget copyright  desktop mobile">
   <div class='content'>
     
-      
-        <a class='avatar flat-box' href='/about/'>
-          <img no-lazy src='https://cdn.jsdelivr.net/gh/AustinYANyh/Image@1.0/head1.jpg'/>
-        </a>
-      
-    
-    
-      <div class='text'>
-        
-        
-        
-          <p><span id="jinrishici-sentence">AustinYAN's Blog</span></p>
-          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
-        
-      </div>
-    
-    
-      <div class="social-wrapper">
+      <blockquote>
         
           
-            <a href="/atom.xml"
-              class="social fas fa-rss flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-            </a>
+            <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
+
           
         
           
-            <a href="mailto:austinyanlzh@gmail.com"
-              class="social fas fa-envelope flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-            </a>
+            <p>本文永久链接是：<a href=https://www.lubaobao.xyz/2020/10/30/C++Boost/>https://www.lubaobao.xyz/2020/10/30/C++Boost/</a></p>
           
         
-          
-            <a href="https://github.com/AustinYANyh"
-              class="social fab fa-github flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-            </a>
-          
-        
-          
-            <a href="https://music.163.com/#/user/home?id=286524796"
-              class="social fas fa-headphones-alt flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-            </a>
-          
-        
-      </div>
+      </blockquote>
     
   </div>
 </section>
 
   
 
-  
+
+              
+            </div>
+          
+        </div>
+        
+          
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-11-02T10:27:50+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：Nov 2, 2020</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+
+        
+      
+        
+          
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
     
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer"
+          
+          href="http://connect.qq.com/widget/shareqq/index.html?url=https://www.lubaobao.xyz/2020/10/30/C++Boost/&title=【CPP】C++的boost学习-字符串的处理 - AustinYAN's Blog&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qq.png">
+          
+        </a>
+      
     
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer"
+          
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://www.lubaobao.xyz/2020/10/30/C++Boost/&title=【CPP】C++的boost学习-字符串的处理 - AustinYAN's Blog&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer"
+          
+          href="http://service.weibo.com/share/share.php?url=https://www.lubaobao.xyz/2020/10/30/C++Boost/&title=【CPP】C++的boost学习-字符串的处理 - AustinYAN's Blog&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/weibo.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </section>
+
+
+        
+        
+          <div class="prev-next">
+            
+            
+              <a class='next' href='/2020/10/16/WPF-Blend&Animation/'>
+                <p class='title'>使用Blend For VS制作WPF动画<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+                <p class='content'>WPF的强势之处在于不但可以很方便的画出漂亮的静态界面，也可以很方便的做出动画效果
+
+
+连续动画基础的Storyboard、时间线什么的概念就不在这里写了，因为这个博客也就是我自己记录自己学习的...</p>
+              </a>
+            
+          </div>
+        
+      </section>
+    </article>
   
 
-  <section class="widget category shadow desktop">
+  
+    <!-- 显示推荐文章和评论 -->
+
+
+
+  <article class="post white-box reveal comments shadow">
+    <section class="article typo">
+      <p ct><i class='fas fa-comments'></i> 评论</p>
+      
+      
+      
+        <section id="comments">
+          <div id="lv-container" data-id="city" data-uid="MTAyMC81MDgyNy8yNzMwOQ">
+            <noscript><div><i class='fas fa-exclamation-triangle'>&nbsp;Unable to load Livere, please make sure your network can access.</div></noscript>
+          </div>
+        </section>
+      
+      
+      
+      
+      
+    </section>
+  </article>
+
+
+    
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+
+  <script>
+    window.subData = {
+      title: '【CPP】C++的boost学习-字符串的处理',
+      tools: true
+    }
+  </script>
+
+
+</div>
+<aside class='l_side'>
+  
+  
+
+  
+    
+    
+
+
+  <section class="widget toc-wrapper shadow desktop mobile">
     
   <header>
     
-      <a href='/categories/'><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i><span class='name'>文章分类</span></a>
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
     
   </header>
 
 
     <div class='content'>
-      <ul class="entry navigation">
-        
-          <li><a class="flat-box"
-            title="/categories/C/" href="/categories/C/"
-            id="categoriesC"
-            ><div class='name'>C#</div><div class='badge'>(15)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/Cpp/" href="/categories/Cpp/"
-            id="categoriesCpp"
-            ><div class='name'>Cpp</div><div class='badge'>(7)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/DS/" href="/categories/DS/"
-            id="categoriesDS"
-            ><div class='name'>DS</div><div class='badge'>(11)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/HTML/" href="/categories/HTML/"
-            id="categoriesHTML"
-            ><div class='name'>HTML</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/Linux/" href="/categories/Linux/"
-            id="categoriesLinux"
-            ><div class='name'>Linux</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/ReView/" href="/categories/ReView/"
-            id="categoriesReView"
-            ><div class='name'>ReView</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/VsCode/" href="/categories/VsCode/"
-            id="categoriesVsCode"
-            ><div class='name'>VsCode</div><div class='badge'>(2)</div></a></li>
-        
-      </ul>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#boost库的学习"><span class="toc-text">boost库的学习</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#学习字符串处理"><span class="toc-text">学习字符串处理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#学习文件系统"><span class="toc-text">学习文件系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#学习智能指针"><span class="toc-text">学习智能指针</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#一个简单理解多态的Demo"><span class="toc-text">一个简单理解多态的Demo</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#学习函数对象"><span class="toc-text">学习函数对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#学习事件处理"><span class="toc-text">学习事件处理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#学习多线程"><span class="toc-text">学习多线程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#学习异步输入输出"><span class="toc-text">学习异步输入输出</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#学习boost的网络编程-未完"><span class="toc-text">学习boost的网络编程(未完)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#学习进程间通讯"><span class="toc-text">学习进程间通讯</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#学习boost的容器"><span class="toc-text">学习boost的容器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#学习boost的数据结构"><span class="toc-text">学习boost的数据结构</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Linux下的编译"><span class="toc-text">Linux下的编译</span></a></li></ol>
     </div>
   </section>
 
-
-  
-
-  
-    
-    
-
-  
 
   
 
@@ -1662,6 +987,17 @@
 
 
 
+
+  <script type="text/javascript">
+    (function(d, s) {
+      var j, e = d.getElementsByTagName(s)[0];
+      if (typeof LivereTower === 'function') { return; }
+      j = d.createElement(s);
+      j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+      j.async = true;
+      e.parentNode.insertBefore(j, e);
+    })(document, 'script');
+  </script>
 
 
 
