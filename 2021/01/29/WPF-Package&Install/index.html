@@ -16,10 +16,10 @@
 
   <!-- 页面元数据 -->
   
-    <title>【数据结构---30】鸽巢原理---计数排序 - AustinYAN&#39;s Blog</title>
+    <title>使用WPF制作打包、安装工具 - AustinYAN&#39;s Blog</title>
   
   
-    <meta name="description" content="学习基础排序算法中的计数排序…">
+    <meta name="description" content="在安装软件时，发现人家的安装界面跟msi和一些打包工具做出来的不太一样，主要是人家的有自己定制的界面，就感觉很棒很酷炫，加上最近刚好需要一个打包的功能，我就做了一个类似的，美观程度还没有优化，只是验证了方案的可行性">
   
 
   <!-- feed -->
@@ -421,8 +421,8 @@
         
           
   <h1 class="title">
-    <a href="/2019/06/01/DS-PigeonholePrinciple/">
-      【数据结构---30】鸽巢原理---计数排序
+    <a href="/2021/01/29/WPF-Package&Install/">
+      使用WPF制作打包、安装工具
     </a>
   </h1>
 
@@ -447,9 +447,9 @@
               
   
   <div class='new-meta-item category'>
-    <a href='/categories/DS/' rel="nofollow">
+    <a href='/categories/C/' rel="nofollow">
       <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
-      <p>DS</p>
+      <p>C#</p>
     </a>
   </div>
 
@@ -460,7 +460,7 @@
               <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：Jun 1, 2019</p>
+    <p>发布于：Jan 29, 2021</p>
   </a>
 </div>
 
@@ -487,13 +487,13 @@
   <div class="new-meta-item wordcount">
     <a class='notlink'>
       <i class="fas fa-keyboard fa-fw" aria-hidden="true"></i>
-      <p>298 words</p>
+      <p>1.5k words</p>
     </a>
   </div>
   <div class="new-meta-item readtime">
     <a class='notlink'>
       <i class="fas fa-hourglass-half fa-fw" aria-hidden="true"></i>
-      <p>1 min</p>
+      <p>6 min</p>
     </a>
   </div>
 
@@ -517,18 +517,53 @@
       <section class="article typo">
         <div class="article-entry" itemprop="articleBody">
           
-          <p>学习基础排序算法中的计数排序…</p>
+          <p>在安装软件时，发现人家的安装界面跟msi和一些打包工具做出来的不太一样，主要是人家的有自己定制的界面，就感觉很棒很酷炫，加上最近刚好需要一个打包的功能，我就做了一个类似的，美观程度还没有优化，只是验证了方案的可行性</p>
 <a id="more"></a>
 
+<h2 id="打包"><a href="#打包" class="headerlink" title="打包"></a>打包</h2><p>核心功能目前有两个，第一个是把本地运行的软件压缩成资源，第二个是把本地的参数压缩成资源，这个很容易实现，微软自己提供的zipfile类十分的不好用，主要是没办法一个文件一个文件添加到zip文件中，同样解压的时候也是，没办法一个一个解压出来，之后制作安装的进度条的时候就不太方便</p>
+<p>所以使用Nutget包管理器安装DotNetZip库，这个提供的方法就比较完美，符合我的需求，同时对于同名的文件提供四种方式的处理，如抛出异常、询问覆盖、静默覆盖等，微软提供的只有抛出异常好像#doge</p>
+<p><img src="https://img-blog.csdnimg.cn/20210129095002212.gif#pic_center" alt="在这里插入图片描述"></p>
+<p>进度条的前半段是把程序和参数全部复制到一个临时目录，然后压缩，因为直接在本地文件夹下压缩会因为占用而抛出异常，后半段是动态编译，生成一个安装程序</p>
+<hr>
+<h2 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h2><h3 id="嵌入资源与dll"><a href="#嵌入资源与dll" class="headerlink" title="嵌入资源与dll"></a>嵌入资源与dll</h3><p>资源都准备好的情况下，需要生成一个exe，同时这个exe还需要携带我们的资源，不然这个exe放到其他的环境中岂不是没办法用了，也因为这个原因，这个生成的exe需要自己携带所需的dll，在加载dll失败时，会通过自身程序集来加载所需的dll</p>
+<p>先解决软件无法单独启动的问题，将所需的dll的放到项目下的一个文件夹内，然后右键选择生成操作为嵌入的资源，同时在软件启动前加入处理dll的方法<br>这个方法csdn上随处可见，我针对自己的需求没有像网上那样，TestInstall是程序默认的命名空间名</p>
+<p><img src="https://img-blog.csdnimg.cn/20210129095020389.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1c3Rpbl9ZYW4=,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//找不到dll时, 从自身嵌入的资源中加载</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Assembly <span class="title">CurrentDomain_AssemblyResolve</span>(<span class="params"><span class="keyword">object</span> sender, ResolveEventArgs args</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">string</span> name = <span class="string">"TestInstall.Resources."</span> + <span class="keyword">new</span> AssemblyName(args.Name).Name + <span class="string">".dll"</span>;</span><br><span class="line">    name = name.Replace(<span class="string">".resources"</span>, <span class="string">""</span>);</span><br><span class="line">    Assembly result = <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">using</span> (Stream manifestResourceStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(name))</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">try</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">byte</span>[] array = <span class="keyword">new</span> <span class="keyword">byte</span>[manifestResourceStream.Length];</span><br><span class="line">            manifestResourceStream.Read(array, <span class="number">0</span>, array.Length);</span><br><span class="line">            result = Assembly.Load(array);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">catch</span> &#123; &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>或者也可以不使用这个方法，根据Assembly自己提供的Load方法，从程序集自己获取dll资源的二进制数组（内嵌的dll会被保存成byte[]），然后直接加载</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Assembly.Load(TestInstall.Properties.Resources.DotNetZip);</span><br></pre></td></tr></table></figure>
 
+<h3 id="动态编译"><a href="#动态编译" class="headerlink" title="动态编译"></a>动态编译</h3><p>C#提供CSharpCodeProvider这个类，可以使我们拿到代码生成器和代码编译器的访问权限，CompilerParameters可以设置编译参数，如程序名、程序类型、程序所需的dll指定等</p>
+<ul>
+<li>CompilerOptions 生成的exe的类型，如控制台程序、win32程序等</li>
+<li>GenerateExecutable 是否生成exe，true表示生成exe，false表示只生成到内存中</li>
+<li>EmbeddedResources 是一个Collection类的东西，表示嵌入的资源的集合，通过Add方法添加</li>
+</ul>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 设置编译参数</span></span><br><span class="line">CompilerParameters options = <span class="keyword">new</span> CompilerParameters(</span><br><span class="line">    <span class="keyword">new</span> <span class="keyword">string</span>[]</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="string">"Microsoft.CSharp.dll"</span>,</span><br><span class="line">        <span class="string">"PresentationCore.dll"</span>,</span><br><span class="line">        <span class="string">"PresentationFramework.dll"</span>,</span><br><span class="line">        <span class="string">"System.dll"</span>,</span><br><span class="line">        <span class="string">"System.Windows.Forms.dll"</span>,</span><br><span class="line">        <span class="string">"System.Xaml.dll"</span>,</span><br><span class="line">        <span class="string">"System.Xml.dll"</span>,</span><br><span class="line">        <span class="string">"WindowsBase.dll"</span>,</span><br><span class="line">        <span class="string">"InstallHelper.dll"</span></span><br><span class="line">    &#125;, <span class="string">"InstallPack.exe"</span>, <span class="literal">false</span>);</span><br><span class="line"></span><br><span class="line">options.CompilerOptions = <span class="string">"/target:winexe"</span>;</span><br><span class="line">options.GenerateExecutable = <span class="literal">true</span>;</span><br></pre></td></tr></table></figure>
 
-<h2 id="思路分析"><a href="#思路分析" class="headerlink" title="思路分析:"></a>思路分析:</h2><blockquote>
-<p>&lt;1&gt;巧妙地借助数组下标<br>&lt;2&gt;如果没有给出范围的话,第一步先找出数据范围<br>&lt;3&gt;统计每个元素出现的次数<br>&lt;4&gt;按照统计的计数对元素进行回收</p>
-</blockquote>
-<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现:"></a>代码实现:</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;malloc.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">CountSort</span><span class="params">(<span class="keyword">int</span>* <span class="built_in">array</span>, <span class="keyword">int</span> size)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">		<span class="comment">//未告知范围的情况下,先找出数据范围</span></span><br><span class="line">	</span><br><span class="line">		<span class="keyword">int</span> minPos = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">int</span> maxPos = <span class="number">0</span>;</span><br><span class="line">	</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; size; ++i)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span> (<span class="built_in">array</span>[minPos]&gt;<span class="built_in">array</span>[i])</span><br><span class="line">			&#123;</span><br><span class="line">				minPos = <span class="built_in">array</span>[i];</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span> (<span class="built_in">array</span>[maxPos] &lt; <span class="built_in">array</span>[i])</span><br><span class="line">			&#123;</span><br><span class="line">				maxPos = <span class="built_in">array</span>[i];</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	</span><br><span class="line">		<span class="keyword">int</span> range = maxPos - minPos + <span class="number">1</span>;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">int</span>* a = (<span class="keyword">int</span>*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">int</span>)*range);</span><br><span class="line">			</span><br><span class="line">		<span class="built_in">memset</span>(a, <span class="number">0</span>, <span class="keyword">sizeof</span>(<span class="keyword">int</span>)*range);</span><br><span class="line">	</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; size; ++i)</span><br><span class="line">		&#123;</span><br><span class="line">			a[<span class="built_in">array</span>[i]-minPos]++;</span><br><span class="line">		&#125;</span><br><span class="line">	</span><br><span class="line">		<span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">	</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; range; ++j)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">while</span> (a[j])</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="built_in">array</span>[count++]=j+minPos;</span><br><span class="line">				a[j]--;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	</span><br><span class="line">		<span class="built_in">free</span>(a);</span><br><span class="line">		a = <span class="literal">NULL</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">PrintAll</span><span class="params">(<span class="keyword">int</span>* <span class="built_in">array</span>, <span class="keyword">int</span> size)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; size; ++i)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"%d "</span>,<span class="built_in">array</span>[i]);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">		<span class="keyword">int</span> <span class="built_in">array</span>[] = &#123; <span class="number">0</span>, <span class="number">1</span>, <span class="number">5</span>, <span class="number">3</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">2</span>, <span class="number">5</span>, <span class="number">0</span>, <span class="number">9</span> &#125;;</span><br><span class="line">		</span><br><span class="line">		CountSort(<span class="built_in">array</span>, <span class="keyword">sizeof</span>(<span class="built_in">array</span>) / <span class="keyword">sizeof</span>(<span class="built_in">array</span>[<span class="number">0</span>]));</span><br><span class="line">		PrintAll(<span class="built_in">array</span>, <span class="keyword">sizeof</span>(<span class="built_in">array</span>) / <span class="keyword">sizeof</span>(<span class="built_in">array</span>[<span class="number">0</span>]));</span><br><span class="line">		</span><br><span class="line">		system(<span class="string">"pause"</span>);</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>CompileAssemblyFromSource 通过源码编译，第一个参数是CompilerParameters的对象，第二个参数是源码的string<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">CompilerResults cr = provider.CompileAssemblyFromSource(options, strSource);</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (cr.Errors.HasErrors)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">var</span> msg = <span class="keyword">string</span>.Join(Environment.NewLine, cr.Errors.Cast&lt;CompilerError&gt;().Select(err =&gt; err.ErrorText));</span><br><span class="line">    System.Windows.Forms.MessageBox.Show(msg);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+编译通过后会生成一个exe，将其move到桌面</li>
+</ul>
+<hr>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>前面的操作都没问题后，安装的界面由exe中嵌入的dll提供，这个dll是一个WPF控件库，提供一个Window，在exe启动时只需要将其Show出来即可</p>
+<h3 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h3><ul>
+<li><font size=5>1.WPF组件遇到无法访问的uri</font></li>
+</ul>
+<p>遇到这个问题的原因我认为是App.xaml中的StartUri被我删掉后，Window自己的InitializeComponent方法会找不到Uri，也就是说Window不知道它是哪个界面，解决方法是通过后台来指定,LoadViewFromUri的方法也是csdn上随处可见，嫖过来直接用,第一个参数网上的是UserControl，我根据自己的需求改为了Window，其实也只需要替换两个参数而已，没什么难度</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//动态加载uri</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">LoadViewFromUri</span>(<span class="params"><span class="keyword">this</span> Window window, <span class="keyword">string</span> baseUri</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">try</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">var</span> resourceLocater = <span class="keyword">new</span> Uri(baseUri, UriKind.Relative);</span><br><span class="line">        <span class="keyword">var</span> exprCa = (PackagePart)<span class="keyword">typeof</span>(System.Windows.Application).GetMethod(<span class="string">"GetResourceOrContentPart"</span>, BindingFlags.NonPublic | BindingFlags.Static).Invoke(<span class="literal">null</span>, <span class="keyword">new</span> <span class="keyword">object</span>[] &#123; resourceLocater &#125;);</span><br><span class="line">        <span class="keyword">var</span> stream = exprCa.GetStream();</span><br><span class="line">        <span class="keyword">var</span> uri = <span class="keyword">new</span> Uri((Uri)<span class="keyword">typeof</span>(BaseUriHelper).GetProperty(<span class="string">"PackAppBaseUri"</span>, BindingFlags.Static | BindingFlags.NonPublic).GetValue(<span class="literal">null</span>, <span class="literal">null</span>), resourceLocater);</span><br><span class="line">        <span class="keyword">var</span> parserContext = <span class="keyword">new</span> ParserContext</span><br><span class="line">        &#123;</span><br><span class="line">            BaseUri = uri</span><br><span class="line">        &#125;;</span><br><span class="line">        <span class="keyword">typeof</span>(XamlReader).GetMethod(<span class="string">"LoadBaml"</span>, BindingFlags.NonPublic | BindingFlags.Static).Invoke(<span class="literal">null</span>, <span class="keyword">new</span> <span class="keyword">object</span>[] &#123; stream, parserContext, window, <span class="literal">true</span> &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">catch</span> (Exception)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//log</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h2 id="代码运行测试图"><a href="#代码运行测试图" class="headerlink" title="代码运行测试图:"></a>代码运行测试图:</h2><p><img src="https://img-blog.csdnimg.cn/20190601180749356.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1c3Rpbl9ZYW4=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ResourcesHelper.LoadViewFromUri(<span class="keyword">this</span>, <span class="string">"/BodorThinkerInstallHelper;component/MainWindow.xaml"</span>);</span><br></pre></td></tr></table></figure>
 
+<ul>
+<li><font size=5>2.图片等资源造成Window的ShowDialog()报错，导致窗体不显示</font></li>
+</ul>
+<p>正常情况下，这样写没有问题，资源绝对找的到，但是如果生成为dll被其他程序调用，这样子的ImageSource是不可能被找到的，这种写法是从项目的目录结构中指定路径去寻找的，生成为exe也会有目录结构，但是生成为dll的目录结构与解决方案的目录不一致</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Window.Resources</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--资源--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">ImageBrush</span> <span class="attr">x:Key</span>=<span class="string">"BackGrundIMGBrush"</span> <span class="attr">ImageSource</span>=<span class="string">"/InstallHelper;component/Resources/SplashScreen.png"</span> <span class="attr">Stretch</span>=<span class="string">"Fill"</span>&gt;</span><span class="tag">&lt;/<span class="name">ImageBrush</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">ImageBrush</span> <span class="attr">x:Key</span>=<span class="string">"MoreBtnBrush"</span> <span class="attr">ImageSource</span>=<span class="string">"/InstallHelper;component/Resources/More.png"</span> <span class="attr">Stretch</span>=<span class="string">"Fill"</span>&gt;</span><span class="tag">&lt;/<span class="name">ImageBrush</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">Window.Resources</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>解决方法和上面那个一样，xaml中解决不了的就通过后台代码实现，将图片资源嵌入后，会被直接保存成bitmap，所以只需要把bitmap转换为brush就可以后台直接使用了</p>
+<p><img src="https://img-blog.csdnimg.cn/20210129095125567.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1c3Rpbl9ZYW4=,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
+<p>转换的方法是System.Windows.Interop.Imaging直接提供的，使用的时候只需要引入命名空间</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> bitmap = BodorThinkerInstallHelper.Properties.Resources.SplashScreen;</span><br><span class="line"><span class="keyword">var</span> bitmapSource = Imaging.CreateBitmapSourceFromHBitmap(bitmap.GetHbitmap(),</span><br><span class="line">                                                                  IntPtr.Zero,</span><br><span class="line">                                                                  Int32Rect.Empty,</span><br><span class="line">                                                                  BitmapSizeOptions.FromEmptyOptions()</span><br><span class="line">  );</span><br><span class="line">bitmap.Dispose();</span><br><span class="line"><span class="keyword">var</span> brush = <span class="keyword">new</span> ImageBrush(bitmapSource);</span><br><span class="line">BackGroundIMG.Fill = brush;</span><br></pre></td></tr></table></figure>
           
             <div class='article_footer'>
               
@@ -564,7 +599,7 @@
           
         
           
-            <p>本文永久链接是：<a href=https://www.lubaobao.xyz/2019/06/01/DS-PigeonholePrinciple/>https://www.lubaobao.xyz/2019/06/01/DS-PigeonholePrinciple/</a></p>
+            <p>本文永久链接是：<a href=https://www.lubaobao.xyz/2021/01/29/WPF-Package&Install/>https://www.lubaobao.xyz/2021/01/29/WPF-Package&Install/</a></p>
           
         
       </blockquote>
@@ -587,10 +622,10 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-07-22T10:47:46+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-01-29T10:00:27+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Jul 22, 2020</p>
+    <p>更新于：Jan 29, 2021</p>
   </a>
 </div>
 
@@ -614,7 +649,7 @@
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer"
           
-          href="http://connect.qq.com/widget/shareqq/index.html?url=https://www.lubaobao.xyz/2019/06/01/DS-PigeonholePrinciple/&title=【数据结构---30】鸽巢原理---计数排序 - AustinYAN's Blog&summary=学习基础排序算法中的计数排序…"
+          href="http://connect.qq.com/widget/shareqq/index.html?url=https://www.lubaobao.xyz/2021/01/29/WPF-Package&Install/&title=使用WPF制作打包、安装工具 - AustinYAN's Blog&pics=true&summary=在安装软件时，发现人家的安装界面跟msi和一些打包工具做出来的不太一样，主要是人家的有自己定制的界面，就感觉很棒很酷炫，加上最近刚好需要一个打包的功能，我就做了一个类似的，美观程度还没有优化，只是验证了方案的可行性"
           
           >
           
@@ -626,7 +661,7 @@
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer"
           
-          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://www.lubaobao.xyz/2019/06/01/DS-PigeonholePrinciple/&title=【数据结构---30】鸽巢原理---计数排序 - AustinYAN's Blog&summary=学习基础排序算法中的计数排序…"
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://www.lubaobao.xyz/2021/01/29/WPF-Package&Install/&title=使用WPF制作打包、安装工具 - AustinYAN's Blog&pics=true&summary=在安装软件时，发现人家的安装界面跟msi和一些打包工具做出来的不太一样，主要是人家的有自己定制的界面，就感觉很棒很酷炫，加上最近刚好需要一个打包的功能，我就做了一个类似的，美观程度还没有优化，只是验证了方案的可行性"
           
           >
           
@@ -638,7 +673,7 @@
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer"
           
-          href="http://service.weibo.com/share/share.php?url=https://www.lubaobao.xyz/2019/06/01/DS-PigeonholePrinciple/&title=【数据结构---30】鸽巢原理---计数排序 - AustinYAN's Blog&summary=学习基础排序算法中的计数排序…"
+          href="http://service.weibo.com/share/share.php?url=https://www.lubaobao.xyz/2021/01/29/WPF-Package&Install/&title=使用WPF制作打包、安装工具 - AustinYAN's Blog&pics=true&summary=在安装软件时，发现人家的安装界面跟msi和一些打包工具做出来的不太一样，主要是人家的有自己定制的界面，就感觉很棒很酷炫，加上最近刚好需要一个打包的功能，我就做了一个类似的，美观程度还没有优化，只是验证了方案的可行性"
           
           >
           
@@ -662,39 +697,13 @@
         
           <div class="prev-next">
             
-              <a class='prev' href='/2019/08/03/Cpp-sort0/'>
-                <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>【针对性复习】选择排序和归并排序</p>
-                <p class='content'>针对选择题中排序过程的复习
-
-
-快排递归框架：123456789void QuickDSort(int* array, int left, int right)&#123;	if (right ...</p>
-              </a>
             
-            
-              <a class='next' href='/2019/05/29/DS-SimpleSort2/'>
-                <p class='title'>【数据结构---29】简单排序方法（下）<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
-                <p class='content'>学习基础排序算法…
-
-对快速排序的优化:
-
-方法一代码实现:
-方法二代码实现:
+              <a class='next' href='/2020/10/30/C++Boost/'>
+                <p class='title'>【CPP】C++的boost学习<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+                <p class='content'>学习C++的boost库,了解其中的一些方法
 
 
-快速排序的循环写法:
-
-代码实现:
-
-
-归并排序:
-
-归并的代码实现：
-
-递归框架:
-循环写法:
-
-
-代码测试...</p>
+boost库的学习学习字符串处理12345678910111213141516171819202122232425262728293031323...</p>
               </a>
             
           </div>
@@ -739,7 +748,7 @@
 
   <script>
     window.subData = {
-      title: '【数据结构---30】鸽巢原理---计数排序',
+      title: '使用WPF制作打包、安装工具',
       tools: true
     }
   </script>
@@ -765,7 +774,7 @@
 
 
     <div class='content'>
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#思路分析"><span class="toc-text">思路分析:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码实现"><span class="toc-text">代码实现:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码运行测试图"><span class="toc-text">代码运行测试图:</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#打包"><span class="toc-text">打包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#编译"><span class="toc-text">编译</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#嵌入资源与dll"><span class="toc-text">嵌入资源与dll</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#动态编译"><span class="toc-text">动态编译</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装"><span class="toc-text">安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#遇到的问题"><span class="toc-text">遇到的问题</span></a></li></ol></li></ol>
     </div>
   </section>
 
